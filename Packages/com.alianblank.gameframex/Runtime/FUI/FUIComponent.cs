@@ -14,6 +14,7 @@ namespace GameFrameX.Runtime
     public sealed class FUIComponent : GameFrameworkComponent
     {
         private FUI _root;
+        AssetComponent m_AssetComponent;
         FUI HiddenRoot;
         FUI FloorRoot;
         FUI NormalRoot;
@@ -28,6 +29,16 @@ namespace GameFrameX.Runtime
 
         FUI SystemRoot;
         // public FUI UIRoot;
+
+        private void Start()
+        {
+            m_AssetComponent = GameEntry.GetComponent<AssetComponent>();
+            if (m_AssetComponent == null)
+            {
+                Log.Fatal("Asset component is invalid.");
+                return;
+            }
+        }
 
         private readonly Dictionary<UILayer, Dictionary<string, FUI>> _dictionary = new Dictionary<UILayer, Dictionary<string, FUI>>(16);
         private readonly Dictionary<string, FUI> _uiDictionary = new Dictionary<string, FUI>(64);
@@ -81,6 +92,28 @@ namespace GameFrameX.Runtime
             return ts.Task;
         }
 
+
+        /// <summary>
+        /// 加载资源
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <param name="extension"></param>
+        /// <param name="type"></param>
+        /// <param name="destroyMethod"></param>
+        /// <returns></returns>
+        object LoadUIResources(string assetName, string extension, Type type, out DestroyMethod destroyMethod)
+        {
+            destroyMethod = DestroyMethod.Unload;
+            var assetHandle = m_AssetComponent.LoadAssetSync<TextAsset>(assetName);
+            Log.Info(assetName);
+            if (assetHandle != null && assetHandle.AssetObject != null)
+            {
+                return assetHandle.AssetObject;
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// 添加UI对象
         /// </summary>
@@ -94,12 +127,18 @@ namespace GameFrameX.Runtime
         /// <exception cref="ArgumentNullException">创建器不存在,引发参数异常</exception>
         public T Add<T>(System.Func<object, T> creator, string descFilePath, UILayer layer, bool isFullScreen = false, object userData = null) where T : FUI
         {
-            if (creator == null)
+            GameFrameworkGuard.NotNull(creator, nameof(creator));
+            GameFrameworkGuard.NotNull(descFilePath, nameof(descFilePath));
+
+            if (descFilePath.IndexOf(Utility.Asset.Path.BundlesDirectoryName, StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                throw new ArgumentNullException(nameof(creator));
+                UIPackage.AddPackage(descFilePath, LoadUIResources);
+            }
+            else
+            {
+                UIPackage.AddPackage(descFilePath);
             }
 
-            UIPackage.AddPackage(descFilePath);
             T ui = creator(userData);
             Add(ui, layer);
             if (isFullScreen)
@@ -132,6 +171,7 @@ namespace GameFrameX.Runtime
 
         private FUI Add(FUI ui, UILayer layer)
         {
+            GameFrameworkGuard.NotNull(ui, nameof(ui));
             if (!_uiDictionary.ContainsKey(ui.Name))
             {
                 _uiDictionary[ui.Name] = ui;
@@ -183,6 +223,7 @@ namespace GameFrameX.Runtime
 
         public bool Remove(string uiName)
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             if (SystemRoot.Remove(uiName))
             {
                 return true;
@@ -248,6 +289,7 @@ namespace GameFrameX.Runtime
 
         public void Remove(string uiName, UILayer layer)
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             switch (layer)
             {
                 case UILayer.Hidden:
@@ -291,6 +333,7 @@ namespace GameFrameX.Runtime
 
         public bool Has(string uiName)
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             return Get(uiName) != null;
         }
 
@@ -303,6 +346,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public bool Has<T>(string uiName, out T fui) where T : FUI
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             var ui = Get(uiName);
             fui = ui as T;
             return fui != null;
@@ -310,6 +354,7 @@ namespace GameFrameX.Runtime
 
         public T Get<T>(string uiName) where T : FUI
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             if (_uiDictionary.TryGetValue(uiName, out var ui))
             {
                 return ui as T;
@@ -320,6 +365,7 @@ namespace GameFrameX.Runtime
 
         public FUI Get(string uiName)
         {
+            GameFrameworkGuard.NotNullOrEmpty(uiName, nameof(uiName));
             if (_uiDictionary.TryGetValue(uiName, out var ui))
             {
                 return ui;

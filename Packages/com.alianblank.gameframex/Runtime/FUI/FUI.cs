@@ -97,8 +97,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 显示UI
         /// </summary>
-        public void Show()
+        public void Show(object userData = null)
         {
+            UserData = userData;
             Log.Info("Show " + Name);
             if (Visible)
             {

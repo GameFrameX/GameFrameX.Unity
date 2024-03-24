@@ -1,12 +1,12 @@
-﻿namespace Framework.Asset
+﻿using GameFrameX.Runtime;
+
+namespace Framework.Asset
 {
     /// <summary>
     /// AB实用函数集，主要是路径拼接
     /// </summary>
     public static class AssetUtility
     {
-        private const string BundlesPath = "Assets/Bundles";
-
         /// <summary>
         /// 获取配置文件路径
         /// </summary>
@@ -15,7 +15,7 @@
         /// <returns></returns>
         public static string GetConfigPath(string fileName, string extension = ".bytes")
         {
-            return $"{BundlesPath}/Config/{fileName}{extension}";
+            return $"{PathHelper.BundlesPath}/Config/{fileName}{extension}";
         }
 
         /// <summary>
@@ -26,7 +26,7 @@
         /// <returns></returns>
         public static string GetAOTCodePath(string fileName, string extension = ".bytes")
         {
-            return $"{BundlesPath}/AOTCode/{fileName}{extension}";
+            return $"{PathHelper.BundlesPath}/AOTCode/{fileName}{extension}";
         }
 
         /// <summary>
@@ -37,7 +37,7 @@
         /// <returns></returns>
         public static string GetCodePath(string fileName, string extension = ".bytes")
         {
-            return $"{BundlesPath}/Code/{fileName}{extension}";
+            return $"{PathHelper.BundlesPath}/Code/{fileName}{extension}";
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
         /// <returns></returns>
         public static string GetUIPackagePath(string uiPackageName, string extension = ".bytes")
         {
-            return $"{BundlesPath}/UI/{uiPackageName}/{uiPackageName}";
+            return $"{PathHelper.BundlesPath}/UI/{uiPackageName}/{uiPackageName}";
         }
 
         /// <summary>
@@ -59,7 +59,7 @@
         /// <returns></returns>
         public static string GetSoundPath(string soundName, string extension = ".mp3")
         {
-            return $"{BundlesPath}/Sound/{soundName}{extension}";
+            return $"{PathHelper.BundlesPath}/Sound/{soundName}{extension}";
         }
     }
 }

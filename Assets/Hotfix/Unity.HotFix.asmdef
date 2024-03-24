@@ -12,7 +12,7 @@
         "UniTask.Runtime",
         "YooAsset.Runtime",
         "GameAnalytics.Runtime",
-        "MessagePack.Runtime",
+        "ProtoBuffer.Runtime",
         "MessagePack.Annotations",
         "LuBan.Runtime",
         "Unity.Startup",

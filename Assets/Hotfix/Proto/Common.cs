@@ -3,7 +3,7 @@ using ProtoBuf;
 using System.Collections.Generic;
 using GameFrameX.Network;
 
-namespace Hotfix.Proto.Proto
+namespace Hotfix.Proto
 {
 	/// <summary>
 	/// 返回码
@@ -51,7 +51,7 @@ namespace Hotfix.Proto.Proto
 		///  创建时间
 		/// </summary>
 		[ProtoMember(4)]
-		public DateTime CreateTime { get; set; }
+		public long CreateTime { get; set; }
 
 		/// <summary>
 		///  vip等级

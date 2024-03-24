@@ -3,7 +3,7 @@ using ProtoBuf;
 using System.Collections.Generic;
 using GameFrameX.Network;
 
-namespace Hotfix.Proto.Proto
+namespace Hotfix.Proto
 {
 	/// <summary>
 	/// 请求登录

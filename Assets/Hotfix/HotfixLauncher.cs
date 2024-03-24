@@ -1,16 +1,14 @@
 ﻿using System.Net;
 using Cysharp.Threading.Tasks;
-using Framework.Asset;
 using GameFrameX;
 using GameFrameX.Event;
 using GameFrameX.Network;
-using Hotfix.Proto.Proto;
+using Hotfix.Proto;
 using SimpleJSON;
 using UnityEngine;
 using GameFrameX.Runtime;
 using GameMain;
 using Hotfix.Network;
-using Hotfix.Proto;
 using Hotfix.UI;
 
 namespace Hotfix

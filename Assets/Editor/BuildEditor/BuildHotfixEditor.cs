@@ -16,7 +16,7 @@ namespace Unity.Editor
         private static readonly string ScriptAssembliesDir = $"HybridCLRData/HotUpdateDlls/{EditorUserBuildSettings.activeBuildTarget}";
 
 
-        private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll", "Unity.Hotfix.pdb", "Unity.Hotfix.Proto.dll", "Unity.Hotfix.Proto.pdb" };
+        private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll", "Unity.Hotfix.pdb" };
 
 
         //热更代码存放位置

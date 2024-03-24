@@ -13,16 +13,12 @@ namespace Unity.Editor
         {
             var path = "Assets/Hotfix/Unity.HotFix.asmdef";
             HotFixAssemblyDefinitionHelper.RemoveEditor(path);
-            path = "Assets/Hotfix.Proto/Unity.HotFix.Proto.asmdef";
-            HotFixAssemblyDefinitionHelper.RemoveEditor(path);
         }
 
         [MenuItem("Tools/Build/HotFix Editor Compiler Add", false, 100)]
         static void AddEditor()
         {
             var path = "Assets/Hotfix/Unity.HotFix.asmdef";
-            HotFixAssemblyDefinitionHelper.AddEditor(path);
-            path = "Assets/Hotfix.Proto/Unity.HotFix.Proto.asmdef";
             HotFixAssemblyDefinitionHelper.AddEditor(path);
         }
     }

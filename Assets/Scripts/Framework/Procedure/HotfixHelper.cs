@@ -121,18 +121,6 @@ namespace GameFrameX.Procedure
             }
 #endif
             Log.Info("结束加载AOT DLL");
-            // RuntimeApi.LoadMetadataForAOTAssembly()
-
-            Log.Info("开始加载Unity.Hotfix.Proto.dll");
-            var assetHotfixProtoDllPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.Proto.dll");
-            var assetHotfixProtoDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixProtoDllPath);
-            var assemblyDataHotfixProtoDll = assetHotfixProtoDllOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
-            Log.Info("开始加载Unity.Hotfix.Proto.pdb");
-            var assetHotfixProtoPdbPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.Proto.pdb");
-            var assetHotfixProtoPdbOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixProtoPdbPath);
-            var assemblyDataHotfixProtoPdb = assetHotfixProtoPdbOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
-            Log.Info("开始加载程序集Proto");
-            Assembly.Load(assemblyDataHotfixProtoDll, assemblyDataHotfixProtoPdb);
             Log.Info("开始加载Unity.Hotfix.dll");
             var assetHotfixDllPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.dll");
             var assetHotfixDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixDllPath);

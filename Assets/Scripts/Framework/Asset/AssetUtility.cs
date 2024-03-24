@@ -1,4 +1,5 @@
-﻿using GameFrameX.Runtime;
+﻿using GameFrameX;
+using GameFrameX.Runtime;
 
 namespace Framework.Asset
 {
@@ -8,50 +9,6 @@ namespace Framework.Asset
     public static class AssetUtility
     {
         /// <summary>
-        /// 获取配置文件路径
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="extension"></param>
-        /// <returns></returns>
-        public static string GetConfigPath(string fileName, string extension = ".bytes")
-        {
-            return $"{PathHelper.BundlesPath}/Config/{fileName}{extension}";
-        }
-
-        /// <summary>
-        /// 获取AOT元数据代码文件路径
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="extension"></param>
-        /// <returns></returns>
-        public static string GetAOTCodePath(string fileName, string extension = ".bytes")
-        {
-            return $"{PathHelper.BundlesPath}/AOTCode/{fileName}{extension}";
-        }
-
-        /// <summary>
-        /// 获取代码文件路径
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="extension"></param>
-        /// <returns></returns>
-        public static string GetCodePath(string fileName, string extension = ".bytes")
-        {
-            return $"{PathHelper.BundlesPath}/Code/{fileName}{extension}";
-        }
-
-        /// <summary>
-        /// 获取UI文件路径
-        /// </summary>
-        /// <param name="uiPackageName"></param>
-        /// <param name="extension"></param>
-        /// <returns></returns>
-        public static string GetUIPackagePath(string uiPackageName, string extension = ".bytes")
-        {
-            return $"{PathHelper.BundlesPath}/UI/{uiPackageName}/{uiPackageName}";
-        }
-
-        /// <summary>
         /// 获取声音文件路径
         /// </summary>
         /// <param name="soundName">声音名称</param>
@@ -59,7 +16,7 @@ namespace Framework.Asset
         /// <returns></returns>
         public static string GetSoundPath(string soundName, string extension = ".mp3")
         {
-            return $"{PathHelper.BundlesPath}/Sound/{soundName}{extension}";
+            return $"{Utility.Asset.Path.BundlesPath}/Sound/{soundName}{extension}";
         }
     }
 }

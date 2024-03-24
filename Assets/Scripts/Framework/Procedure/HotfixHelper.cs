@@ -124,21 +124,21 @@ namespace GameFrameX.Procedure
             // RuntimeApi.LoadMetadataForAOTAssembly()
 
             Log.Info("开始加载Unity.Hotfix.Proto.dll");
-            var assetHotfixProtoDllPath = AssetUtility.GetCodePath("Unity.Hotfix.Proto.dll");
+            var assetHotfixProtoDllPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.Proto.dll");
             var assetHotfixProtoDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixProtoDllPath);
             var assemblyDataHotfixProtoDll = assetHotfixProtoDllOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
             Log.Info("开始加载Unity.Hotfix.Proto.pdb");
-            var assetHotfixProtoPdbPath = AssetUtility.GetCodePath("Unity.Hotfix.Proto.pdb");
+            var assetHotfixProtoPdbPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.Proto.pdb");
             var assetHotfixProtoPdbOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixProtoPdbPath);
             var assemblyDataHotfixProtoPdb = assetHotfixProtoPdbOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
             Log.Info("开始加载程序集Proto");
             Assembly.Load(assemblyDataHotfixProtoDll, assemblyDataHotfixProtoPdb);
             Log.Info("开始加载Unity.Hotfix.dll");
-            var assetHotfixDllPath = AssetUtility.GetCodePath("Unity.Hotfix.dll");
+            var assetHotfixDllPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.dll");
             var assetHotfixDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixDllPath);
             var assemblyDataHotfixDll = assetHotfixDllOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
             Log.Info("开始加载Unity.Hotfix.pdb");
-            var assetHotfixPdbPath = AssetUtility.GetCodePath("Unity.Hotfix.pdb");
+            var assetHotfixPdbPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.pdb");
             var assetHotfixPdbOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixPdbPath);
             var assemblyDataHotfixPdb = assetHotfixPdbOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
             Log.Info("开始加载程序集Hotfix");

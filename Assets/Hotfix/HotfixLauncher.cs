@@ -38,7 +38,7 @@ namespace Hotfix
 
         private static async void LoadUI()
         {
-            var uiLogin = await GameApp.UI.AddAsync<UILogin>(UILogin.CreateInstance, AssetUtility.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
+            var uiLogin = await GameApp.UI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
             uiLogin.m_enter.onClick.Add(() =>
             {
                 if (networkChannel != null && networkChannel.Connected)
@@ -113,7 +113,7 @@ namespace Hotfix
 
         private static JSONNode Loader(string file)
         {
-            string assetPath = AssetUtility.GetConfigPath(file, Utility.Const.FileNameSuffix.Json);
+            string assetPath = Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Json);
             Log.Info(assetPath);
             var rawFileOperationHandle = GameApp.Asset.LoadRawFileSync(assetPath);
 

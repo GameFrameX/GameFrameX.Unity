@@ -25,6 +25,16 @@ namespace GameFrameX
                 public const string Json = ".json";
 
                 /// <summary>
+                /// Wav 文件
+                /// </summary>
+                public const string Wav = ".wav";
+
+                /// <summary>
+                /// Mp3 文件
+                /// </summary>
+                public const string Mp3 = ".mp3";
+
+                /// <summary>
                 /// Xml 文件
                 /// </summary>
                 public const string Xml = ".xml";

@@ -16,7 +16,6 @@
         "MessagePack.Annotations",
         "LuBan.Runtime",
         "Unity.Startup",
-        "Unity.HotFix.Proto",
         "LitJSON.Runtime",
         "SimpleJSON.Runtime"
     ],

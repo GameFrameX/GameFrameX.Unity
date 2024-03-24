@@ -1,6 +1,6 @@
 using GameFrameX.Network;
 using GameFrameX.Runtime;
-using Hotfix.Proto.Proto;
+using Hotfix.Proto;
 
 namespace Hotfix.Network
 {

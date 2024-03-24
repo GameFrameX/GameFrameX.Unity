@@ -4,15 +4,7 @@ namespace GameFrameX.Runtime
 {
     public static class PathHelper
     {
-        /// <summary>
-        /// 打包资源根路径
-        /// </summary>
-        public const string BundlesPath = "Assets/Bundles";
 
-        /// <summary>
-        /// 打包资源文件夹名称
-        /// </summary>
-        public const string BundlesDirectoryName = "Bundles";
 
         /// <summary>
         ///应用程序外部资源路径存放路径(热更新资源路径)

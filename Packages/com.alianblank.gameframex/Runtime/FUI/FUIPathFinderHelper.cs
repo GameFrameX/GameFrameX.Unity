@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FairyGUI;
-using GameFrameX.Runtime;
 
 namespace GameFrameX.Runtime
 {

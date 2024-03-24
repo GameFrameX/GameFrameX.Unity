@@ -11,10 +11,10 @@ namespace GameFrameX.Runtime
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("Game Framework/FUI")]
+    [RequireComponent(typeof(FUIPackageComponent))]
     public sealed class FUIComponent : GameFrameworkComponent
     {
         private FUI _root;
-        AssetComponent m_AssetComponent;
         FUI HiddenRoot;
         FUI FloorRoot;
         FUI NormalRoot;
@@ -28,20 +28,20 @@ namespace GameFrameX.Runtime
         FUI NotifyRoot;
 
         FUI SystemRoot;
+
         // public FUI UIRoot;
 
-        private void Start()
-        {
-            m_AssetComponent = GameEntry.GetComponent<AssetComponent>();
-            if (m_AssetComponent == null)
-            {
-                Log.Fatal("Asset component is invalid.");
-                return;
-            }
-        }
 
         private readonly Dictionary<UILayer, Dictionary<string, FUI>> _dictionary = new Dictionary<UILayer, Dictionary<string, FUI>>(16);
         private readonly Dictionary<string, FUI> _uiDictionary = new Dictionary<string, FUI>(64);
+
+        private FUIPackageComponent _packageComponent;
+
+        private void Start()
+        {
+            _packageComponent = GetComponent<FUIPackageComponent>();
+            GameFrameworkGuard.NotNull(_packageComponent, nameof(_packageComponent));
+        }
 
         public void OnDestroy()
         {
@@ -64,19 +64,20 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 异步创建UI
+        /// 异步添加UI 对象
         /// </summary>
-        /// <param name="creator"></param>
-        /// <param name="descFilePath"></param>
-        /// <param name="layer"></param>
-        /// <param name="isFullScreen"></param>
-        /// <param name="userData"></param>
+        /// <param name="creator">UI创建器</param>
+        /// <param name="descFilePath">UI目录</param>
+        /// <param name="layer">目标层级</param>
+        /// <param name="isFullScreen">是否全屏</param>
+        /// <param name="userData">用户自定义数据</param>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>返回创建后的UI对象</returns>
         public UniTask<T> AddAsync<T>(System.Func<object, T> creator, string descFilePath, UILayer layer, bool isFullScreen = false, object userData = null) where T : FUI
         {
-            UniTaskCompletionSource<T> ts = new UniTaskCompletionSource<T>();
-
+            GameFrameworkGuard.NotNull(creator, nameof(creator));
+            GameFrameworkGuard.NotNull(descFilePath, nameof(descFilePath));
+            var ts = new UniTaskCompletionSource<T>();
             UIPackage.AddPackageAsync(descFilePath, (obj) =>
             {
                 T ui = creator(userData);
@@ -88,30 +89,7 @@ namespace GameFrameX.Runtime
 
                 ts.TrySetResult(ui);
             });
-
             return ts.Task;
-        }
-
-
-        /// <summary>
-        /// 加载资源
-        /// </summary>
-        /// <param name="assetName"></param>
-        /// <param name="extension"></param>
-        /// <param name="type"></param>
-        /// <param name="destroyMethod"></param>
-        /// <returns></returns>
-        object LoadUIResources(string assetName, string extension, Type type, out DestroyMethod destroyMethod)
-        {
-            destroyMethod = DestroyMethod.Unload;
-            var assetHandle = m_AssetComponent.LoadAssetSync<TextAsset>(assetName);
-            Log.Info(assetName);
-            if (assetHandle != null && assetHandle.AssetObject != null)
-            {
-                return assetHandle.AssetObject;
-            }
-
-            return null;
         }
 
         /// <summary>
@@ -129,16 +107,7 @@ namespace GameFrameX.Runtime
         {
             GameFrameworkGuard.NotNull(creator, nameof(creator));
             GameFrameworkGuard.NotNull(descFilePath, nameof(descFilePath));
-
-            if (descFilePath.IndexOf(Utility.Asset.Path.BundlesDirectoryName, StringComparison.OrdinalIgnoreCase) >= 0)
-            {
-                UIPackage.AddPackage(descFilePath, LoadUIResources);
-            }
-            else
-            {
-                UIPackage.AddPackage(descFilePath);
-            }
-
+            _packageComponent.AddPackage(descFilePath);
             T ui = creator(userData);
             Add(ui, layer);
             if (isFullScreen)
@@ -374,14 +343,12 @@ namespace GameFrameX.Runtime
             return null;
         }
 
-
         protected override void Awake()
         {
             base.Awake();
             _root = new FUI(GRoot.inst);
             _root.Show();
             _screenOrientation = Screen.orientation;
-            UIPackage.SetAsyncLoadResource(new FUILoadAsyncResourceHelper());
             HiddenRoot = CreateNode(GRoot.inst, UILayer.Hidden);
             FloorRoot = CreateNode(GRoot.inst, UILayer.Floor);
             NormalRoot = CreateNode(GRoot.inst, UILayer.Normal);
@@ -425,12 +392,13 @@ namespace GameFrameX.Runtime
             component.AddRelation(root, RelationType.Width);
             component.AddRelation(root, RelationType.Height);
             var ui = new FUI(component);
-            ui.Init();
             ui.Show();
             return ui;
         }
 
+
         private ScreenOrientation _screenOrientation;
+
 
         void IsChanged(bool isLeft)
         {
@@ -448,20 +416,6 @@ namespace GameFrameX.Runtime
                     _screenOrientation = orientation;
                 }
             }
-        }
-    }
-
-    internal class FUILoadAsyncResourceHelper : IAsyncResource
-    {
-        public async void LoadResource(string assetName, Action<bool, object> action)
-        {
-            var textAsset = await GameApp.Asset.LoadAssetAsync<TextAsset>(assetName);
-            Log.Info(assetName);
-            action.Invoke(textAsset != null && textAsset.AssetObject != null, textAsset?.GetAssetObject<TextAsset>());
-        }
-
-        public void ReleaseResource(object obj)
-        {
         }
     }
 }

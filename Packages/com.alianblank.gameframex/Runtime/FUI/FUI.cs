@@ -25,7 +25,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         private bool IsInitVisible { get; }
 
-        public FUI(GObject gObject,  object userData = null)
+        public FUI(GObject gObject, object userData = null)
         {
             UserData = userData;
             GObject = gObject;
@@ -36,6 +36,8 @@ namespace GameFrameX.Runtime
             // {
             // SetVisibleWithNoNotify(false);
             // }
+            
+            Init();
 
             // parent?.Add(this);
 
@@ -56,7 +58,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 界面添加到UI系统之前执行
         /// </summary>
-        public virtual void Init()
+        protected virtual void Init()
         {
             Log.Info("Init " + Name);
         }
@@ -341,7 +343,6 @@ namespace GameFrameX.Runtime
                 throw new Exception($"ui.Name({ui.Name}) already exist");
             }
 
-            ui.Init();
             _children.Add(ui.Name, ui);
             if (index < 0 || index > _children.Count)
             {

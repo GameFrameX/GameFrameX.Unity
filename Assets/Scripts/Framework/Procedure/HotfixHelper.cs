@@ -115,7 +115,7 @@ namespace GameFrameX.Procedure
             foreach (var aotDll in aotDlls)
             {
                 // Log.Info("开始加载AOT DLL ==> " + aotDll);
-                var assetHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(AssetUtility.GetAOTCodePath(aotDll));
+                var assetHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(Utility.Asset.Path.GetAOTCodePath(aotDll));
                 var aotBytes = assetHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
                 RuntimeApi.LoadMetadataForAOTAssembly(aotBytes, HomologousImageMode.SuperSet);
             }

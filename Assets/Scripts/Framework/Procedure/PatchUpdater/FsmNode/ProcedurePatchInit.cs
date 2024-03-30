@@ -31,7 +31,7 @@ namespace GameFrameX.Procedure
 
         private string GetHostServerURL()
         {
-            return $"{GameEntry.GetComponent<GlobalConfigComponent>().HostServerUrl}";
+            return $"{GameApp.GlobalConfig.HostServerUrl}";
         }
     }
 }

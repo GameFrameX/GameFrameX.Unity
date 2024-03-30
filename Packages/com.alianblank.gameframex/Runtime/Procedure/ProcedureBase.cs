@@ -6,7 +6,6 @@
 //------------------------------------------------------------
 
 using GameFrameX.Fsm;
-using ProcedureOwner = GameFrameX.Fsm.IFsm<GameFrameX.Procedure.IProcedureManager>;
 
 namespace GameFrameX.Procedure
 {

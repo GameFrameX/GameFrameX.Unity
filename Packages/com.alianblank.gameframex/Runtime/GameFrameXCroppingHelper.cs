@@ -214,7 +214,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.SoundComponent);
             _ = typeof(GameFrameX.Runtime.SoundGroupHelperBase);
             _ = typeof(GameFrameX.Runtime.SoundHelperBase);
-            _ = typeof(GameFrameX.Runtime.StringHelper);
             _ = typeof(GameFrameX.Runtime.TimerComponent);
             _ = typeof(GameFrameX.Runtime.UILayer);
             _ = typeof(GameFrameX.Runtime.UnityRendererHelper);

@@ -1,4 +1,5 @@
-﻿using Server.Utility;
+﻿using System.Text;
+using Server.Utility;
 
 namespace System.Collections.Generic
 {
@@ -89,6 +90,27 @@ namespace System.Collections.Generic
                 list.RemoveAt(idx);
                 idx = list.FindIndex(condition);
             }
+        }
+
+        private static readonly StringBuilder ListToStringBuilder = new StringBuilder();
+
+        /// <summary>
+        /// 将列表转换为以指定字符串分割的字符串
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="separator">默认为逗号</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string ListToString<T>(this List<T> list, string separator = ",")
+        {
+            ListToStringBuilder.Clear();
+            foreach (T t in list)
+            {
+                ListToStringBuilder.Append(t);
+                ListToStringBuilder.Append(separator);
+            }
+
+            return ListToStringBuilder.ToString();
         }
 
         #endregion

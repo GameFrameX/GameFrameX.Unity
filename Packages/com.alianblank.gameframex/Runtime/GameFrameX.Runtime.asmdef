@@ -6,7 +6,6 @@
         "YooAsset.Runtime",
         "FairyGUI.Runtime",
         "XLua.Runtime",
-        "BestHTTP",
         "BetterStreamingAssets",
         "MessagePack.Runtime",
         "MessagePack.Annotations",

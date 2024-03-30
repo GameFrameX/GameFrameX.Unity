@@ -19,7 +19,7 @@ namespace GameFrameX.Runtime
     [AddComponentMenu("Game Framework/Web")]
     public sealed class WebComponent : GameFrameworkComponent
     {
-        private IWebManager _webManager;
+        private IWebManager m_WebManager;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -28,8 +28,8 @@ namespace GameFrameX.Runtime
         {
             base.Awake();
             new WebManager();
-            _webManager = GameFrameworkEntry.GetModule<IWebManager>();
-            if (_webManager == null)
+            m_WebManager = GameFrameworkEntry.GetModule<IWebManager>();
+            if (m_WebManager == null)
             {
                 Log.Fatal("Web manager is invalid.");
                 return;
@@ -43,7 +43,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> GetToString(string url)
         {
-            return _webManager.GetToString(url).AsUniTask();
+            return m_WebManager.GetToString(url).AsUniTask();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> GetToString(string url, Dictionary<string, string> queryString)
         {
-            return _webManager.GetToString(url, queryString).AsUniTask();
+            return m_WebManager.GetToString(url, queryString).AsUniTask();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> GetToString(string url, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
-            return _webManager.GetToString(url, queryString, header).AsUniTask();
+            return m_WebManager.GetToString(url, queryString, header).AsUniTask();
         }
 
 
@@ -77,7 +77,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> GetToBytes(string url)
         {
-            return _webManager.GetToBytes(url).AsUniTask();
+            return m_WebManager.GetToBytes(url).AsUniTask();
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> GetToBytes(string url, Dictionary<string, string> queryString)
         {
-            return _webManager.GetToBytes(url, queryString).AsUniTask();
+            return m_WebManager.GetToBytes(url, queryString).AsUniTask();
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> GetToBytes(string url, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
-            return _webManager.GetToBytes(url, queryString, header).AsUniTask();
+            return m_WebManager.GetToBytes(url, queryString, header).AsUniTask();
         }
 
 
@@ -112,7 +112,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> PostToString(string url, Dictionary<string, string> from)
         {
-            return _webManager.PostToString(url, from).AsUniTask();
+            return m_WebManager.PostToString(url, from).AsUniTask();
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> PostToString(string url, Dictionary<string, string> from, Dictionary<string, string> queryString)
         {
-            return _webManager.PostToString(url, from, queryString).AsUniTask();
+            return m_WebManager.PostToString(url, from, queryString).AsUniTask();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<string> PostToString(string url, Dictionary<string, string> from, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
-            return _webManager.PostToString(url, from, queryString, header).AsUniTask();
+            return m_WebManager.PostToString(url, from, queryString, header).AsUniTask();
         }
 
 
@@ -149,7 +149,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> PostToBytes(string url, Dictionary<string, string> from)
         {
-            return _webManager.PostToBytes(url, from).AsUniTask();
+            return m_WebManager.PostToBytes(url, from).AsUniTask();
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> PostToBytes(string url, Dictionary<string, string> from, Dictionary<string, string> queryString)
         {
-            return _webManager.PostToBytes(url, from, queryString).AsUniTask();
+            return m_WebManager.PostToBytes(url, from, queryString).AsUniTask();
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public UniTask<byte[]> PostToBytes(string url, Dictionary<string, string> from, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
-            return _webManager.PostToBytes(url, from, queryString, header).AsUniTask();
+            return m_WebManager.PostToBytes(url, from, queryString, header).AsUniTask();
         }
     }
 }

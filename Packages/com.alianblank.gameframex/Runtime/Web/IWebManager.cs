@@ -83,10 +83,7 @@ namespace GameFrameX.Web
         /// <param name="header">请求头</param>
         /// <returns></returns>
         Task<string> PostToString(string url, Dictionary<string, string> from, Dictionary<string, string> queryString, Dictionary<string, string> header);
-        
-        
-        
-        
+
         /// <summary>
         /// 发送Post 请求
         /// </summary>

@@ -1,30 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using BestHTTP;
 using GameFrameX.Runtime;
 
 namespace GameFrameX.Web
 {
-    public class WebManager : GameFrameworkModule, IWebManager
+    public partial class WebManager : GameFrameworkModule, IWebManager
     {
-        private readonly StringBuilder _stringBuilder = new StringBuilder(256);
+        private readonly StringBuilder m_StringBuilder = new StringBuilder(256);
+        private readonly Queue<WebData> m_WaitingQueue = new Queue<WebData>(256);
+        private readonly List<WebData> m_SendingList = new List<WebData>(16);
+        private readonly MemoryStream m_MemoryStream;
 
         public WebManager()
         {
-            HTTPManager.MaxConnectionPerServer = 20;
-            HTTPManager.ConnectTimeout = new TimeSpan(0, 0, 5);
-            HTTPManager.RequestTimeout = new TimeSpan(0, 0, 10);
+            MaxConnectionPerServer = 8;
+            m_MemoryStream = new MemoryStream();
+            RequestTimeout = TimeSpan.FromSeconds(5);
         }
+
+        public int MaxConnectionPerServer { get; set; }
+
+        public TimeSpan RequestTimeout { get; set; }
 
         internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
+            lock (m_StringBuilder)
+            {
+                if (m_SendingList.Count < MaxConnectionPerServer)
+                {
+                    if (m_WaitingQueue.Count > 0)
+                    {
+                        var webData = m_WaitingQueue.Dequeue();
+
+                        if (webData.UniTaskCompletionStringSource != null)
+                        {
+                            MakeStringRequest(webData);
+                        }
+                        else
+                        {
+                            MakeBytesRequest(webData);
+                        }
+
+                        m_SendingList.Add(webData);
+                    }
+                }
+            }
         }
 
         internal override void Shutdown()
         {
-            HTTPManager.OnQuit();
+            while (m_WaitingQueue.Count > 0)
+            {
+                var webData = m_WaitingQueue.Dequeue();
+                webData.UniTaskCompletionBytesSource?.TrySetCanceled();
+                webData.UniTaskCompletionStringSource?.TrySetCanceled();
+            }
+
+            m_WaitingQueue.Clear();
+            while (m_SendingList.Count > 0)
+            {
+                var webData = m_SendingList[0];
+                m_SendingList.RemoveAt(0);
+                webData.UniTaskCompletionBytesSource?.TrySetCanceled();
+                webData.UniTaskCompletionStringSource?.TrySetCanceled();
+            }
+
+            m_SendingList.Clear();
+            m_MemoryStream.Dispose();
         }
 
         /// <summary>
@@ -79,65 +125,135 @@ namespace GameFrameX.Web
         public Task<string> GetToString(string url, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
             var uniTaskCompletionSource = new TaskCompletionSource<string>();
-            _stringBuilder.Clear();
+            url = UrlHandler(url, queryString);
 
-            if (queryString != null && queryString.Count > 0)
-            {
-                _stringBuilder.Append(url);
-                if (!url.EndsWithFast("?"))
-                {
-                    _stringBuilder.Append("?");
-                }
-
-                foreach (var kv in queryString)
-                {
-                    _stringBuilder.AppendFormat("{0}={1}&", kv.Key, kv.Value);
-                }
-
-                url = _stringBuilder.ToString(0, _stringBuilder.Length - 1);
-                _stringBuilder.Clear();
-            }
-
-
-            HTTPRequest httpRequest = new HTTPRequest(new Uri(url), HTTPMethods.Get, (request, response) =>
-            {
-                switch (request.State)
-                {
-                    case HTTPRequestStates.Finished:
-                    {
-                        if (response.IsSuccess)
-                        {
-                            uniTaskCompletionSource.TrySetResult(response.DataAsText);
-                        }
-                        else
-                        {
-                            uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        }
-                    }
-                        break;
-                    case HTTPRequestStates.Error:
-                        uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        break;
-                    case HTTPRequestStates.Aborted:
-                        uniTaskCompletionSource.TrySetCanceled();
-                        break;
-                    case HTTPRequestStates.ConnectionTimedOut:
-                    case HTTPRequestStates.TimedOut:
-                        uniTaskCompletionSource.TrySetException(new TimeoutException(response.Message));
-
-                        break;
-                }
-            });
-            if (header != null && header.Count > 0)
-            {
-                foreach (var kv in header)
-                {
-                    httpRequest.SetHeader(kv.Key, kv.Value);
-                }
-            }
-
-            httpRequest.Send();
+            WebData webData = new WebData(url, header, true, uniTaskCompletionSource);
+            m_WaitingQueue.Enqueue(webData);
             return uniTaskCompletionSource.Task;
+        }
+
+        private async void MakeStringRequest(WebData webData)
+        {
+            try
+            {
+                HttpWebRequest request = WebRequest.CreateHttp(webData.URL);
+                request.Method = webData.IsGet ? WebRequestMethods.Http.Get : WebRequestMethods.Http.Post;
+                request.Timeout = (int)RequestTimeout.TotalMilliseconds; // 设置请求超时时间
+                if (webData.Form != null && webData.Form.Count > 0)
+                {
+                    request.ContentType = "application/json";
+                    string body = Utility.Json.ToJson(webData.Form);
+                    byte[] postData = Encoding.UTF8.GetBytes(body);
+                    request.ContentLength = postData.Length;
+                    using (Stream requestStream = request.GetRequestStream())
+                    {
+                        await requestStream.WriteAsync(postData, 0, postData.Length);
+                    }
+                }
+
+                if (webData.Header != null && webData.Header.Count > 0)
+                {
+                    foreach (var kv in webData.Header)
+                    {
+                        request.Headers[kv.Key] = kv.Value;
+                    }
+                }
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                {
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        string content = await reader.ReadToEndAsync();
+                        webData.UniTaskCompletionStringSource.SetResult(content);
+                        m_SendingList.Remove(webData);
+                    }
+                }
+            }
+            catch (WebException e)
+            {
+                // 捕获超时异常
+                if (e.Status == WebExceptionStatus.Timeout)
+                {
+                    webData.UniTaskCompletionStringSource.SetException(new TimeoutException());
+                    m_SendingList.Remove(webData);
+                    return;
+                }
+
+                webData.UniTaskCompletionStringSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
+            catch (IOException e)
+            {
+                webData.UniTaskCompletionStringSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unexpected exception caught: " + e.Message);
+                webData.UniTaskCompletionStringSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
+        }
+
+        private async void MakeBytesRequest(WebData webData)
+        {
+            try
+            {
+                HttpWebRequest request = WebRequest.CreateHttp(webData.URL);
+                request.Method = webData.IsGet ? WebRequestMethods.Http.Get : WebRequestMethods.Http.Post;
+                request.Timeout = (int)RequestTimeout.TotalMilliseconds; // 设置请求超时时间
+                if (webData.Header != null && webData.Header.Count > 0)
+                {
+                    foreach (var kv in webData.Header)
+                    {
+                        request.Headers[kv.Key] = kv.Value;
+                    }
+                }
+
+                if (webData.Form != null && webData.Form.Count > 0)
+                {
+                    request.ContentType = "application/json";
+                    string body = Utility.Json.ToJson(webData.Form);
+                    byte[] postData = Encoding.UTF8.GetBytes(body);
+                    request.ContentLength = postData.Length;
+                    using (Stream requestStream = request.GetRequestStream())
+                    {
+                        await requestStream.WriteAsync(postData, 0, postData.Length);
+                    }
+                }
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                {
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        await responseStream.CopyToAsync(m_MemoryStream);
+                        webData.UniTaskCompletionBytesSource.SetResult(m_MemoryStream.ToArray()); // 将流的内容复制到内存流中并转换为byte数组 
+                    }
+                }
+            }
+            catch (WebException e)
+            {
+                // 捕获超时异常
+                if (e.Status == WebExceptionStatus.Timeout)
+                {
+                    webData.UniTaskCompletionBytesSource.SetException(new TimeoutException());
+                    m_SendingList.Remove(webData);
+                    return;
+                }
+
+                webData.UniTaskCompletionBytesSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
+            catch (IOException e)
+            {
+                webData.UniTaskCompletionBytesSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
+            catch (Exception e)
+            {
+                webData.UniTaskCompletionBytesSource.SetException(e);
+                m_SendingList.Remove(webData);
+            }
         }
 
         /// <summary>
@@ -150,64 +266,10 @@ namespace GameFrameX.Web
         public Task<byte[]> GetToBytes(string url, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
             var uniTaskCompletionSource = new TaskCompletionSource<byte[]>();
-            _stringBuilder.Clear();
+            url = UrlHandler(url, queryString);
 
-            if (queryString != null && queryString.Count > 0)
-            {
-                _stringBuilder.Append(url);
-                if (!url.EndsWithFast("?"))
-                {
-                    _stringBuilder.Append("?");
-                }
-
-                foreach (var kv in queryString)
-                {
-                    _stringBuilder.AppendFormat("{0}={1}&", kv.Key, kv.Value);
-                }
-
-                url = _stringBuilder.ToString(0, _stringBuilder.Length - 1);
-                _stringBuilder.Clear();
-            }
-
-
-            HTTPRequest httpRequest = new HTTPRequest(new Uri(url), HTTPMethods.Get, (request, response) =>
-            {
-                switch (request.State)
-                {
-                    case HTTPRequestStates.Finished:
-                    {
-                        if (response.IsSuccess)
-                        {
-                            uniTaskCompletionSource.TrySetResult(response.Data);
-                        }
-                        else
-                        {
-                            uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        }
-                    }
-                        break;
-                    case HTTPRequestStates.Error:
-                        uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        break;
-                    case HTTPRequestStates.Aborted:
-                        uniTaskCompletionSource.TrySetCanceled();
-                        break;
-                    case HTTPRequestStates.ConnectionTimedOut:
-                    case HTTPRequestStates.TimedOut:
-                        uniTaskCompletionSource.TrySetException(new TimeoutException(response.Message));
-
-                        break;
-                }
-            });
-            if (header != null && header.Count > 0)
-            {
-                foreach (var kv in header)
-                {
-                    httpRequest.SetHeader(kv.Key, kv.Value);
-                }
-            }
-
-            httpRequest.Send();
+            WebData webData = new WebData(url, header, true, uniTaskCompletionSource);
+            m_WaitingQueue.Enqueue(webData);
             return uniTaskCompletionSource.Task;
         }
 
@@ -270,70 +332,10 @@ namespace GameFrameX.Web
         public Task<string> PostToString(string url, Dictionary<string, string> from, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
             var uniTaskCompletionSource = new TaskCompletionSource<string>();
+            url = UrlHandler(url, queryString);
 
-            _stringBuilder.Clear();
-
-            if (queryString != null && queryString.Count > 0)
-            {
-                _stringBuilder.Append(url);
-                if (!url.EndsWithFast("?"))
-                {
-                    _stringBuilder.Append("?");
-                }
-
-                foreach (var kv in queryString)
-                {
-                    _stringBuilder.AppendFormat("{0}={1}&", kv.Key, kv.Value);
-                }
-
-                url = _stringBuilder.ToString(0, _stringBuilder.Length - 1);
-                _stringBuilder.Clear();
-            }
-
-            HTTPRequest httpRequest = new HTTPRequest(new Uri(url), HTTPMethods.Post, (request, response) =>
-            {
-                switch (request.State)
-                {
-                    case HTTPRequestStates.Finished:
-                    {
-                        if (response.IsSuccess)
-                        {
-                            uniTaskCompletionSource.TrySetResult(response.DataAsText);
-                        }
-                        else
-                        {
-                            uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        }
-                    }
-                        break;
-                    case HTTPRequestStates.Error:
-                        uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        break;
-                    case HTTPRequestStates.Aborted:
-                        uniTaskCompletionSource.TrySetCanceled();
-                        break;
-                    case HTTPRequestStates.ConnectionTimedOut:
-                    case HTTPRequestStates.TimedOut:
-                        uniTaskCompletionSource.TrySetException(new TimeoutException(response.Message));
-
-                        break;
-                }
-            });
-            if (from != null && from.Count > 0)
-            {
-                string body = Utility.Json.ToJson(from);
-                httpRequest.RawData = Encoding.UTF8.GetBytes(body);
-            }
-
-            if (header != null && header.Count > 0)
-            {
-                foreach (var kv in header)
-                {
-                    httpRequest.SetHeader(kv.Key, kv.Value);
-                }
-            }
-
-            httpRequest.Send();
+            WebData webData = new WebData(url, header, from, uniTaskCompletionSource);
+            m_WaitingQueue.Enqueue(webData);
             return uniTaskCompletionSource.Task;
         }
 
@@ -348,73 +350,39 @@ namespace GameFrameX.Web
         public Task<byte[]> PostToBytes(string url, Dictionary<string, string> from, Dictionary<string, string> queryString, Dictionary<string, string> header)
         {
             var uniTaskCompletionSource = new TaskCompletionSource<byte[]>();
+            url = UrlHandler(url, queryString);
+            WebData webData = new WebData(url, header, from, uniTaskCompletionSource);
+            m_WaitingQueue.Enqueue(webData);
+            return uniTaskCompletionSource.Task;
+        }
 
-            _stringBuilder.Clear();
-
+        /// <summary>
+        /// URL 标准化
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="queryString"></param>
+        /// <returns></returns>
+        private string UrlHandler(string url, Dictionary<string, string> queryString)
+        {
+            m_StringBuilder.Clear();
+            m_StringBuilder.Append((url));
             if (queryString != null && queryString.Count > 0)
             {
-                _stringBuilder.Append(url);
                 if (!url.EndsWithFast("?"))
                 {
-                    _stringBuilder.Append("?");
+                    m_StringBuilder.Append("?");
                 }
 
                 foreach (var kv in queryString)
                 {
-                    _stringBuilder.AppendFormat("{0}={1}&", kv.Key, kv.Value);
+                    m_StringBuilder.AppendFormat("{0}={1}&", kv.Key, kv.Value);
                 }
 
-                url = _stringBuilder.ToString(0, _stringBuilder.Length - 1);
-                _stringBuilder.Clear();
+                url = m_StringBuilder.ToString(0, m_StringBuilder.Length - 1);
+                m_StringBuilder.Clear();
             }
 
-            HTTPRequest httpRequest = new HTTPRequest(new Uri(url), HTTPMethods.Post, (request, response) =>
-            {
-                switch (request.State)
-                {
-                    case HTTPRequestStates.Finished:
-                    {
-                        if (response.IsSuccess)
-                        {
-                            uniTaskCompletionSource.TrySetResult(response.Data);
-                        }
-                        else
-                        {
-                            uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        }
-                    }
-                        break;
-                    case HTTPRequestStates.Error:
-                        uniTaskCompletionSource.TrySetException(new Exception(response.Message));
-                        break;
-                    case HTTPRequestStates.Aborted:
-                        uniTaskCompletionSource.TrySetCanceled();
-                        break;
-                    case HTTPRequestStates.ConnectionTimedOut:
-                    case HTTPRequestStates.TimedOut:
-                        uniTaskCompletionSource.TrySetException(new TimeoutException(response.Message));
-
-                        break;
-                }
-            });
-            if (from != null && from.Count > 0)
-            {
-                foreach (var kv in from)
-                {
-                    httpRequest.AddField(kv.Key, kv.Value);
-                }
-            }
-
-            if (header != null && header.Count > 0)
-            {
-                foreach (var kv in header)
-                {
-                    httpRequest.SetHeader(kv.Key, kv.Value);
-                }
-            }
-
-            httpRequest.Send();
-            return uniTaskCompletionSource.Task;
+            return url;
         }
     }
 }

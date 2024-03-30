@@ -49,15 +49,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Event.IEventManager);
             _ = typeof(GameFrameX.EventPool<>);
             _ = typeof(GameFrameX.EventPoolMode);
-            _ = typeof(GameFrameX.FileSystem.CommonFileSystemStream);
-            _ = typeof(GameFrameX.FileSystem.FileInfo);
-            _ = typeof(GameFrameX.FileSystem.FileSystem);
-            _ = typeof(GameFrameX.FileSystem.FileSystemAccess);
-            _ = typeof(GameFrameX.FileSystem.FileSystemManager);
-            _ = typeof(GameFrameX.FileSystem.FileSystemStream);
-            _ = typeof(GameFrameX.FileSystem.IFileSystem);
-            _ = typeof(GameFrameX.FileSystem.IFileSystemHelper);
-            _ = typeof(GameFrameX.FileSystem.IFileSystemManager);
             _ = typeof(GameFrameX.Fsm.Fsm<>);
             _ = typeof(GameFrameX.Fsm.FsmBase);
             _ = typeof(GameFrameX.Fsm.FsmManager);
@@ -143,7 +134,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Procedure.ProcedureManager);
             _ = typeof(GameFrameX.ReferencePool);
             _ = typeof(GameFrameX.ReferencePoolInfo);
-            _ = typeof(GameFrameX.Runtime.AndroidFileSystemStream);
             _ = typeof(GameFrameX.Runtime.ApplicationHelper);
             _ = typeof(GameFrameX.Runtime.AssetComponent);
             _ = typeof(GameFrameX.Runtime.AttachEntityInfo);
@@ -155,7 +145,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.DefaultCompressionHelper);
             _ = typeof(GameFrameX.Runtime.DefaultEntityGroupHelper);
             _ = typeof(GameFrameX.Runtime.DefaultEntityHelper);
-            _ = typeof(GameFrameX.Runtime.DefaultFileSystemHelper);
             _ = typeof(GameFrameX.Runtime.DefaultLocalizationHelper);
             _ = typeof(GameFrameX.Runtime.DefaultLogHelper);
             _ = typeof(GameFrameX.Runtime.DefaultSetting);
@@ -177,8 +166,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.EntityLogic);
             _ = typeof(GameFrameX.Runtime.EventComponent);
             _ = typeof(GameFrameX.Runtime.FileHelper);
-            _ = typeof(GameFrameX.Runtime.FileSystemComponent);
-            _ = typeof(GameFrameX.Runtime.FileSystemHelperBase);
             _ = typeof(GameFrameX.Runtime.FsmComponent);
             _ = typeof(GameFrameX.Runtime.FUI);
             _ = typeof(GameFrameX.Runtime.FUIComponent);

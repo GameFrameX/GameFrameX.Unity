@@ -93,24 +93,6 @@ public static class GameApp
     private static EventComponent _event;
 
     /// <summary>
-    /// 获取文件系统组件。
-    /// </summary>
-    public static FileSystemComponent FileSystem
-    {
-        get
-        {
-            if (_fileSystem == null)
-            {
-                _fileSystem = GameEntry.GetComponent<FileSystemComponent>();
-            }
-
-            return _fileSystem;
-        }
-    }
-
-    private static FileSystemComponent _fileSystem;
-
-    /// <summary>
     /// 获取有限状态机组件。
     /// </summary>
     public static FsmComponent Fsm

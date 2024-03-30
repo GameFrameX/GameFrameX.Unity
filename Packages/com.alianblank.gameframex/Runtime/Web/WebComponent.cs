@@ -110,7 +110,7 @@ namespace GameFrameX.Runtime
         /// <param name="url">请求地址</param>
         /// <param name="from">请求参数</param>
         /// <returns></returns>
-        public UniTask<string> PostToString(string url, Dictionary<string, string> from)
+        public UniTask<string> PostToString(string url, Dictionary<string, string> from = null)
         {
             return m_WebManager.PostToString(url, from).AsUniTask();
         }

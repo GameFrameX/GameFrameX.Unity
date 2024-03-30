@@ -401,4 +401,22 @@ public static class GameApp
     }
 
     private static TimerComponent _timer;
+
+    /// <summary>
+    /// 获取全局配置组件。
+    /// </summary>
+    public static GlobalConfigComponent GlobalConfig
+    {
+        get
+        {
+            if (_globalConfig == null)
+            {
+                _globalConfig = GameEntry.GetComponent<GlobalConfigComponent>();
+            }
+
+            return _globalConfig;
+        }
+    }
+
+    private static GlobalConfigComponent _globalConfig;
 }

@@ -8,20 +8,20 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class FlowNode : ai.Node
     {
-        public FlowNode(JSONNode _buf)  : base(_buf) 
+        public FlowNode(JSONNode _buf) : base(_buf) 
         {
             { var __json0 = _buf["decorators"]; if(!__json0.IsArray) { throw new SerializationException(); } Decorators = new System.Collections.Generic.List<ai.Decorator>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { ai.Decorator __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = ai.Decorator.DeserializeDecorator(__e0);  }  Decorators.Add(__v0); }   }
             { var __json0 = _buf["services"]; if(!__json0.IsArray) { throw new SerializationException(); } Services = new System.Collections.Generic.List<ai.Service>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { ai.Service __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = ai.Service.DeserializeService(__e0);  }  Services.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static FlowNode DeserializeFlowNode(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -39,18 +39,17 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly System.Collections.Generic.List<ai.Decorator> Decorators;
         public readonly System.Collections.Generic.List<ai.Service> Services;
-       
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             foreach (var _e in Decorators) { _e?.ResolveRef(tables); }
             foreach (var _e in Services) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -60,6 +59,7 @@ namespace cfg.ai
             + "services:" + StringUtil.CollectionToString(Services) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

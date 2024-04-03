@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestSet : LuBan.Runtime.BeanBase
     {
-        public TestSet(JSONNode _buf) 
+        public TestSet(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["x0"].IsString) { throw new SerializationException(); }  X0 = _buf["x0"]; }
@@ -24,24 +23,24 @@ namespace cfg.test
             { var __json0 = _buf["x2"]; if(!__json0.IsArray) { throw new SerializationException(); } X2 = new System.Collections.Generic.List<long>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { long __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  X2.Add(__v0); }   }
             { var __json0 = _buf["x3"]; if(!__json0.IsArray) { throw new SerializationException(); } X3 = new System.Collections.Generic.List<string>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { string __v0;  { if(!__e0.IsString) { throw new SerializationException(); }  __v0 = __e0; }  X3.Add(__v0); }   }
             { var __json0 = _buf["x4"]; if(!__json0.IsArray) { throw new SerializationException(); } X4 = new System.Collections.Generic.List<test.DemoEnum>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.DemoEnum __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = (test.DemoEnum)__e0.AsInt; }  X4.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static TestSet DeserializeTestSet(JSONNode _buf)
         {
             return new test.TestSet(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string X0;
         public readonly System.Collections.Generic.List<int> X1;
         public readonly System.Collections.Generic.List<long> X2;
         public readonly System.Collections.Generic.List<string> X3;
         public readonly System.Collections.Generic.List<test.DemoEnum> X4;
-       
         public const int __ID__ = -543221516;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -50,7 +49,7 @@ namespace cfg.test
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -62,6 +61,7 @@ namespace cfg.test
             + "x4:" + StringUtil.CollectionToString(X4) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

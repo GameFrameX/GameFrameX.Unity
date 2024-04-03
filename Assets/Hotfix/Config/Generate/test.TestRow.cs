@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestRow : LuBan.Runtime.BeanBase
     {
-        public TestRow(JSONNode _buf) 
+        public TestRow(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsBoolean) { throw new SerializationException(); }  Y = _buf["y"]; }
             { if(!_buf["z"].IsString) { throw new SerializationException(); }  Z = _buf["z"]; }
             { if(!_buf["a"].IsObject) { throw new SerializationException(); }  A = test.Test3.DeserializeTest3(_buf["a"]);  }
             { var __json0 = _buf["b"]; if(!__json0.IsArray) { throw new SerializationException(); } B = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  B.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static TestRow DeserializeTestRow(JSONNode _buf)
         {
             return new test.TestRow(_buf);
         }
-    
+
         public readonly int X;
         public readonly bool Y;
         public readonly string Z;
         public readonly test.Test3 A;
         public readonly System.Collections.Generic.List<int> B;
-       
         public const int __ID__ = -543222164;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -47,7 +46,7 @@ namespace cfg.test
             A?.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -58,6 +57,7 @@ namespace cfg.test
             + "b:" + StringUtil.CollectionToString(B) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

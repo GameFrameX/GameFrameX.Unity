@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DemoE1 : test.DemoD3
     {
-        public DemoE1(JSONNode _buf)  : base(_buf) 
+        public DemoE1(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["x4"].IsNumber) { throw new SerializationException(); }  X4 = _buf["x4"]; }
+            PostInit();
         }
-    
+
         public static DemoE1 DeserializeDemoE1(JSONNode _buf)
         {
             return new test.DemoE1(_buf);
         }
-    
+
         public readonly int X4;
-       
         public const int __ID__ = -2138341717;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.test
             + "x4:" + X4 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestRef : LuBan.Runtime.BeanBase
     {
-        public TestRef(JSONNode _buf) 
+        public TestRef(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["x1"].IsNumber) { throw new SerializationException(); }  X1 = _buf["x1"]; }
@@ -42,38 +41,39 @@ namespace cfg.test
             { if(!_buf["f2"].IsNumber) { throw new SerializationException(); }  F2 = _buf["f2"]; }
             { if(!_buf["f3"].IsString) { throw new SerializationException(); }  F3 = _buf["f3"]; }
             { if(!_buf["s1"].IsObject) { throw new SerializationException(); }  S1 = test.RefDynamicBase.DeserializeRefDynamicBase(_buf["s1"]);  }
+            PostInit();
         }
-    
+
         public static TestRef DeserializeTestRef(JSONNode _buf)
         {
             return new test.TestRef(_buf);
         }
-    
+
         public readonly int Id;
         public readonly int X1;
-        public test.TestBeRef X1_Ref;
+        public test.TestBeRef X1_Ref { private set; get; }
         public readonly int X12;
-        public test.TestBeRef X12_Ref;
+        public test.TestBeRef X12_Ref { private set; get; }
         public readonly int X2;
         public readonly int X3;
         public readonly int X4;
-        public tag.TestTag X4_Ref;
+        public tag.TestTag X4_Ref { private set; get; }
         public readonly int[] A1;
-        public test.TestBeRef[] A1_Ref;
+        public test.TestBeRef[] A1_Ref { private set; get; }
         public readonly int[] A2;
-        public test.TestBeRef[] A2_Ref;
+        public test.TestBeRef[] A2_Ref { private set; get; }
         public readonly System.Collections.Generic.List<int> B1;
-        public System.Collections.Generic.List<test.TestBeRef> B1_Ref;
+        public System.Collections.Generic.List<test.TestBeRef> B1_Ref { private set; get; }
         public readonly System.Collections.Generic.List<int> B2;
-        public System.Collections.Generic.List<test.TestBeRef> B2_Ref;
+        public System.Collections.Generic.List<test.TestBeRef> B2_Ref { private set; get; }
         public readonly System.Collections.Generic.HashSet<int> C1;
-        public System.Collections.Generic.HashSet<test.TestBeRef> C1_Ref;
+        public System.Collections.Generic.HashSet<test.TestBeRef> C1_Ref { private set; get; }
         public readonly System.Collections.Generic.HashSet<int> C2;
-        public System.Collections.Generic.HashSet<test.TestBeRef> C2_Ref;
+        public System.Collections.Generic.HashSet<test.TestBeRef> C2_Ref { private set; get; }
         public readonly System.Collections.Generic.Dictionary<int, int> D1;
-        public System.Collections.Generic.Dictionary<int, test.TestBeRef> D1_Ref;
+        public System.Collections.Generic.Dictionary<int, test.TestBeRef> D1_Ref { private set; get; }
         public readonly System.Collections.Generic.Dictionary<int, int> D2;
-        public System.Collections.Generic.Dictionary<int, test.TestBeRef> D2_Ref;
+        public System.Collections.Generic.Dictionary<int, test.TestBeRef> D2_Ref { private set; get; }
         public readonly int E1;
         public readonly long E2;
         public readonly string E3;
@@ -81,41 +81,48 @@ namespace cfg.test
         public readonly long F2;
         public readonly string F3;
         public readonly test.RefDynamicBase S1;
-       
         public const int __ID__ = -543222491;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
-            X1_Ref = tables.TbTestBeRef.GetOrDefault(X1);
-            X12_Ref = tables.TbTestBeRef.GetOrDefault(X12);
+            X1_Ref = tables.TbTestBeRef.Get(X1);
+            X12_Ref = tables.TbTestBeRef.Get(X12);
             
             
-            X4_Ref = tables.TbTestTag.GetOrDefault(X4);
+            X4_Ref = tables.TbTestTag.Get(X4);
             A1_Ref = new test.TestBeRef[A1.Length];
-            for (int _i = 0; _i < A1.Length; _i++) { A1_Ref[_i] = tables.TbTestBeRef.GetOrDefault(A1[_i]); }
+            for (int _i = 0; _i < A1.Length; _i++) { A1_Ref[_i] = tables.TbTestBeRef.Get(A1[_i]); }
 
             A2_Ref = new test.TestBeRef[A2.Length];
-            for (int _i = 0; _i < A2.Length; _i++) { A2_Ref[_i] = tables.TbTestBeRef.GetOrDefault(A2[_i]); }
+            for (int _i = 0; _i < A2.Length; _i++) { A2_Ref[_i] = tables.TbTestBeRef.Get(A2[_i]); }
 
             B1_Ref = new System.Collections.Generic.List<test.TestBeRef>();
-            foreach (var _v in B1) { B1_Ref.Add(tables.TbTestBeRef.GetOrDefault(_v)); }
+            foreach (var _v in B1) { 
+            B1_Ref.Add(tables.TbTestBeRef.Get(_v)); }
 
             B2_Ref = new System.Collections.Generic.List<test.TestBeRef>();
-            foreach (var _v in B2) { B2_Ref.Add(tables.TbTestBeRef.GetOrDefault(_v)); }
+            foreach (var _v in B2) { 
+            B2_Ref.Add(tables.TbTestBeRef.Get(_v)); }
 
             C1_Ref = new System.Collections.Generic.HashSet<test.TestBeRef>();
-            foreach (var _v in C1) { C1_Ref.Add(tables.TbTestBeRef.GetOrDefault(_v)); }
+            foreach (var _v in C1) { 
+            C1_Ref.Add(tables.TbTestBeRef.Get(_v)); }
 
             C2_Ref = new System.Collections.Generic.HashSet<test.TestBeRef>();
-            foreach (var _v in C2) { C2_Ref.Add(tables.TbTestBeRef.GetOrDefault(_v)); }
+            foreach (var _v in C2) { 
+            C2_Ref.Add(tables.TbTestBeRef.Get(_v)); }
 
             D1_Ref = new System.Collections.Generic.Dictionary<int, test.TestBeRef>();
-            foreach (var _kv in D1) { D1_Ref.Add(_kv.Key, tables.TbTestBeRef.GetOrDefault(_kv.Value)); }
+            foreach (var _kv in D1) { 
+                D1_Ref.Add(_kv.Key, tables.TbTestBeRef.Get(_kv.Value));
+            }
 
             D2_Ref = new System.Collections.Generic.Dictionary<int, test.TestBeRef>();
-            foreach (var _kv in D2) { D2_Ref.Add(_kv.Key, tables.TbTestBeRef.GetOrDefault(_kv.Value)); }
+            foreach (var _kv in D2) { 
+                D2_Ref.Add(_kv.Key, tables.TbTestBeRef.Get(_kv.Value));
+            }
 
             
             
@@ -125,7 +132,7 @@ namespace cfg.test
             
             S1?.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -152,6 +159,7 @@ namespace cfg.test
             + "s1:" + S1 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

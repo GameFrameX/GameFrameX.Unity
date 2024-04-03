@@ -9,7 +9,7 @@
 
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 { 
     [System.Flags]
     public enum DemoFlag

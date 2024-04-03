@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class KeyData : LuBan.Runtime.BeanBase
     {
-        public KeyData(JSONNode _buf) 
+        public KeyData(JSONNode _buf)
         {
+            PostInit();
         }
-    
+
         public static KeyData DeserializeKeyData(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -31,18 +31,18 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
-       
-    
-        public virtual void ResolveRef(Tables tables)
+
+
+        public virtual void ResolveRef(TablesComponent tables)
         {
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class Decorator : ai.Node
     {
-        public Decorator(JSONNode _buf)  : base(_buf) 
+        public Decorator(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["flow_abort_mode"].IsNumber) { throw new SerializationException(); }  FlowAbortMode = (ai.EFlowAbortMode)_buf["flow_abort_mode"].AsInt; }
+            PostInit();
         }
-    
+
         public static Decorator DeserializeDecorator(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -35,16 +35,15 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly ai.EFlowAbortMode FlowAbortMode;
-       
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -53,6 +52,7 @@ namespace cfg.ai
             + "flowAbortMode:" + FlowAbortMode + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

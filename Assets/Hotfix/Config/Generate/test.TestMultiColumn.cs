@@ -8,43 +8,42 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestMultiColumn : LuBan.Runtime.BeanBase
     {
-        public TestMultiColumn(JSONNode _buf) 
+        public TestMultiColumn(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["a"].IsObject) { throw new SerializationException(); }  A = test.Foo.DeserializeFoo(_buf["a"]);  }
             { if(!_buf["b"].IsObject) { throw new SerializationException(); }  B = test.Foo.DeserializeFoo(_buf["b"]);  }
             { if(!_buf["c"].IsObject) { throw new SerializationException(); }  C = test.Foo.DeserializeFoo(_buf["c"]);  }
+            PostInit();
         }
-    
+
         public static TestMultiColumn DeserializeTestMultiColumn(JSONNode _buf)
         {
             return new test.TestMultiColumn(_buf);
         }
-    
+
         public readonly int Id;
         public readonly test.Foo A;
         public readonly test.Foo B;
         public readonly test.Foo C;
-       
         public const int __ID__ = -294473599;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             A?.ResolveRef(tables);
             B?.ResolveRef(tables);
             C?.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -54,6 +53,7 @@ namespace cfg.test
             + "c:" + C + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

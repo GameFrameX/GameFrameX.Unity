@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public abstract partial class DemoD3 : test.DemoDynamic
     {
-        public DemoD3(JSONNode _buf)  : base(_buf) 
+        public DemoD3(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["x3"].IsNumber) { throw new SerializationException(); }  X3 = _buf["x3"]; }
+            PostInit();
         }
-    
+
         public static DemoD3 DeserializeDemoD3(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -30,16 +30,15 @@ namespace cfg.test
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly int X3;
-       
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -47,6 +46,7 @@ namespace cfg.test
             + "x3:" + X3 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

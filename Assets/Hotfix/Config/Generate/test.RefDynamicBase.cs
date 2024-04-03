@@ -8,20 +8,20 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public abstract partial class RefDynamicBase : LuBan.Runtime.BeanBase
     {
-        public RefDynamicBase(JSONNode _buf) 
+        public RefDynamicBase(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             X_Ref = null;
+            PostInit();
         }
-    
+
         public static RefDynamicBase DeserializeRefDynamicBase(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -30,22 +30,22 @@ namespace cfg.test
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly int X;
-        public test.TestBeRef X_Ref;
-       
-    
-        public virtual void ResolveRef(Tables tables)
+        public test.TestBeRef X_Ref { private set; get; }
+
+        public virtual void ResolveRef(TablesComponent tables)
         {
-            X_Ref = tables.TbTestBeRef.GetOrDefault(X);
+            X_Ref = tables.TbTestBeRef.Get(X);
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "x:" + X + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

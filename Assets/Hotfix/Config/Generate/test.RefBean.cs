@@ -8,38 +8,38 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class RefBean : test.RefDynamicBase
     {
-        public RefBean(JSONNode _buf)  : base(_buf) 
+        public RefBean(JSONNode _buf) : base(_buf) 
         {
             { var __json0 = _buf["arr"]; if(!__json0.IsArray) { throw new SerializationException(); } Arr = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  Arr.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static RefBean DeserializeRefBean(JSONNode _buf)
         {
             return new test.RefBean(_buf);
         }
-    
+
         public readonly System.Collections.Generic.List<int> Arr;
-        public System.Collections.Generic.List<test.TestBeRef> Arr_Ref;
-       
+        public System.Collections.Generic.List<test.TestBeRef> Arr_Ref { private set; get; }
         public const int __ID__ = 1963260263;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             Arr_Ref = new System.Collections.Generic.List<test.TestBeRef>();
-            foreach (var _v in Arr) { Arr_Ref.Add(tables.TbTestBeRef.GetOrDefault(_v)); }
+            foreach (var _v in Arr) { 
+            Arr_Ref.Add(tables.TbTestBeRef.Get(_v)); }
 
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -47,6 +47,7 @@ namespace cfg.test
             + "arr:" + StringUtil.CollectionToString(Arr) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,37 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class IsNotSet : ai.KeyQueryOperator
     {
-        public IsNotSet(JSONNode _buf)  : base(_buf) 
+        public IsNotSet(JSONNode _buf) : base(_buf) 
         {
+            PostInit();
         }
-    
+
         public static IsNotSet DeserializeIsNotSet(JSONNode _buf)
         {
             return new ai.IsNotSet(_buf);
         }
-    
-       
+
         public const int __ID__ = 790736255;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class BehaviorTree : LuBan.Runtime.BeanBase
     {
-        public BehaviorTree(JSONNode _buf) 
+        public BehaviorTree(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
@@ -24,32 +23,32 @@ namespace cfg.ai
             { if(!_buf["blackboard_id"].IsString) { throw new SerializationException(); }  BlackboardId = _buf["blackboard_id"]; }
             BlackboardId_Ref = null;
             { if(!_buf["root"].IsObject) { throw new SerializationException(); }  Root = ai.ComposeNode.DeserializeComposeNode(_buf["root"]);  }
+            PostInit();
         }
-    
+
         public static BehaviorTree DeserializeBehaviorTree(JSONNode _buf)
         {
             return new ai.BehaviorTree(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string Name;
         public readonly string Desc;
         public readonly string BlackboardId;
-        public ai.Blackboard BlackboardId_Ref;
+        public ai.Blackboard BlackboardId_Ref { private set; get; }
         public readonly ai.ComposeNode Root;
-       
         public const int __ID__ = 159552822;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
             
-            BlackboardId_Ref = tables.TbBlackboard.GetOrDefault(BlackboardId);
+            BlackboardId_Ref = tables.TbBlackboard.Get(BlackboardId);
             Root?.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -60,6 +59,7 @@ namespace cfg.ai
             + "root:" + Root + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

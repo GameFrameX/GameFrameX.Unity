@@ -8,66 +8,50 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbDefineFromExcel2
+    public partial class TbDefineFromExcel2 : BaseDataTable<DefineFromExcel2>
     {
-        private readonly System.Collections.Generic.Dictionary<int, DefineFromExcel2> _dataMap;
-        private readonly System.Collections.Generic.List<DefineFromExcel2> _dataList;
-        
-        public TbDefineFromExcel2(JSONNode jsonNode)
+        //private readonly System.Collections.Generic.Dictionary<int, DefineFromExcel2> _dataMap;
+        //private readonly System.Collections.Generic.List<DefineFromExcel2> _dataList;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;        
+        public TbDefineFromExcel2(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataMap = new System.Collections.Generic.Dictionary<int, DefineFromExcel2>();
-            _dataList = new System.Collections.Generic.List<DefineFromExcel2>();
-            
-            foreach(JSONNode vNode in jsonNode.Children)
+            _loadFunc = loadFunc;
+            //_dataMap = new System.Collections.Generic.Dictionary<int, DefineFromExcel2>();
+            //_dataList = new System.Collections.Generic.List<DefineFromExcel2>();
+        }
+    
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            //_dataMap.Clear();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
             {
-                DefineFromExcel2 deserializeItem;
-                { if(!vNode.IsObject) { throw new SerializationException(); }  deserializeItem = DefineFromExcel2.DeserializeDefineFromExcel2(vNode);  }
-                _dataList.Add(deserializeItem);
-                _dataMap.Add(deserializeItem.Id, deserializeItem);
+                DefineFromExcel2 _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = DefineFromExcel2.DeserializeDefineFromExcel2(_ele);  }
+                DataList.Add(_v);                
+                LongDataMaps.Add(_v.Id, _v);
+                StringDataMaps.Add(_v.Id.ToString(), _v);
             }
+            PostInit();
         }
     
-        public System.Collections.Generic.Dictionary<int, DefineFromExcel2> DataMap 
+        public void ResolveRef(TablesComponent tables)
         {
-            get { return _dataMap; }
-        }
-
-        public System.Collections.Generic.List<DefineFromExcel2> DataList 
-        {
-            get { return _dataList; }
-        }
-    
-        public DefineFromExcel2 GetOrDefault(int key) 
-        {  
-            return _dataMap.TryGetValue(key, out var v) ? v : null;
-        }
-        
-        public DefineFromExcel2 Get(int key) 
-        { 
-            return _dataMap[key];
-        }
-        
-        public DefineFromExcel2 this[int key] 
-        {
-            get
-            {
-                return _dataMap[key];
-            }
-        }
-    
-        public void ResolveRef(Tables tables)
-        {
-            foreach(var value in _dataList)
+            foreach(var value in DataList)
             {
                 value.ResolveRef(tables);
             }
         }
-        
+    
+    
+        partial void PostInit();
     }
-
 }
+

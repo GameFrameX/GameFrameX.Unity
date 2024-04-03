@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestNull : LuBan.Runtime.BeanBase
     {
-        public TestNull(JSONNode _buf) 
+        public TestNull(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { var _j = _buf["x1"]; if (_j.Tag != JSONNodeType.None && _j.Tag != JSONNodeType.NullValue) { { if(!_j.IsNumber) { throw new SerializationException(); }  X1 = _j; } } else { X1 = null; } }
@@ -25,13 +24,14 @@ namespace cfg.test
             { var _j = _buf["x4"]; if (_j.Tag != JSONNodeType.None && _j.Tag != JSONNodeType.NullValue) { { if(!_j.IsObject) { throw new SerializationException(); }  X4 = test.DemoDynamic.DeserializeDemoDynamic(_j);  } } else { X4 = null; } }
             { var _j = _buf["s1"]; if (_j.Tag != JSONNodeType.None && _j.Tag != JSONNodeType.NullValue) { { if(!_j.IsString) { throw new SerializationException(); }  S1 = _j; } } else { S1 = null; } }
             { var _j = _buf["s2"]; if (_j.Tag != JSONNodeType.None && _j.Tag != JSONNodeType.NullValue) { { if(!_j.IsString) { throw new SerializationException(); }  S2 = _j; } } else { S2 = null; } }
+            PostInit();
         }
-    
+
         public static TestNull DeserializeTestNull(JSONNode _buf)
         {
             return new test.TestNull(_buf);
         }
-    
+
         public readonly int Id;
         public readonly int? X1;
         public readonly test.DemoEnum? X2;
@@ -39,11 +39,10 @@ namespace cfg.test
         public readonly test.DemoDynamic X4;
         public readonly string S1;
         public readonly string S2;
-       
         public const int __ID__ = 339868469;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -53,7 +52,7 @@ namespace cfg.test
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -66,6 +65,7 @@ namespace cfg.test
             + "s2:" + S2 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

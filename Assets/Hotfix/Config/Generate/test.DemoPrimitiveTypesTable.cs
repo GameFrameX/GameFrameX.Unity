@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DemoPrimitiveTypesTable : LuBan.Runtime.BeanBase
     {
-        public DemoPrimitiveTypesTable(JSONNode _buf) 
+        public DemoPrimitiveTypesTable(JSONNode _buf)
         {
             { if(!_buf["x1"].IsBoolean) { throw new SerializationException(); }  X1 = _buf["x1"]; }
             { if(!_buf["x2"].IsNumber) { throw new SerializationException(); }  X2 = _buf["x2"]; }
@@ -31,13 +30,14 @@ namespace cfg.test
             { if(!_buf["v3"].IsObject) { throw new SerializationException(); }  V3 = ExternalTypeUtil.NewVector3(vec3.Deserializevec3(_buf["v3"]));  }
             { if(!_buf["v4"].IsObject) { throw new SerializationException(); }  V4 = ExternalTypeUtil.NewVector4(vec4.Deserializevec4(_buf["v4"]));  }
             { if(!_buf["t1"].IsNumber) { throw new SerializationException(); }  T1 = _buf["t1"]; }
+            PostInit();
         }
-    
+
         public static DemoPrimitiveTypesTable DeserializeDemoPrimitiveTypesTable(JSONNode _buf)
         {
             return new test.DemoPrimitiveTypesTable(_buf);
         }
-    
+
         public readonly bool X1;
         public readonly byte X2;
         public readonly short X3;
@@ -51,11 +51,10 @@ namespace cfg.test
         public readonly UnityEngine.Vector3 V3;
         public readonly UnityEngine.Vector4 V4;
         public readonly long T1;
-       
         public const int __ID__ = -370934083;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -71,7 +70,7 @@ namespace cfg.test
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -90,6 +89,7 @@ namespace cfg.test
             + "t1:" + T1 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

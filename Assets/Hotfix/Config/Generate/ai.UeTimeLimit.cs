@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeTimeLimit : ai.Decorator
     {
-        public UeTimeLimit(JSONNode _buf)  : base(_buf) 
+        public UeTimeLimit(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["limit_time"].IsNumber) { throw new SerializationException(); }  LimitTime = _buf["limit_time"]; }
+            PostInit();
         }
-    
+
         public static UeTimeLimit DeserializeUeTimeLimit(JSONNode _buf)
         {
             return new ai.UeTimeLimit(_buf);
         }
-    
+
         public readonly float LimitTime;
-       
         public const int __ID__ = 338469720;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.ai
             + "limitTime:" + LimitTime + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

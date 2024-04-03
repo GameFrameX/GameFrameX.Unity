@@ -8,20 +8,20 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class Node : LuBan.Runtime.BeanBase
     {
-        public Node(JSONNode _buf) 
+        public Node(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["node_name"].IsString) { throw new SerializationException(); }  NodeName = _buf["node_name"]; }
+            PostInit();
         }
-    
+
         public static Node DeserializeNode(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -52,17 +52,16 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly int Id;
         public readonly string NodeName;
-       
-    
-        public virtual void ResolveRef(Tables tables)
+
+        public virtual void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -70,6 +69,7 @@ namespace cfg.ai
             + "nodeName:" + NodeName + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

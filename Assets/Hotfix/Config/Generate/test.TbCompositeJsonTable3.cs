@@ -8,31 +8,41 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbCompositeJsonTable3
+    public partial class TbCompositeJsonTable3 : BaseDataTable<test.CompositeJsonTable3>
     {
     
-         private readonly test.CompositeJsonTable3 _data;
+        private test.CompositeJsonTable3 _data;
+        public test.CompositeJsonTable3 Data => _data;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbCompositeJsonTable3(JSONNode _buf)
+        public TbCompositeJsonTable3(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            int n = _buf.Count;
-            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
-            { if(!_buf[0].IsObject) { throw new SerializationException(); }  _data = test.CompositeJsonTable3.DeserializeCompositeJsonTable3(_buf[0]);  }
+            _loadFunc = loadFunc;
         }
     
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            int n = _json.Count;
+            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
+            { if(!_json[0].IsObject) { throw new SerializationException(); }  _data = test.CompositeJsonTable3.DeserializeCompositeJsonTable3(_json[0]);  }
+        }
     
-         public int A => _data.A;
-         public int B => _data.B;
-        
-        public void ResolveRef(Tables tables)
+        public int A => _data.A;
+        public int B => _data.B;
+    
+        public void ResolveRef(TablesComponent tables)
         {
             _data.ResolveRef(tables);
         }
+    
+        partial void PostInit();
     }
-
 }
+

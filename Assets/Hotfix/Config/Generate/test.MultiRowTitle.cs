@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class MultiRowTitle : LuBan.Runtime.BeanBase
     {
-        public MultiRowTitle(JSONNode _buf) 
+        public MultiRowTitle(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
@@ -25,13 +24,14 @@ namespace cfg.test
             { var __json0 = _buf["x2"]; if(!__json0.IsArray) { throw new SerializationException(); } X2 = new System.Collections.Generic.List<test.H2>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.H2 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.H2.DeserializeH2(__e0);  }  X2.Add(__v0); }   }
             { var __json0 = _buf["x3"]; if(!__json0.IsArray) { throw new SerializationException(); } int _n0 = __json0.Count; X3 = new test.H2[_n0]; int __index0=0; foreach(JSONNode __e0 in __json0.Children) { test.H2 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.H2.DeserializeH2(__e0);  }  X3[__index0++] = __v0; }   }
             { var __json0 = _buf["x4"]; if(!__json0.IsArray) { throw new SerializationException(); } int _n0 = __json0.Count; X4 = new test.H2[_n0]; int __index0=0; foreach(JSONNode __e0 in __json0.Children) { test.H2 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.H2.DeserializeH2(__e0);  }  X4[__index0++] = __v0; }   }
+            PostInit();
         }
-    
+
         public static MultiRowTitle DeserializeMultiRowTitle(JSONNode _buf)
         {
             return new test.MultiRowTitle(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string Name;
         public readonly test.H1 X1;
@@ -39,11 +39,10 @@ namespace cfg.test
         public readonly System.Collections.Generic.List<test.H2> X2;
         public readonly test.H2[] X3;
         public readonly test.H2[] X4;
-       
         public const int __ID__ = 540002427;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -53,7 +52,7 @@ namespace cfg.test
             foreach (var _e in X3) { _e?.ResolveRef(tables); }
             foreach (var _e in X4) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -66,6 +65,7 @@ namespace cfg.test
             + "x4:" + StringUtil.CollectionToString(X4) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

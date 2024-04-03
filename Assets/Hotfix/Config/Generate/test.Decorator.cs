@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class Decorator : test.ItemBase
     {
-        public Decorator(JSONNode _buf)  : base(_buf) 
+        public Decorator(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["duration"].IsNumber) { throw new SerializationException(); }  Duration = _buf["duration"]; }
+            PostInit();
         }
-    
+
         public static Decorator DeserializeDecorator(JSONNode _buf)
         {
             return new test.Decorator(_buf);
         }
-    
+
         public readonly int Duration;
-       
         public const int __ID__ = -625155649;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.test
             + "duration:" + Duration + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

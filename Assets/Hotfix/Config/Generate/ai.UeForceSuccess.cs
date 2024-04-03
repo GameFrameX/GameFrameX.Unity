@@ -8,32 +8,31 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeForceSuccess : ai.Decorator
     {
-        public UeForceSuccess(JSONNode _buf)  : base(_buf) 
+        public UeForceSuccess(JSONNode _buf) : base(_buf) 
         {
+            PostInit();
         }
-    
+
         public static UeForceSuccess DeserializeUeForceSuccess(JSONNode _buf)
         {
             return new ai.UeForceSuccess(_buf);
         }
-    
-       
+
         public const int __ID__ = 195054574;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -42,6 +41,7 @@ namespace cfg.ai
             + "flowAbortMode:" + FlowAbortMode + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

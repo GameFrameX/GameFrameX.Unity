@@ -11,38 +11,31 @@ using LuBan.Runtime;
 using GameFrameX.Config;
 using SimpleJSON;
 
-namespace Hotfix.Config.test
+namespace Hotfix.Config.ai
 {
-    public sealed partial class MultiRowType1 : LuBan.Runtime.BeanBase
+    public sealed partial class IsSet2 : ai.KeyQueryOperator
     {
-        public MultiRowType1(JSONNode _buf)
+        public IsSet2(JSONNode _buf) : base(_buf) 
         {
-            { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
-            { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             PostInit();
         }
 
-        public static MultiRowType1 DeserializeMultiRowType1(JSONNode _buf)
+        public static IsSet2 DeserializeIsSet2(JSONNode _buf)
         {
-            return new test.MultiRowType1(_buf);
+            return new ai.IsSet2(_buf);
         }
 
-        public readonly int Id;
-        public readonly int X;
-        public const int __ID__ = 540474970;
+        public const int __ID__ = -843729664;
         public override int GetTypeId() => __ID__;
 
-        public  void ResolveRef(TablesComponent tables)
+        public override void ResolveRef(TablesComponent tables)
         {
-            
-            
+            base.ResolveRef(tables);
         }
 
         public override string ToString()
         {
             return "{ "
-            + "id:" + Id + ","
-            + "x:" + X + ","
             + "}";
         }
 

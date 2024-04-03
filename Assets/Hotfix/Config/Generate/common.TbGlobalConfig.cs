@@ -8,39 +8,49 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.common
+namespace Hotfix.Config.common
 {
-    public partial class TbGlobalConfig
+    public partial class TbGlobalConfig : BaseDataTable<common.GlobalConfig>
     {
     
-         private readonly common.GlobalConfig _data;
+        private common.GlobalConfig _data;
+        public common.GlobalConfig Data => _data;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbGlobalConfig(JSONNode _buf)
+        public TbGlobalConfig(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            int n = _buf.Count;
-            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
-            { if(!_buf[0].IsObject) { throw new SerializationException(); }  _data = common.GlobalConfig.DeserializeGlobalConfig(_buf[0]);  }
+            _loadFunc = loadFunc;
         }
     
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            int n = _json.Count;
+            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
+            { if(!_json[0].IsObject) { throw new SerializationException(); }  _data = common.GlobalConfig.DeserializeGlobalConfig(_json[0]);  }
+        }
     
         /// <summary>
         /// 背包容量
         /// </summary>
-         public int X1 => _data.X1;
-         public int X2 => _data.X2;
-         public int X3 => _data.X3;
-         public int X4 => _data.X4;
-         public int X5 => _data.X5;
-         public int X6 => _data.X6;
-         public System.Collections.Generic.List<int> X7 => _data.X7;
-        
-        public void ResolveRef(Tables tables)
+        public int X1 => _data.X1;
+        public int X2 => _data.X2;
+        public int X3 => _data.X3;
+        public int X4 => _data.X4;
+        public int X5 => _data.X5;
+        public int X6 => _data.X6;
+        public System.Collections.Generic.List<int> X7 => _data.X7;
+    
+        public void ResolveRef(TablesComponent tables)
         {
             _data.ResolveRef(tables);
         }
+    
+        partial void PostInit();
     }
-
 }
+

@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class Task : ai.FlowNode
     {
-        public Task(JSONNode _buf)  : base(_buf) 
+        public Task(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["ignore_restart_self"].IsBoolean) { throw new SerializationException(); }  IgnoreRestartSelf = _buf["ignore_restart_self"]; }
+            PostInit();
         }
-    
+
         public static Task DeserializeTask(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -35,16 +35,15 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
+
         public readonly bool IgnoreRestartSelf;
-       
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -55,6 +54,7 @@ namespace cfg.ai
             + "ignoreRestartSelf:" + IgnoreRestartSelf + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg
+namespace Hotfix.Config
 {
-    
     public sealed partial class DefineFromExcel2 : LuBan.Runtime.BeanBase
     {
-        public DefineFromExcel2(JSONNode _buf) 
+        public DefineFromExcel2(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["x1"].IsBoolean) { throw new SerializationException(); }  X1 = _buf["x1"]; }
@@ -36,13 +35,15 @@ namespace cfg
             { var __json0 = _buf["k9"]; if(!__json0.IsArray) { throw new SerializationException(); } K9 = new System.Collections.Generic.List<test.DemoE2>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.DemoE2 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.DemoE2.DeserializeDemoE2(__e0);  }  K9.Add(__v0); }   }
             { var __json0 = _buf["k10"]; if(!__json0.IsArray) { throw new SerializationException(); } K10 = new System.Collections.Generic.List<UnityEngine.Vector3>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { UnityEngine.Vector3 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = ExternalTypeUtil.NewVector3(vec3.Deserializevec3(__e0));  }  K10.Add(__v0); }   }
             { var __json0 = _buf["k11"]; if(!__json0.IsArray) { throw new SerializationException(); } K11 = new System.Collections.Generic.List<UnityEngine.Vector4>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { UnityEngine.Vector4 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = ExternalTypeUtil.NewVector4(vec4.Deserializevec4(__e0));  }  K11.Add(__v0); }   }
+            { var _j = _buf["v11"]; if (_j.Tag != JSONNodeType.None && _j.Tag != JSONNodeType.NullValue) { { if(!_j.IsObject) { throw new SerializationException(); }  V11 = ExternalTypeUtil.NewVector3(vec3.Deserializevec3(_j));  } } else { V11 = null; } }
+            PostInit();
         }
-    
+
         public static DefineFromExcel2 DeserializeDefineFromExcel2(JSONNode _buf)
         {
             return new DefineFromExcel2(_buf);
         }
-    
+
         /// <summary>
         /// 这是id
         /// </summary>
@@ -67,11 +68,11 @@ namespace cfg
         public readonly System.Collections.Generic.List<test.DemoE2> K9;
         public readonly System.Collections.Generic.List<UnityEngine.Vector3> K10;
         public readonly System.Collections.Generic.List<UnityEngine.Vector4> K11;
-       
+        public readonly UnityEngine.Vector3? V11;
         public const int __ID__ = 482045152;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -91,8 +92,9 @@ namespace cfg
             
             
             
+            
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -114,8 +116,10 @@ namespace cfg
             + "k9:" + StringUtil.CollectionToString(K9) + ","
             + "k10:" + StringUtil.CollectionToString(K10) + ","
             + "k11:" + StringUtil.CollectionToString(K11) + ","
+            + "v11:" + V11 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

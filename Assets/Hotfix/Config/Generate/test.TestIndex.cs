@@ -8,42 +8,41 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestIndex : LuBan.Runtime.BeanBase
     {
-        public TestIndex(JSONNode _buf) 
+        public TestIndex(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { var __json0 = _buf["eles"]; if(!__json0.IsArray) { throw new SerializationException(); } Eles = new System.Collections.Generic.List<test.DemoType1>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.DemoType1 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.DemoType1.DeserializeDemoType1(__e0);  }  Eles.Add(__v0); }   }
             foreach(var _v in Eles)
-            { 
+            {
                 Eles_Index.Add(_v.X1, _v);
             }
+            PostInit();
         }
-    
+
         public static TestIndex DeserializeTestIndex(JSONNode _buf)
         {
             return new test.TestIndex(_buf);
         }
-    
+
         public readonly int Id;
         public readonly System.Collections.Generic.List<test.DemoType1> Eles;
         public readonly System.Collections.Generic.Dictionary<int, test.DemoType1> Eles_Index = new System.Collections.Generic.Dictionary<int, test.DemoType1>();
-       
         public const int __ID__ = 1941154020;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             foreach (var _e in Eles) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -51,6 +50,7 @@ namespace cfg.test
             + "eles:" + StringUtil.CollectionToString(Eles) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg
+namespace Hotfix.Config
 {
-    
     public partial struct vec2
     {
-        public vec2(JSONNode _buf) 
+        public vec2(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsNumber) { throw new SerializationException(); }  Y = _buf["y"]; }
+            PostInit();
         }
-    
+
         public static vec2 Deserializevec2(JSONNode _buf)
         {
             return new vec2(_buf);
         }
-    
+
         public readonly float X;
         public readonly float Y;
-       
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -44,6 +43,7 @@ namespace cfg
             + "y:" + Y + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,18 +8,17 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.item
+namespace Hotfix.Config.item
 {
     /// <summary>
     /// 道具
     /// </summary>
-    
     public sealed partial class Item : LuBan.Runtime.BeanBase
     {
-        public Item(JSONNode _buf) 
+        public Item(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
@@ -31,13 +30,14 @@ namespace cfg.item
             { if(!_buf["icon_mask"].IsString) { throw new SerializationException(); }  IconMask = _buf["icon_mask"]; }
             { if(!_buf["desc"].IsString) { throw new SerializationException(); }  Desc = _buf["desc"]; }
             { if(!_buf["show_order"].IsNumber) { throw new SerializationException(); }  ShowOrder = _buf["show_order"]; }
+            PostInit();
         }
-    
+
         public static Item DeserializeItem(JSONNode _buf)
         {
             return new item.Item(_buf);
         }
-    
+
         /// <summary>
         /// 道具id
         /// </summary>
@@ -51,11 +51,10 @@ namespace cfg.item
         public readonly string IconMask;
         public readonly string Desc;
         public readonly int ShowOrder;
-       
         public const int __ID__ = 2107285806;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -68,7 +67,7 @@ namespace cfg.item
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -84,6 +83,7 @@ namespace cfg.item
             + "showOrder:" + ShowOrder + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

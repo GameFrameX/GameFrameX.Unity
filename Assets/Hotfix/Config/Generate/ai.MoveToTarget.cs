@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class MoveToTarget : ai.Task
     {
-        public MoveToTarget(JSONNode _buf)  : base(_buf) 
+        public MoveToTarget(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["target_actor_key"].IsString) { throw new SerializationException(); }  TargetActorKey = _buf["target_actor_key"]; }
             { if(!_buf["acceptable_radius"].IsNumber) { throw new SerializationException(); }  AcceptableRadius = _buf["acceptable_radius"]; }
+            PostInit();
         }
-    
+
         public static MoveToTarget DeserializeMoveToTarget(JSONNode _buf)
         {
             return new ai.MoveToTarget(_buf);
         }
-    
+
         public readonly string TargetActorKey;
         public readonly float AcceptableRadius;
-       
         public const int __ID__ = 514987779;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -52,6 +51,7 @@ namespace cfg.ai
             + "acceptableRadius:" + AcceptableRadius + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

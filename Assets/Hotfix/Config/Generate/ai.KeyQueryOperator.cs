@@ -8,40 +8,40 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class KeyQueryOperator : LuBan.Runtime.BeanBase
     {
-        public KeyQueryOperator(JSONNode _buf) 
+        public KeyQueryOperator(JSONNode _buf)
         {
+            PostInit();
         }
-    
+
         public static KeyQueryOperator DeserializeKeyQueryOperator(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
             {
-                case "IsSet": return new ai.IsSet(_buf);
+                case "IsSet2": return new ai.IsSet2(_buf);
                 case "IsNotSet": return new ai.IsNotSet(_buf);
                 case "BinaryOperator": return new ai.BinaryOperator(_buf);
                 default: throw new SerializationException();
             }
         }
-    
-       
-    
-        public virtual void ResolveRef(Tables tables)
+
+
+        public virtual void ResolveRef(TablesComponent tables)
         {
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

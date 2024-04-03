@@ -9,7 +9,7 @@
 
 
 
-namespace cfg.item
+namespace Hotfix.Config.item
 { 
     public enum EMajorType
     {

@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class KeepFaceTarget : ai.Service
     {
-        public KeepFaceTarget(JSONNode _buf)  : base(_buf) 
+        public KeepFaceTarget(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["target_actor_key"].IsString) { throw new SerializationException(); }  TargetActorKey = _buf["target_actor_key"]; }
+            PostInit();
         }
-    
+
         public static KeepFaceTarget DeserializeKeepFaceTarget(JSONNode _buf)
         {
             return new ai.KeepFaceTarget(_buf);
         }
-    
+
         public readonly string TargetActorKey;
-       
         public const int __ID__ = 1195270745;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.ai
             + "targetActorKey:" + TargetActorKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

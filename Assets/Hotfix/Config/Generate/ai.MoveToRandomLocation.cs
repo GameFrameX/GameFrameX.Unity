@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class MoveToRandomLocation : ai.Task
     {
-        public MoveToRandomLocation(JSONNode _buf)  : base(_buf) 
+        public MoveToRandomLocation(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["origin_position_key"].IsString) { throw new SerializationException(); }  OriginPositionKey = _buf["origin_position_key"]; }
             { if(!_buf["radius"].IsNumber) { throw new SerializationException(); }  Radius = _buf["radius"]; }
+            PostInit();
         }
-    
+
         public static MoveToRandomLocation DeserializeMoveToRandomLocation(JSONNode _buf)
         {
             return new ai.MoveToRandomLocation(_buf);
         }
-    
+
         public readonly string OriginPositionKey;
         public readonly float Radius;
-       
         public const int __ID__ = -2140042998;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -52,6 +51,7 @@ namespace cfg.ai
             + "radius:" + Radius + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -9,7 +9,7 @@
 
 
 
-namespace cfg.ai
+namespace Hotfix.Config.ai
 { 
     public enum EKeyType
     {
@@ -20,8 +20,8 @@ namespace cfg.ai
         VECTOR = 5,
         ROTATOR = 6,
         NAME = 7,
-        CLASS = 8,
-        ENUM = 9,
+        CLASS1 = 8,
+        ENUM1 = 9,
         OBJECT = 10,
     }
 

@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class ChooseSkill : ai.Task
     {
-        public ChooseSkill(JSONNode _buf)  : base(_buf) 
+        public ChooseSkill(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["target_actor_key"].IsString) { throw new SerializationException(); }  TargetActorKey = _buf["target_actor_key"]; }
             { if(!_buf["result_skill_id_key"].IsString) { throw new SerializationException(); }  ResultSkillIdKey = _buf["result_skill_id_key"]; }
+            PostInit();
         }
-    
+
         public static ChooseSkill DeserializeChooseSkill(JSONNode _buf)
         {
             return new ai.ChooseSkill(_buf);
         }
-    
+
         public readonly string TargetActorKey;
         public readonly string ResultSkillIdKey;
-       
         public const int __ID__ = -918812268;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -52,6 +51,7 @@ namespace cfg.ai
             + "resultSkillIdKey:" + ResultSkillIdKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

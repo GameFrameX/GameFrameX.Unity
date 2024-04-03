@@ -8,37 +8,36 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.l10n
+namespace Hotfix.Config.l10n
 {
-    
     public sealed partial class L10NDemo : LuBan.Runtime.BeanBase
     {
-        public L10NDemo(JSONNode _buf) 
+        public L10NDemo(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["text"].IsString) { throw new SerializationException(); }  Text = _buf["text"]; }
+            PostInit();
         }
-    
+
         public static L10NDemo DeserializeL10NDemo(JSONNode _buf)
         {
             return new l10n.L10NDemo(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string Text;
-       
         public const int __ID__ = -331195887;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.l10n
             + "text:" + Text + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

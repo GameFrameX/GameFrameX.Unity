@@ -8,40 +8,39 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class ExcelFromJsonMultiRow : LuBan.Runtime.BeanBase
     {
-        public ExcelFromJsonMultiRow(JSONNode _buf) 
+        public ExcelFromJsonMultiRow(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { var __json0 = _buf["items"]; if(!__json0.IsArray) { throw new SerializationException(); } Items = new System.Collections.Generic.List<test.TestRow>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.TestRow __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.TestRow.DeserializeTestRow(__e0);  }  Items.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static ExcelFromJsonMultiRow DeserializeExcelFromJsonMultiRow(JSONNode _buf)
         {
             return new test.ExcelFromJsonMultiRow(_buf);
         }
-    
+
         public readonly int Id;
         public readonly int X;
         public readonly System.Collections.Generic.List<test.TestRow> Items;
-       
         public const int __ID__ = 715335694;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
             foreach (var _e in Items) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -50,6 +49,7 @@ namespace cfg.test
             + "items:" + StringUtil.CollectionToString(Items) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

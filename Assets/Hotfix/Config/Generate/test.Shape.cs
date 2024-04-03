@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public abstract partial class Shape : LuBan.Runtime.BeanBase
     {
-        public Shape(JSONNode _buf) 
+        public Shape(JSONNode _buf)
         {
+            PostInit();
         }
-    
+
         public static Shape DeserializeShape(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -29,18 +29,18 @@ namespace cfg.test
                 default: throw new SerializationException();
             }
         }
-    
-       
-    
-        public virtual void ResolveRef(Tables tables)
+
+
+        public virtual void ResolveRef(TablesComponent tables)
         {
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

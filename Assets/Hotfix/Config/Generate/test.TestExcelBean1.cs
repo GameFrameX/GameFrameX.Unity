@@ -8,30 +8,30 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
     /// <summary>
     /// 这是个测试excel结构
     /// </summary>
-    
     public sealed partial class TestExcelBean1 : LuBan.Runtime.BeanBase
     {
-        public TestExcelBean1(JSONNode _buf) 
+        public TestExcelBean1(JSONNode _buf)
         {
             { if(!_buf["x1"].IsNumber) { throw new SerializationException(); }  X1 = _buf["x1"]; }
             { if(!_buf["x2"].IsString) { throw new SerializationException(); }  X2 = _buf["x2"]; }
             { if(!_buf["x3"].IsNumber) { throw new SerializationException(); }  X3 = _buf["x3"]; }
             { if(!_buf["x4"].IsNumber) { throw new SerializationException(); }  X4 = _buf["x4"]; }
+            PostInit();
         }
-    
+
         public static TestExcelBean1 DeserializeTestExcelBean1(JSONNode _buf)
         {
             return new test.TestExcelBean1(_buf);
         }
-    
+
         /// <summary>
         /// 最高品质
         /// </summary>
@@ -48,18 +48,17 @@ namespace cfg.test
         /// 最差品质
         /// </summary>
         public readonly float X4;
-       
         public const int __ID__ = -1738345160;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -69,6 +68,7 @@ namespace cfg.test
             + "x4:" + X4 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

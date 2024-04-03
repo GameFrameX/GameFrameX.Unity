@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test.login
+namespace Hotfix.Config.test.login
 {
-    
     public sealed partial class RoleInfo : test.DemoD3
     {
-        public RoleInfo(JSONNode _buf)  : base(_buf) 
+        public RoleInfo(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["role_id"].IsNumber) { throw new SerializationException(); }  RoleId = _buf["role_id"]; }
+            PostInit();
         }
-    
+
         public static RoleInfo DeserializeRoleInfo(JSONNode _buf)
         {
             return new test.login.RoleInfo(_buf);
         }
-    
+
         public readonly long RoleId;
-       
         public const int __ID__ = -989153243;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.test.login
             + "roleId:" + RoleId + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -9,7 +9,7 @@
 
 
 
-namespace cfg.item
+namespace Hotfix.Config.item
 { 
     /// <summary>
     /// 道具品质

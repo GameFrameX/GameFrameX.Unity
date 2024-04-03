@@ -8,37 +8,36 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class CompositeJsonTable3 : LuBan.Runtime.BeanBase
     {
-        public CompositeJsonTable3(JSONNode _buf) 
+        public CompositeJsonTable3(JSONNode _buf)
         {
             { if(!_buf["a"].IsNumber) { throw new SerializationException(); }  A = _buf["a"]; }
             { if(!_buf["b"].IsNumber) { throw new SerializationException(); }  B = _buf["b"]; }
+            PostInit();
         }
-    
+
         public static CompositeJsonTable3 DeserializeCompositeJsonTable3(JSONNode _buf)
         {
             return new test.CompositeJsonTable3(_buf);
         }
-    
+
         public readonly int A;
         public readonly int B;
-       
         public const int __ID__ = 1566207896;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.test
             + "b:" + B + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

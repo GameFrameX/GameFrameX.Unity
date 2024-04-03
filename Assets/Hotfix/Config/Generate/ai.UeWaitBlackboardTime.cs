@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeWaitBlackboardTime : ai.Task
     {
-        public UeWaitBlackboardTime(JSONNode _buf)  : base(_buf) 
+        public UeWaitBlackboardTime(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["blackboard_key"].IsString) { throw new SerializationException(); }  BlackboardKey = _buf["blackboard_key"]; }
+            PostInit();
         }
-    
+
         public static UeWaitBlackboardTime DeserializeUeWaitBlackboardTime(JSONNode _buf)
         {
             return new ai.UeWaitBlackboardTime(_buf);
         }
-    
+
         public readonly string BlackboardKey;
-       
         public const int __ID__ = 1215378271;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -48,6 +47,7 @@ namespace cfg.ai
             + "blackboardKey:" + BlackboardKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

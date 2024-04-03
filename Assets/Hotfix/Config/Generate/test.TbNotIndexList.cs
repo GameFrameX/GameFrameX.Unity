@@ -8,38 +8,45 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbNotIndexList
+    public partial class TbNotIndexList : BaseDataTable<test.NotIndexList>
     {
-        private readonly System.Collections.Generic.List<test.NotIndexList> _dataList;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-    
-        public TbNotIndexList(JSONNode _buf)
+        public TbNotIndexList(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataList = new System.Collections.Generic.List<test.NotIndexList>();
-            
-            foreach(JSONNode _ele in _buf.Children)
-            {
-                test.NotIndexList vNode;
-                { if(!_ele.IsObject) { throw new SerializationException(); }  vNode = test.NotIndexList.DeserializeNotIndexList(_ele);  }
-                _dataList.Add(vNode);
-            }
+            _loadFunc = loadFunc;
         }
     
-        public System.Collections.Generic.List<test.NotIndexList> DataList => _dataList;
-    
-        
-        public void ResolveRef(Tables tables)
+        public override async System.Threading.Tasks.Task LoadAsync()
         {
-            foreach(var _v in _dataList)
+            JSONNode _json = await _loadFunc();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
+            {
+                test.NotIndexList _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = test.NotIndexList.DeserializeNotIndexList(_ele);  }
+                DataList.Add(_v);
+            }
+            PostInit();
+        }
+    
+        public System.Collections.Generic.List<test.NotIndexList> DataList => DataList;
+    
+        public void ResolveRef(TablesComponent tables)
+        {
+            foreach(var _v in DataList)
             {
                 _v.ResolveRef(tables);
             }
         }
+    
+        partial void PostInit();
     }
-
 }
+

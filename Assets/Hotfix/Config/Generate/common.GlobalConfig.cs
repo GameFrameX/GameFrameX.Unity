@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.common
+namespace Hotfix.Config.common
 {
-    
     public sealed partial class GlobalConfig : LuBan.Runtime.BeanBase
     {
-        public GlobalConfig(JSONNode _buf) 
+        public GlobalConfig(JSONNode _buf)
         {
             { if(!_buf["x1"].IsNumber) { throw new SerializationException(); }  X1 = _buf["x1"]; }
             { if(!_buf["x2"].IsNumber) { throw new SerializationException(); }  X2 = _buf["x2"]; }
@@ -25,13 +24,14 @@ namespace cfg.common
             { if(!_buf["x5"].IsNumber) { throw new SerializationException(); }  X5 = _buf["x5"]; }
             { if(!_buf["x6"].IsNumber) { throw new SerializationException(); }  X6 = _buf["x6"]; }
             { var __json0 = _buf["x7"]; if(!__json0.IsArray) { throw new SerializationException(); } X7 = new System.Collections.Generic.List<int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int __v0;  { if(!__e0.IsNumber) { throw new SerializationException(); }  __v0 = __e0; }  X7.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static GlobalConfig DeserializeGlobalConfig(JSONNode _buf)
         {
             return new common.GlobalConfig(_buf);
         }
-    
+
         /// <summary>
         /// 背包容量
         /// </summary>
@@ -42,11 +42,10 @@ namespace cfg.common
         public readonly int X5;
         public readonly int X6;
         public readonly System.Collections.Generic.List<int> X7;
-       
         public const int __ID__ = -848234488;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -56,7 +55,7 @@ namespace cfg.common
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -69,6 +68,7 @@ namespace cfg.common
             + "x7:" + StringUtil.CollectionToString(X7) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

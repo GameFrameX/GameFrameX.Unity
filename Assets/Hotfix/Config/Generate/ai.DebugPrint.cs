@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class DebugPrint : ai.Task
     {
-        public DebugPrint(JSONNode _buf)  : base(_buf) 
+        public DebugPrint(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["text"].IsString) { throw new SerializationException(); }  Text = _buf["text"]; }
+            PostInit();
         }
-    
+
         public static DebugPrint DeserializeDebugPrint(JSONNode _buf)
         {
             return new ai.DebugPrint(_buf);
         }
-    
+
         public readonly string Text;
-       
         public const int __ID__ = 1357409728;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -48,6 +47,7 @@ namespace cfg.ai
             + "text:" + Text + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

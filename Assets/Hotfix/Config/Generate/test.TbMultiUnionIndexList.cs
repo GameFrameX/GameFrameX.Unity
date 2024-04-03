@@ -8,45 +8,53 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbMultiUnionIndexList
+    public partial class TbMultiUnionIndexList : BaseDataTable<test.MultiUnionIndexList>
     {
-        private readonly System.Collections.Generic.List<test.MultiUnionIndexList> _dataList;
-    
         private System.Collections.Generic.Dictionary<(int, long, string), test.MultiUnionIndexList> _dataMapUnion;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbMultiUnionIndexList(JSONNode _buf)
+        public TbMultiUnionIndexList(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataList = new System.Collections.Generic.List<test.MultiUnionIndexList>();
-            
-            foreach(JSONNode _ele in _buf.Children)
-            {
-                test.MultiUnionIndexList vNode;
-                { if(!_ele.IsObject) { throw new SerializationException(); }  vNode = test.MultiUnionIndexList.DeserializeMultiUnionIndexList(_ele);  }
-                _dataList.Add(vNode);
-            }
+            _loadFunc = loadFunc;
             _dataMapUnion = new System.Collections.Generic.Dictionary<(int, long, string), test.MultiUnionIndexList>();
-            foreach(var _v in _dataList)
+        }
+    
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
+            {
+                test.MultiUnionIndexList _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = test.MultiUnionIndexList.DeserializeMultiUnionIndexList(_ele);  }
+                DataList.Add(_v);
+            }
+            _dataMapUnion.Clear();
+            foreach(var _v in DataList)
             {
                 _dataMapUnion.Add((_v.Id1, _v.Id2, _v.Id3), _v);
             }
+            PostInit();
         }
     
-        public System.Collections.Generic.List<test.MultiUnionIndexList> DataList => _dataList;
-    
+        public System.Collections.Generic.List<test.MultiUnionIndexList> DataList => DataList;
         public test.MultiUnionIndexList Get(int id1, long id2, string id3) => _dataMapUnion.TryGetValue((id1, id2, id3), out test.MultiUnionIndexList __v) ? __v : null;
-        
-        public void ResolveRef(Tables tables)
+    
+        public void ResolveRef(TablesComponent tables)
         {
-            foreach(var _v in _dataList)
+            foreach(var _v in DataList)
             {
                 _v.ResolveRef(tables);
             }
         }
+    
+        partial void PostInit();
     }
-
 }
+

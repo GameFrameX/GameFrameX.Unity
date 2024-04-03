@@ -9,7 +9,7 @@
 
 
 
-namespace cfg
+namespace Hotfix.Config
 { 
     public enum AudioType
     {

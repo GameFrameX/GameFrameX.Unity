@@ -8,66 +8,50 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.l10n
+namespace Hotfix.Config.l10n
 {
-    public partial class TbPatchDemo
+    public partial class TbPatchDemo : BaseDataTable<l10n.PatchDemo>
     {
-        private readonly System.Collections.Generic.Dictionary<int, l10n.PatchDemo> _dataMap;
-        private readonly System.Collections.Generic.List<l10n.PatchDemo> _dataList;
-        
-        public TbPatchDemo(JSONNode jsonNode)
+        //private readonly System.Collections.Generic.Dictionary<int, l10n.PatchDemo> _dataMap;
+        //private readonly System.Collections.Generic.List<l10n.PatchDemo> _dataList;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;        
+        public TbPatchDemo(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataMap = new System.Collections.Generic.Dictionary<int, l10n.PatchDemo>();
-            _dataList = new System.Collections.Generic.List<l10n.PatchDemo>();
-            
-            foreach(JSONNode vNode in jsonNode.Children)
+            _loadFunc = loadFunc;
+            //_dataMap = new System.Collections.Generic.Dictionary<int, l10n.PatchDemo>();
+            //_dataList = new System.Collections.Generic.List<l10n.PatchDemo>();
+        }
+    
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            //_dataMap.Clear();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
             {
-                l10n.PatchDemo deserializeItem;
-                { if(!vNode.IsObject) { throw new SerializationException(); }  deserializeItem = l10n.PatchDemo.DeserializePatchDemo(vNode);  }
-                _dataList.Add(deserializeItem);
-                _dataMap.Add(deserializeItem.Id, deserializeItem);
+                l10n.PatchDemo _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = l10n.PatchDemo.DeserializePatchDemo(_ele);  }
+                DataList.Add(_v);                
+                LongDataMaps.Add(_v.Id, _v);
+                StringDataMaps.Add(_v.Id.ToString(), _v);
             }
+            PostInit();
         }
     
-        public System.Collections.Generic.Dictionary<int, l10n.PatchDemo> DataMap 
+        public void ResolveRef(TablesComponent tables)
         {
-            get { return _dataMap; }
-        }
-
-        public System.Collections.Generic.List<l10n.PatchDemo> DataList 
-        {
-            get { return _dataList; }
-        }
-    
-        public l10n.PatchDemo GetOrDefault(int key) 
-        {  
-            return _dataMap.TryGetValue(key, out var v) ? v : null;
-        }
-        
-        public l10n.PatchDemo Get(int key) 
-        { 
-            return _dataMap[key];
-        }
-        
-        public l10n.PatchDemo this[int key] 
-        {
-            get
-            {
-                return _dataMap[key];
-            }
-        }
-    
-        public void ResolveRef(Tables tables)
-        {
-            foreach(var value in _dataList)
+            foreach(var value in DataList)
             {
                 value.ResolveRef(tables);
             }
         }
-        
+    
+    
+        partial void PostInit();
     }
-
 }
+

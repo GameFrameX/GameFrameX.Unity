@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeSetDefaultFocus : ai.Service
     {
-        public UeSetDefaultFocus(JSONNode _buf)  : base(_buf) 
+        public UeSetDefaultFocus(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["keyboard_key"].IsString) { throw new SerializationException(); }  KeyboardKey = _buf["keyboard_key"]; }
+            PostInit();
         }
-    
+
         public static UeSetDefaultFocus DeserializeUeSetDefaultFocus(JSONNode _buf)
         {
             return new ai.UeSetDefaultFocus(_buf);
         }
-    
+
         public readonly string KeyboardKey;
-       
         public const int __ID__ = 1812449155;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.ai
             + "keyboardKey:" + KeyboardKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

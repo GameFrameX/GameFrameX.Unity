@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class MultiUnionIndexList : LuBan.Runtime.BeanBase
     {
-        public MultiUnionIndexList(JSONNode _buf) 
+        public MultiUnionIndexList(JSONNode _buf)
         {
             { if(!_buf["id1"].IsNumber) { throw new SerializationException(); }  Id1 = _buf["id1"]; }
             { if(!_buf["id2"].IsNumber) { throw new SerializationException(); }  Id2 = _buf["id2"]; }
             { if(!_buf["id3"].IsString) { throw new SerializationException(); }  Id3 = _buf["id3"]; }
             { if(!_buf["num"].IsNumber) { throw new SerializationException(); }  Num = _buf["num"]; }
             { if(!_buf["desc"].IsString) { throw new SerializationException(); }  Desc = _buf["desc"]; }
+            PostInit();
         }
-    
+
         public static MultiUnionIndexList DeserializeMultiUnionIndexList(JSONNode _buf)
         {
             return new test.MultiUnionIndexList(_buf);
         }
-    
+
         public readonly int Id1;
         public readonly long Id2;
         public readonly string Id3;
         public readonly int Num;
         public readonly string Desc;
-       
         public const int __ID__ = 1966847134;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -47,7 +46,7 @@ namespace cfg.test
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -58,6 +57,7 @@ namespace cfg.test
             + "desc:" + Desc + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

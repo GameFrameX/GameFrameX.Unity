@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DemoType2 : LuBan.Runtime.BeanBase
     {
-        public DemoType2(JSONNode _buf) 
+        public DemoType2(JSONNode _buf)
         {
             { if(!_buf["x4"].IsNumber) { throw new SerializationException(); }  X4 = _buf["x4"]; }
             { if(!_buf["x1"].IsBoolean) { throw new SerializationException(); }  X1 = _buf["x1"]; }
@@ -40,13 +39,14 @@ namespace cfg.test
             { var __json0 = _buf["k8"]; if(!__json0.IsArray) { throw new SerializationException(); } K8 = new System.Collections.Generic.Dictionary<int, int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int _k0;  { if(!__e0[0].IsNumber) { throw new SerializationException(); }  _k0 = __e0[0]; } int _v0;  { if(!__e0[1].IsNumber) { throw new SerializationException(); }  _v0 = __e0[1]; }  K8.Add(_k0, _v0); }   }
             { var __json0 = _buf["k9"]; if(!__json0.IsArray) { throw new SerializationException(); } K9 = new System.Collections.Generic.List<test.DemoE2>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.DemoE2 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.DemoE2.DeserializeDemoE2(__e0);  }  K9.Add(__v0); }   }
             { var __json0 = _buf["k15"]; if(!__json0.IsArray) { throw new SerializationException(); } int _n0 = __json0.Count; K15 = new test.DemoDynamic[_n0]; int __index0=0; foreach(JSONNode __e0 in __json0.Children) { test.DemoDynamic __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.DemoDynamic.DeserializeDemoDynamic(__e0);  }  K15[__index0++] = __v0; }   }
+            PostInit();
         }
-    
+
         public static DemoType2 DeserializeDemoType2(JSONNode _buf)
         {
             return new test.DemoType2(_buf);
         }
-    
+
         public readonly int X4;
         public readonly bool X1;
         public readonly byte X2;
@@ -67,14 +67,13 @@ namespace cfg.test
         public readonly System.Collections.Generic.List<int> K2;
         public readonly System.Collections.Generic.HashSet<int> K5;
         public readonly System.Collections.Generic.Dictionary<int, int> K8;
-        public System.Collections.Generic.Dictionary<int, test.DemoType2> K8_Ref;
+        public System.Collections.Generic.Dictionary<int, test.DemoType2> K8_Ref { private set; get; }
         public readonly System.Collections.Generic.List<test.DemoE2> K9;
         public readonly test.DemoDynamic[] K15;
-       
         public const int __ID__ = -367048295;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -96,12 +95,14 @@ namespace cfg.test
             
             
             K8_Ref = new System.Collections.Generic.Dictionary<int, test.DemoType2>();
-            foreach (var _kv in K8) { K8_Ref.Add(_kv.Key, tables.TbFullTypes.GetOrDefault(_kv.Value)); }
+            foreach (var _kv in K8) { 
+                K8_Ref.Add(_kv.Key, tables.TbFullTypes.Get(_kv.Value));
+            }
 
             
             foreach (var _e in K15) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -129,6 +130,7 @@ namespace cfg.test
             + "k15:" + StringUtil.CollectionToString(K15) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

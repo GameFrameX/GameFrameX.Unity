@@ -8,40 +8,39 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class CompactString : LuBan.Runtime.BeanBase
     {
-        public CompactString(JSONNode _buf) 
+        public CompactString(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["s2"].IsString) { throw new SerializationException(); }  S2 = _buf["s2"]; }
             { if(!_buf["s3"].IsString) { throw new SerializationException(); }  S3 = _buf["s3"]; }
+            PostInit();
         }
-    
+
         public static CompactString DeserializeCompactString(JSONNode _buf)
         {
             return new test.CompactString(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string S2;
         public readonly string S3;
-       
         public const int __ID__ = 1968089240;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -50,6 +49,7 @@ namespace cfg.test
             + "s3:" + S3 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

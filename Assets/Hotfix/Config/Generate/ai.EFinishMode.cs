@@ -9,7 +9,7 @@
 
 
 
-namespace cfg.ai
+namespace Hotfix.Config.ai
 { 
     public enum EFinishMode
     {

@@ -8,40 +8,39 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DemoSingletonType : LuBan.Runtime.BeanBase
     {
-        public DemoSingletonType(JSONNode _buf) 
+        public DemoSingletonType(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
             { if(!_buf["date"].IsObject) { throw new SerializationException(); }  Date = test.DemoDynamic.DeserializeDemoDynamic(_buf["date"]);  }
+            PostInit();
         }
-    
+
         public static DemoSingletonType DeserializeDemoSingletonType(JSONNode _buf)
         {
             return new test.DemoSingletonType(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string Name;
         public readonly test.DemoDynamic Date;
-       
         public const int __ID__ = 539196998;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
             Date?.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -50,6 +49,7 @@ namespace cfg.test
             + "date:" + Date + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

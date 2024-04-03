@@ -8,32 +8,42 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbSingleton
+    public partial class TbSingleton : BaseDataTable<test.DemoSingletonType>
     {
     
-         private readonly test.DemoSingletonType _data;
+        private test.DemoSingletonType _data;
+        public test.DemoSingletonType Data => _data;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbSingleton(JSONNode _buf)
+        public TbSingleton(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            int n = _buf.Count;
-            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
-            { if(!_buf[0].IsObject) { throw new SerializationException(); }  _data = test.DemoSingletonType.DeserializeDemoSingletonType(_buf[0]);  }
+            _loadFunc = loadFunc;
         }
     
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            int n = _json.Count;
+            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
+            { if(!_json[0].IsObject) { throw new SerializationException(); }  _data = test.DemoSingletonType.DeserializeDemoSingletonType(_json[0]);  }
+        }
     
-         public int Id => _data.Id;
-         public string Name => _data.Name;
-         public test.DemoDynamic Date => _data.Date;
-        
-        public void ResolveRef(Tables tables)
+        public int Id => _data.Id;
+        public string Name => _data.Name;
+        public test.DemoDynamic Date => _data.Date;
+    
+        public void ResolveRef(TablesComponent tables)
         {
             _data.ResolveRef(tables);
         }
+    
+        partial void PostInit();
     }
-
 }
+

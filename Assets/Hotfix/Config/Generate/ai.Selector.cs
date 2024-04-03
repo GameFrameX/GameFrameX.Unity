@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class Selector : ai.ComposeNode
     {
-        public Selector(JSONNode _buf)  : base(_buf) 
+        public Selector(JSONNode _buf) : base(_buf) 
         {
             { var __json0 = _buf["children"]; if(!__json0.IsArray) { throw new SerializationException(); } Children = new System.Collections.Generic.List<ai.FlowNode>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { ai.FlowNode __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = ai.FlowNode.DeserializeFlowNode(__e0);  }  Children.Add(__v0); }   }
+            PostInit();
         }
-    
+
         public static Selector DeserializeSelector(JSONNode _buf)
         {
             return new ai.Selector(_buf);
         }
-    
+
         public readonly System.Collections.Generic.List<ai.FlowNode> Children;
-       
         public const int __ID__ = -1946981627;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             foreach (var _e in Children) { _e?.ResolveRef(tables); }
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -47,6 +46,7 @@ namespace cfg.ai
             + "children:" + StringUtil.CollectionToString(Children) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

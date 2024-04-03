@@ -8,37 +8,36 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DateTimeRange : LuBan.Runtime.BeanBase
     {
-        public DateTimeRange(JSONNode _buf) 
+        public DateTimeRange(JSONNode _buf)
         {
             { if(!_buf["start_time"].IsNumber) { throw new SerializationException(); }  StartTime = _buf["start_time"]; }
             { if(!_buf["end_time"].IsNumber) { throw new SerializationException(); }  EndTime = _buf["end_time"]; }
+            PostInit();
         }
-    
+
         public static DateTimeRange DeserializeDateTimeRange(JSONNode _buf)
         {
             return new test.DateTimeRange(_buf);
         }
-    
+
         public readonly long StartTime;
         public readonly long EndTime;
-       
         public const int __ID__ = 495315430;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.test
             + "endTime:" + EndTime + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

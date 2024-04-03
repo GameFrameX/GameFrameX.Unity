@@ -8,36 +8,35 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class DistanceLessThan : ai.Decorator
     {
-        public DistanceLessThan(JSONNode _buf)  : base(_buf) 
+        public DistanceLessThan(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["actor1_key"].IsString) { throw new SerializationException(); }  Actor1Key = _buf["actor1_key"]; }
             { if(!_buf["actor2_key"].IsString) { throw new SerializationException(); }  Actor2Key = _buf["actor2_key"]; }
             { if(!_buf["distance"].IsNumber) { throw new SerializationException(); }  Distance = _buf["distance"]; }
             { if(!_buf["reverse_result"].IsBoolean) { throw new SerializationException(); }  ReverseResult = _buf["reverse_result"]; }
+            PostInit();
         }
-    
+
         public static DistanceLessThan DeserializeDistanceLessThan(JSONNode _buf)
         {
             return new ai.DistanceLessThan(_buf);
         }
-    
+
         public readonly string Actor1Key;
         public readonly string Actor2Key;
         public readonly float Distance;
         public readonly bool ReverseResult;
-       
         public const int __ID__ = -1207170283;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
@@ -45,7 +44,7 @@ namespace cfg.ai
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -58,6 +57,7 @@ namespace cfg.ai
             + "reverseResult:" + ReverseResult + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

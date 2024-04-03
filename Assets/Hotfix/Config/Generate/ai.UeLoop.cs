@@ -8,41 +8,40 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeLoop : ai.Decorator
     {
-        public UeLoop(JSONNode _buf)  : base(_buf) 
+        public UeLoop(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["num_loops"].IsNumber) { throw new SerializationException(); }  NumLoops = _buf["num_loops"]; }
             { if(!_buf["infinite_loop"].IsBoolean) { throw new SerializationException(); }  InfiniteLoop = _buf["infinite_loop"]; }
             { if(!_buf["infinite_loop_timeout_time"].IsNumber) { throw new SerializationException(); }  InfiniteLoopTimeoutTime = _buf["infinite_loop_timeout_time"]; }
+            PostInit();
         }
-    
+
         public static UeLoop DeserializeUeLoop(JSONNode _buf)
         {
             return new ai.UeLoop(_buf);
         }
-    
+
         public readonly int NumLoops;
         public readonly bool InfiniteLoop;
         public readonly float InfiniteLoopTimeoutTime;
-       
         public const int __ID__ = -513308166;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -54,6 +53,7 @@ namespace cfg.ai
             + "infiniteLoopTimeoutTime:" + InfiniteLoopTimeoutTime + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

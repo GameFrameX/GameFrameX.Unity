@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public abstract partial class Service : ai.Node
     {
-        public Service(JSONNode _buf)  : base(_buf) 
+        public Service(JSONNode _buf) : base(_buf) 
         {
+            PostInit();
         }
-    
+
         public static Service DeserializeService(JSONNode _buf)
         {
             switch ((string)_buf["$type"])
@@ -33,14 +33,13 @@ namespace cfg.ai
                 default: throw new SerializationException();
             }
         }
-    
-       
-    
-        public override void ResolveRef(Tables tables)
+
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -48,6 +47,7 @@ namespace cfg.ai
             + "nodeName:" + NodeName + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

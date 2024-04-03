@@ -8,41 +8,41 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class IntKeyData : ai.KeyData
     {
-        public IntKeyData(JSONNode _buf)  : base(_buf) 
+        public IntKeyData(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["value"].IsNumber) { throw new SerializationException(); }  Value = _buf["value"]; }
+            PostInit();
         }
-    
+
         public static IntKeyData DeserializeIntKeyData(JSONNode _buf)
         {
             return new ai.IntKeyData(_buf);
         }
-    
+
         public readonly int Value;
-       
         public const int __ID__ = -342751904;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "value:" + Value + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

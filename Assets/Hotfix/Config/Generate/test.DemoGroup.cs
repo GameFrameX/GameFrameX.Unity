@@ -8,45 +8,44 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class DemoGroup : LuBan.Runtime.BeanBase
     {
-        public DemoGroup(JSONNode _buf) 
+        public DemoGroup(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["x1"].IsNumber) { throw new SerializationException(); }  X1 = _buf["x1"]; }
             X1_Ref = null;
             { if(!_buf["x4"].IsNumber) { throw new SerializationException(); }  X4 = _buf["x4"]; }
             { if(!_buf["x5"].IsObject) { throw new SerializationException(); }  X5 = test.InnerGroup.DeserializeInnerGroup(_buf["x5"]);  }
+            PostInit();
         }
-    
+
         public static DemoGroup DeserializeDemoGroup(JSONNode _buf)
         {
             return new test.DemoGroup(_buf);
         }
-    
+
         public readonly int Id;
         public readonly int X1;
-        public test.DemoGroup X1_Ref;
+        public test.DemoGroup X1_Ref { private set; get; }
         public readonly int X4;
         public readonly test.InnerGroup X5;
-       
         public const int __ID__ = -379263008;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
-            X1_Ref = tables.TbDemoGroupC.GetOrDefault(X1);
+            X1_Ref = tables.TbDemoGroupC.Get(X1);
             
             X5?.ResolveRef(tables);
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -56,6 +55,7 @@ namespace cfg.test
             + "x5:" + X5 + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

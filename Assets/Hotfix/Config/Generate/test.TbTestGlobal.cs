@@ -8,31 +8,41 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbTestGlobal
+    public partial class TbTestGlobal : BaseDataTable<test.TestGlobal>
     {
     
-         private readonly test.TestGlobal _data;
+        private test.TestGlobal _data;
+        public test.TestGlobal Data => _data;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbTestGlobal(JSONNode _buf)
+        public TbTestGlobal(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            int n = _buf.Count;
-            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
-            { if(!_buf[0].IsObject) { throw new SerializationException(); }  _data = test.TestGlobal.DeserializeTestGlobal(_buf[0]);  }
+            _loadFunc = loadFunc;
         }
     
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            int n = _json.Count;
+            if (n != 1) throw new SerializationException("table mode=one, but size != 1");
+            { if(!_json[0].IsObject) { throw new SerializationException(); }  _data = test.TestGlobal.DeserializeTestGlobal(_json[0]);  }
+        }
     
-         public int UnlockEquip => _data.UnlockEquip;
-         public int UnlockHero => _data.UnlockHero;
-        
-        public void ResolveRef(Tables tables)
+        public int UnlockEquip => _data.UnlockEquip;
+        public int UnlockHero => _data.UnlockHero;
+    
+        public void ResolveRef(TablesComponent tables)
         {
             _data.ResolveRef(tables);
         }
+    
+        partial void PostInit();
     }
-
 }
+

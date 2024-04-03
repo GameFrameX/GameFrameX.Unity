@@ -8,38 +8,37 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UeWait : ai.Task
     {
-        public UeWait(JSONNode _buf)  : base(_buf) 
+        public UeWait(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["wait_time"].IsNumber) { throw new SerializationException(); }  WaitTime = _buf["wait_time"]; }
             { if(!_buf["random_deviation"].IsNumber) { throw new SerializationException(); }  RandomDeviation = _buf["random_deviation"]; }
+            PostInit();
         }
-    
+
         public static UeWait DeserializeUeWait(JSONNode _buf)
         {
             return new ai.UeWait(_buf);
         }
-    
+
         public readonly float WaitTime;
         public readonly float RandomDeviation;
-       
         public const int __ID__ = -512994101;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -52,6 +51,7 @@ namespace cfg.ai
             + "randomDeviation:" + RandomDeviation + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

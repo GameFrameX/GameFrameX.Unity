@@ -8,37 +8,36 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class TestBeRef : LuBan.Runtime.BeanBase
     {
-        public TestBeRef(JSONNode _buf) 
+        public TestBeRef(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["count"].IsNumber) { throw new SerializationException(); }  Count = _buf["count"]; }
+            PostInit();
         }
-    
+
         public static TestBeRef DeserializeTestBeRef(JSONNode _buf)
         {
             return new test.TestBeRef(_buf);
         }
-    
+
         public readonly int Id;
         public readonly int Count;
-       
         public const int __ID__ = 1934403938;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.test
             + "count:" + Count + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

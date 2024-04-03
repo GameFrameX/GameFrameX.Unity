@@ -8,37 +8,36 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class NotIndexList : LuBan.Runtime.BeanBase
     {
-        public NotIndexList(JSONNode _buf) 
+        public NotIndexList(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsNumber) { throw new SerializationException(); }  Y = _buf["y"]; }
+            PostInit();
         }
-    
+
         public static NotIndexList DeserializeNotIndexList(JSONNode _buf)
         {
             return new test.NotIndexList(_buf);
         }
-    
+
         public readonly int X;
         public readonly int Y;
-       
         public const int __ID__ = -50446599;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -46,6 +45,7 @@ namespace cfg.test
             + "y:" + Y + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

@@ -8,66 +8,50 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbTestRef
+    public partial class TbTestRef : BaseDataTable<test.TestRef>
     {
-        private readonly System.Collections.Generic.Dictionary<int, test.TestRef> _dataMap;
-        private readonly System.Collections.Generic.List<test.TestRef> _dataList;
-        
-        public TbTestRef(JSONNode jsonNode)
+        //private readonly System.Collections.Generic.Dictionary<int, test.TestRef> _dataMap;
+        //private readonly System.Collections.Generic.List<test.TestRef> _dataList;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;        
+        public TbTestRef(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataMap = new System.Collections.Generic.Dictionary<int, test.TestRef>();
-            _dataList = new System.Collections.Generic.List<test.TestRef>();
-            
-            foreach(JSONNode vNode in jsonNode.Children)
+            _loadFunc = loadFunc;
+            //_dataMap = new System.Collections.Generic.Dictionary<int, test.TestRef>();
+            //_dataList = new System.Collections.Generic.List<test.TestRef>();
+        }
+    
+        public override async System.Threading.Tasks.Task LoadAsync()
+        {
+            JSONNode _json = await _loadFunc();
+            //_dataMap.Clear();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
             {
-                test.TestRef deserializeItem;
-                { if(!vNode.IsObject) { throw new SerializationException(); }  deserializeItem = test.TestRef.DeserializeTestRef(vNode);  }
-                _dataList.Add(deserializeItem);
-                _dataMap.Add(deserializeItem.Id, deserializeItem);
+                test.TestRef _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = test.TestRef.DeserializeTestRef(_ele);  }
+                DataList.Add(_v);                
+                LongDataMaps.Add(_v.Id, _v);
+                StringDataMaps.Add(_v.Id.ToString(), _v);
             }
+            PostInit();
         }
     
-        public System.Collections.Generic.Dictionary<int, test.TestRef> DataMap 
+        public void ResolveRef(TablesComponent tables)
         {
-            get { return _dataMap; }
-        }
-
-        public System.Collections.Generic.List<test.TestRef> DataList 
-        {
-            get { return _dataList; }
-        }
-    
-        public test.TestRef GetOrDefault(int key) 
-        {  
-            return _dataMap.TryGetValue(key, out var v) ? v : null;
-        }
-        
-        public test.TestRef Get(int key) 
-        { 
-            return _dataMap[key];
-        }
-        
-        public test.TestRef this[int key] 
-        {
-            get
-            {
-                return _dataMap[key];
-            }
-        }
-    
-        public void ResolveRef(Tables tables)
-        {
-            foreach(var value in _dataList)
+            foreach(var value in DataList)
             {
                 value.ResolveRef(tables);
             }
         }
-        
+    
+    
+        partial void PostInit();
     }
-
 }
+

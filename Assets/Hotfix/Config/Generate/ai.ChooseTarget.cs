@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class ChooseTarget : ai.Service
     {
-        public ChooseTarget(JSONNode _buf)  : base(_buf) 
+        public ChooseTarget(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["result_target_key"].IsString) { throw new SerializationException(); }  ResultTargetKey = _buf["result_target_key"]; }
+            PostInit();
         }
-    
+
         public static ChooseTarget DeserializeChooseTarget(JSONNode _buf)
         {
             return new ai.ChooseTarget(_buf);
         }
-    
+
         public readonly string ResultTargetKey;
-       
         public const int __ID__ = 1601247918;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.ai
             + "resultTargetKey:" + ResultTargetKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

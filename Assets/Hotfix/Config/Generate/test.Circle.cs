@@ -8,47 +8,47 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
     /// <summary>
     /// 圆
     /// </summary>
-    
     public sealed partial class Circle : Shape
     {
-        public Circle(JSONNode _buf)  : base(_buf) 
+        public Circle(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["radius"].IsNumber) { throw new SerializationException(); }  Radius = _buf["radius"]; }
+            PostInit();
         }
-    
+
         public static Circle DeserializeCircle(JSONNode _buf)
         {
             return new test.Circle(_buf);
         }
-    
+
         /// <summary>
         /// 半径
         /// </summary>
         public readonly float Radius;
-       
         public const int __ID__ = 2131829196;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
             + "radius:" + Radius + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

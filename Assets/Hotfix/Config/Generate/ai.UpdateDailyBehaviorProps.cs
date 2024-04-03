@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class UpdateDailyBehaviorProps : ai.Service
     {
-        public UpdateDailyBehaviorProps(JSONNode _buf)  : base(_buf) 
+        public UpdateDailyBehaviorProps(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["satiety_key"].IsString) { throw new SerializationException(); }  SatietyKey = _buf["satiety_key"]; }
             { if(!_buf["energy_key"].IsString) { throw new SerializationException(); }  EnergyKey = _buf["energy_key"]; }
@@ -27,13 +26,14 @@ namespace cfg.ai
             { if(!_buf["energy_upper_threshold_key"].IsString) { throw new SerializationException(); }  EnergyUpperThresholdKey = _buf["energy_upper_threshold_key"]; }
             { if(!_buf["mood_lower_threshold_key"].IsString) { throw new SerializationException(); }  MoodLowerThresholdKey = _buf["mood_lower_threshold_key"]; }
             { if(!_buf["mood_upper_threshold_key"].IsString) { throw new SerializationException(); }  MoodUpperThresholdKey = _buf["mood_upper_threshold_key"]; }
+            PostInit();
         }
-    
+
         public static UpdateDailyBehaviorProps DeserializeUpdateDailyBehaviorProps(JSONNode _buf)
         {
             return new ai.UpdateDailyBehaviorProps(_buf);
         }
-    
+
         public readonly string SatietyKey;
         public readonly string EnergyKey;
         public readonly string MoodKey;
@@ -43,11 +43,10 @@ namespace cfg.ai
         public readonly string EnergyUpperThresholdKey;
         public readonly string MoodLowerThresholdKey;
         public readonly string MoodUpperThresholdKey;
-       
         public const int __ID__ = -61887372;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
@@ -60,7 +59,7 @@ namespace cfg.ai
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -77,6 +76,7 @@ namespace cfg.ai
             + "moodUpperThresholdKey:" + MoodUpperThresholdKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

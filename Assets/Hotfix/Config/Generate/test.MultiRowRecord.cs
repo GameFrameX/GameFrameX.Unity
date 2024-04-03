@@ -8,15 +8,14 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    
     public sealed partial class MultiRowRecord : LuBan.Runtime.BeanBase
     {
-        public MultiRowRecord(JSONNode _buf) 
+        public MultiRowRecord(JSONNode _buf)
         {
             { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
             { if(!_buf["name"].IsString) { throw new SerializationException(); }  Name = _buf["name"]; }
@@ -27,13 +26,14 @@ namespace cfg.test
             { var __json0 = _buf["multi_rows5"]; if(!__json0.IsArray) { throw new SerializationException(); } MultiRows5 = new System.Collections.Generic.List<test.MultiRowType3>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { test.MultiRowType3 __v0;  { if(!__e0.IsObject) { throw new SerializationException(); }  __v0 = test.MultiRowType3.DeserializeMultiRowType3(__e0);  }  MultiRows5.Add(__v0); }   }
             { var __json0 = _buf["multi_rows6"]; if(!__json0.IsArray) { throw new SerializationException(); } MultiRows6 = new System.Collections.Generic.Dictionary<int, test.MultiRowType2>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int _k0;  { if(!__e0[0].IsNumber) { throw new SerializationException(); }  _k0 = __e0[0]; } test.MultiRowType2 _v0;  { if(!__e0[1].IsObject) { throw new SerializationException(); }  _v0 = test.MultiRowType2.DeserializeMultiRowType2(__e0[1]);  }  MultiRows6.Add(_k0, _v0); }   }
             { var __json0 = _buf["multi_rows7"]; if(!__json0.IsArray) { throw new SerializationException(); } MultiRows7 = new System.Collections.Generic.Dictionary<int, int>(__json0.Count); foreach(JSONNode __e0 in __json0.Children) { int _k0;  { if(!__e0[0].IsNumber) { throw new SerializationException(); }  _k0 = __e0[0]; } int _v0;  { if(!__e0[1].IsNumber) { throw new SerializationException(); }  _v0 = __e0[1]; }  MultiRows7.Add(_k0, _v0); }   }
+            PostInit();
         }
-    
+
         public static MultiRowRecord DeserializeMultiRowRecord(JSONNode _buf)
         {
             return new test.MultiRowRecord(_buf);
         }
-    
+
         public readonly int Id;
         public readonly string Name;
         public readonly System.Collections.Generic.List<test.MultiRowType1> OneRows;
@@ -43,11 +43,10 @@ namespace cfg.test
         public readonly System.Collections.Generic.List<test.MultiRowType3> MultiRows5;
         public readonly System.Collections.Generic.Dictionary<int, test.MultiRowType2> MultiRows6;
         public readonly System.Collections.Generic.Dictionary<int, int> MultiRows7;
-       
         public const int __ID__ = -501249394;
         public override int GetTypeId() => __ID__;
-    
-        public  void ResolveRef(Tables tables)
+
+        public  void ResolveRef(TablesComponent tables)
         {
             
             
@@ -59,7 +58,7 @@ namespace cfg.test
             foreach (var _e in MultiRows6.Values) { _e?.ResolveRef(tables); }
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -74,6 +73,7 @@ namespace cfg.test
             + "multiRows7:" + StringUtil.CollectionToString(MultiRows7) + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

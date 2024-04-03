@@ -8,41 +8,40 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class IsAtLocation : ai.Decorator
     {
-        public IsAtLocation(JSONNode _buf)  : base(_buf) 
+        public IsAtLocation(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["acceptable_radius"].IsNumber) { throw new SerializationException(); }  AcceptableRadius = _buf["acceptable_radius"]; }
             { if(!_buf["keyboard_key"].IsString) { throw new SerializationException(); }  KeyboardKey = _buf["keyboard_key"]; }
             { if(!_buf["inverse_condition"].IsBoolean) { throw new SerializationException(); }  InverseCondition = _buf["inverse_condition"]; }
+            PostInit();
         }
-    
+
         public static IsAtLocation DeserializeIsAtLocation(JSONNode _buf)
         {
             return new ai.IsAtLocation(_buf);
         }
-    
+
         public readonly float AcceptableRadius;
         public readonly string KeyboardKey;
         public readonly bool InverseCondition;
-       
         public const int __ID__ = 1255972344;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
             
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -54,6 +53,7 @@ namespace cfg.ai
             + "inverseCondition:" + InverseCondition + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

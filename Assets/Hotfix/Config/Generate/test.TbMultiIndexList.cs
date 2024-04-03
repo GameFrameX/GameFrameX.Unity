@@ -8,53 +8,63 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
 
-namespace cfg.test
+namespace Hotfix.Config.test
 {
-    public partial class TbMultiIndexList
+    public partial class TbMultiIndexList : BaseDataTable<test.MultiIndexList>
     {
-        private readonly System.Collections.Generic.List<test.MultiIndexList> _dataList;
-    
         private System.Collections.Generic.Dictionary<int, test.MultiIndexList> _dataMap_id1;
         private System.Collections.Generic.Dictionary<long, test.MultiIndexList> _dataMap_id2;
         private System.Collections.Generic.Dictionary<string, test.MultiIndexList> _dataMap_id3;
+        private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;
     
-        public TbMultiIndexList(JSONNode _buf)
+        public TbMultiIndexList(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
-            _dataList = new System.Collections.Generic.List<test.MultiIndexList>();
-            
-            foreach(JSONNode _ele in _buf.Children)
-            {
-                test.MultiIndexList vNode;
-                { if(!_ele.IsObject) { throw new SerializationException(); }  vNode = test.MultiIndexList.DeserializeMultiIndexList(_ele);  }
-                _dataList.Add(vNode);
-            }
+            _loadFunc = loadFunc;
             _dataMap_id1 = new System.Collections.Generic.Dictionary<int, test.MultiIndexList>();
             _dataMap_id2 = new System.Collections.Generic.Dictionary<long, test.MultiIndexList>();
             _dataMap_id3 = new System.Collections.Generic.Dictionary<string, test.MultiIndexList>();
-        foreach(var _v in _dataList)
+        }
+    
+        public override async System.Threading.Tasks.Task LoadAsync()
         {
-            _dataMap_id1.Add(_v.Id1, _v);
-            _dataMap_id2.Add(_v.Id2, _v);
-            _dataMap_id3.Add(_v.Id3, _v);
-        }
+            JSONNode _json = await _loadFunc();
+            DataList.Clear();
+            foreach(JSONNode _ele in _json.Children)
+            {
+                test.MultiIndexList _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = test.MultiIndexList.DeserializeMultiIndexList(_ele);  }
+                DataList.Add(_v);
+            }
+            _dataMap_id1.Clear();
+            _dataMap_id2.Clear();
+            _dataMap_id3.Clear();
+            foreach(var _v in DataList)
+            {
+                _dataMap_id1.Add(_v.Id1, _v);
+                _dataMap_id2.Add(_v.Id2, _v);
+                _dataMap_id3.Add(_v.Id3, _v);
+            }
+            PostInit();
         }
     
-        public System.Collections.Generic.List<test.MultiIndexList> DataList => _dataList;
-    
+        public System.Collections.Generic.List<test.MultiIndexList> DataList => DataList;
         public test.MultiIndexList GetById1(int key) => _dataMap_id1.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;
         public test.MultiIndexList GetById2(long key) => _dataMap_id2.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;
         public test.MultiIndexList GetById3(string key) => _dataMap_id3.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;
-        
-        public void ResolveRef(Tables tables)
+    
+        public void ResolveRef(TablesComponent tables)
         {
-            foreach(var _v in _dataList)
+            foreach(var _v in DataList)
             {
                 _v.ResolveRef(tables);
             }
         }
+    
+        partial void PostInit();
     }
-
 }
+

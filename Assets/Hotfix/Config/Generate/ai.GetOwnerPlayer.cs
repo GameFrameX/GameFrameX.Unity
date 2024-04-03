@@ -8,35 +8,34 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
+using GameFrameX.Config;
 using SimpleJSON;
 
-
-namespace cfg.ai
+namespace Hotfix.Config.ai
 {
-    
     public sealed partial class GetOwnerPlayer : ai.Service
     {
-        public GetOwnerPlayer(JSONNode _buf)  : base(_buf) 
+        public GetOwnerPlayer(JSONNode _buf) : base(_buf) 
         {
             { if(!_buf["player_actor_key"].IsString) { throw new SerializationException(); }  PlayerActorKey = _buf["player_actor_key"]; }
+            PostInit();
         }
-    
+
         public static GetOwnerPlayer DeserializeGetOwnerPlayer(JSONNode _buf)
         {
             return new ai.GetOwnerPlayer(_buf);
         }
-    
+
         public readonly string PlayerActorKey;
-       
         public const int __ID__ = -999247644;
         public override int GetTypeId() => __ID__;
-    
-        public override void ResolveRef(Tables tables)
+
+        public override void ResolveRef(TablesComponent tables)
         {
             base.ResolveRef(tables);
             
         }
-    
+
         public override string ToString()
         {
             return "{ "
@@ -45,6 +44,7 @@ namespace cfg.ai
             + "playerActorKey:" + PlayerActorKey + ","
             + "}";
         }
-    }
 
+        partial void PostInit();
+    }
 }

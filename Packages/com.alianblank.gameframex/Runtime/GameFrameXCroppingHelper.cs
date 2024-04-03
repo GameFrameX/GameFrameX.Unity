@@ -68,6 +68,8 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.GameFrameworkLog.ILogHelper);
             _ = typeof(GameFrameX.GameFrameworkLogLevel);
             _ = typeof(GameFrameX.GameFrameworkModule);
+            _ = typeof(GameFrameX.Config.IDataTable<>);
+            _ = typeof(GameFrameX.Config.BaseDataTable<>);
             _ = typeof(GameFrameX.GameFrameworkMultiDictionary<,>);
             _ = typeof(GameFrameX.GameFrameworkMultiDictionary<,>.Enumerator);
             _ = typeof(GameFrameX.GameFrameworkSerializer<>);
@@ -140,7 +142,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.BaseComponent);
             _ = typeof(GameFrameX.Runtime.CameraHelper);
             _ = typeof(GameFrameX.Runtime.ConfigComponent);
-            _ = typeof(GameFrameX.Runtime.ConfigHelperBase);
+            // _ = typeof(GameFrameX.Runtime.ConfigHelperBase);
             _ = typeof(GameFrameX.Runtime.CoroutineComponent);
             _ = typeof(GameFrameX.Runtime.DefaultCompressionHelper);
             _ = typeof(GameFrameX.Runtime.DefaultEntityGroupHelper);

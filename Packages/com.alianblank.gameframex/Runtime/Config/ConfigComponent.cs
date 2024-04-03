@@ -18,18 +18,8 @@ namespace GameFrameX.Runtime
     [AddComponentMenu("Game Framework/Config")]
     public sealed class ConfigComponent : GameFrameworkComponent
     {
-        private const int DefaultPriority = 0;
-
         private IConfigManager m_ConfigManager = null;
         private EventComponent m_EventComponent = null;
-
-        [SerializeField] private bool m_EnableLoadConfigUpdateEvent = false;
-
-        [SerializeField] private string m_ConfigHelperTypeName = "UnityGameFramework.Runtime.DefaultConfigHelper";
-
-        [SerializeField] private ConfigHelperBase m_CustomConfigHelper = null;
-
-        [SerializeField] private int m_CachedBytesSize = 0;
 
         /// <summary>
         /// 获取全局配置项数量。
@@ -37,14 +27,6 @@ namespace GameFrameX.Runtime
         public int Count
         {
             get { return m_ConfigManager.Count; }
-        }
-
-        /// <summary>
-        /// 获取缓冲二进制流的大小。
-        /// </summary>
-        public int CachedBytesSize
-        {
-            get { return m_ConfigManager.CachedBytesSize; }
         }
 
         /// <summary>
@@ -61,13 +43,6 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            // m_ConfigManager.ReadDataSuccess += OnReadDataSuccess;
-            // m_ConfigManager.ReadDataFailure += OnReadDataFailure;
-
-            if (m_EnableLoadConfigUpdateEvent)
-            {
-                // m_ConfigManager.ReadDataUpdate += OnReadDataUpdate;
-            }
         }
 
         private void Start()
@@ -86,48 +61,22 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-
-            {
-                m_ConfigManager.SetAssetManager(GameFrameworkEntry.GetModule<IAssetManager>());
-            }
-
-            ConfigHelperBase configHelper = Helper.CreateHelper(m_ConfigHelperTypeName, m_CustomConfigHelper);
-            if (configHelper == null)
-            {
-                Log.Error("Can not create config helper.");
-                return;
-            }
-
-            configHelper.name = "Config Helper";
-            Transform transform = configHelper.transform;
-            transform.SetParent(this.transform);
-            transform.localScale = Vector3.one;
-
-            // m_ConfigManager.SetDataProviderHelper(configHelper);
-            m_ConfigManager.SetConfigHelper(configHelper);
-            if (m_CachedBytesSize > 0)
-            {
-                EnsureCachedBytesSize(m_CachedBytesSize);
-            }
         }
 
-        /// <summary>
-        /// 确保二进制流缓存分配足够大小的内存并缓存。
-        /// </summary>
-        /// <param name="ensureSize">要确保二进制流缓存分配内存的大小。</param>
-        public void EnsureCachedBytesSize(int ensureSize)
+        private System.Collections.Generic.Dictionary<string, IDataTable> m_Tables = new System.Collections.Generic.Dictionary<string, IDataTable>();
+ 
+        public System.Collections.Generic.IEnumerable<IDataTable> DataTables => m_Tables.Values;
+
+        public BaseDataTable<T> GetDataTable<T>(string tableName)
         {
-            m_ConfigManager.EnsureCachedBytesSize(ensureSize);
+            bool isExist = m_Tables.TryGetValue(tableName, out var value) ;
+            if (isExist)
+            {
+                return (BaseDataTable<T>)value;
+            }
+    
+            return default;
         }
-
-        /// <summary>
-        /// 释放缓存的二进制流。
-        /// </summary>
-        public void FreeCachedBytes()
-        {
-            m_ConfigManager.FreeCachedBytes();
-        }
-
         /*
         /// <summary>
         /// 读取全局配置。
@@ -379,5 +328,9 @@ namespace GameFrameX.Runtime
         {
             m_EventComponent.Fire(this, LoadConfigUpdateEventArgs.Create(e.DataAssetName, e.Progress, e.UserData));
         }*/
+        public void Add(string tbBlackboardName, IDataTable dataTable)
+        {
+            
+        }
     }
 }

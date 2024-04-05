@@ -36,7 +36,7 @@ namespace Hotfix.Config.test
             PostInit();
         }
     
-        public System.Collections.Generic.List<test.NotIndexList> DataList => DataList;
+        //public System.Collections.Generic.List<test.NotIndexList> DataList => DataList;
     
         public void ResolveRef(TablesComponent tables)
         {

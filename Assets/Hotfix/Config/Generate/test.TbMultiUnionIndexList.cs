@@ -43,7 +43,7 @@ namespace Hotfix.Config.test
             PostInit();
         }
     
-        public System.Collections.Generic.List<test.MultiUnionIndexList> DataList => DataList;
+        //public System.Collections.Generic.List<test.MultiUnionIndexList> DataList => DataList;
         public test.MultiUnionIndexList Get(int id1, long id2, string id3) => _dataMapUnion.TryGetValue((id1, id2, id3), out test.MultiUnionIndexList __v) ? __v : null;
     
         public void ResolveRef(TablesComponent tables)

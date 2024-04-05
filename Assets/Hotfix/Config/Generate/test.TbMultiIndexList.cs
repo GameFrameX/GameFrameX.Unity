@@ -51,7 +51,7 @@ namespace Hotfix.Config.test
             PostInit();
         }
     
-        public System.Collections.Generic.List<test.MultiIndexList> DataList => DataList;
+        //public System.Collections.Generic.List<test.MultiIndexList> DataList => DataList;
         public test.MultiIndexList GetById1(int key) => _dataMap_id1.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;
         public test.MultiIndexList GetById2(long key) => _dataMap_id2.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;
         public test.MultiIndexList GetById3(string key) => _dataMap_id3.TryGetValue(key, out test.MultiIndexList __v) ? __v : null;

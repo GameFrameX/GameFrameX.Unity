@@ -18,6 +18,8 @@
     "com.unity.nuget.newtonsoft-json": "3.0.2",
     "com.unity.ugui": "1.0.0",
     "com.xincger.litjson": "https://github.com/AlianBlank/com.xincger.litjson.git",
+    "com.alianblank.gameframex.web": "https://github.com/AlianBlank/com.alianblank.gameframex.web.git",
+    "com.alianblank.gameframex.entry": "https://github.com/AlianBlank/com.alianblank.gameframex.entry.git",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",

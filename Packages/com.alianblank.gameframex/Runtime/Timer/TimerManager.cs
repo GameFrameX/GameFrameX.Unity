@@ -41,7 +41,7 @@ namespace GameFrameX.Timer
         /// </summary>
         public static bool CatchCallbackExceptions = false;
 
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             lock (Locker)
             {
@@ -135,7 +135,7 @@ namespace GameFrameX.Timer
             }
         }
 
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             lock (Locker)
             {

@@ -324,12 +324,12 @@ namespace GameFrameX.Mono
             }
         }
 
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             QueueInvoking(this._invokeUpdateQueue, this._updateQueue);
         }
 
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             this._updateQueue.Clear();
             this._fixedUpdate.Clear();

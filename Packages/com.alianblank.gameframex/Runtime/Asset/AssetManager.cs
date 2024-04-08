@@ -500,11 +500,11 @@ namespace GameFrameX.Asset
             YooAssets.Destroy();
         }
 
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
         }
 
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             OnDestroy();
         }

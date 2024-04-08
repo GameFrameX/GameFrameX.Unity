@@ -92,7 +92,7 @@ namespace GameFrameX.Network
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var networkChannel in m_NetworkChannels)
             {
@@ -103,7 +103,7 @@ namespace GameFrameX.Network
         /// <summary>
         /// 关闭并清理网络管理器。
         /// </summary>
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             foreach (var networkChannel in m_NetworkChannels)
             {

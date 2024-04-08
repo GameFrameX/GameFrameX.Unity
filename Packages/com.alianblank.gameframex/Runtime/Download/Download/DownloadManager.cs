@@ -218,7 +218,7 @@ namespace GameFrameX.Download
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             m_TaskPool.Update(elapseSeconds, realElapseSeconds);
             m_DownloadCounter.Update(elapseSeconds, realElapseSeconds);
@@ -227,7 +227,7 @@ namespace GameFrameX.Download
         /// <summary>
         /// 关闭并清理下载管理器。
         /// </summary>
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             m_TaskPool.Shutdown();
             m_DownloadCounter.Shutdown();

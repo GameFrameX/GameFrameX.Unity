@@ -7,11 +7,11 @@ namespace GameFrameX.GameAnalytics
     /// </summary>
     public class GameAnalyticsManager : GameFrameworkModule, IGameAnalyticsManager
     {
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
         }
 
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
         }
 

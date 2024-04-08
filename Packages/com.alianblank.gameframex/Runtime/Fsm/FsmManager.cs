@@ -55,7 +55,7 @@ namespace GameFrameX.Fsm
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             m_TempFsms.Clear();
             if (m_Fsms.Count <= 0)
@@ -82,7 +82,7 @@ namespace GameFrameX.Fsm
         /// <summary>
         /// 关闭并清理有限状态机管理器。
         /// </summary>
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             foreach (KeyValuePair<TypeNamePair, FsmBase> fsm in m_Fsms)
             {

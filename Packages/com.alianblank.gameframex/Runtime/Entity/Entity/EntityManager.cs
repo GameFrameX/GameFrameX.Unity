@@ -123,7 +123,7 @@ namespace GameFrameX.Entity
         /// </summary>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        internal override void Update(float elapseSeconds, float realElapseSeconds)
+        protected internal override void Update(float elapseSeconds, float realElapseSeconds)
         {
             while (m_RecycleQueue.Count > 0)
             {
@@ -151,7 +151,7 @@ namespace GameFrameX.Entity
         /// <summary>
         /// 关闭并清理实体管理器。
         /// </summary>
-        internal override void Shutdown()
+        protected internal override void Shutdown()
         {
             m_IsShutdown = true;
             HideAllLoadedEntities();

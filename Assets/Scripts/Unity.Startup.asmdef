@@ -2,6 +2,8 @@
     "name": "Unity.Startup",
     "references": [
         "GameFrameX.Runtime",
+        "GameFrameX.Entry.Runtime",
+        "GameFrameX.Web.Runtime",
         "YooAsset.Runtime",
         "UniTask.Runtime",
         "FairyGUI.Runtime",

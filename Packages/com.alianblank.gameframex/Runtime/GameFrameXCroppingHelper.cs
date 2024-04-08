@@ -9,7 +9,6 @@ namespace GameFrameX.Runtime
         {
             _ = typeof(BinaryExtension);
             _ = typeof(BufferExtension);
-            _ = typeof(GameApp);
             _ = typeof(GameFrameX.Asset.AssetManager);
             _ = typeof(GameFrameX.Asset.Constant);
             _ = typeof(GameFrameX.Asset.IAssetManager);
@@ -250,7 +249,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.VarVector2);
             _ = typeof(GameFrameX.Runtime.VarVector3);
             _ = typeof(GameFrameX.Runtime.VarVector4);
-            _ = typeof(GameFrameX.Runtime.WebComponent);
             _ = typeof(GameFrameX.Runtime.ZipHelper);
             _ = typeof(GameFrameX.Scene.ActiveSceneChangedEventArgs);
             _ = typeof(GameFrameX.Scene.GameSceneManager);
@@ -332,8 +330,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Variable<>);
             _ = typeof(GameFrameX.Version);
             _ = typeof(GameFrameX.Version.IVersionHelper);
-            _ = typeof(GameFrameX.Web.IWebManager);
-            _ = typeof(GameFrameX.Web.WebManager);
             _ = typeof(GameMain.DefaultNetworkChannelHelper);
             _ = typeof(Server.Utility.ThreadLocalRandom);
             _ = typeof(SpanExtension);

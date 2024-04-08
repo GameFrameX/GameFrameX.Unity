@@ -2,6 +2,7 @@
     "name": "Unity.HotFix",
     "references": [
         "GameFrameX.Runtime",
+        "GameFrameX.Entry.Runtime",
         "BestHTTP",
         "Animancer",
         "BlankGetChannel.Runtime",

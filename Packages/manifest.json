@@ -15,7 +15,6 @@
     "com.google.protobuf": "https://github.com/AlianBlank/com.google.protobuf.git",
     "com.gwiazdorrr.betterstreamingassets": "https://github.com/AlianBlank/com.gwiazdorrr.betterstreamingassets.git",
     "com.json.simplejson": "https://github.com/AlianBlank/com.json.simplejson.git",
-    "com.sharelib.logviewer": "https://github.com/AlianBlank/com.sharelib.logviewer.git",
     "com.tuyoogame.yooasset": "https://github.com/AlianBlank/com.tuyoogame.yooasset.git",
     "com.unity.ide.rider": "3.0.28",
     "com.unity.nuget.newtonsoft-json": "3.0.2",

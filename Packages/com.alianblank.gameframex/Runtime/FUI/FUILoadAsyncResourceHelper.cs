@@ -8,7 +8,8 @@ namespace GameFrameX.Runtime
     {
         public async void LoadResource(string assetName, Action<bool, object> action)
         {
-            var textAsset = await GameApp.Asset.LoadAssetAsync<TextAsset>(assetName);
+           var assetComponent= GameEntry.GetComponent<AssetComponent>();
+            var textAsset = await assetComponent.LoadAssetAsync<TextAsset>(assetName);
             Log.Info(assetName);
             action.Invoke(textAsset != null && textAsset.AssetObject != null, textAsset?.GetAssetObject<TextAsset>());
         }

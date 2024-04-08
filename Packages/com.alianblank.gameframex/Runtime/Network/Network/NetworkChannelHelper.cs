@@ -22,6 +22,23 @@ namespace GameMain
             _netChannel = null;
         }
 
+        /// <summary>
+        /// 获取事件组件。
+        /// </summary>
+        public EventComponent Event
+        {
+            get
+            {
+                if (_event == null)
+                {
+                    _event = GameEntry.GetComponent<EventComponent>();
+                }
+
+                return _event;
+            }
+        }
+
+        private static EventComponent _event;
 
         public void Initialize(INetworkChannel netChannel)
         {
@@ -73,21 +90,20 @@ namespace GameMain
                     _netChannel.RegisterHandler(packetHandler);
                 }
             }
-
-            GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetConnected);
-            GameApp.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetClosed);
-            GameApp.Event.Subscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetMissHeartBeat);
-            GameApp.Event.Subscribe(NetworkErrorEventArgs.EventId, OnNetError);
-            GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetCustomError);
+            Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetConnected);
+            Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetClosed);
+            Event.Subscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetMissHeartBeat);
+            Event.Subscribe(NetworkErrorEventArgs.EventId, OnNetError);
+            Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetCustomError);
         }
 
         public void Shutdown()
         {
-            GameApp.Event.Unsubscribe(NetworkConnectedEventArgs.EventId, OnNetConnected);
-            GameApp.Event.Unsubscribe(NetworkClosedEventArgs.EventId, OnNetClosed);
-            GameApp.Event.Unsubscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetMissHeartBeat);
-            GameApp.Event.Unsubscribe(NetworkErrorEventArgs.EventId, OnNetError);
-            GameApp.Event.Unsubscribe(NetworkConnectedEventArgs.EventId, OnNetCustomError);
+            Event.Unsubscribe(NetworkConnectedEventArgs.EventId, OnNetConnected);
+            Event.Unsubscribe(NetworkClosedEventArgs.EventId, OnNetClosed);
+            Event.Unsubscribe(NetworkMissHeartBeatEventArgs.EventId, OnNetMissHeartBeat);
+            Event.Unsubscribe(NetworkErrorEventArgs.EventId, OnNetError);
+            Event.Unsubscribe(NetworkConnectedEventArgs.EventId, OnNetCustomError);
             _netChannel = null;
         }
 
@@ -136,7 +152,7 @@ namespace GameMain
         {
             GameFrameworkGuard.NotNull(source, nameof(source));
 
-            return _netChannel.PacketReceiveBodyHandler.Handler(source,messageId, out messageObject);
+            return _netChannel.PacketReceiveBodyHandler.Handler(source, messageId, out messageObject);
         }
 
         public void Clear()

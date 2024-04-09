@@ -78,10 +78,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Localization.LoadDictionarySuccessEventArgs);
             _ = typeof(GameFrameX.Localization.LoadDictionaryUpdateEventArgs);
             _ = typeof(GameFrameX.Localization.LocalizationManager);
-            _ = typeof(GameFrameX.Mono.IMonoManager);
-            _ = typeof(GameFrameX.Mono.MonoManager);
-            _ = typeof(GameFrameX.Mono.OnApplicationFocusChangedEventArgs);
-            _ = typeof(GameFrameX.Mono.OnApplicationPauseChangedEventArgs);
+
             _ = typeof(GameFrameX.Network.AddressFamily);
             _ = typeof(GameFrameX.Network.DefaultPacketReceiveBodyHandler);
             _ = typeof(GameFrameX.Network.DefaultPacketReceiveHeaderHandler);
@@ -175,7 +172,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.Log);
             _ = typeof(GameFrameX.Runtime.LuaComponent);
             _ = typeof(GameFrameX.Runtime.MathHelper);
-            _ = typeof(GameFrameX.Runtime.MonoComponent);
+
             _ = typeof(GameFrameX.Runtime.NetworkComponent);
             _ = typeof(GameFrameX.Runtime.NetworkHelper);
             _ = typeof(GameFrameX.Runtime.NewtonsoftJsonHelper);

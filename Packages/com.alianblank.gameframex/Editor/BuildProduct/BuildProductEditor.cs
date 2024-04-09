@@ -7,13 +7,25 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Unity.Editor
+namespace GameFrameX.Editor
 {
     /// <summary>
     ///  导出和发布产品
     /// </summary>
     public static class BuildProductEditor
     {
+        /// <summary>
+        /// 发布 当前激活的平台
+        /// </summary>
+        [MenuItem("Tools/Build/Active Build Target", false, 20)]
+        private static void BuildPlayerToActiveBuildTarget()
+        {
+            PlayerSettings.SplashScreen.show = false;
+            UpdateBuildTime();
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            Debug.LogError("发布目录:" + BuildOutputPath());
+        }
+
         /// <summary>
         /// 发布 WebGL
         /// </summary>
@@ -70,11 +82,7 @@ namespace Unity.Editor
             }
 
             string aabFileName = Application.version + "-" + PlayerSettings.Android.bundleVersionCode + ".aab";
-
-            // var aabFilePath = EditorUtility.SaveFilePanel("Create Android App Bundle", null, null, "aab");
-            var aabFilePath =
-                aabSavePath + "/" +
-                aabFileName; // EditorUtility.SaveFilePanel("Create Android App Bundle", null, null, "aab");
+            var aabFilePath = aabSavePath + "/" + aabFileName;
             if (string.IsNullOrEmpty(aabFilePath))
             {
                 Debug.LogError("输出路径异常,取消打包AAB");
@@ -301,7 +309,7 @@ namespace Unity.Editor
 
         static BuildProductEditor()
         {
-            _buildTime = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            UpdateBuildTime();
         }
 
         /// <summary>

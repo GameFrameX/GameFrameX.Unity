@@ -140,9 +140,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.DefaultEntityHelper);
             _ = typeof(GameFrameX.Runtime.DefaultLocalizationHelper);
             _ = typeof(GameFrameX.Runtime.DefaultLogHelper);
-            _ = typeof(GameFrameX.Runtime.DefaultSetting);
-            _ = typeof(GameFrameX.Runtime.DefaultSettingHelper);
-            _ = typeof(GameFrameX.Runtime.DefaultSettingSerializer);
+
             _ = typeof(GameFrameX.Runtime.DefaultSoundAgentHelper);
             _ = typeof(GameFrameX.Runtime.DefaultSoundGroupHelper);
             _ = typeof(GameFrameX.Runtime.DefaultSoundHelper);
@@ -184,7 +182,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.ObjectHelper);
             _ = typeof(GameFrameX.Runtime.ObjectPoolComponent);
             _ = typeof(GameFrameX.Runtime.PathHelper);
-            _ = typeof(GameFrameX.Runtime.PlayerPrefsSettingHelper);
             _ = typeof(GameFrameX.Runtime.PlaySoundInfo);
             _ = typeof(GameFrameX.Runtime.PositionHelper);
             _ = typeof(GameFrameX.Runtime.RandomHelper);
@@ -193,8 +190,8 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.SceneComponent);
             _ = typeof(GameFrameX.Runtime.SequenceReader<>);
             _ = typeof(GameFrameX.Runtime.SequenceReaderExtensions);
-            _ = typeof(GameFrameX.Runtime.SettingComponent);
-            _ = typeof(GameFrameX.Runtime.SettingHelperBase);
+            
+
             _ = typeof(GameFrameX.Runtime.ShowEntityInfo);
             _ = typeof(GameFrameX.Runtime.ShutdownType);
             _ = typeof(GameFrameX.Runtime.SoundAgentHelperBase);
@@ -243,9 +240,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Scene.LoadSceneUpdateEventArgs);
             _ = typeof(GameFrameX.Scene.UnloadSceneFailureEventArgs);
             _ = typeof(GameFrameX.Scene.UnloadSceneSuccessEventArgs);
-            _ = typeof(GameFrameX.Setting.ISettingHelper);
-            _ = typeof(GameFrameX.Setting.ISettingManager);
-            _ = typeof(GameFrameX.Setting.SettingManager);
+
             _ = typeof(GameFrameX.Sound.Constant);
             _ = typeof(GameFrameX.Sound.ISoundAgent);
             _ = typeof(GameFrameX.Sound.ISoundAgentHelper);

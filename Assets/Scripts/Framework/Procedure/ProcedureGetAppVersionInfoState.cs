@@ -2,7 +2,10 @@ using System;
 using Cysharp.Threading.Tasks;
 using Game.Model;
 using GameFrameX.Fsm;
+using GameFrameX.Fsm.Runtime;
+using GameFrameX.GlobalConfig.Runtime;
 using GameFrameX.Localization;
+using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
@@ -47,9 +50,9 @@ namespace GameFrameX.Procedure
                 }
                 else
                 {
-                    ResponseGameAppVersion responseGameAppVersion = Utility.Json.ToObject<ResponseGameAppVersion>(httpJsonResult.Data);
+                    var gameAppVersion = Utility.Json.ToObject<ResponseGameAppVersion>(httpJsonResult.Data);
 
-                    if (responseGameAppVersion.IsUpgrade)
+                    if (gameAppVersion.IsUpgrade)
                     {
                         var uiLoadingMainScene = GameApp.UI.Get<UILauncher>(UILauncher.UIResName);
                         uiLoadingMainScene.m_IsUpgrade.SetSelectedIndex(1);
@@ -58,13 +61,13 @@ namespace GameFrameX.Procedure
                                          GameApp.Localization.SystemLanguage == Language.ChineseTraditional;
 
                         uiLoadingMainScene.m_upgrade.m_EnterButton.title = isChinese ? "确认" : "Enter";
-                        uiLoadingMainScene.m_upgrade.m_TextContent.title = responseGameAppVersion.UpdateAnnouncement;
+                        uiLoadingMainScene.m_upgrade.m_TextContent.title = gameAppVersion.UpdateAnnouncement;
                         uiLoadingMainScene.m_upgrade.m_TextContent.onClickLink.Set((context => { Application.OpenURL(context.data.ToString()); }));
                         uiLoadingMainScene.m_upgrade.m_EnterButton.onClick.Set(() =>
                         {
-                            if (responseGameAppVersion.IsForce)
+                            if (gameAppVersion.IsForce)
                             {
-                                Application.OpenURL(responseGameAppVersion.AppDownloadUrl);
+                                Application.OpenURL(gameAppVersion.AppDownloadUrl);
                             }
                             else
                             {

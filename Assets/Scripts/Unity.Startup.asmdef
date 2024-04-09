@@ -4,12 +4,15 @@
         "GameFrameX.Runtime",
         "GameFrameX.Entry.Runtime",
         "GameFrameX.Web.Runtime",
+        "GameFrameX.GlobalConfig.Runtime",
         "YooAsset.Runtime",
         "UniTask.Runtime",
         "FairyGUI.Runtime",
         "BlankGetChannel.Runtime",
         "LuBan.Runtime",
-        "HybridCLR.Runtime"
+        "HybridCLR.Runtime",
+        "GameFrameX.Procedure.Runtime",
+        "GameFrameX.FSM.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

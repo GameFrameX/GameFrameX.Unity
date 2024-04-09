@@ -16,7 +16,7 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 类型相关的实用函数。
     /// </summary>
-    internal static class Type
+    public static class Type
     {
         private static readonly string[] RuntimeAssemblyNames = Utility.Assembly.GetAssemblies().Where(m => !m.FullName.Contains("Editor")).Select(m => m.FullName).ToArray();
 
@@ -61,7 +61,7 @@ namespace GameFrameX.Editor
         /// </summary>
         /// <param name="typeBase">基类类型。</param>
         /// <returns>指定基类的所有子类的名称。</returns>
-        internal static string[] GetRuntimeTypeNames(System.Type typeBase)
+        public static string[] GetRuntimeTypeNames(System.Type typeBase)
         {
             return GetTypeNames(typeBase, RuntimeAssemblyNames);
         }

@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace GameFrameX.Editor
 {
-    internal sealed class HelperInfo<T> where T : MonoBehaviour
+    public sealed class HelperInfo<T> where T : MonoBehaviour
     {
         private const string CustomOptionName = "<Custom>";
 

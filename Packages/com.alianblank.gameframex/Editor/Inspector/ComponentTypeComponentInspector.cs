@@ -36,15 +36,18 @@ namespace GameFrameX.Editor
             RefreshTypeNames();
         }
 
+        protected virtual void Enable()
+        {
+        }
+
         private void OnEnable()
         {
             ComponentType = serializedObject.FindProperty("m_ComponentType");
+            Enable();
             RefreshTypeNames();
         }
 
-        protected virtual void RefreshTypeNames()
-        {
-        }
+        protected abstract void RefreshTypeNames();
 
         protected void RefreshComponentTypeNames(System.Type type)
         {

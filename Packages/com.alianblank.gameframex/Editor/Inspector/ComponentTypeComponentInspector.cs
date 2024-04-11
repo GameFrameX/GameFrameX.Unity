@@ -42,7 +42,7 @@ namespace GameFrameX.Editor
 
         private void OnEnable()
         {
-            ComponentType = serializedObject.FindProperty("m_ComponentType");
+            ComponentType = serializedObject.FindProperty("componentType");
             Enable();
             RefreshTypeNames();
         }

@@ -23,7 +23,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 实现类的类型
         /// </summary>
-        protected Type ComponentType = null;
+        protected Type ImplementationComponentType = null;
 
         /// <summary>
         /// 接口类的类型
@@ -33,7 +33,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 游戏框架组件类型。
         /// </summary>
-        [SerializeField] protected string m_ComponentType = string.Empty;
+        [SerializeField] protected string componentType = string.Empty;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -43,9 +43,9 @@ namespace GameFrameX.Runtime
             GameEntry.RegisterComponent(this);
             if (IsAutoRegister)
             {
-                GameFrameworkGuard.NotNull(ComponentType, nameof(ComponentType));
+                GameFrameworkGuard.NotNull(ImplementationComponentType, nameof(ImplementationComponentType));
                 GameFrameworkGuard.NotNull(InterfaceComponentType, nameof(InterfaceComponentType));
-                GameFrameworkEntry.RegisterModule(InterfaceComponentType, ComponentType);
+                GameFrameworkEntry.RegisterModule(InterfaceComponentType, ImplementationComponentType);
             }
         }
     }

@@ -121,6 +121,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &424060888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6617770339996689301, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681186149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &424060890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424060888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccaedadefd0fbf498241670caa387e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsAutoRegister>k__BackingField: 1
+  componentType: GameFrameX.Scene.Runtime.GameSceneManager
+  m_EventComponent: {fileID: 0}
+  m_MainCamera: {fileID: 0}
+  m_GameFrameworkScene:
+    m_Handle: 0
+  m_EnableLoadSceneUpdateEvent: 1
+  m_EnableLoadSceneDependencyAssetEvent: 1
+--- !u!1 &912172260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6654285581028304943, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681186149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &912172262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912172260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5fa5f9376d4c2abee7a298edbfbd19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsAutoRegister>k__BackingField: 1
+  componentType: GameFrameX.Setting.Runtime.SettingManager
+  m_SettingHelperTypeName: GameFrameX.Setting.Runtime.PlayerPrefsSettingHelper
+  m_CustomSettingHelper: {fileID: 0}
+--- !u!1 &1548725356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3760339351169682747, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681186149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1548725358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548725356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599f7e5d0335418eba5646612d35e59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsAutoRegister>k__BackingField: 1
+  componentType: GameFrameX.Download.Runtime.DownloadManager
+  m_EventComponent: {fileID: 0}
+  m_InstanceRoot: {fileID: 0}
+  m_DownloadAgentHelperTypeName: GameFrameX.Download.Runtime.UnityWebRequestDownloadAgentHelper
+  m_CustomDownloadAgentHelper: {fileID: 0}
+  m_DownloadAgentHelperCount: 3
+  m_Timeout: 30
+  m_FlushSize: 1048576
 --- !u!1 &1672025862
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +346,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9043005309951131940, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+        type: 3}
+      propertyPath: componentType
+      value: GameFrameX.ObjectPool.ObjectPoolManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043005309951131940, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+        type: 3}
+      propertyPath: m_ComponentType
+      value: GameFrameX.ObjectPool.ObjectPoolManager
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7423659688940893083, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
     - {fileID: 441683270, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
@@ -292,6 +377,7 @@ PrefabInstance:
     - {fileID: 8586753609161093422, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
     - {fileID: 1073750279402807986, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
     - {fileID: 242263113984104447, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
+    - {fileID: 4548407024624468656, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
 --- !u!1 &1681186150 stripped
 GameObject:
@@ -311,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0fed798a6ec49038343a42178c2c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Web.Runtime.WebManager
 --- !u!1 &1681186152 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1255945548, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
@@ -389,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060b0b82892f483b9d32a453c6c93c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Network.Runtime.NetworkManager
 --- !u!114 &1681186164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577f4666bd05453d9b779ce3050b9ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EditorLanguage: 8
+  componentType: GameFrameX.Localization.Runtime.LocalizationManager
+  m_EditorLanguage: 0
   m_EnableLoadDictionaryUpdateEvent: 0
   m_LocalizationHelperTypeName: GameFrameX.Localization.Runtime.DefaultLocalizationHelper
   m_CustomLocalizationHelper: {fileID: 0}
@@ -418,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69e41ab65d84e83a0468f1a2cc3926f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Fsm.Runtime.FsmManager
 --- !u!114 &1681186166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b9b7388f11475cac9945f61e99d78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Event.Runtime.EventManager
 --- !u!114 &1681186167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be92abf1b6aa472c9ff7ebd49bbab9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Config.Runtime.ConfigManager
 --- !u!114 &1681186169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d92535dc4a70cd4b9464b297d64036b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Asset.Runtime.AssetManager
   GamePlayMode: 0
 --- !u!114 &1681186170
 MonoBehaviour:
@@ -611,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2c46256d704814eac31d7b654a001f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: 
 --- !u!114 &1681186182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0629d4077b7454d897e6aaf169ae918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: 
 --- !u!114 &1681186183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,6 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d502b0b726ce4b0d9502214ac9dc3444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: 
 --- !u!114 &1681186184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d13b628448e4c71a78c4e51756cf98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Procedure.Runtime.ProcedureManager
   m_AvailableProcedureTypeNames:
   - GameFrameX.Procedure.ProcedureCreateDownloader
   - GameFrameX.Procedure.ProcedureDownloadWebFiles
@@ -659,3 +756,34 @@ MonoBehaviour:
   - GameFrameX.Procedure.ProcedureUpdateManifest
   - GameFrameX.Procedure.ProcedureUpdateStaticVersion
   m_EntranceProcedureTypeName: GameFrameX.Procedure.ProcedureLauncherState
+--- !u!1 &1917164021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 813768251121818790, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681186149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917164023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917164021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ee2e7720d430fbe254b2c6beb26b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsAutoRegister>k__BackingField: 1
+  componentType: GameFrameX.Sound.SoundManager
+  m_EventComponent: {fileID: 0}
+  m_AudioListener: {fileID: 0}
+  m_InstanceRoot: {fileID: 0}
+  m_AudioMixer: {fileID: 0}
+  m_SoundHelperTypeName: GameFrameX.Sound.Runtime.DefaultSoundHelper
+  m_CustomSoundHelper: {fileID: 0}
+  m_SoundGroupHelperTypeName: GameFrameX.Sound.Runtime.DefaultSoundGroupHelper
+  m_CustomSoundGroupHelper: {fileID: 0}
+  m_SoundAgentHelperTypeName: GameFrameX.Sound.Runtime.DefaultSoundAgentHelper
+  m_CustomSoundAgentHelper: {fileID: 0}
+  m_SoundGroups: []

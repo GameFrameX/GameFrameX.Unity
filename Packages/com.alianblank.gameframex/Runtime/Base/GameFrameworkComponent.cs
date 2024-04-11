@@ -16,6 +16,11 @@ namespace GameFrameX.Runtime
     public abstract class GameFrameworkComponent : MonoBehaviour
     {
         /// <summary>
+        /// 是否自动注册
+        /// </summary>
+        protected bool IsAutoRegister { get; set; } = true;
+
+        /// <summary>
         /// 实现类的类型
         /// </summary>
         protected Type ComponentType = null;
@@ -36,9 +41,12 @@ namespace GameFrameX.Runtime
         protected virtual void Awake()
         {
             GameEntry.RegisterComponent(this);
-            GameFrameworkGuard.NotNull(ComponentType, nameof(ComponentType));
-            GameFrameworkGuard.NotNull(InterfaceComponentType, nameof(InterfaceComponentType));
-            GameFrameworkEntry.RegisterModule(InterfaceComponentType, ComponentType);
+            if (IsAutoRegister)
+            {
+                GameFrameworkGuard.NotNull(ComponentType, nameof(ComponentType));
+                GameFrameworkGuard.NotNull(InterfaceComponentType, nameof(InterfaceComponentType));
+                GameFrameworkEntry.RegisterModule(InterfaceComponentType, ComponentType);
+            }
         }
     }
 }

@@ -23,7 +23,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 游戏框架所在的场景编号。
         /// </summary>
-        internal const int GameFrameworkSceneId = 0;
+        public const int GameFrameworkSceneId = 0;
 
         /// <summary>
         /// 获取游戏框架组件。

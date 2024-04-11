@@ -11,7 +11,7 @@ namespace GameFrameX
     /// 任务代理接口。
     /// </summary>
     /// <typeparam name="T">任务类型。</typeparam>
-    internal interface ITaskAgent<T> where T : TaskBase
+    public interface ITaskAgent<T> where T : TaskBase
     {
         /// <summary>
         /// 获取任务。

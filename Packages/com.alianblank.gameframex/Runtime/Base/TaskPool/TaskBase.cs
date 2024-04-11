@@ -10,7 +10,7 @@ namespace GameFrameX
     /// <summary>
     /// 任务基类。
     /// </summary>
-    internal abstract class TaskBase : IReference
+    public abstract class TaskBase : IReference
     {
         /// <summary>
         /// 任务默认优先级。
@@ -113,7 +113,7 @@ namespace GameFrameX
         /// <param name="tag">任务的标签。</param>
         /// <param name="priority">任务的优先级。</param>
         /// <param name="userData">任务的用户自定义数据。</param>
-        internal void Initialize(int serialId, string tag, int priority, object userData)
+        public void Initialize(int serialId, string tag, int priority, object userData)
         {
             m_SerialId = serialId;
             m_Tag = tag;

@@ -96,7 +96,7 @@
     {
       "name": "com.alianblank.unitywebsocket",
       "expression": "",
-      "define": "ENABLE_UNITYWEBSOCKET"
+      "define": "ENABLE_GAME_FRAME_X_WEB_SOCKET"
     },
     {
       "name": "com.alianblank.blankoperationclipboard",

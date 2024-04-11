@@ -1,11 +1,4 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using UnityEditor;
+﻿using UnityEditor;
 
 namespace GameFrameX.Editor
 {
@@ -14,6 +7,7 @@ namespace GameFrameX.Editor
     /// </summary>
     public abstract class GameFrameworkInspector : UnityEditor.Editor
     {
+        protected const string NoneOptionName = "<None>";
         private bool m_IsCompiling = false;
 
         /// <summary>

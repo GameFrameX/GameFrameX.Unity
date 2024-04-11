@@ -35,9 +35,9 @@ namespace GameFrameX.Runtime
         /// </summary>
         protected override void Awake()
         {
+            ComponentType = Type.GetType(m_ComponentType);
+            InterfaceComponentType = typeof(IObjectPoolManager);
             base.Awake();
-            new ObjectPoolManager();
-            // GameFrameworkEntry.GetModule(typeof(ObjectPoolManager));
             m_ObjectPoolManager = GameFrameworkEntry.GetModule<IObjectPoolManager>();
             if (m_ObjectPoolManager == null)
             {

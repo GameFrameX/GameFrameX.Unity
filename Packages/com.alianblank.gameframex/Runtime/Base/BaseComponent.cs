@@ -5,7 +5,6 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrameX.Localization;
 using System;
 using UnityEngine;
 
@@ -23,8 +22,6 @@ namespace GameFrameX.Runtime
         private float m_GameSpeedBeforePause = 1f;
 
         // [SerializeField] private bool m_EditorResourceMode = true;
-
-        [SerializeField] private Language m_EditorLanguage = Language.Unspecified;
 
         [SerializeField] private string m_TextHelperTypeName = "UnityGameFramework.Runtime.DefaultTextHelper";
 
@@ -52,15 +49,6 @@ namespace GameFrameX.Runtime
         //     get { return m_EditorResourceMode; }
         //     set { m_EditorResourceMode = value; }
         // }
-
-        /// <summary>
-        /// 获取或设置编辑器语言（仅编辑器内有效）。
-        /// </summary>
-        public Language EditorLanguage
-        {
-            get { return m_EditorLanguage; }
-            set { m_EditorLanguage = value; }
-        }
 
         /*/// <summary>
         /// 获取或设置编辑器资源辅助器。
@@ -366,11 +354,11 @@ namespace GameFrameX.Runtime
                 objectPoolComponent.ReleaseAllUnused();
             }
 
-            AssetComponent resourceComponent = GameEntry.GetComponent<AssetComponent>();
+            /*AssetComponent resourceComponent = GameEntry.GetComponent<AssetComponent>();
             if (resourceComponent != null)
             {
                 // resourceComponent.ForceUnloadUnusedAssets(true);
-            }
+            }*/
         }
     }
 }

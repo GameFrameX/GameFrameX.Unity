@@ -1,3 +1,6 @@
+#if ENABLE_DOTWEEN
+
+
 using System;
 using DG.Tweening;
 using UnityEngine;
@@ -141,3 +144,4 @@ namespace GameFrameX.Runtime
         }
     }
 }
+#endif

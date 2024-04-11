@@ -116,6 +116,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         protected override void Awake()
         {
+            IsAutoRegister = false;
             base.Awake();
 
             DontDestroyOnLoad(this);

@@ -8,7 +8,8 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
-using GameFrameX.Config;
+using GameFrameX.Config.Runtime;
+using GameFrameX.Config.Runtime;
 using SimpleJSON;
 
 

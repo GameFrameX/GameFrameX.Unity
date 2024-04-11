@@ -3,6 +3,7 @@
 using FairyGUI;
 using Cysharp.Threading.Tasks;
 using FairyGUI.Utils;
+using GameFrameX.FairyGUI.Runtime;
 using GameFrameX.Runtime;
 
 namespace Game.Model

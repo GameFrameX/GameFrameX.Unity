@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 using LuBan.Runtime;
-using GameFrameX.Config;
+using GameFrameX.Config.Runtime;
 using SimpleJSON;
 
 namespace Hotfix.Config.common

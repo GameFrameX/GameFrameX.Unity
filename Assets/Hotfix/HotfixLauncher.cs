@@ -1,13 +1,15 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX;
-using GameFrameX.Event;
-using GameFrameX.Network;
+using GameFrameX.Event.Runtime;
+using GameFrameX.FairyGUI.Runtime;
+using GameFrameX.Network.Runtime;
 using Hotfix.Proto;
 using SimpleJSON;
 using UnityEngine;
 using GameFrameX.Runtime;
-using GameMain;
+using Hotfix.Config;
 using Hotfix.Network;
 using Hotfix.UI;
 
@@ -16,7 +18,7 @@ namespace Hotfix
     public static class HotfixLauncher
     {
         public static string serverIp = "127.0.0.1";
-        public static int serverPort = 21000;
+        public static int serverPort = 21100;
         private static INetworkChannel networkChannel;
 
         public static void Main()
@@ -36,7 +38,7 @@ namespace Hotfix
 
         private static async void LoadUI()
         {
-            var uiLogin = await GameApp.UI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
+            var uiLogin = await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
             uiLogin.m_enter.onClick.Add(() =>
             {
                 if (networkChannel != null && networkChannel.Connected)
@@ -75,7 +77,6 @@ namespace Hotfix
 
         static void RegisterMessagePack()
         {
-
         }
 
         private static async void NetTest()
@@ -97,8 +98,11 @@ namespace Hotfix
             // NetManager.Singleton.Send(new ReqHeartBeat() {Timestamp = 2222});
         }
 
-        static void LoadConfig()
+        static async void LoadConfig()
         {
+            var v = new TablesComponent();
+            v.Init(GameApp.Config);
+            await v.LoadAsync(Func);
             // var tables = new cfg.Tables(file =>
             //     JSON.Parse(File.ReadAllText(AssetUtility.GetConfigPath(file, "json"))
             //     ));
@@ -107,6 +111,13 @@ namespace Hotfix
             // var tables = new cfg.Tables(Loader);
             // var item = tables.TbItem.Get(1);
             // Log.Info(item);
+        }
+
+        private static async Task<JSONNode> Func(string file)
+        {
+            var assetHandle = await GameApp.Asset.LoadAssetAsync<TextAsset>(Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Json));
+
+            return JSON.Parse(assetHandle.GetAssetObject<TextAsset>().text);
         }
 
         private static JSONNode Loader(string file)

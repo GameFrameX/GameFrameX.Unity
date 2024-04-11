@@ -1,4 +1,5 @@
 ﻿using Game.Model;
+using GameFrameX.FairyGUI.Runtime;
 using GameFrameX.Runtime;
 
 namespace GameFrameX.Procedure
@@ -9,12 +10,12 @@ namespace GameFrameX.Procedure
 
         public static void Start()
         {
-            _ui = GameApp.UI.AddToFullScreen(UILauncher.CreateInstance, "UI/UILauncher/UILauncher", UILayer.Loading);
+            _ui = GameApp.FUI.AddToFullScreen(UILauncher.CreateInstance, "UI/UILauncher/UILauncher", UILayer.Loading);
         }
 
         public static void Dispose()
         {
-            GameApp.UI.Remove(UILauncher.UIResName, UILayer.Loading);
+            GameApp.FUI.Remove(UILauncher.UIResName, UILayer.Loading);
             _ui.Dispose();
             _ui = null;
         }

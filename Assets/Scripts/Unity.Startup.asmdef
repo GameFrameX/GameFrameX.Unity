@@ -12,7 +12,11 @@
         "LuBan.Runtime",
         "HybridCLR.Runtime",
         "GameFrameX.Procedure.Runtime",
-        "GameFrameX.FSM.Runtime"
+        "GameFrameX.FSM.Runtime",
+        "GameFrameX.FairyGUI.Runtime",
+        "GameFrameX.Entity.Runtime",
+        "GameFrameX.Asset.Runtime",
+        "GameFrameX.Localization.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,5 @@
 using System;
 using Cysharp.Threading.Tasks;
-using GameFrameX.Fsm;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.GlobalConfig.Runtime;
 using GameFrameX.Procedure.Runtime;
@@ -19,7 +18,7 @@ namespace GameFrameX.Procedure
         {
             base.OnEnter(procedureOwner);
             // 编辑器下的模拟模式
-            if (GameEntry.GetComponent<AssetComponent>().GamePlayMode == EPlayMode.EditorSimulateMode)
+            if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
             {
                 Debug.Log("当前为编辑器模式，直接启动 FsmGetGlobalInfoState");
                 ChangeState<ProcedureGetAppVersionInfoState>(procedureOwner);

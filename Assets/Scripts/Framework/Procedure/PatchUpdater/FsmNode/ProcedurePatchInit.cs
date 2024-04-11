@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure;
@@ -21,9 +22,7 @@ namespace GameFrameX.Procedure
 
         async void Start(IFsm<IProcedureManager> procedureOwner)
         {
-            var assetComponent = GameEntry.GetComponent<AssetComponent>();
-
-            assetComponent.Initialize(GetHostServerURL(), GetHostServerURL());
+            GameApp.Asset.Initialize(GetHostServerURL(), GetHostServerURL());
             // 运行补丁流程
             PatchUpdater.Run();
             await UniTask.DelayFrame(10);

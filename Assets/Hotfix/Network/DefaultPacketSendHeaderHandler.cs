@@ -1,4 +1,4 @@
-using GameFrameX.Network;
+using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
 using Hotfix.Proto;
 

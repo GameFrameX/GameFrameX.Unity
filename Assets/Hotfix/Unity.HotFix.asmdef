@@ -18,7 +18,13 @@
         "LuBan.Runtime",
         "Unity.Startup",
         "LitJSON.Runtime",
-        "SimpleJSON.Runtime"
+        "SimpleJSON.Runtime",
+        "GameFrameX.Network.Runtime",
+        "GameFrameX.FairyGUI.Runtime",
+        "GameFrameX.Event.Runtime",
+        "GameFrameX.Config.Runtime",
+        "GameFrameX.Asset.Runtime",
+        "GameFrameX.Entity.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

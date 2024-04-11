@@ -1,10 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Game.Model;
-using GameFrameX.Fsm;
+using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.GlobalConfig.Runtime;
-using GameFrameX.Localization;
+using GameFrameX.Localization.Runtime;
 using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace GameFrameX.Procedure
             base.OnEnter(procedureOwner);
 
             // 编辑器下的模拟模式
-            if (GameEntry.GetComponent<AssetComponent>().GamePlayMode == EPlayMode.EditorSimulateMode)
+            if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
             {
                 Debug.Log("当前为编辑器模式，直接启动 FsmGetAppVersionInfoState");
                 ChangeState<ProcedurePatchInit>(procedureOwner);
@@ -54,7 +54,7 @@ namespace GameFrameX.Procedure
 
                     if (gameAppVersion.IsUpgrade)
                     {
-                        var uiLoadingMainScene = GameApp.UI.Get<UILauncher>(UILauncher.UIResName);
+                        var uiLoadingMainScene = GameApp.FUI.Get<UILauncher>(UILauncher.UIResName);
                         uiLoadingMainScene.m_IsUpgrade.SetSelectedIndex(1);
 
                         bool isChinese = GameApp.Localization.SystemLanguage == Language.ChineseSimplified ||

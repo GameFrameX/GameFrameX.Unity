@@ -131,11 +131,12 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public static bool IsExists(string path)
         {
+#if ENABLE_GAME_FRAME_X_READ_ASSETS
             if (IsAndroidReadOnlyPath(path, out var readPath))
             {
                 return BlankReadAssets.BlankReadAssets.IsFileExists(readPath);
             }
-
+#endif
             return File.Exists(path);
         }
 
@@ -177,10 +178,12 @@ namespace GameFrameX.Runtime
         /// <returns></returns>
         public static byte[] ReadAllBytes(string path)
         {
+#if ENABLE_GAME_FRAME_X_READ_ASSETS
             if (IsAndroidReadOnlyPath((path), out var readPath))
             {
                 return BlankReadAssets.BlankReadAssets.Read(readPath);
             }
+#endif
 
             return File.ReadAllBytes(path);
         }

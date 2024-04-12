@@ -26,12 +26,12 @@
     {
       "name": "com.alianblank.gameframex.unity.google.protobuf",
       "expression": "",
-      "define": "ENABLE_PROTOBUF"
+      "define": "ENABLE_GAME_FRAME_X_PROTOBUF"
     },
     {
       "name": "com.alianblank.gameframex.unity.neuecc.messagepack",
       "expression": "",
-      "define": "ENABLE_MESSAGEPACK"
+      "define": "ENABLE_GAME_FRAME_X_MESSAGEPACK"
     },
     {
       "name": "com.tencent.xlua",

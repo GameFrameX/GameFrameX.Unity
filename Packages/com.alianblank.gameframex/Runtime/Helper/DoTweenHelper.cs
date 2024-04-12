@@ -1,6 +1,4 @@
-#if ENABLE_DOTWEEN
-
-
+#if ENABLE_GAME_FRAME_X_DO_TWEEN
 using System;
 using DG.Tweening;
 using UnityEngine;

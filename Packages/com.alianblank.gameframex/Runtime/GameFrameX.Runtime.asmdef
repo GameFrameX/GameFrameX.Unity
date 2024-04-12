@@ -24,94 +24,89 @@
   "defineConstraints": [],
   "versionDefines": [
     {
-      "name": "com.google.protobuf",
+      "name": "com.alianblank.gameframex.unity.google.protobuf",
       "expression": "",
       "define": "ENABLE_PROTOBUF"
     },
     {
-      "name": "com.neuecc.messagepack",
+      "name": "com.alianblank.gameframex.unity.neuecc.messagepack",
       "expression": "",
       "define": "ENABLE_MESSAGEPACK"
     },
     {
       "name": "com.tencent.xlua",
       "expression": "",
-      "define": "ENABLE_XLUA"
+      "define": "ENABLE_GAME_FRAME_X_XLUA"
     },
     {
-      "name": "com.fairygui.unity",
+      "name": "com.alianblank.gameframex.unity.fairygui.unity",
       "expression": "",
-      "define": "ENABLE_FAIRYGUI"
+      "define": "ENABLE_GAME_FRAME_X_FAIRYGUI"
     },
     {
       "name": "com.code-philosophy.hybridclr",
       "expression": "",
-      "define": "ENABLE_HYBIRDCLR"
+      "define": "ENABLE_GAME_FRAME_X_HYBRID_CLR"
     },
     {
-      "name": "com.esotericsoftware.spine.spine-unity",
+      "name": "com.alianblank.gameframex.unity.esotericsoftware.spine.spine-unity",
       "expression": "",
-      "define": "ENABLE_SPINE"
+      "define": "ENABLE_GAME_FRAME_X_SPINE"
     },
     {
       "name": "io.sentry.unity",
       "expression": "",
-      "define": "ENABLE_SENTRY"
+      "define": "ENABLE_GAME_FRAME_X_SENTRY"
     },
     {
-      "name": "com.xincger.litjson",
+      "name": "com.alianblank.gameframex.unity.xincger.litjson",
       "expression": "",
-      "define": "ENABLE_LITJSON"
+      "define": "ENABLE_GAME_FRAME_X_LIT_JSON"
     },
     {
-      "name": "com.tuyoogame.yooasset",
+      "name": "com.alianblank.gameframex.unity.tuyoogame.yooasset",
       "expression": "",
-      "define": "ENABLE_YOOASSET"
+      "define": "ENABLE_GAME_FRAME_X_YOO_ASSET"
     },
     {
-      "name": "com.json.simplejson",
+      "name": "com.alianblank.gameframex.unity.json.simplejson",
       "expression": "",
-      "define": "ENABLE_SIMPLEJSON"
+      "define": "ENABLE_GAME_FRAME_X_SIMPLE_JSON"
     },
     {
       "name": "com.focus-creative-games.luban",
       "expression": "",
-      "define": "ENABLE_LUBAN"
+      "define": "ENABLE_GAME_FRAME_X_LU_BAN"
     },
     {
-      "name": "com.demigiant.dotween",
+      "name": "com.alianblank.gameframex.unity.demigiant.dotween",
       "expression": "",
-      "define": "ENABLE_DOTWEEN"
+      "define": "ENABLE_GAME_FRAME_X_DO_TWEEN"
     },
     {
-      "name": "com.cysharp.unitask",
+      "name": "com.alianblank.gameframex.unity.cysharp.unitask",
       "expression": "",
-      "define": "ENABLE_UNITASK"
+      "define": "ENABLE_GAME_FRAME_X_UNI_TASK"
     },
     {
       "name": "com.benedicht.besthttp",
       "expression": "",
-      "define": "ENABLE_BESTHTTP"
+      "define": "ENABLE_GAME_FRAME_X_BEST_HTTP"
     },
     {
-      "name": "com.alianblank.unitywebsocket",
+      "name": "com.alianblank.gameframex.unity.psygames.unitywebsocket",
       "expression": "",
       "define": "ENABLE_GAME_FRAME_X_WEB_SOCKET"
     },
     {
-      "name": "com.alianblank.blankoperationclipboard",
+      "name": "com.alianblank.gameframex.unity.blankoperationclipboard",
       "expression": "",
-      "define": "ENABLE_BLANKOPERATIONCLIPBOARD"
+      "define": "ENABLE_GAME_FRAME_X_OPERATION_CLIPBOARD"
     },
     {
-      "name": "com.alianblank.blankgetchannel",
+      "name": "com.alianblank.gameframex.unity.getchannel",
       "expression": "",
-      "define": "ENABLE_BLANKGETCHANNEL"
-    },
-    {
-      "name": "com.alianblank.gameframex.web",
-      "expression": "",
-      "define": "ENABLE_GAME_FRAME_X_WEB"
+      "define": "ENABLE_GAME_FRAME_X_GET_CHANNEL"
     }
   ],
   "noEngineReferences": false

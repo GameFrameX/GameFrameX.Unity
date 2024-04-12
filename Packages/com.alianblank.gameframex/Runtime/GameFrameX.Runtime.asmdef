@@ -104,6 +104,11 @@
       "define": "ENABLE_GAME_FRAME_X_OPERATION_CLIPBOARD"
     },
     {
+      "name": "com.alianblank.gameframex.unity.readassets",
+      "expression": "",
+      "define": "ENABLE_GAME_FRAME_X_READ_ASSETS"
+    },
+    {
       "name": "com.alianblank.gameframex.unity.getchannel",
       "expression": "",
       "define": "ENABLE_GAME_FRAME_X_GET_CHANNEL"

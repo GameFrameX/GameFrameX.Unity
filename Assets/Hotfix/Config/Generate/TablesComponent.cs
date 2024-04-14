@@ -16,88 +16,88 @@ namespace Hotfix.Config
     public partial class TablesComponent
     {
 
-        public ai.TbBlackboard TbBlackboard { private set; get; }
+        internal ai.TbBlackboard TbBlackboard { private set; get; }
 
-        public ai.TbBehaviorTree TbBehaviorTree { private set; get; }
+        internal ai.TbBehaviorTree TbBehaviorTree { private set; get; }
 
-        public common.TbGlobalConfig TbGlobalConfig { private set; get; }
+        internal common.TbGlobalConfig TbGlobalConfig { private set; get; }
 
         /// <summary>
         /// 道具表
         /// </summary>
-        public item.TbItem TbItem { private set; get; }
+        internal item.TbItem TbItem { private set; get; }
 
-        public l10n.TbL10NDemo TbL10NDemo { private set; get; }
+        internal l10n.TbL10NDemo TbL10NDemo { private set; get; }
 
-        public l10n.TbPatchDemo TbPatchDemo { private set; get; }
+        internal l10n.TbPatchDemo TbPatchDemo { private set; get; }
 
-        public tag.TbTestTag TbTestTag { private set; get; }
+        internal tag.TbTestTag TbTestTag { private set; get; }
 
-        public test.TbFullTypes TbFullTypes { private set; get; }
+        internal test.TbFullTypes TbFullTypes { private set; get; }
 
-        public test.TbSingleton TbSingleton { private set; get; }
+        internal test.TbSingleton TbSingleton { private set; get; }
 
-        public test.TbNotIndexList TbNotIndexList { private set; get; }
+        internal test.TbNotIndexList TbNotIndexList { private set; get; }
 
-        public test.TbMultiUnionIndexList TbMultiUnionIndexList { private set; get; }
+        internal test.TbMultiUnionIndexList TbMultiUnionIndexList { private set; get; }
 
-        public test.TbMultiIndexList TbMultiIndexList { private set; get; }
+        internal test.TbMultiIndexList TbMultiIndexList { private set; get; }
 
-        public test.TbDataFromMisc TbDataFromMisc { private set; get; }
+        internal test.TbDataFromMisc TbDataFromMisc { private set; get; }
 
-        public test.TbMultiRowRecord TbMultiRowRecord { private set; get; }
+        internal test.TbMultiRowRecord TbMultiRowRecord { private set; get; }
 
-        public test.TbTestMultiColumn TbTestMultiColumn { private set; get; }
+        internal test.TbTestMultiColumn TbTestMultiColumn { private set; get; }
 
-        public test.TbMultiRowTitle TbMultiRowTitle { private set; get; }
+        internal test.TbMultiRowTitle TbMultiRowTitle { private set; get; }
 
-        public test.TbTestNull TbTestNull { private set; get; }
+        internal test.TbTestNull TbTestNull { private set; get; }
 
-        public test.TbDemoPrimitive TbDemoPrimitive { private set; get; }
+        internal test.TbDemoPrimitive TbDemoPrimitive { private set; get; }
 
-        public test.TbTestString TbTestString { private set; get; }
+        internal test.TbTestString TbTestString { private set; get; }
 
-        public test.TbDemoGroup TbDemoGroup { private set; get; }
+        internal test.TbDemoGroup TbDemoGroup { private set; get; }
 
-        public test.TbDemoGroup_C TbDemoGroupC { private set; get; }
+        internal test.TbDemoGroup_C TbDemoGroupC { private set; get; }
 
-        public test.TbTestGlobal TbTestGlobal { private set; get; }
+        internal test.TbTestGlobal TbTestGlobal { private set; get; }
 
-        public test.TbTestBeRef TbTestBeRef { private set; get; }
+        internal test.TbTestBeRef TbTestBeRef { private set; get; }
 
-        public test.TbTestBeRef2 TbTestBeRef2 { private set; get; }
+        internal test.TbTestBeRef2 TbTestBeRef2 { private set; get; }
 
-        public test.TbTestRef TbTestRef { private set; get; }
+        internal test.TbTestRef TbTestRef { private set; get; }
 
-        public test.TbTestSize TbTestSize { private set; get; }
+        internal test.TbTestSize TbTestSize { private set; get; }
 
-        public test.TbTestSet TbTestSet { private set; get; }
+        internal test.TbTestSet TbTestSet { private set; get; }
 
-        public test.TbDetectCsvEncoding TbDetectCsvEncoding { private set; get; }
+        internal test.TbDetectCsvEncoding TbDetectCsvEncoding { private set; get; }
 
-        public test.TbItem2 TbItem2 { private set; get; }
+        internal test.TbItem2 TbItem2 { private set; get; }
 
-        public test.TbTestIndex TbTestIndex { private set; get; }
+        internal test.TbTestIndex TbTestIndex { private set; get; }
 
-        public test.TbTestMap TbTestMap { private set; get; }
+        internal test.TbTestMap TbTestMap { private set; get; }
 
-        public test.TbExcelFromJson TbExcelFromJson { private set; get; }
+        internal test.TbExcelFromJson TbExcelFromJson { private set; get; }
 
-        public test.TbCompositeJsonTable1 TbCompositeJsonTable1 { private set; get; }
+        internal test.TbCompositeJsonTable1 TbCompositeJsonTable1 { private set; get; }
 
-        public test.TbCompositeJsonTable2 TbCompositeJsonTable2 { private set; get; }
+        internal test.TbCompositeJsonTable2 TbCompositeJsonTable2 { private set; get; }
 
-        public test.TbCompositeJsonTable3 TbCompositeJsonTable3 { private set; get; }
+        internal test.TbCompositeJsonTable3 TbCompositeJsonTable3 { private set; get; }
 
-        public test.TbExcelFromJsonMultiRow TbExcelFromJsonMultiRow { private set; get; }
+        internal test.TbExcelFromJsonMultiRow TbExcelFromJsonMultiRow { private set; get; }
 
-        public test.TbTestScriptableObject TbTestScriptableObject { private set; get; }
+        internal test.TbTestScriptableObject TbTestScriptableObject { private set; get; }
 
-        public test.TbPath TbPath { private set; get; }
+        internal test.TbPath TbPath { private set; get; }
 
-        public test.TbTestMapper TbTestMapper { private set; get; }
+        internal test.TbTestMapper TbTestMapper { private set; get; }
 
-        public test.TbDefineFromExcel2 TbDefineFromExcel2 { private set; get; }
+        internal test.TbDefineFromExcel2 TbDefineFromExcel2 { private set; get; }
 
         private ConfigComponent m_ConfigComponent;
 

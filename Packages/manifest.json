@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.code-philosophy.hybridclr": "https://github.com/focus-creative-games/hybridclr_unity.git",
-    "com.focus-creative-games.luban": "https://github.com/AlianBlank/com.focus-creative-games.luban.git",
+    "com.alianblank.gameframex.unity.focus-creative-games.luban": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.focus-creative-games.luban.git",
     "com.alianblank.gameframex.unity.getchannel": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.getchannel.git",
     "com.alianblank.gameframex.unity.blankoperationclipboard": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.blankoperationclipboard.git",
     "com.alianblank.gameframex.unity.readassets": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.readassets.git",

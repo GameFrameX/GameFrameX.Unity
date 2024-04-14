@@ -10,6 +10,8 @@ using SimpleJSON;
 using UnityEngine;
 using GameFrameX.Runtime;
 using Hotfix.Config;
+using Hotfix.Config.item;
+using Hotfix.Config.test;
 using Hotfix.Network;
 using Hotfix.UI;
 
@@ -100,33 +102,18 @@ namespace Hotfix
 
         static async void LoadConfig()
         {
-            var v = new TablesComponent();
-            v.Init(GameApp.Config);
-            await v.LoadAsync(Func);
-            // var tables = new cfg.Tables(file =>
-            //     JSON.Parse(File.ReadAllText(AssetUtility.GetConfigPath(file, "json"))
-            //     ));
-
-
-            // var tables = new cfg.Tables(Loader);
-            // var item = tables.TbItem.Get(1);
-            // Log.Info(item);
+            var tablesComponent = new TablesComponent();
+            tablesComponent.Init(GameApp.Config);
+            await tablesComponent.LoadAsync(ConfigLoader);
+            var item = GameApp.Config.GetConfig<TbItem>().Get(1);
+            Log.Info(item);
         }
 
-        private static async Task<JSONNode> Func(string file)
+        private static async Task<JSONNode> ConfigLoader(string file)
         {
             var assetHandle = await GameApp.Asset.LoadAssetAsync<TextAsset>(Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Json));
 
             return JSON.Parse(assetHandle.GetAssetObject<TextAsset>().text);
-        }
-
-        private static JSONNode Loader(string file)
-        {
-            string assetPath = Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Json);
-            Log.Info(assetPath);
-            var rawFileOperationHandle = GameApp.Asset.LoadRawFileSync(assetPath);
-
-            return JSON.Parse(rawFileOperationHandle.GetRawFileText());
         }
     }
 }

@@ -494,6 +494,22 @@ public static class BufferExtension
 
     #endregion
 
+    /// <summary>
+    /// 将字节数组转换为字符串
+    /// </summary>
+    /// <param name="bytes"></param>
+    /// <returns></returns>
+    public static string ToArrayString(this byte[] bytes)
+    {
+        StringBuilder.Clear();
+        foreach (byte b in bytes)
+        {
+            StringBuilder.Append(b + " ");
+        }
+
+        return StringBuilder.ToString();
+    }
+
     private static readonly StringBuilder StringBuilder = new StringBuilder();
 
     /// <summary>

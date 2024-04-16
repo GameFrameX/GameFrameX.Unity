@@ -413,6 +413,26 @@ public static class BufferExtension
     /// </summary>
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
+    /// <param name="len"></param>
+    /// <returns>读取的字节数组。</returns>
+    public static unsafe byte[] ReadBytes(this byte[] buffer, int offset, int len)
+    {
+        //数据不可信
+        if (len <= 0 || offset > buffer.Length + len * ByteSize)
+        {
+            return Array.Empty<byte>();
+        }
+
+        var data = new byte[len];
+        System.Array.Copy(buffer, offset, data, 0, len);
+        return data;
+    }
+
+    /// <summary>
+    /// 从字节数组中读取一定长度的字节。
+    /// </summary>
+    /// <param name="buffer">字节数组。</param>
+    /// <param name="offset">偏移量。</param>
     /// <returns>读取的字节数组。</returns>
     public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset)
     {

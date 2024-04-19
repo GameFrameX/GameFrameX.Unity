@@ -34,6 +34,50 @@ GameFrameX for Unity是GameFrameX综合解决方案的重要组成部分，专�
 |     ReadAssets     | 直接读取Android只读目录下的文件 | GitHub | https://github.com/AlianBlank/com.alianblank.readassets              |
 |   FindReference2   |     强大的资源引用查找插件     | GitHub | https://github.com/AlianBlank/com.vietlabs.fr2                       |
 
+# 子库列表（按需获取）
+
+```json
+[
+    "com.alianblank.gameframex.unity.focus-creative-games.luban": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.focus-creative-games.luban.git",
+    "com.alianblank.gameframex.unity.getchannel": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.getchannel.git",
+    "com.alianblank.gameframex.unity.blankoperationclipboard": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.blankoperationclipboard.git",
+    "com.alianblank.gameframex.unity.readassets": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.readassets.git",
+    "com.alianblank.gameframex.unity.psygames.unitywebsocket": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.psygames.unitywebsocket.git",
+    "com.alianblank.gameframex.unity.fairygui.unity": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.fairygui.unity.git",
+    "com.alianblank.gameframex.unity.fairygui": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.fairygui.git",
+    "com.alianblank.gameframex.unity.demigiant.dotween": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.demigiant.dotween.git",
+    "com.alianblank.gameframex.unity.cysharp.unitask": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.cysharp.unitask.git",
+    "com.alianblank.gameframex.unity.gwiazdorrr.betterstreamingassets": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.gwiazdorrr.betterstreamingassets.git",
+    "com.alianblank.gameframex.unity.tuyoogame.yooasset": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.tuyoogame.yooasset.git",
+    "com.alianblank.gameframex.unity.json.simplejson": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.json.simplejson.git",
+    "com.alianblank.gameframex.unity.xincger.litjson": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.xincger.litjson.git",
+    "com.alianblank.gameframex.unity.google.protobuf": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.google.protobuf.git",
+    "com.alianblank.gameframex.unity.protobuff2cs": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.protobuff2cs.git",
+    "com.alianblank.gameframex.unity.web": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.web.git",
+    "com.alianblank.gameframex.unity.entry": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.entry.git",
+    "com.alianblank.gameframex.unity.event": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.event.git",
+    "com.alianblank.gameframex.unity.globalconfig": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.globalconfig.git",
+    "com.alianblank.gameframex.unity.fsm": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.fsm.git",
+    "com.alianblank.gameframex.unity.procedure": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.procedure.git",
+    "com.alianblank.gameframex.unity.entity": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.entity.git",
+    "com.alianblank.gameframex.unity.asset": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.asset.git",
+    "com.alianblank.gameframex.unity.localization": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.localization.git",
+    "com.alianblank.gameframex.unity.config": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.config.git",
+    "com.alianblank.gameframex.unity.timer": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.timer.git",
+    "com.alianblank.gameframex.unity.sound": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.sound.git",
+    "com.alianblank.gameframex.unity.scene": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.scene.git",
+    "com.alianblank.gameframex.unity.download": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.download.git",
+    "com.alianblank.gameframex.unity.coroutine": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.coroutine.git",
+    "com.alianblank.gameframex.unity.setting": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.setting.git",
+    "com.alianblank.gameframex.unity.mono": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.mono.git",
+    "com.alianblank.gameframex.unity.gameanalytics": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.gameanalytics.git",
+    "com.alianblank.gameframex.unity.yasirkula.debugconsole": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.yasirkula.debugconsole.git",
+    "com.alianblank.gameframex.unity.esotericsoftware.spine.spine-unity": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.esotericsoftware.spine.spine-unity.git",
+    
+    "com.alianblank.gameframex.unity.network": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.network.git",
+]
+```
+
 # 交流方式(建议。需求。BUG)
 
 QQ群：467608841

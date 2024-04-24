@@ -28,7 +28,7 @@ namespace Hotfix.Network
 
         public MessageObject Handler()
         {
-            _reqHeartBeat.Timestamp = GameTimeHelper.UnixTimeMilliseconds();
+            _reqHeartBeat.Timestamp = GameTimeHelper.UnixTimeSeconds();
             return _reqHeartBeat;
         }
     }

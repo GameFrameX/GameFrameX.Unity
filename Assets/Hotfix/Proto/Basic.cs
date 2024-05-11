@@ -8,12 +8,12 @@ namespace Hotfix.Proto
 	/// <summary>
 	/// 请求心跳
 	/// </summary>
-	[MessageTypeHandler(1)]
 	[ProtoContract]
+	[MessageTypeHandler(1)]
 	public partial class ReqHeartBeat : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		///  时间戳
+		/// 时间戳
 		/// </summary>
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
@@ -23,42 +23,12 @@ namespace Hotfix.Proto
 	/// <summary>
 	/// 返回心跳
 	/// </summary>
-	[MessageTypeHandler(1)]
 	[ProtoContract]
+	[MessageTypeHandler(1)]
 	public partial class RespHeartBeat : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		///  时间戳
-		/// </summary>
-		[ProtoMember(1)]
-		public long Timestamp { get; set; }
-
-	}
-
-	/// <summary>
-	/// 请求心跳
-	/// </summary>
-	
-	[ProtoContract]
-	public partial class ReqActorHeartBeat : MessageObject
-	{
-		/// <summary>
-		///  时间戳
-		/// </summary>
-		[ProtoMember(1)]
-		public long Timestamp { get; set; }
-
-	}
-
-	/// <summary>
-	/// 返回心跳
-	/// </summary>
-	
-	[ProtoContract]
-	public partial class RespActorHeartBeat : MessageObject
-	{
-		/// <summary>
-		///  时间戳
+		/// 时间戳
 		/// </summary>
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }

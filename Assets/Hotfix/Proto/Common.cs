@@ -14,75 +14,74 @@ namespace Hotfix.Proto
 		/// 成功
 		/// </summary>
 		Success = 0, 
-
 		/// <summary>
 		/// 失败
 		/// </summary>
 		Failed = 1, 
+	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	public enum PhoneType
+	{
+		/// <summary>
+		/// 手机
+		/// </summary>
+		MOBILE = 0, 
+		/// <summary>
+		/// 
+		/// </summary>
+		HOME = 1, 
+		/// <summary>
+		/// 工作号码
+		/// </summary>
+		WORK = 2, 
 	}
 
 	/// <summary>
 	/// 玩家基础信息
 	/// </summary>
-	
 	[ProtoContract]
-	public partial class UserInfo : MessageObject
+	public partial class UserInfo
 	{
 		/// <summary>
-		///  角色名
+		/// 角色名
 		/// </summary>
 		[ProtoMember(1)]
 		public string RoleName { get; set; }
 
 		/// <summary>
-		///  角色ID
+		/// 角色ID
 		/// </summary>
 		[ProtoMember(2)]
 		public long RoleId { get; set; }
 
 		/// <summary>
-		///  角色等级
+		/// 角色等级
 		/// </summary>
 		[ProtoMember(3)]
 		public int Level { get; set; }
 
 		/// <summary>
-		///  创建时间
+		/// 创建时间
 		/// </summary>
 		[ProtoMember(4)]
 		public long CreateTime { get; set; }
 
 		/// <summary>
-		///  vip等级
+		/// vip等级
 		/// </summary>
 		[ProtoMember(5)]
 		public int VipLevel { get; set; }
 
 	}
 
-	public enum PhoneType
-	{
-		/// <summary>
-		///  手机
-		/// </summary>
-		MOBILE = 0, 
-
-		/// <summary>
-		/// 
-		/// </summary>
-		HOME = 1, 
-
-		/// <summary>
-		///  工作号码
-		/// </summary>
-		WORK = 2, 
-
-	}
-
-	
+	/// <summary>
+	/// 
+	/// </summary>
 	[ProtoContract]
-	public partial class PhoneNumber : MessageObject
+	public partial class PhoneNumber
 	{
 		/// <summary>
 		/// 
@@ -98,9 +97,11 @@ namespace Hotfix.Proto
 
 	}
 
-	
+	/// <summary>
+	/// 
+	/// </summary>
 	[ProtoContract]
-	public partial class Person : MessageObject
+	public partial class Person
 	{
 		/// <summary>
 		/// 
@@ -109,7 +110,7 @@ namespace Hotfix.Proto
 		public string name { get; set; }
 
 		/// <summary>
-		///  Unique ID number for this person.
+		/// Unique ID number for this person.
 		/// </summary>
 		[ProtoMember(2)]
 		public int id { get; set; }
@@ -129,11 +130,10 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// Ouraddressbookfileisjustoneofthese.
+	/// Our address book file is just one of these.
 	/// </summary>
-	
 	[ProtoContract]
-	public partial class AddressBook : MessageObject
+	public partial class AddressBook
 	{
 		/// <summary>
 		/// 

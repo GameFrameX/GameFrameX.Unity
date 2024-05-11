@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unity.Editor
@@ -52,12 +53,17 @@ namespace Unity.Editor
             PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, 1);
 #endif
 
-            bool isValid = AssetDatabase.IsValidFolder("Assets/StreamingAssets");
-            if (!isValid)
+            var folderList = new string[] { "Assets/StreamingAssets", "Assets/Bundles/AOTCode", "Assets/Bundles/Code", "Assets/Bundles/Config", "Assets/Bundles/Sound", "Assets/Bundles/UI" };
+            foreach (var folder in folderList)
             {
-                AssetDatabase.CreateFolder("Assets", "StreamingAssets");
-                AssetDatabase.SaveAssets();
+                // 本地文件夹是否存在()
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
             }
+
+            AssetDatabase.SaveAssets();
         }
     }
 }

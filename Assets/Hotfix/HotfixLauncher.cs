@@ -88,9 +88,9 @@ namespace Hotfix
                 Device = SystemInfo.deviceUniqueIdentifier
             };
             req.Platform = PathHelper.GetPlatformName;
-            networkChannel.Send(req);
 
-            // NetManager.Singleton.Send(new ReqHeartBeat() {Timestamp = 2222});
+            RespLogin respLogin = await networkChannel.Call<RespLogin>(req);
+            Log.Info(respLogin);
         }
 
         static async void LoadConfig()

@@ -286,5 +286,16 @@ namespace GameFrameX.Runtime
         {
             File.WriteAllText(path, content, Encoding.UTF8);
         }
+
+        /// <summary>
+        /// 写入指定路径的文件内容
+        /// </summary>
+        /// <param name="path">文件路径</param>
+        /// <param name="buffer">写入的内容</param>
+        /// <returns></returns>
+        public static void WriteAllBytes(string path, byte[] buffer)
+        {
+            File.WriteAllBytes(path, buffer);
+        }
     }
 }

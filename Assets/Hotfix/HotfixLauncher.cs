@@ -29,12 +29,8 @@ namespace Hotfix
 
             // GameApp.Lua.DoString("CS.UnityEngine.Debug.Log('Hello World Lua')");
 
-            RegisterMessagePack();
-
             ProtoMessageIdHandler.Init(HotfixProtoHandler.CurrentAssembly);
             LoadConfig();
-
-
             LoadUI();
         }
 
@@ -77,9 +73,6 @@ namespace Hotfix
             NetTest();
         }
 
-        static void RegisterMessagePack()
-        {
-        }
 
         private static async void NetTest()
         {

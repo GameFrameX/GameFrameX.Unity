@@ -10,7 +10,10 @@ namespace Unity.Editor
         {
             PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.blank.gfx");
             PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.iOS, "com.blank.gfx");
+            PlayerSettings.SplashScreen.show = false;
+            PlayerSettings.SplashScreen.showUnityLogo = false;
             PlayerSettings.productName = "GFX";
+            PlayerSettings.companyName = "ALianBlank";
             PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
             PlayerSettings.allowedAutorotateToLandscapeLeft = false;
             PlayerSettings.allowedAutorotateToLandscapeRight = false;
@@ -49,10 +52,6 @@ namespace Unity.Editor
             PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, 1);
 #endif
 
-            PlayerSettings.SplashScreen.show = false;
-            PlayerSettings.SplashScreen.showUnityLogo = false;
-            PlayerSettings.companyName = "ALianBlank";
-            PlayerSettings.productName = "GFX";
             bool isValid = AssetDatabase.IsValidFolder("Assets/StreamingAssets");
             if (!isValid)
             {

@@ -26,9 +26,6 @@ namespace Hotfix
         public static void Main()
         {
             Log.Info("Hello World HybridCLR");
-
-            // GameApp.Lua.DoString("CS.UnityEngine.Debug.Log('Hello World Lua')");
-
             ProtoMessageIdHandler.Init(HotfixProtoHandler.CurrentAssembly);
             LoadConfig();
             LoadUI();

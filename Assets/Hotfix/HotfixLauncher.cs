@@ -20,7 +20,7 @@ namespace Hotfix
     public static class HotfixLauncher
     {
         public static string serverIp = "127.0.0.1";
-        public static int serverPort = 21100;
+        public static int serverPort = 21000;
         private static INetworkChannel networkChannel;
 
         public static void Main()

@@ -40,44 +40,6 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 玩家基础信息
-	/// </summary>
-	[ProtoContract]
-	public partial class UserInfo
-	{
-		/// <summary>
-		/// 角色名
-		/// </summary>
-		[ProtoMember(1)]
-		public string RoleName { get; set; }
-
-		/// <summary>
-		/// 角色ID
-		/// </summary>
-		[ProtoMember(2)]
-		public long RoleId { get; set; }
-
-		/// <summary>
-		/// 角色等级
-		/// </summary>
-		[ProtoMember(3)]
-		public int Level { get; set; }
-
-		/// <summary>
-		/// 创建时间
-		/// </summary>
-		[ProtoMember(4)]
-		public long CreateTime { get; set; }
-
-		/// <summary>
-		/// vip等级
-		/// </summary>
-		[ProtoMember(5)]
-		public int VipLevel { get; set; }
-
-	}
-
-	/// <summary>
 	/// 
 	/// </summary>
 	[ProtoContract]

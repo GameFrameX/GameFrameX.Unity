@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using FairyGUI;
+using GameFrameX;
+using GameFrameX.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using Hotfix.Manager;
 using Hotfix.Proto;
 
 namespace Hotfix.UI
@@ -32,6 +35,9 @@ namespace Hotfix.UI
             ReqPlayerLogin reqPlayerLogin = new ReqPlayerLogin();
             reqPlayerLogin.Id = m_SelectedPlayerInfo.Id;
             var respPlayerLogin = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerLogin>(reqPlayerLogin);
+            PlayerManager.Instance.PlayerInfo = respPlayerLogin.PlayerInfo;
+            await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor, false, UserData);
+            GameApp.FUI.Remove(UIResName, UILayer.Floor);
         }
 
         PlayerInfo m_SelectedPlayerInfo;

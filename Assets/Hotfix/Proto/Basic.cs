@@ -18,7 +18,6 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
 
-
 	}
 
 	/// <summary>

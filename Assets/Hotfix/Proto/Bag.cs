@@ -12,6 +12,12 @@ namespace Hotfix.Proto
 	[MessageTypeHandler(100)]
 	public partial class ReqBagInfo : MessageObject, IRequestMessage
 	{
+		/// <summary>
+		/// 时间戳
+		/// </summary>
+		[ProtoMember(1)]
+		public long Timestamp { get; set; }
+
 	}
 
 	/// <summary>

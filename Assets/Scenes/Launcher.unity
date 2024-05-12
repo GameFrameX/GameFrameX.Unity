@@ -356,6 +356,16 @@ PrefabInstance:
       propertyPath: m_ComponentType
       value: GameFrameX.ObjectPool.ObjectPoolManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9154040611430369861, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+        type: 3}
+      propertyPath: designResolutionX
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154040611430369861, guid: adb3eb1c35fcff14f89fba7b05c9d71c,
+        type: 3}
+      propertyPath: designResolutionY
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7423659688940893083, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}
     - {fileID: 441683270, guid: adb3eb1c35fcff14f89fba7b05c9d71c, type: 3}

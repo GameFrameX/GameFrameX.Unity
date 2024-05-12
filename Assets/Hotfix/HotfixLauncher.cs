@@ -93,7 +93,21 @@ namespace Hotfix
 
             RespLogin respLogin = await networkChannel.Call<RespLogin>(req);
             Log.Info(respLogin);
-            await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor);
+            ReqPlayerList reqPlayerList = new ReqPlayerList();
+
+            reqPlayerList.Id = respLogin.Id;
+
+            var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
+            if (respPlayerList.PlayerList.Count > 0)
+            {
+                await GameApp.FUI.AddAsync(UIPlayerList.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
+            }
+            else
+            {
+                await GameApp.FUI.AddAsync(UIPlayerCreate.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
+            }
+
+            // await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor);
             GameApp.FUI.Remove(uiLogin.Name, UILayer.Floor);
         }
 

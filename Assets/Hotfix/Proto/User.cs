@@ -185,6 +185,12 @@ namespace Hotfix.Proto
 		[ProtoMember(4)]
 		public int State { get; set; }
 
+		/// <summary>
+		/// 角色头像
+		/// </summary>
+		[ProtoMember(5)]
+		public uint Avatar { get; set; }
+
 	}
 
 	/// <summary>

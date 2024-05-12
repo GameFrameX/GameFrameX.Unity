@@ -93,6 +93,8 @@ namespace Hotfix
 
             RespLogin respLogin = await networkChannel.Call<RespLogin>(req);
             Log.Info(respLogin);
+            await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor);
+            GameApp.FUI.Remove(uiLogin.Name, UILayer.Floor);
         }
 
         static async void LoadConfig()

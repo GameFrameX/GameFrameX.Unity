@@ -14,7 +14,6 @@ namespace Hotfix.UI
         private async void OnBagBtnClick()
         {
             ReqBagInfo reqBagInfo = new ReqBagInfo();
-            reqBagInfo.Timestamp = GameTimeHelper.UnixTimeSeconds();
             var respBagInfo = await GameApp.Network.GetNetworkChannel("network").Call<RespBagInfo>(reqBagInfo);
             Log.Debug(respBagInfo);
         }

@@ -530,9 +530,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1681186160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d72bdfb1a524d48acb2a5aeacc73a6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 142aab0e74324dcb9941bb52a9311ca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  componentType: GameFrameX.Entity.Runtime.EntityManager
+  m_EnableShowEntityUpdateEvent: 0
+  m_EnableShowEntityDependencyAssetEvent: 0
+  m_InstanceRoot: {fileID: 0}
+  m_EntityHelperTypeName: GameFrameX.Entity.Runtime.DefaultEntityHelper
+  m_CustomEntityHelper: {fileID: 0}
+  m_EntityGroupHelperTypeName: GameFrameX.Entity.Runtime.DefaultEntityGroupHelper
+  m_CustomEntityGroupHelper: {fileID: 0}
+  m_EntityGroups: []
 --- !u!114 &1681186168
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,14 +31,16 @@ namespace Hotfix
             LoadUI();
         }
 
+        private static UILogin uiLogin;
+
         private static async void LoadUI()
         {
-            var uiLogin = await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
+            uiLogin = await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
             uiLogin.m_enter.onClick.Add(() =>
             {
                 if (networkChannel != null && networkChannel.Connected)
                 {
-                    NetTest();
+                    Login();
                     return;
                 }
 
@@ -48,7 +50,6 @@ namespace Hotfix
                 }
 
                 networkChannel = GameApp.Network.CreateNetworkChannel("network", new DefaultNetworkChannelHelper());
-                // NetManager.Singleton.Init();
                 // 注册心跳消息
                 DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
                 networkChannel.RegisterHandler(packetSendHeaderHandler);
@@ -67,21 +68,25 @@ namespace Hotfix
         private static void OnNetworkConnected(object sender, GameEventArgs e)
         {
             Log.Info(nameof(OnNetworkConnected));
-            NetTest();
+            Login();
         }
 
 
-        private static async void NetTest()
+        private static async void Login()
         {
-            await UniTask.Delay(1);
+            if (uiLogin.m_UserName.text.IsNullOrWhiteSpace() || uiLogin.m_Password.text.IsNullOrWhiteSpace())
+            {
+                uiLogin.m_ErrorText.text = "用户名或密码不能为空";
+                return;
+            }
 
 
             var req = new ReqLogin
             {
                 SdkType = 0,
                 SdkToken = "",
-                UserName = "Blank",
-                Password = "123456",
+                UserName = uiLogin.m_UserName.text,
+                Password = uiLogin.m_Password.text,
                 Device = SystemInfo.deviceUniqueIdentifier
             };
             req.Platform = PathHelper.GetPlatformName;

@@ -20,10 +20,10 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GTextInput m_UserName { get; private set; }
-		public GTextInput m_Password { get; private set; }
 		public GTextField m_ErrorText { get; private set; }
 		public GButton m_enter { get; private set; }
+		public GTextInput m_UserName { get; private set; }
+		public GTextInput m_Password { get; private set; }
 
         private static GObject CreateGObject()
         {
@@ -82,10 +82,10 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if(com != null)
             {
-				m_UserName = (GTextInput)com.GetChild("UserName");
-				m_Password = (GTextInput)com.GetChild("Password");
 				m_ErrorText = (GTextField)com.GetChild("ErrorText");
 				m_enter = (GButton)com.GetChild("enter");
+				m_UserName = (GTextInput)com.GetChild("UserName");
+				m_Password = (GTextInput)com.GetChild("Password");
             }
         }
 
@@ -98,10 +98,10 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_UserName = null;
-			m_Password = null;
 			m_ErrorText = null;
 			m_enter = null;
+			m_UserName = null;
+			m_Password = null;
             self = null;            
         }
 

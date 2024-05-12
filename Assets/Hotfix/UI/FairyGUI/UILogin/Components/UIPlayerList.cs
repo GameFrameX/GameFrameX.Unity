@@ -20,7 +20,12 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
+		public Controller m_IsSelected { get; private set; }
 		public GList m_player_list { get; private set; }
+		public GLoader m_selected_icon { get; private set; }
+		public GRichTextField m_selected_name { get; private set; }
+		public GRichTextField m_selected_level { get; private set; }
+		public GButton m_login_button { get; private set; }
 
         private static GObject CreateGObject()
         {
@@ -79,7 +84,12 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if(com != null)
             {
+				m_IsSelected = com.GetController("IsSelected");
 				m_player_list = (GList)com.GetChild("player_list");
+				m_selected_icon = (GLoader)com.GetChild("selected_icon");
+				m_selected_name = (GRichTextField)com.GetChild("selected_name");
+				m_selected_level = (GRichTextField)com.GetChild("selected_level");
+				m_login_button = (GButton)com.GetChild("login_button");
             }
         }
 
@@ -92,7 +102,12 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
+			m_IsSelected = null;
 			m_player_list = null;
+			m_selected_icon = null;
+			m_selected_name = null;
+			m_selected_level = null;
+			m_login_button = null;
             self = null;            
         }
 

@@ -13,6 +13,7 @@ namespace Hotfix.UI
 		public const string UILogin_UIAnnouncementContent = "ui://UILogin/UIAnnouncementContent";
 		public const string UILogin_UIPlayerList = "ui://UILogin/UIPlayerList";
 		public const string UILogin_UIPlayerListItem = "ui://UILogin/UIPlayerListItem";
+		public const string UILogin_UIPlayerListItemLoginButton = "ui://UILogin/UIPlayerListItemLoginButton";
 		public const string UILogin_UIPlayerCreate = "ui://UILogin/UIPlayerCreate";
 		public const string UILogin_UILogin = "ui://UILogin/UILogin";
 

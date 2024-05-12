@@ -23,7 +23,7 @@ namespace Hotfix.UI
 		public GLoader m_icon { get; private set; }
 		public GRichTextField m_name_text { get; private set; }
 		public GRichTextField m_level_text { get; private set; }
-		public GComponent m_login_button { get; private set; }
+		public UIPlayerListItemLoginButton m_login_button { get; private set; }
 
         private static GObject CreateGObject()
         {
@@ -85,7 +85,7 @@ namespace Hotfix.UI
 				m_icon = (GLoader)com.GetChild("icon");
 				m_name_text = (GRichTextField)com.GetChild("name_text");
 				m_level_text = (GRichTextField)com.GetChild("level_text");
-				m_login_button = (GComponent)com.GetChild("login_button");
+				m_login_button = UIPlayerListItemLoginButton.Create(com.GetChild("login_button"), this);
             }
         }
 

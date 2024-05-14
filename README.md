@@ -19,16 +19,13 @@ GameFrameX for Unity是GameFrameX综合解决方案的重要组成部分，专�
 |      UniTask       |  异步Await/Async的实现   | GitHub | https://github.com/AlianBlank/com.cysharp.unitask                    |
 |    FairyGUI UI     |         编辑器         | GitHub | https://github.com/AlianBlank/com.fairygui.unity                     |
 |      ProtoBuf      |     数据序列化和通讯协议      | GitHub | https://github.com/AlianBlank/com.google.protobuf                    |
-|    MessagePack     |     高效的二进制序列化库      | GitHub | https://github.com/AlianBlank/com.neuecc.messagepack                 |
 |     HybridCLR      |         热更新         | GitHub | https://github.com/focus-creative-games/hybridclr                    |
-|        XLua        |         热更新         | GitHub | https://github.com/AlianBlank/com.tencent.xlua                       |
 |   GameAnalytics    |      游戏数据分析和统计      | GitHub | 还没上传                                                                 |
 |       Sentry       |      错误追踪和性能监控      | GitHub | https://github.com/AlianBlank/io.sentry.unity                        |
 |      LitJson       |  JSON序列化工具（马三修改版本）  | GitHub | https://github.com/AlianBlank/com.xincger.litjson                    |
 |     logViewer      |        日志查看器        | GitHub | https://github.com/AlianBlank/com.sharelib.logviewer                 |
 |      DoTween       |       强大的动画插件       | GitHub | https://github.com/AlianBlank/com.demigiant.dotween                  |
 |     Animancer      |    高度灵活的动画状态机插件     | GitHub | 还没上传                                                                 |
-|      BestHTTP      |     全面的HTTP协议实现     | GitHub | https://github.com/AlianBlank/com.benedicht.besthttp                 |
 | OperationClipBoard |    实现剪贴板数据的设置与获取    | GitHub | https://github.com/AlianBlank/com.alianblank.blankoperationclipboard |
 |     GetChannel     |  渠道获取及集成基础的渠道获取方式   | GitHub | https://github.com/AlianBlank/com.alianblank.blankgetchannel         |
 |     ReadAssets     | 直接读取Android只读目录下的文件 | GitHub | https://github.com/AlianBlank/com.alianblank.readassets              |

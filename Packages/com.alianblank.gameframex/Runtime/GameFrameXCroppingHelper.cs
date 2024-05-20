@@ -9,13 +9,9 @@ namespace GameFrameX.Runtime
         {
             _ = typeof(BinaryExtension);
             _ = typeof(BufferExtension);
-
             _ = typeof(GameFrameX.BaseEventArgs);
-
-
             _ = typeof(GameFrameX.EventPool<>);
             _ = typeof(GameFrameX.EventPoolMode);
-
             _ = typeof(GameFrameX.GameFrameworkEntry);
             _ = typeof(GameFrameX.GameFrameworkEventArgs);
             _ = typeof(GameFrameX.GameFrameworkException);
@@ -27,7 +23,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.GameFrameworkLog.ILogHelper);
             _ = typeof(GameFrameX.GameFrameworkLogLevel);
             _ = typeof(GameFrameX.GameFrameworkModule);
-
             _ = typeof(GameFrameX.GameFrameworkMultiDictionary<,>);
             _ = typeof(GameFrameX.GameFrameworkMultiDictionary<,>.Enumerator);
             _ = typeof(GameFrameX.GameFrameworkSerializer<>);
@@ -36,8 +31,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.GameFrameworkSerializer<>.TryGetValueCallback);
             _ = typeof(GameFrameX.IReference);
             _ = typeof(GameFrameX.ITaskAgent<>);
-
-
             _ = typeof(GameFrameX.ObjectPool.IObjectPool<>);
             _ = typeof(GameFrameX.ObjectPool.IObjectPoolManager);
             _ = typeof(GameFrameX.ObjectPool.ObjectBase);
@@ -45,57 +38,41 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.ObjectPool.ObjectPoolBase);
             _ = typeof(GameFrameX.ObjectPool.ObjectPoolManager);
             _ = typeof(GameFrameX.ObjectPool.ReleaseObjectFilterCallback<>);
-
             _ = typeof(GameFrameX.ReferencePool);
             _ = typeof(GameFrameX.ReferencePoolInfo);
             _ = typeof(GameFrameX.Runtime.ApplicationHelper);
             _ = typeof(GameFrameX.Runtime.BaseComponent);
             _ = typeof(GameFrameX.Runtime.CameraHelper);
-            // _ = typeof(GameFrameX.Runtime.ConfigHelperBase);
-
             _ = typeof(GameFrameX.Runtime.DefaultCompressionHelper);
-
-
             _ = typeof(GameFrameX.Runtime.DefaultLogHelper);
-
-
             _ = typeof(GameFrameX.Runtime.DefaultTextHelper);
             _ = typeof(GameFrameX.Runtime.DefaultVersionHelper);
             _ = typeof(GameFrameX.Runtime.DistinctHelper);
+#if ENABLE_GAME_FRAME_X_DO_TWEEN
             _ = typeof(GameFrameX.Runtime.DoTweenHelper);
-
+#endif
             _ = typeof(GameFrameX.Runtime.FileHelper);
-
-
             _ = typeof(GameFrameX.Runtime.GameEntry);
             _ = typeof(GameFrameX.Runtime.GameFrameworkComponent);
             _ = typeof(GameFrameX.Runtime.GameFrameXCroppingHelper);
             _ = typeof(GameFrameX.Runtime.GameObjectHelper);
             _ = typeof(GameFrameX.Runtime.GameTimeHelper);
             _ = typeof(GameFrameX.Runtime.Helper);
-
             _ = typeof(GameFrameX.Runtime.Log);
             _ = typeof(GameFrameX.Runtime.LuaComponent);
             _ = typeof(GameFrameX.Runtime.MathHelper);
-
             _ = typeof(GameFrameX.Runtime.NetworkHelper);
             _ = typeof(GameFrameX.Runtime.NewtonsoftJsonHelper);
             _ = typeof(GameFrameX.Runtime.ObjectHelper);
             _ = typeof(GameFrameX.Runtime.ObjectPoolComponent);
             _ = typeof(GameFrameX.Runtime.PathHelper);
-
             _ = typeof(GameFrameX.Runtime.PositionHelper);
             _ = typeof(GameFrameX.Runtime.RandomHelper);
             _ = typeof(GameFrameX.Runtime.ReferencePoolComponent);
             _ = typeof(GameFrameX.Runtime.ReferenceStrictCheckType);
-
-
             _ = typeof(GameFrameX.Runtime.SequenceReader<>);
             _ = typeof(GameFrameX.Runtime.SequenceReaderExtensions);
-
-
             _ = typeof(GameFrameX.Runtime.ShutdownType);
-
             _ = typeof(GameFrameX.Runtime.UnityRendererHelper);
             _ = typeof(GameFrameX.Runtime.VarBoolean);
             _ = typeof(GameFrameX.Runtime.VarByte);
@@ -128,14 +105,12 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.VarVector3);
             _ = typeof(GameFrameX.Runtime.VarVector4);
             _ = typeof(GameFrameX.Runtime.ZipHelper);
-
             _ = typeof(GameFrameX.StartTaskStatus);
             _ = typeof(GameFrameX.TaskBase);
             _ = typeof(GameFrameX.TaskInfo);
             _ = typeof(GameFrameX.TaskPool<>);
             _ = typeof(GameFrameX.TaskStatus);
             _ = typeof(GameFrameX.TypeNamePair);
-
             _ = typeof(GameFrameX.Utility);
             _ = typeof(GameFrameX.Utility.Assembly);
             _ = typeof(GameFrameX.Utility.Asset);

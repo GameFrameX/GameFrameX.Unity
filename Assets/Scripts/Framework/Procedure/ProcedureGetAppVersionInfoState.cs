@@ -40,7 +40,7 @@ namespace GameFrameX.Procedure
                 var json = await GameApp.Web.PostToString(GameApp.GlobalConfig.CheckAppVersionUrl, jsonParams);
                 Debug.Log(json);
 
-                HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json);
+                HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);
                 if (httpJsonResult.Code > 0)
                 {
                     LauncherUIHandler.SetTipText("Server error, retrying...");

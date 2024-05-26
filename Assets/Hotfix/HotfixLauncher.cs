@@ -55,7 +55,6 @@ namespace Hotfix
                 DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
                 networkChannel.RegisterHandler(packetSendHeaderHandler);
                 networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
-                networkChannel.SetDefaultHandler((sender, e) => { Log.Info("Receive: " + e); });
                 GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
                 GameApp.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
             });

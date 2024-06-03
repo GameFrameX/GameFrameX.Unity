@@ -19,9 +19,7 @@ namespace Hotfix
 {
     public static class HotfixLauncher
     {
-        public static string serverIp = "127.0.0.1";
-        public static int serverPort = 21000;
-        private static INetworkChannel networkChannel;
+
 
         public static void Main()
         {
@@ -31,93 +29,20 @@ namespace Hotfix
             LoadUI();
         }
 
-        private static UILogin uiLogin;
-
         private static async void LoadUI()
         {
             GameApp.FUIPackage.AddPackage(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
-            uiLogin = await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
-            uiLogin.m_enter.onClick.Add(() =>
-            {
-                if (networkChannel != null && networkChannel.Connected)
-                {
-                    Login();
-                    return;
-                }
-
-                if (networkChannel != null && GameApp.Network.HasNetworkChannel("network") && !networkChannel.Connected)
-                {
-                    GameApp.Network.DestroyNetworkChannel("network");
-                }
-
-                networkChannel = GameApp.Network.CreateNetworkChannel("network", new DefaultNetworkChannelHelper());
-                // 注册心跳消息
-                DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
-                networkChannel.RegisterHandler(packetSendHeaderHandler);
-                networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
-                GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-                GameApp.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            });
-        }
-
-        private static void OnNetworkClosed(object sender, GameEventArgs e)
-        {
-            Log.Info(nameof(OnNetworkClosed));
-        }
-
-        private static void OnNetworkConnected(object sender, GameEventArgs e)
-        {
-            Log.Info(nameof(OnNetworkConnected));
-            Login();
+            await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
         }
 
 
-        private static async void Login()
-        {
-            if (uiLogin.m_UserName.text.IsNullOrWhiteSpace() || uiLogin.m_Password.text.IsNullOrWhiteSpace())
-            {
-                uiLogin.m_ErrorText.text = "用户名或密码不能为空";
-                return;
-            }
-
-
-            var req = new ReqLogin
-            {
-                SdkType = 0,
-                SdkToken = "",
-                UserName = uiLogin.m_UserName.text,
-                Password = uiLogin.m_Password.text,
-                Device = SystemInfo.deviceUniqueIdentifier
-            };
-            req.Platform = PathHelper.GetPlatformName;
-
-            RespLogin respLogin = await networkChannel.Call<RespLogin>(req);
-            Log.Info(respLogin);
-            ReqPlayerList reqPlayerList = new ReqPlayerList();
-
-            reqPlayerList.Id = respLogin.Id;
-
-            var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
-            if (respPlayerList.PlayerList.Count > 0)
-            {
-                await GameApp.FUI.AddAsync(UIPlayerList.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
-            }
-            else
-            {
-                await GameApp.FUI.AddAsync(UIPlayerCreate.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
-            }
-
-            // await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor);
-            GameApp.FUI.Remove(uiLogin.Name, UILayer.Floor);
-        }
 
         static async void LoadConfig()
         {
             var tablesComponent = new TablesComponent();
             tablesComponent.Init(GameApp.Config);
             await tablesComponent.LoadAsync(ConfigLoader);
-            var item = GameApp.Config.GetConfig<TbItem>().Get(1);
-            Log.Info(item);
+
         }
 
         private static async Task<JSONNode> ConfigLoader(string file)

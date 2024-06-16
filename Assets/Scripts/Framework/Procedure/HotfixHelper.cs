@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Framework.Asset;
 using GameFrameX.Runtime;
 using HybridCLR;
 using UnityEngine;
@@ -111,15 +110,17 @@ namespace GameFrameX.Procedure
         public static async void StartHotfix()
         {
             Log.Info("开始加载AOT DLL");
-#if !UNITY_EDITOR
-            foreach (var aotDll in aotDlls)
+            if (!Application.isEditor)
             {
-                // Log.Info("开始加载AOT DLL ==> " + aotDll);
-                var assetHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(Utility.Asset.Path.GetAOTCodePath(aotDll));
-                var aotBytes = assetHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
-                RuntimeApi.LoadMetadataForAOTAssembly(aotBytes, HomologousImageMode.SuperSet);
+                foreach (var aotDll in aotDlls)
+                {
+                    Log.Info("开始加载AOT DLL ==> " + aotDll);
+                    var assetHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(Utility.Asset.Path.GetAOTCodePath(aotDll));
+                    var aotBytes = assetHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
+                    RuntimeApi.LoadMetadataForAOTAssembly(aotBytes, HomologousImageMode.SuperSet);
+                }
             }
-#endif
+
             Log.Info("结束加载AOT DLL");
             Log.Info("开始加载Unity.Hotfix.dll");
             var assetHotfixDllPath = Utility.Asset.Path.GetCodePath("Unity.Hotfix.dll");

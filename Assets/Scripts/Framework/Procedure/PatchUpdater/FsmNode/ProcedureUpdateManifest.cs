@@ -25,9 +25,18 @@ namespace GameFrameX.Procedure
             yield return new WaitForSecondsRealtime(0.5f);
 
             var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
+            UpdatePackageManifestOperation buildInOperation;
+            if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
+            {
+                buildInOperation = buildInResourcePackage.UpdatePackageManifestAsync("Simulate");
+            }
+            else
+            {
+                var varStringVersion = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName + "Version");
 
-            var varStringVersion = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName + "Version");
-            var buildInOperation = buildInResourcePackage.UpdatePackageManifestAsync(varStringVersion.Value);
+                buildInOperation = buildInResourcePackage.UpdatePackageManifestAsync(varStringVersion.Value);
+            }
+
             yield return buildInOperation;
 
 

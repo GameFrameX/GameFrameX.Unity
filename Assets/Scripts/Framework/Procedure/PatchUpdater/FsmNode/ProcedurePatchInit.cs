@@ -1,11 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
-using GameFrameX.Fsm;
 using GameFrameX.Fsm.Runtime;
-using GameFrameX.Procedure;
 using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
-using UnityEngine;
+using YooAsset;
 
 namespace GameFrameX.Procedure
 {
@@ -14,6 +13,12 @@ namespace GameFrameX.Procedure
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
+            if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
+            {
+                GameApp.Asset.InitPackage(AssetComponent.BuildInPackageName, string.Empty, string.Empty, true);
+                ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
+                return;
+            }
 
             // Game.EventSystem.Run(EventIdType.UILoadingMainSetText, "Loading...");
             // 加载更新面板

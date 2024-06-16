@@ -1,6 +1,5 @@
 ﻿using Game.Model;
 using GameFrameX.FairyGUI.Runtime;
-using GameFrameX.Runtime;
 
 namespace GameFrameX.Procedure
 {
@@ -16,7 +15,10 @@ namespace GameFrameX.Procedure
         public static void Dispose()
         {
             GameApp.FUI.Remove(UILauncher.UIResName, UILayer.Loading);
-            _ui.Dispose();
+            if (_ui != null)
+            {
+                _ui.Dispose();
+            }
             _ui = null;
         }
 

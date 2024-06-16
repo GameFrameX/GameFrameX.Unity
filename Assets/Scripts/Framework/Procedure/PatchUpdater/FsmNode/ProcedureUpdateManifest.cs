@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure.Runtime;
+using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
@@ -22,19 +23,24 @@ namespace GameFrameX.Procedure
         private IEnumerator UpdateManifest(IFsm<IProcedureManager> procedureOwner)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            var package = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
-            var operation = package.UpdatePackageManifestAsync(GameApp.Asset.StaticVersion);
-            yield return operation;
 
-            if (operation.Status == EOperationStatus.Succeed)
+            var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
+
+            var varStringVersion = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName + "Version");
+            var buildInOperation = buildInResourcePackage.UpdatePackageManifestAsync(varStringVersion.Value);
+            yield return buildInOperation;
+
+
+            if (buildInOperation.Status == EOperationStatus.Succeed)
             {
                 //更新成功
                 ChangeState<ProcedureCreateDownloader>(procedureOwner);
+                procedureOwner.RemoveData(AssetComponent.BuildInPackageName + "Version");
             }
             else
             {
                 //更新失败
-                Debug.LogError(operation.Error);
+                Debug.LogError(buildInOperation.Error);
                 PatchEventDispatcher.SendPatchManifestUpdateFailedMsg();
                 ChangeState<ProcedureUpdateManifest>(procedureOwner);
             }

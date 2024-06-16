@@ -22,22 +22,21 @@ namespace GameFrameX.Procedure
         {
             yield return new WaitForSecondsRealtime(0.5f);
 
-            var package = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
-            var operation = package.UpdatePackageVersionAsync();
-            yield return operation;
+            var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
+            var buildInOperation = buildInResourcePackage.UpdatePackageVersionAsync();
+            yield return buildInOperation;
 
-            if (operation.Status == EOperationStatus.Succeed)
+            if (buildInOperation.Status == EOperationStatus.Succeed)
             {
                 //更新成功
-                string packageVersion = operation.PackageVersion;
-                GameApp.Asset.UpdateStaticVersion(packageVersion);
+                string packageVersion = buildInOperation.PackageVersion;
                 Debug.Log($"Updated package Version : {packageVersion}");
                 ChangeState<ProcedureUpdateManifest>(procedureOwner);
             }
             else
             {
                 //更新失败
-                Debug.LogError(operation.Error);
+                Debug.LogError(buildInOperation.Error);
                 PatchEventDispatcher.SendStaticVersionUpdateFailedMsg();
                 ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
             }

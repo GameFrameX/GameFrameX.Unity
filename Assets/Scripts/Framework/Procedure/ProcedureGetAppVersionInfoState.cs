@@ -1,7 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Game.Model;
-using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.GlobalConfig.Runtime;
 using GameFrameX.Localization.Runtime;
@@ -72,13 +71,13 @@ namespace GameFrameX.Procedure
                             else
                             {
                                 uiLoadingMainScene.m_IsUpgrade.SetSelectedIndex(0);
-                                ChangeState<ProcedurePatchInit>(procedureOwner);
+                                ChangeState<ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState>(procedureOwner);
                             }
                         });
                     }
                     else
                     {
-                        ChangeState<ProcedurePatchInit>(procedureOwner);
+                        ChangeState<ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState>(procedureOwner);
                     }
                 }
             }

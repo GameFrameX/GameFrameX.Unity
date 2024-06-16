@@ -22,17 +22,15 @@ namespace GameFrameX.Procedure
 
         async void Start(IFsm<IProcedureManager> procedureOwner)
         {
-            GameApp.Asset.Initialize(GetHostServerURL(), GetHostServerURL());
+            var buildInPackageNameURL = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName);
+            Log.Debug("下载资源的路径：" + buildInPackageNameURL);
+            GameApp.Asset.InitPackage(AssetComponent.BuildInPackageName, buildInPackageNameURL.Value, buildInPackageNameURL.Value, true);
+            procedureOwner.RemoveData(AssetComponent.BuildInPackageName);
             // 运行补丁流程
             PatchUpdater.Run();
-            await UniTask.DelayFrame(10);
+            await UniTask.DelayFrame();
 
             ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
-        }
-
-        private string GetHostServerURL()
-        {
-            return $"{GameApp.GlobalConfig.HostServerUrl}";
         }
     }
 }

@@ -1,7 +1,5 @@
 using Cysharp.Threading.Tasks;
-using GameFrameX.Fsm;
 using GameFrameX.Fsm.Runtime;
-using GameFrameX.Procedure;
 using GameFrameX.Procedure.Runtime;
 
 namespace GameFrameX.Procedure
@@ -21,10 +19,8 @@ namespace GameFrameX.Procedure
         private async void Start()
         {
             await UniTask.DelayFrame();
-
-            // Game.EventSystem.Run(EventIdType.UILoadingMainSetText, "Loading...");
-            LauncherUIHandler.Dispose();
             HotfixHelper.StartHotfix();
+            LauncherUIHandler.Dispose();
         }
     }
 }

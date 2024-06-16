@@ -51,12 +51,12 @@ namespace GameFrameX.Procedure
                 else
                 {
                     ResponseGlobalInfo responseGlobalInfo = Utility.Json.ToObject<ResponseGlobalInfo>(httpJsonResult.Data);
-                    GlobalConfigComponent globalConfigComponent = GameEntry.GetComponent<GlobalConfigComponent>();
+                    GlobalConfigComponent globalConfigComponent = GameApp.GlobalConfig;
                     globalConfigComponent.CheckAppVersionUrl = responseGlobalInfo.CheckAppVersionUrl;
                     globalConfigComponent.CheckResourceVersionUrl = responseGlobalInfo.CheckResourceVersionUrl;
                     globalConfigComponent.Content = responseGlobalInfo.Content;
-
-                    globalConfigComponent.HostServerUrl = responseGlobalInfo.CheckResourceVersionUrl;
+                    // TODO  这里要自己从Content中解析。因为可能有多个
+                    // globalConfigComponent.HostServerUrl = responseGlobalInfo.CheckResourceVersionUrl;
                     // Game.EventSystem.Run(EventIdType.UILoadingMainSetText, "Loading...");
                     LauncherUIHandler.SetTipText("Loading...");
                     ChangeState<ProcedureGetAppVersionInfoState>(procedureOwner);

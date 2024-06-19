@@ -16,10 +16,10 @@ namespace Hotfix.UI
         private static INetworkChannel networkChannel;
 
         // public static string serverIp = "gameframex.alianblank.com";
-        public static string serverIp = "47.106.128.180";
+        // public static string serverIp = "47.106.128.180";
 
-        // public static string serverIp = "127.0.0.1";
-        public static int serverPort = 21100;
+        public static string serverIp = "127.0.0.1";
+        public static int serverPort = 21000;
 
         protected override void OnShow()
         {

@@ -59,7 +59,6 @@ GameFrameX for Unity是GameFrameX综合解决方案的重要组成部分，专�
     "com.gameframex.unity.fairygui.unity": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.fairygui.unity.git",
     "com.gameframex.unity.focus-creative-games.luban": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.focus-creative-games.luban.git",
     "com.gameframex.unity.fsm": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.fsm.git",
-    "com.gameframex.unity.gameanalytics": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.gameanalytics.git",
     "com.gameframex.unity.getchannel": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.getchannel.git",
     "com.gameframex.unity.globalconfig": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.globalconfig.git",
     "com.gameframex.unity.google.protobuf": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.google.protobuf.git",
@@ -86,6 +85,11 @@ GameFrameX for Unity是GameFrameX综合解决方案的重要组成部分，专�
     "com.gameframex.unity.objectstorage": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.git",
     "com.gameframex.unity.objectstorage.qiniu": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.qiniu.git",
     "com.gameframex.unity.objectstorage.aliyun": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.aliyun.git",
+    "com.gameframex.unity.gameanalytics": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.git",
+    "com.gameframex.unity.gameanalytics.gameanalytics": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gameanalytics.git",
+    "com.gameanalytics.sdk": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gameanalytics.sdk.git",
+    "com.gameframex.unity.gameanalytics.gravity-engine": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gravity-engine.git",
+    "com.gameframex.unity.gravityinfinite.gravity-engine": "https://github.com/AlianBlank/com.gameframex.unity.gravityinfinite.gravity-engine.git",
 }
 ```
 

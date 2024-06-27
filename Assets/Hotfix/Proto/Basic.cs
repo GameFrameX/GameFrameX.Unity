@@ -33,6 +33,12 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 }

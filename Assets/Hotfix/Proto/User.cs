@@ -87,6 +87,12 @@ namespace Hotfix.Proto
 		[ProtoMember(5)]
 		public long CreateTime { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -123,6 +129,12 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		public PlayerInfo PlayerInfo { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -152,6 +164,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public List<PlayerInfo> PlayerList = new List<PlayerInfo>();
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
 
 	}
 
@@ -190,6 +208,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(5)]
 		public uint Avatar { get; set; }
+
+		/// <summary>
+		/// 角色当前经验
+		/// </summary>
+		[ProtoMember(6)]
+		public ulong CurrentExp { get; set; }
 
 	}
 
@@ -233,6 +257,12 @@ namespace Hotfix.Proto
 		[ProtoMember(3)]
 		public PlayerInfo PlayerInfo { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -254,6 +284,12 @@ namespace Hotfix.Proto
 		[ProtoMember(2)]
 		public string Desc { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -274,6 +310,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2)]
 		public string Content { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
 
 	}
 

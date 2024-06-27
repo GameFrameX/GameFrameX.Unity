@@ -87,6 +87,12 @@ namespace Hotfix.Proto
 		[ProtoMember(8)]
 		public long nextRefreshTime { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -183,6 +189,12 @@ namespace Hotfix.Proto
 		[ProtoMember(7)]
 		public long refreshedTime { get; set; }
 
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
+
 	}
 
 	/// <summary>
@@ -236,6 +248,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(14)]
 		public long nextRefreshTime { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
 
 	}
 
@@ -308,6 +326,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(4)]
 		public long refreshedTime { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(888)]
+		public int ErrorCode { get; set; }
 
 	}
 

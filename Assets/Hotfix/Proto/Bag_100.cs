@@ -24,8 +24,8 @@ namespace Hotfix.Proto
 	/// 请求背包数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(100)]
-	public partial class ReqBagInfo : MessageObject, IRequestMessage
+	[MessageTypeHandler(6553601)]
+	public sealed class ReqBagInfo : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 背包类型
@@ -39,8 +39,8 @@ namespace Hotfix.Proto
 	/// 返回背包数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(100)]
-	public partial class RespBagInfo : MessageObject, IResponseMessage
+	[MessageTypeHandler(6553602)]
+	public sealed class RespBagInfo : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -57,26 +57,11 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 通知背包数据变化
-	/// </summary>
-	[ProtoContract]
-	[MessageTypeHandler(101)]
-	public partial class NotifyBagInfoChanged : MessageObject, INotifyMessage
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		[ProtoMember(1)]
-		public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
-
-	}
-
-	/// <summary>
 	/// 请求合成宠物
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(102)]
-	public partial class ReqComposePet : MessageObject, IRequestMessage
+	[MessageTypeHandler(6553603)]
+	public sealed class ReqComposePet : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 碎片id
@@ -90,8 +75,8 @@ namespace Hotfix.Proto
 	/// 返回合成宠物
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(102)]
-	public partial class RespComposePet : MessageObject, IResponseMessage
+	[MessageTypeHandler(6553604)]
+	public sealed class RespComposePet : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 合成宠物的Id
@@ -111,8 +96,8 @@ namespace Hotfix.Proto
 	/// 请求使用道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(103)]
-	public partial class ReqUseItem : MessageObject, IRequestMessage
+	[MessageTypeHandler(6553605)]
+	public sealed class ReqUseItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 道具id
@@ -126,8 +111,8 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(104)]
-	public partial class ReqSellItem : MessageObject, IRequestMessage
+	[MessageTypeHandler(6553606)]
+	public sealed class ReqSellItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 道具id
@@ -141,8 +126,8 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(105)]
-	public partial class RespItemChange : MessageObject, IResponseMessage
+	[MessageTypeHandler(6553607)]
+	public sealed class RespItemChange : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 变化的道具

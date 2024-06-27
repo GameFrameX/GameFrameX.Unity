@@ -9,8 +9,8 @@ namespace Hotfix.Proto
 	/// 请求账号登录
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(300)]
-	public partial class ReqLogin : MessageObject, IRequestMessage
+	[MessageTypeHandler(19660801)]
+	public sealed class ReqLogin : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 
@@ -54,8 +54,8 @@ namespace Hotfix.Proto
 	/// 请求账号登录返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(300)]
-	public partial class RespLogin : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660802)]
+	public sealed class RespLogin : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -99,8 +99,8 @@ namespace Hotfix.Proto
 	/// 请求角色创建
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(301)]
-	public partial class ReqPlayerCreate : MessageObject, IRequestMessage
+	[MessageTypeHandler(19660803)]
+	public sealed class ReqPlayerCreate : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 账号ID
@@ -120,8 +120,8 @@ namespace Hotfix.Proto
 	/// 请求角色创建返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(301)]
-	public partial class RespPlayerCreate : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660804)]
+	public sealed class RespPlayerCreate : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 角色信息
@@ -141,8 +141,8 @@ namespace Hotfix.Proto
 	/// 请求角色列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(302)]
-	public partial class ReqPlayerList : MessageObject, IRequestMessage
+	[MessageTypeHandler(19660805)]
+	public sealed class ReqPlayerList : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 账号ID
@@ -156,8 +156,8 @@ namespace Hotfix.Proto
 	/// 请求角色列表返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(302)]
-	public partial class RespPlayerList : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660806)]
+	public sealed class RespPlayerList : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 角色列表
@@ -177,7 +177,7 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	public partial class PlayerInfo
+	public sealed class PlayerInfo
 	{
 		/// <summary>
 		/// 角色ID
@@ -221,8 +221,8 @@ namespace Hotfix.Proto
 	/// 请求玩家登录
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(303)]
-	public partial class ReqPlayerLogin : MessageObject, IRequestMessage
+	[MessageTypeHandler(19660807)]
+	public sealed class ReqPlayerLogin : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 角色ID
@@ -236,8 +236,8 @@ namespace Hotfix.Proto
 	/// 请求玩家登录返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(303)]
-	public partial class RespPlayerLogin : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660808)]
+	public sealed class RespPlayerLogin : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -269,8 +269,8 @@ namespace Hotfix.Proto
 	/// 客户端每次请求都会回复错误码
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(304)]
-	public partial class RespErrorCode : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660809)]
+	public sealed class RespErrorCode : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 0:表示无错误
@@ -296,8 +296,8 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(305)]
-	public partial class RespPrompt : MessageObject, IResponseMessage
+	[MessageTypeHandler(19660810)]
+	public sealed class RespPrompt : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 提示信息类型（1Tip提示，2跑马灯，3插队跑马灯，4弹窗，5弹窗回到登陆，6弹窗退出游戏）

@@ -9,8 +9,8 @@ namespace Hotfix.Proto
 	/// 获取商品列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1701)]
-	public partial class C2S_GetShopItemList : MessageObject, IRequestMessage
+	[MessageTypeHandler(13107201)]
+	public sealed class C2S_GetShopItemList : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 
@@ -30,8 +30,8 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1701)]
-	public partial class S2C_GetShopItemList : MessageObject, IResponseMessage
+	[MessageTypeHandler(13107202)]
+	public sealed class S2C_GetShopItemList : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -99,8 +99,8 @@ namespace Hotfix.Proto
 	/// 获取限购列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1702)]
-	public partial class C2S_GetLimitList : MessageObject, IRequestMessage
+	[MessageTypeHandler(13107203)]
+	public sealed class C2S_GetLimitList : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 
@@ -132,8 +132,8 @@ namespace Hotfix.Proto
 	/// 存储数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1702)]
-	public partial class S2C_GetLimitList : MessageObject, IResponseMessage
+	[MessageTypeHandler(13107204)]
+	public sealed class S2C_GetLimitList : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -201,8 +201,8 @@ namespace Hotfix.Proto
 	/// 获取商品列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1703)]
-	public partial class C2S_GetShopPaymentList : MessageObject, IRequestMessage
+	[MessageTypeHandler(13107205)]
+	public sealed class C2S_GetShopPaymentList : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 
@@ -216,8 +216,8 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1703)]
-	public partial class S2C_GetShopPaymentList : MessageObject, IResponseMessage
+	[MessageTypeHandler(13107206)]
+	public sealed class S2C_GetShopPaymentList : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -261,8 +261,8 @@ namespace Hotfix.Proto
 	/// 获取限购列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1704)]
-	public partial class C2S_GetPaymentList : MessageObject, IRequestMessage
+	[MessageTypeHandler(13107207)]
+	public sealed class C2S_GetPaymentList : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 
@@ -288,8 +288,8 @@ namespace Hotfix.Proto
 	/// 存储数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1704)]
-	public partial class S2C_GetPaymentList : MessageObject, IResponseMessage
+	[MessageTypeHandler(13107208)]
+	public sealed class S2C_GetPaymentList : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 
@@ -339,7 +339,7 @@ namespace Hotfix.Proto
 	/// ===============================数据结构==============================
 	/// </summary>
 	[ProtoContract]
-	public partial class PaymentGood
+	public sealed class PaymentGood
 	{
 		/// <summary>
 		/// 货物id
@@ -401,7 +401,7 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	public partial class PaymentData
+	public sealed class PaymentData
 	{
 		/// <summary>
 		/// 货物id

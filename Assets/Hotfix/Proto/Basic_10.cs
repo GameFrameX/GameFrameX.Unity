@@ -9,8 +9,8 @@ namespace Hotfix.Proto
 	/// 请求心跳
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1)]
-	public partial class ReqHeartBeat : MessageObject, IRequestMessage
+	[MessageTypeHandler(655361)]
+	public sealed class ReqHeartBeat : MessageObject, IRequestMessage
 	{
 		/// <summary>
 		/// 时间戳
@@ -24,8 +24,8 @@ namespace Hotfix.Proto
 	/// 返回心跳
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(1)]
-	public partial class RespHeartBeat : MessageObject, IResponseMessage
+	[MessageTypeHandler(655362)]
+	public sealed class RespHeartBeat : MessageObject, IResponseMessage
 	{
 		/// <summary>
 		/// 时间戳

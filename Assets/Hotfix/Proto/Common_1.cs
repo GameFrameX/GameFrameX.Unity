@@ -19,7 +19,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		Failed = 1, 
 	}
-
 	/// <summary>
 	/// 
 	/// </summary>
@@ -38,7 +37,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		WORK = 2, 
 	}
-
 	/// <summary>
 	/// 
 	/// </summary>

@@ -19,7 +19,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		Pet = 1, 
 	}
-
 	/// <summary>
 	/// 请求背包数据
 	/// </summary>
@@ -57,10 +56,25 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 请求合成宠物
+	/// 通知背包数据变化
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(6553603)]
+	public sealed class NotifyBagInfoChanged : MessageObject, INotifyMessage
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		[ProtoMember(1)]
+		public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
+
+	}
+
+	/// <summary>
+	/// 请求合成宠物
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(6553604)]
 	public sealed class ReqComposePet : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -75,7 +89,7 @@ namespace Hotfix.Proto
 	/// 返回合成宠物
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553604)]
+	[MessageTypeHandler(6553605)]
 	public sealed class RespComposePet : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -96,7 +110,7 @@ namespace Hotfix.Proto
 	/// 请求使用道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553605)]
+	[MessageTypeHandler(6553606)]
 	public sealed class ReqUseItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -111,7 +125,7 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553606)]
+	[MessageTypeHandler(6553607)]
 	public sealed class ReqSellItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -126,7 +140,7 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553607)]
+	[MessageTypeHandler(6553608)]
 	public sealed class RespItemChange : MessageObject, IResponseMessage
 	{
 		/// <summary>

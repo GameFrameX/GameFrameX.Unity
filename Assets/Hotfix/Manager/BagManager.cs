@@ -14,8 +14,8 @@ namespace Hotfix.Manager
         /// 监听道具变化通知
         /// </summary>
         /// <param name="msg"></param>
-        [MessageHandler(typeof(RespItemChange), nameof(OnRespItemChange))]
-        private void OnRespItemChange(RespItemChange msg)
+        [MessageHandler(typeof(NotifyBagInfoChanged), nameof(NotifyBagInfoChanged))]
+        private void NotifyBagInfoChanged(NotifyBagInfoChanged msg)
         {
             Log.Debug(msg);
         }

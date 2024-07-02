@@ -9,7 +9,7 @@ namespace Hotfix.Proto
 	/// 获取商品列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107201)]
+	[MessageTypeHandler(13107210)]
 	public sealed class C2S_GetShopItemList : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -30,7 +30,7 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107202)]
+	[MessageTypeHandler(13107211)]
 	public sealed class S2C_GetShopItemList : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -99,7 +99,7 @@ namespace Hotfix.Proto
 	/// 获取限购列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107203)]
+	[MessageTypeHandler(13107212)]
 	public sealed class C2S_GetLimitList : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -132,7 +132,7 @@ namespace Hotfix.Proto
 	/// 存储数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107204)]
+	[MessageTypeHandler(13107213)]
 	public sealed class S2C_GetLimitList : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -201,7 +201,7 @@ namespace Hotfix.Proto
 	/// 获取商品列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107205)]
+	[MessageTypeHandler(13107214)]
 	public sealed class C2S_GetShopPaymentList : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -216,7 +216,7 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107206)]
+	[MessageTypeHandler(13107215)]
 	public sealed class S2C_GetShopPaymentList : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -261,7 +261,7 @@ namespace Hotfix.Proto
 	/// 获取限购列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107207)]
+	[MessageTypeHandler(13107216)]
 	public sealed class C2S_GetPaymentList : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -288,7 +288,7 @@ namespace Hotfix.Proto
 	/// 存储数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(13107208)]
+	[MessageTypeHandler(13107217)]
 	public sealed class S2C_GetPaymentList : MessageObject, IResponseMessage
 	{
 		/// <summary>

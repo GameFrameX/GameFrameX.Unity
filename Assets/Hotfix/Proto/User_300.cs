@@ -9,7 +9,7 @@ namespace Hotfix.Proto
 	/// 请求账号登录
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660801)]
+	[MessageTypeHandler(19660810)]
 	public sealed class ReqLogin : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -54,7 +54,7 @@ namespace Hotfix.Proto
 	/// 请求账号登录返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660802)]
+	[MessageTypeHandler(19660811)]
 	public sealed class RespLogin : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -99,7 +99,7 @@ namespace Hotfix.Proto
 	/// 请求角色创建
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660803)]
+	[MessageTypeHandler(19660812)]
 	public sealed class ReqPlayerCreate : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -120,7 +120,7 @@ namespace Hotfix.Proto
 	/// 请求角色创建返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660804)]
+	[MessageTypeHandler(19660813)]
 	public sealed class RespPlayerCreate : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -141,7 +141,7 @@ namespace Hotfix.Proto
 	/// 请求角色列表
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660805)]
+	[MessageTypeHandler(19660814)]
 	public sealed class ReqPlayerList : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -156,7 +156,7 @@ namespace Hotfix.Proto
 	/// 请求角色列表返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660806)]
+	[MessageTypeHandler(19660815)]
 	public sealed class RespPlayerList : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -221,7 +221,7 @@ namespace Hotfix.Proto
 	/// 请求玩家登录
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660807)]
+	[MessageTypeHandler(19660816)]
 	public sealed class ReqPlayerLogin : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -236,7 +236,7 @@ namespace Hotfix.Proto
 	/// 请求玩家登录返回
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660808)]
+	[MessageTypeHandler(19660817)]
 	public sealed class RespPlayerLogin : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -269,7 +269,7 @@ namespace Hotfix.Proto
 	/// 客户端每次请求都会回复错误码
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660809)]
+	[MessageTypeHandler(19660818)]
 	public sealed class RespErrorCode : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -296,7 +296,7 @@ namespace Hotfix.Proto
 	/// 
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(19660810)]
+	[MessageTypeHandler(19660819)]
 	public sealed class RespPrompt : MessageObject, IResponseMessage
 	{
 		/// <summary>

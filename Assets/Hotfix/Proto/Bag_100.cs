@@ -19,11 +19,12 @@ namespace Hotfix.Proto
 		/// </summary>
 		Pet = 1, 
 	}
+
 	/// <summary>
 	/// 请求背包数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553601)]
+	[MessageTypeHandler(6553610)]
 	public sealed class ReqBagInfo : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -38,7 +39,7 @@ namespace Hotfix.Proto
 	/// 返回背包数据
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553602)]
+	[MessageTypeHandler(6553611)]
 	public sealed class RespBagInfo : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -59,11 +60,11 @@ namespace Hotfix.Proto
 	/// 通知背包数据变化
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553603)]
+	[MessageTypeHandler(6553612)]
 	public sealed class NotifyBagInfoChanged : MessageObject, INotifyMessage
 	{
 		/// <summary>
-		/// 
+		/// 变化的道具，key:道具id，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
@@ -74,7 +75,7 @@ namespace Hotfix.Proto
 	/// 请求合成宠物
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553604)]
+	[MessageTypeHandler(6553613)]
 	public sealed class ReqComposePet : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -89,7 +90,7 @@ namespace Hotfix.Proto
 	/// 返回合成宠物
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553605)]
+	[MessageTypeHandler(6553614)]
 	public sealed class RespComposePet : MessageObject, IResponseMessage
 	{
 		/// <summary>
@@ -110,7 +111,7 @@ namespace Hotfix.Proto
 	/// 请求使用道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553606)]
+	[MessageTypeHandler(6553615)]
 	public sealed class ReqUseItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -125,7 +126,7 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553607)]
+	[MessageTypeHandler(6553616)]
 	public sealed class ReqSellItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
@@ -140,7 +141,7 @@ namespace Hotfix.Proto
 	/// 出售道具
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(6553608)]
+	[MessageTypeHandler(6553617)]
 	public sealed class RespItemChange : MessageObject, IResponseMessage
 	{
 		/// <summary>

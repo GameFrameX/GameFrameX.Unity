@@ -43,7 +43,7 @@ namespace Hotfix.UI
             networkChannel = GameApp.Network.CreateNetworkChannel("network", new DefaultNetworkChannelHelper());
             // 注册心跳消息
             DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
-            networkChannel.RegisterHandler(packetSendHeaderHandler);
+            networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
             networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
             GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
             GameApp.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);

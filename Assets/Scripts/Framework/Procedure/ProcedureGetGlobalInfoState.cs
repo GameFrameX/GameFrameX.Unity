@@ -25,6 +25,12 @@ namespace GameFrameX.Procedure
                 return;
             }
 
+            if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
+            {
+                Debug.Log("当前为离线模式，直接启动 ProcedurePatchInit");
+                ChangeState<ProcedurePatchInit>(procedureOwner);
+                return;
+            }
             GetGlobalInfo(procedureOwner);
         }
 

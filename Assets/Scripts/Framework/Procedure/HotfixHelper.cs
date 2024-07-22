@@ -112,6 +112,11 @@ namespace GameFrameX.Procedure
             Log.Info("开始加载AOT DLL");
             if (!Application.isEditor)
             {
+                if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
+                {
+                    aotDlls = AOTGenericReferences.PatchedAOTAssemblyList.ToArray();
+                }
+
                 foreach (var aotDll in aotDlls)
                 {
                     Log.Info("开始加载AOT DLL ==> " + aotDll);

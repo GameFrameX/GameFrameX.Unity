@@ -10,13 +10,21 @@ namespace GameFrameX.Procedure
 {
     internal sealed class ProcedurePatchInit : ProcedureBase
     {
-        protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
+        protected override async void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
             if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
             {
-                GameApp.Asset.InitPackage(AssetComponent.BuildInPackageName, string.Empty, string.Empty, true);
+                await GameApp.Asset.InitPackageAsync(AssetComponent.BuildInPackageName, string.Empty, string.Empty, true);
                 ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
+                return;
+            }
+
+            if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
+            {
+                Log.Info("当前为离线模式，直接启动 ProcedureGameLauncherState");
+                await GameApp.Asset.InitPackageAsync(AssetComponent.BuildInPackageName, string.Empty, string.Empty, true);
+                ChangeState<ProcedureGameLauncherState>(procedureOwner);
                 return;
             }
 
@@ -29,7 +37,7 @@ namespace GameFrameX.Procedure
         {
             var buildInPackageNameURL = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName);
             Log.Debug("下载资源的路径：" + buildInPackageNameURL);
-            GameApp.Asset.InitPackage(AssetComponent.BuildInPackageName, buildInPackageNameURL.Value, buildInPackageNameURL.Value, true);
+            await GameApp.Asset.InitPackageAsync(AssetComponent.BuildInPackageName, buildInPackageNameURL.Value, buildInPackageNameURL.Value, true);
             procedureOwner.RemoveData(AssetComponent.BuildInPackageName);
             // 运行补丁流程
             PatchUpdater.Run();

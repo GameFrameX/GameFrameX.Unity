@@ -6,10 +6,6 @@ obj
 Sandbox
 Temp
 Assets/Bundles/Code
-HybridCLRData/HotUpdateDlls
-HybridCLRData/LocalIl2CppData-WindowsEditor
-HybridCLRData/hybridclr_repo
-HybridCLRData/il2cpp_plus_repo
 .cache.meta
 Packages/packages-lock.json
 Unity.sln.DotSettings.user
@@ -19,3 +15,4 @@ Logs
 Android_Symbols
 Assets/StreamingAssets/build_info
 Assets/StreamingAssets/build_info.meta
+HybridCLRData/

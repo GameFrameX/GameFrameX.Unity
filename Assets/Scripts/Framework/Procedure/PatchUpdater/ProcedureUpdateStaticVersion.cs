@@ -14,16 +14,16 @@ namespace GameFrameX.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            PatchEventDispatcher.SendPatchStepsChangeMsg(EPatchStates.UpdateStaticVersion);
+            GameApp.Event.Fire(this, AssetPatchStatesChangeEventArgs.Create(AssetComponent.BuildInPackageName, EPatchStates.UpdateStaticVersion));
             GetStaticVersion(procedureOwner).ToUniTask();
         }
 
         private IEnumerator GetStaticVersion(IFsm<IProcedureManager> procedureOwner)
         {
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(0.1f);
 
             var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
-            var buildInOperation = buildInResourcePackage.UpdatePackageVersionAsync();
+            var buildInOperation       = buildInResourcePackage.UpdatePackageVersionAsync();
             yield return buildInOperation;
 
             if (buildInOperation.Status == EOperationStatus.Succeed)
@@ -37,7 +37,7 @@ namespace GameFrameX.Procedure
             {
                 //更新失败
                 Debug.LogError(buildInOperation.Error);
-                PatchEventDispatcher.SendStaticVersionUpdateFailedMsg();
+                GameApp.Event.Fire(this, AssetStaticVersionUpdateFailedEventArgs.Create(AssetComponent.BuildInPackageName, buildInOperation.Error));
                 ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
             }
         }

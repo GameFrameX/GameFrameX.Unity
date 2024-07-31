@@ -15,16 +15,16 @@ namespace GameFrameX.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            PatchEventDispatcher.SendPatchStepsChangeMsg(EPatchStates.UpdateManifest);
+            GameApp.Event.Fire(this, AssetPatchStatesChangeEventArgs.Create(AssetComponent.BuildInPackageName, EPatchStates.UpdateManifest));
             UpdateManifest(procedureOwner).ToUniTask();
         }
 
 
         private IEnumerator UpdateManifest(IFsm<IProcedureManager> procedureOwner)
         {
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(0.1f);
 
-            var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
+            var                            buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
             UpdatePackageManifestOperation buildInOperation;
             if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
             {
@@ -50,7 +50,7 @@ namespace GameFrameX.Procedure
             {
                 //更新失败
                 Debug.LogError(buildInOperation.Error);
-                PatchEventDispatcher.SendPatchManifestUpdateFailedMsg();
+                GameApp.Event.Fire(this, AssetPatchManifestUpdateFailedEventArgs.Create(AssetComponent.BuildInPackageName, buildInOperation.Error));
                 ChangeState<ProcedureUpdateManifest>(procedureOwner);
             }
         }

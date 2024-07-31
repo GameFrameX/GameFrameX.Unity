@@ -1,5 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure.Runtime;
@@ -39,8 +38,6 @@ namespace GameFrameX.Procedure
             Log.Debug("下载资源的路径：" + buildInPackageNameURL);
             await GameApp.Asset.InitPackageAsync(AssetComponent.BuildInPackageName, buildInPackageNameURL.Value, buildInPackageNameURL.Value, true);
             procedureOwner.RemoveData(AssetComponent.BuildInPackageName);
-            // 运行补丁流程
-            PatchUpdater.Run();
             await UniTask.DelayFrame();
 
             ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);

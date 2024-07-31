@@ -1,6 +1,5 @@
-﻿using GameFrameX.Fsm;
+﻿using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
-using GameFrameX.Procedure;
 using GameFrameX.Procedure.Runtime;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace GameFrameX.Procedure
         {
             base.OnEnter(procedureOwner);
 
-            PatchEventDispatcher.SendPatchStepsChangeMsg(EPatchStates.PatchDone);
+            GameApp.Event.Fire(this, AssetPatchStatesChangeEventArgs.Create(AssetComponent.BuildInPackageName, EPatchStates.PatchDone));
             LauncherUIHandler.SetProgressUpdateFinish();
             LauncherUIHandler.SetTipText(string.Empty);
             Debug.Log("补丁流程更新完毕！");

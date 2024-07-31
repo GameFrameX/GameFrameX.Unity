@@ -1,4 +1,6 @@
 ﻿using Game.Model;
+using GameFrameX.Asset.Runtime;
+using GameFrameX.Event.Runtime;
 using GameFrameX.FairyGUI.Runtime;
 
 namespace GameFrameX.Procedure
@@ -10,6 +12,7 @@ namespace GameFrameX.Procedure
         public static void Start()
         {
             _ui = GameApp.FUI.AddToFullScreen(UILauncher.CreateInstance, "UI/UILauncher/UILauncher", UILayer.Loading);
+            GameApp.Event.Subscribe(AssetDownloadProgressUpdateEventArgs.EventId, SetProgressUpdate);
         }
 
         public static void Dispose()
@@ -19,6 +22,7 @@ namespace GameFrameX.Procedure
             {
                 _ui.Dispose();
             }
+
             _ui = null;
         }
 
@@ -32,14 +36,15 @@ namespace GameFrameX.Procedure
             _ui.m_IsDownload.SetSelectedIndex(0);
         }
 
-        public static void SetProgressUpdate(PatchEventMessageDefine.DownloadProgressUpdate message)
+        public static void SetProgressUpdate(object sender, GameEventArgs gameEventArgs)
         {
             _ui.m_IsDownload.SetSelectedIndex(1);
-            float progress = message.CurrentDownloadSizeBytes / (message.TotalDownloadSizeBytes * 1f);
+            var    message       = (AssetDownloadProgressUpdateEventArgs)gameEventArgs;
+            float  progress      = message.CurrentDownloadSizeBytes / (message.TotalDownloadSizeBytes * 1f);
             string currentSizeMb = Utility.File.GetBytesSize(message.CurrentDownloadSizeBytes);
-            string totalSizeMb = Utility.File.GetBytesSize(message.TotalDownloadSizeBytes);
+            string totalSizeMb   = Utility.File.GetBytesSize(message.TotalDownloadSizeBytes);
             _ui.m_ProgressBar.value = progress * 100;
-            _ui.m_TipText.text = $"Downloading {currentSizeMb}/{totalSizeMb}";
+            _ui.m_TipText.text      = $"Downloading {currentSizeMb}/{totalSizeMb}";
         }
     }
 }

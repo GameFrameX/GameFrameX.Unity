@@ -21,9 +21,9 @@ namespace GameFrameX.Procedure
         void CreateDownloader(IFsm<IProcedureManager> procedureOwner)
         {
             // Debug.Log("创建补丁下载器.");
-            int downloadingMaxNum   = 10;
-            int failedTryAgain      = 3;
-            ResourceDownloaderOperation downloader          = YooAssets.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
+            int downloadingMaxNum = 10;
+            int failedTryAgain = 3;
+            ResourceDownloaderOperation downloader = YooAssets.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
             var downloaderVarObject = new VarObject();
             downloaderVarObject.SetValue(downloader);
             procedureOwner.SetData<VarObject>("Downloader", downloaderVarObject);
@@ -37,9 +37,9 @@ namespace GameFrameX.Procedure
                 Debug.Log($"一共发现了{downloader.TotalDownloadCount}个资源需要更新下载。");
 
                 // 发现新更新文件后，挂起流程系统
-                int  totalDownloadCount = downloader.TotalDownloadCount;
+                int totalDownloadCount = downloader.TotalDownloadCount;
                 long totalDownloadBytes = downloader.TotalDownloadBytes;
-                GameApp.Event.Fire(this, AssetFoundUpdateFilesEventArgs.Create(downloader.PackageName, totalDownloadCount, totalDownloadBytes));
+                GameApp.Event.Fire(this, AssetFoundUpdateFilesEventArgs.Create(downloader.GetPackageName(), totalDownloadCount, totalDownloadBytes));
                 ChangeState<ProcedureDownloadWebFiles>(procedureOwner);
             }
         }

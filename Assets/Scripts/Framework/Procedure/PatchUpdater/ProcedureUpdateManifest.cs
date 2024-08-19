@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
@@ -11,9 +12,19 @@ namespace GameFrameX.Procedure
 {
     internal sealed class ProcedureUpdateManifest : ProcedureBase
     {
-        protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
+        protected override async void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
+
+            if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
+            {
+                var varStringVersion = procedureOwner.GetData<VarString>(AssetComponent.BuildInPackageName + "Version");
+                var buildInResourcePackage = GameApp.Asset.GetAssetsPackage(AssetComponent.BuildInPackageName);
+                var buildInOperation = buildInResourcePackage.UpdatePackageManifestAsync(varStringVersion.Value);
+                await buildInOperation.ToUniTask();
+                ChangeState<ProcedurePatchDone>(procedureOwner);
+                return;
+            }
 
             GameApp.Event.Fire(this, AssetPatchStatesChangeEventArgs.Create(AssetComponent.BuildInPackageName, EPatchStates.UpdateManifest));
             UpdateManifest(procedureOwner).ToUniTask();
@@ -24,7 +35,7 @@ namespace GameFrameX.Procedure
         {
             yield return new WaitForSecondsRealtime(0.1f);
 
-            var                            buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
+            var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
             UpdatePackageManifestOperation buildInOperation;
             if (GameApp.Asset.GamePlayMode == EPlayMode.EditorSimulateMode)
             {

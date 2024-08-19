@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure.Runtime;
+using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
@@ -30,6 +31,13 @@ namespace GameFrameX.Procedure
             {
                 //更新成功
                 string packageVersion = buildInOperation.PackageVersion;
+                if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
+                {
+                    var varStringVersion = ReferencePool.Acquire<VarString>();
+                    varStringVersion.SetValue(packageVersion);
+                    procedureOwner.SetData(AssetComponent.BuildInPackageName + "Version", varStringVersion);
+                }
+
                 Debug.Log($"Updated package Version : {packageVersion}");
                 ChangeState<ProcedureUpdateManifest>(procedureOwner);
             }

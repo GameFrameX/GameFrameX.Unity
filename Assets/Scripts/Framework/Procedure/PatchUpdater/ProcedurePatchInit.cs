@@ -21,9 +21,9 @@ namespace GameFrameX.Procedure
 
             if (GameApp.Asset.GamePlayMode == EPlayMode.OfflinePlayMode)
             {
-                Log.Info("当前为离线模式，直接启动 ProcedureGameLauncherState");
+                Log.Info("当前为离线模式，直接启动 ProcedureUpdateStaticVersion");
                 await GameApp.Asset.InitPackageAsync(AssetComponent.BuildInPackageName, string.Empty, string.Empty, true);
-                ChangeState<ProcedureGameLauncherState>(procedureOwner);
+                ChangeState<ProcedureUpdateStaticVersion>(procedureOwner);
                 return;
             }
 

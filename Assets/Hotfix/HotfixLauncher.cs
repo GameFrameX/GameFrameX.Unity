@@ -31,7 +31,7 @@ namespace Hotfix
 
         private static async void LoadUI()
         {
-            GameApp.FUIPackage.AddPackage(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
+            GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
             await GameApp.FUI.AddAsync<UILogin>(UILogin.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor);
         }
 

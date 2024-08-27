@@ -9,52 +9,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e4ed1ec706b6743a041f6b9e224cbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 1
-  ShowEditorAlias: 0
-  UniqueBundleName: 0
+  ShowEditorAlias: 1
+  UniqueBundleName: 1
   Packages:
   - PackageName: DefaultPackage
     PackageDesc: 
     EnableAddressable: 0
-    LocationToLower: 1
+    LocationToLower: 0
     IncludeAssetGUID: 0
-    IgnoreDefaultType: 1
     AutoCollectShaders: 1
+    IgnoreRuleName: NormalIgnoreRule
     Groups:
-    - GroupName: Config
+    - GroupName: AOTCode
       GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Bundles/Config
-        CollectorGUID: c9f4f21a25a31d840af71a381db88c51
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackRawFile
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
-    - GroupName: Code
-      GroupDesc: "\u70ED\u66F4\u65B0\u903B\u8F91\u4EE3\u7801"
-      AssetTags: code
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/Bundles/Code
-        CollectorGUID: 
+      - CollectPath: Assets/Bundles/AOTCode
+        CollectorGUID: 9ae13764dfa471f4382815cd95d589d8
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: Shader
+    - GroupName: Code
       GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
-      Collectors: []
+      Collectors:
+      - CollectPath: Assets/Bundles/Code
+        CollectorGUID: fb2b5b6715f0e28419ebca2b4df07bcd
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: UI
       GroupDesc: 
       AssetTags: 
@@ -64,20 +59,20 @@ MonoBehaviour:
         CollectorGUID: 4010ac95965b3164e83fa268b290dbf4
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: FairyGUIPackage
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: AOTCode
+    - GroupName: Config
       GroupDesc: 
-      AssetTags: aotdll
+      AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Bundles/AOTCode
-        CollectorGUID: f3509ff8449373740964cfdd7ba6141e
+      - CollectPath: Assets/Bundles/Config
+        CollectorGUID: 60dcdcc847843ba45a0aec7d153dd540
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackRawFile
+        PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

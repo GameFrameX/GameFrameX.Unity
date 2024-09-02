@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using FairyGUI;
 using GameFrameX;
-using GameFrameX.FairyGUI.Runtime;
-using GameFrameX.Runtime;
+using GameFrameX.UI.Runtime;
 using Hotfix.Manager;
 using Hotfix.Proto;
 
@@ -12,10 +11,11 @@ namespace Hotfix.UI
     {
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
-        protected override async void OnShow()
+        protected override async void OnOpen(object userData)
         {
-            base.OnShow();
-            RespLogin respLogin = UserData as RespLogin;
+            base.OnOpen(userData);
+
+            RespLogin respLogin = userData as RespLogin;
             ReqPlayerList req = new ReqPlayerList();
             if (respLogin != null)
             {
@@ -36,8 +36,8 @@ namespace Hotfix.UI
             reqPlayerLogin.Id = m_SelectedPlayerInfo.Id;
             var respPlayerLogin = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerLogin>(reqPlayerLogin);
             PlayerManager.Instance.PlayerInfo = respPlayerLogin.PlayerInfo;
-            await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor, false, UserData);
-            GameApp.FUI.Remove(UIResName, UILayer.Floor);
+            await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
+            GameApp.UI.CloseUIForm(UIForm);
         }
 
         PlayerInfo m_SelectedPlayerInfo;

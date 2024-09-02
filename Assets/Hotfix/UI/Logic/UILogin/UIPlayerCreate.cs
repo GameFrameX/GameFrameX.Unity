@@ -1,18 +1,21 @@
 using GameFrameX;
-using GameFrameX.FairyGUI.Runtime;
+using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using GameFrameX.UI.Runtime;
 using Hotfix.Proto;
 
 namespace Hotfix.UI
 {
     public partial class UIPlayerCreate
     {
-        ReqPlayerCreate req = new ReqPlayerCreate();
+        ReqPlayerCreate req;
 
-        protected override async void OnShow()
+        protected override void OnOpen(object userData)
         {
-            base.OnShow();
-            RespLogin respLogin = UserData as RespLogin;
+            req = new ReqPlayerCreate();
+            base.OnOpen(userData);
+
+            RespLogin respLogin = userData as RespLogin;
             this.m_enter.onClick.Set(OnCreateButtonClick);
             req.Id = respLogin.Id;
         }
@@ -32,8 +35,8 @@ namespace Hotfix.UI
                 Log.Info("创建角色成功");
             }
 
-            await GameApp.FUI.AddAsync(UIPlayerList.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, false, UserData);
-            GameApp.FUI.Remove(UIResName, UILayer.Floor);
+            await GameApp.UI.OpenUIFormAsync<UIPlayerList>( Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin),UIGroupConstants.Floor.Name, UserData);
+            GameApp.UI.CloseUIForm(UIForm);
         }
     }
 }

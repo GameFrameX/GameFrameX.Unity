@@ -18,7 +18,10 @@
         "GameFrameX.Event.Runtime",
         "GameFrameX.Asset.Runtime",
         "GameFrameX.Localization.Runtime",
-        "HybridCLRData"
+        "HybridCLRData",
+        "GameFrameX.UI.Runtime",
+        "GameFrameX.UI.FairyGUI.Runtime",
+        "GameFrameX.UI.UGUI.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

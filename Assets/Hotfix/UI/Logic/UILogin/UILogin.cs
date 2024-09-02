@@ -1,9 +1,10 @@
 ﻿using System.Net;
 using GameFrameX;
 using GameFrameX.Event.Runtime;
-using GameFrameX.FairyGUI.Runtime;
+using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
+using GameFrameX.UI.Runtime;
 using Hotfix.Config.item;
 using Hotfix.Network;
 using Hotfix.Proto;
@@ -17,10 +18,10 @@ namespace Hotfix.UI
         public static string serverIp = "127.0.0.1";
         public static int serverPort = 29100;
 
-        protected override void OnShow()
+        protected override void OnOpen(object userData)
         {
-            base.OnShow();
             m_enter.onClick.Add(OnLoginClick);
+            base.OnOpen(userData);
         }
 
         private void OnLoginClick()
@@ -75,15 +76,15 @@ namespace Hotfix.UI
             var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
             if (respPlayerList.PlayerList.Count > 0)
             {
-                await GameApp.FUI.AddAsync(UIPlayerList.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
             }
             else
             {
-                await GameApp.FUI.AddAsync(UIPlayerCreate.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UILayer.Floor, true, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
             }
 
-            // await GameApp.FUI.AddAsync(UIMain.CreateInstance, Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UILayer.Floor);
-            GameApp.FUI.Remove(Name, UILayer.Floor);
+            await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
+            GameApp.UI.CloseUIForm(UIForm);
         }
 
         private static void OnNetworkClosed(object sender, GameEventArgs e)

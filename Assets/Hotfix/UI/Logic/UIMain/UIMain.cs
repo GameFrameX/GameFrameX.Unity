@@ -7,9 +7,10 @@ namespace Hotfix.UI
 {
     public partial class UIMain
     {
-        protected override void OnShow()
+        protected override void OnOpen(object userData)
         {
-            base.OnShow();
+            base.OnOpen(userData);
+
             this.m_player_icon.icon = UIPackage.GetItemURL(FUIPackage.UICommonAvatar, PlayerManager.Instance.PlayerInfo.Avatar.ToString());
             this.m_player_name.text = PlayerManager.Instance.PlayerInfo.Name;
             this.m_player_level.text = "当前等级:" + PlayerManager.Instance.PlayerInfo.Level;

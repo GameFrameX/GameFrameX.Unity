@@ -20,11 +20,15 @@
         "LitJSON.Runtime",
         "SimpleJSON.Runtime",
         "GameFrameX.Network.Runtime",
+        "GameFrameX.UI.Runtime",
+        "GameFrameX.UI.FairyGUI.Runtime",
         "GameFrameX.FairyGUI.Runtime",
         "GameFrameX.Event.Runtime",
         "GameFrameX.Config.Runtime",
         "GameFrameX.Asset.Runtime",
-        "GameFrameX.Entity.Runtime"
+        "GameFrameX.Sound.Runtime",
+        "GameFrameX.Entity.Runtime",
+        "GameFrameX.UI.UGUI.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

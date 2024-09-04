@@ -42,8 +42,8 @@ namespace Hotfix.UI
             DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
             networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
             networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
-            GameApp.Event.Subscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            GameApp.Event.Subscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            GameApp.Event.CheckSubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            GameApp.Event.CheckSubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
         }
 
         private async void Login()

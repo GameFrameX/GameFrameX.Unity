@@ -92,8 +92,9 @@ namespace Hotfix.UI
             Log.Info(nameof(OnNetworkClosed));
         }
 
-        private static void OnNetworkConnected(object sender, GameEventArgs e)
+        private void OnNetworkConnected(object sender, GameEventArgs e)
         {
+            Login();
             Log.Info(nameof(OnNetworkConnected));
         }
     }

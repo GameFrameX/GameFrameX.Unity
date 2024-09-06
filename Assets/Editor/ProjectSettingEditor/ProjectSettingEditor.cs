@@ -63,7 +63,7 @@ namespace Unity.Editor
                 }
             }
 
-            AssetDatabase.SaveAssets();
+            // AssetDatabase.SaveAssets();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace GameFrameX.Procedure
                 {
                     var gameAppVersion = Utility.Json.ToObject<ResponseGameAppVersion>(httpJsonResult.Data);
 
-                    if (gameAppVersion.IsUpgrade)
+                    /*if (gameAppVersion.IsUpgrade)
                     {
                         var uiLoadingMainScene = GameApp.FUI.Get<UILauncher>(UILauncher.UIResName);
                         uiLoadingMainScene.m_IsUpgrade.SetSelectedIndex(1);
@@ -75,7 +75,7 @@ namespace GameFrameX.Procedure
                             }
                         });
                     }
-                    else
+                    else*/
                     {
                         ChangeState<ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState>(procedureOwner);
                     }

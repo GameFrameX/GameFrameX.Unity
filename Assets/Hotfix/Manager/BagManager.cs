@@ -33,7 +33,7 @@ namespace Hotfix.Manager
         /// </summary>
         public void Register()
         {
-            ProtoMessageHandler.Init(this);
+            ProtoMessageHandler.Add(this);
         }
     }
 }

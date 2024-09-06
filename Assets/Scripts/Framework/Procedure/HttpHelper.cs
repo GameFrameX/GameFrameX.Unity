@@ -5,9 +5,9 @@ using GameFrameX.Runtime;
 
 public static class HttpHelper
 {
-    private static readonly Dictionary<string, string> DictionaryParams = new Dictionary<string, string>();
+    private static readonly Dictionary<string, object> DictionaryParams = new Dictionary<string, object>();
 
-    public static Dictionary<string, string> GetBaseParams()
+    public static Dictionary<string, object> GetBaseParams()
     {
         DictionaryParams["Language"] = Application.systemLanguage.ToString();
         DictionaryParams["AppVersion"] = Application.version;

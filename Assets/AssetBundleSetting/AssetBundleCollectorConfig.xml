@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<root Version="2.2">
-  <Common UniqueBundleName="False" ShowPackageView="True" ShowEditorAlias="False" />
-  <Package PackageName="DefaultPackage" PackageDesc="">
-    <Group GroupName="Config" GroupDesc="" AssetTags="">
-      <Collector CollectPath="Assets/Bundles/Config" CollectGUID="c9f4f21a25a31d840af71a381db88c51" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackRawFile" FilterRule="CollectAll" AssetTags="" />
+<root Version="v2.1">
+  <Common ShowPackageView="True" ShowEditorAlias="True" UniqueBundleName="True" />
+  <Package PackageName="DefaultPackage" PackageDesc="" AutoAddressable="False" LocationToLower="False" IncludeAssetGUID="False" IgnoreRuleName="NormalIgnoreRule">
+    <Group GroupActiveRule="EnableGroup" GroupName="AOTCode" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/Bundles/AOTCode" CollectGUID="9ae13764dfa471f4382815cd95d589d8" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
     </Group>
-    <Group GroupName="Code" GroupDesc="热更新逻辑代码" AssetTags="code">
-      <Collector CollectPath="Assets/Bundles/Code" CollectGUID="fb2b5b6715f0e28419ebca2b4df07bcd" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" AssetTags="" />
+    <Group GroupActiveRule="EnableGroup" GroupName="Code" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/Bundles/Code" CollectGUID="fb2b5b6715f0e28419ebca2b4df07bcd" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
     </Group>
-    <Group GroupName="Shader" GroupDesc="" AssetTags="" />
+    <Group GroupActiveRule="EnableGroup" GroupName="UI" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/Bundles/UI" CollectGUID="4010ac95965b3164e83fa268b290dbf4" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+    </Group>
+    <Group GroupActiveRule="EnableGroup" GroupName="Config" GroupDesc="" AssetTags="">
+      <Collector CollectPath="Assets/Bundles/Config" CollectGUID="60dcdcc847843ba45a0aec7d153dd540" CollectType="MainAssetCollector" AddressRule="AddressByFileName" PackRule="PackDirectory" FilterRule="CollectAll" UserData="" AssetTags="" />
+    </Group>
   </Package>
 </root>

@@ -30,7 +30,6 @@ namespace Hotfix
 
         private static async void LoadUI()
         {
-            await GameApp.Sound.PlaySound(Utility.Asset.Path.GetSoundPath("voice_bgm_lobby"), "bgm_lobby");
             // GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
             await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name);
         }

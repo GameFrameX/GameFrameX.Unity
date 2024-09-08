@@ -76,14 +76,14 @@ namespace Hotfix.UI
             var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
             if (respPlayerList.PlayerList.Count > 0)
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
             }
             else
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
             }
 
-            await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
+            await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
             GameApp.UI.CloseUIForm(UIForm);
         }
 

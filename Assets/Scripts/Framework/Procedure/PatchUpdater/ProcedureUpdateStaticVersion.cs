@@ -21,8 +21,6 @@ namespace GameFrameX.Procedure
 
         private IEnumerator GetStaticVersion(IFsm<IProcedureManager> procedureOwner)
         {
-            yield return new WaitForSecondsRealtime(0.1f);
-
             var buildInResourcePackage = YooAssets.GetPackage(AssetComponent.BuildInPackageName);
             var buildInOperation = buildInResourcePackage.RequestPackageVersionAsync();
             yield return buildInOperation;

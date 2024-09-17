@@ -36,7 +36,7 @@ namespace GameFrameX.Procedure
 
         private async void GetGlobalInfo(IFsm<IProcedureManager> procedureOwner)
         {
-            string rootUrl = "http://172.18.0.31:20808/api/GameGlobalInfo/GetInfo";
+            string rootUrl = "http://127.0.0.1:20808/api/GameGlobalInfo/GetInfo";
             var jsonParams = HttpHelper.GetBaseParams();
             try
             {

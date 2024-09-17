@@ -40,7 +40,7 @@ namespace GameFrameX.Procedure
             var jsonParams = HttpHelper.GetBaseParams();
             try
             {
-                var json = await GameApp.Web.GetToString(rootUrl, jsonParams);
+                var json = await GameApp.Web.PostToString(rootUrl, jsonParams);
                 Debug.Log(json);
                 
                 HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);

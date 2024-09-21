@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using FairyGUI;
-using GameFrameX;
+using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 using Hotfix.Manager;
 using Hotfix.Proto;

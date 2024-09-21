@@ -1,4 +1,4 @@
-﻿using Base;
+﻿using GameFrameX.Runtime;
 using Hotfix.Proto;
 
 namespace Hotfix.Manager
@@ -10,6 +10,6 @@ namespace Hotfix.Manager
             PlayerInfo = new PlayerInfo();
         }
 
-        public PlayerInfo PlayerInfo { get;set; }
+        public PlayerInfo PlayerInfo { get; set; }
     }
 }

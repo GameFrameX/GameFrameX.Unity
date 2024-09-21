@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.code-philosophy.hybridclr": "https://gitee.com/gameframex/com.gameframex.unity.code-philosophy.hybridclr.git",
+    "com.code-philosophy.hybridclr": "https://gitlink.org.cn/gameframex/com.gameframex.unity.code-philosophy.hybridclr.git",
     "com.gameframex.unity": "https://gitlink.org.cn/gameframex/com.gameframex.unity.git",
     "com.gameframex.unity.asset": "https://gitlink.org.cn/gameframex/com.gameframex.unity.asset.git",
     "com.gameframex.unity.config": "https://gitlink.org.cn/gameframex/com.gameframex.unity.config.git",
@@ -33,7 +33,7 @@
     "com.gameframex.unity.setting": "https://gitlink.org.cn/gameframex/com.gameframex.unity.setting.git",
     "com.gameframex.unity.sound": "https://gitlink.org.cn/gameframex/com.gameframex.unity.sound.git",
     "com.gameframex.unity.timer": "https://gitlink.org.cn/gameframex/com.gameframex.unity.timer.git",
-    "com.gameframex.unity.tuyoogame.yooasset": "https://gitee.com/gameframex/com.gameframex.unity.tuyoogame.yooasset.git",
+    "com.gameframex.unity.tuyoogame.yooasset": "https://gitlink.org.cn/gameframex/com.gameframex.unity.tuyoogame.yooasset.git",
     "com.gameframex.unity.web": "https://gitlink.org.cn/gameframex/com.gameframex.unity.web.git",
     "com.gameframex.unity.xincger.litjson": "https://gitlink.org.cn/gameframex/com.gameframex.unity.xincger.litjson.git",
     "com.gameframex.unity.yasirkula.debugconsole": "https://gitlink.org.cn/gameframex/com.gameframex.unity.yasirkula.debugconsole.git",

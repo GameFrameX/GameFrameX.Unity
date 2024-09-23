@@ -1,15 +1,13 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Game.Model;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.GlobalConfig.Runtime;
-using GameFrameX.Localization.Runtime;
 using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     /// <summary>
     /// 获取版本信息

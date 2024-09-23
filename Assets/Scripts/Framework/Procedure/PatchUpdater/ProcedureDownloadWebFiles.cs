@@ -6,7 +6,7 @@ using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
 using YooAsset;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     internal sealed class ProcedureDownloadWebFiles : ProcedureBase
     {

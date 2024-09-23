@@ -3,7 +3,7 @@ using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure.Runtime;
 using UnityEngine;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     internal sealed class ProcedurePatchDone : ProcedureBase
     {

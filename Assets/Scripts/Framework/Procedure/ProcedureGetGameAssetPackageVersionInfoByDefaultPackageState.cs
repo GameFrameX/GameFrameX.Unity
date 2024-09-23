@@ -8,7 +8,7 @@ using GameFrameX.Procedure.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     /// <summary>
     /// 获取默认资源版本信息

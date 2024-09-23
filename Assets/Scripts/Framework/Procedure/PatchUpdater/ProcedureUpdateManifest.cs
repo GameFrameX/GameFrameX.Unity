@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Asset.Runtime;
 using GameFrameX.Fsm.Runtime;
@@ -8,7 +7,7 @@ using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     internal sealed class ProcedureUpdateManifest : ProcedureBase
     {

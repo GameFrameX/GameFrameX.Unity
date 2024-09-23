@@ -10,7 +10,7 @@ using GameFrameX.UI.Runtime;
 using GameFrameX.UI.UGUI.Runtime;
 using UnityEngine;
 
-namespace Game.Model
+namespace Unity.Startup
 {
     public sealed partial class UILauncher : FUI
     {

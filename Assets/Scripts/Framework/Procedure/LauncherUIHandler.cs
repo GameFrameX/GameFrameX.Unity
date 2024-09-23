@@ -1,10 +1,9 @@
-﻿using Game.Model;
-using GameFrameX.Asset.Runtime;
+﻿using GameFrameX.Asset.Runtime;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     public static class LauncherUIHandler
     {

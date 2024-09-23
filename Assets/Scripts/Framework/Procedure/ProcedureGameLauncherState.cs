@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure.Runtime;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     /// <summary>
     /// 启动热更新游戏

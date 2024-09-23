@@ -5,7 +5,7 @@ using FairyGUI.Utils;
 using Cysharp.Threading.Tasks;
 using GameFrameX.Entity.Runtime;
 
-namespace Game.Model
+namespace Unity.Startup
 {
     public static partial class FUIPackage {
 		public const string UILauncher = "UILauncher";

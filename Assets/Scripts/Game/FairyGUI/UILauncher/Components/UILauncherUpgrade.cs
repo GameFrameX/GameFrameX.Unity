@@ -7,7 +7,7 @@ using GameFrameX.Entity.Runtime;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
 
-namespace Game.Model
+namespace Unity.Startup
 {
     public sealed partial class UILauncherUpgrade : FUI
     {

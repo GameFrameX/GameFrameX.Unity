@@ -1012,18 +1012,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentType: GameFrameX.Procedure.Runtime.ProcedureManager
   m_AvailableProcedureTypeNames:
-  - GameFrameX.Procedure.ProcedureCreateDownloader
-  - GameFrameX.Procedure.ProcedureDownloadWebFiles
-  - GameFrameX.Procedure.ProcedureGameLauncherState
-  - GameFrameX.Procedure.ProcedureGetAppVersionInfoState
-  - GameFrameX.Procedure.ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState
-  - GameFrameX.Procedure.ProcedureGetGlobalInfoState
-  - GameFrameX.Procedure.ProcedureLauncherState
-  - GameFrameX.Procedure.ProcedurePatchDone
-  - GameFrameX.Procedure.ProcedurePatchInit
-  - GameFrameX.Procedure.ProcedureUpdateManifest
-  - GameFrameX.Procedure.ProcedureUpdateStaticVersion
-  m_EntranceProcedureTypeName: GameFrameX.Procedure.ProcedureLauncherState
+  - Unity.Startup.Procedure.ProcedureCreateDownloader
+  - Unity.Startup.Procedure.ProcedureDownloadWebFiles
+  - Unity.Startup.Procedure.ProcedureGameLauncherState
+  - Unity.Startup.Procedure.ProcedureGetAppVersionInfoState
+  - Unity.Startup.Procedure.ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState
+  - Unity.Startup.Procedure.ProcedureGetGlobalInfoState
+  - Unity.Startup.Procedure.ProcedureLauncherState
+  - Unity.Startup.Procedure.ProcedurePatchDone
+  - Unity.Startup.Procedure.ProcedurePatchInit
+  - Unity.Startup.Procedure.ProcedureUpdateManifest
+  - Unity.Startup.Procedure.ProcedureUpdateStaticVersion
+  m_EntranceProcedureTypeName: Unity.Startup.Procedure.ProcedureLauncherState
 --- !u!114 &1917164023
 MonoBehaviour:
   m_ObjectHideFlags: 0

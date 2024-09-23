@@ -3,7 +3,7 @@ using System.Reflection;
 using GameFrameX.Runtime;
 using HybridCLR;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     public static class HotfixHelper
     {

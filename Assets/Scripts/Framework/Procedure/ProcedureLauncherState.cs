@@ -4,7 +4,7 @@ using GameFrameX.Fsm.Runtime;
 using GameFrameX.Procedure;
 using GameFrameX.Procedure.Runtime;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     /// <summary>
     /// 启动游戏

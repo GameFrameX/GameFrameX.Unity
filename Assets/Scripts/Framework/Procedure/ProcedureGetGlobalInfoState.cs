@@ -7,7 +7,7 @@ using GameFrameX.Runtime;
 using UnityEngine;
 using YooAsset;
 
-namespace GameFrameX.Procedure
+namespace Unity.Startup.Procedure
 {
     /// <summary>
     /// 获取全局信息

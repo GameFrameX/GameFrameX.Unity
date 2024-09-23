@@ -739,6 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: GameFrameX.Web.Runtime.WebManager
+  m_Timeout: 5
 --- !u!114 &1681186163
 MonoBehaviour:
   m_ObjectHideFlags: 0

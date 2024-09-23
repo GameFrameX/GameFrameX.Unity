@@ -26,7 +26,7 @@ namespace Unity.Startup.Procedure
             }
 
             GameApp.Event.Fire(this, AssetPatchStatesChangeEventArgs.Create(AssetComponent.BuildInPackageName, EPatchStates.UpdateManifest));
-            UpdateManifest(procedureOwner).ToUniTask();
+            await UpdateManifest(procedureOwner).ToUniTask();
         }
 
 

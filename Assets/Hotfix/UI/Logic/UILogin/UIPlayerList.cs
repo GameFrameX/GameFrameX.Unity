@@ -42,7 +42,7 @@ namespace Hotfix.UI
 
         PlayerInfo m_SelectedPlayerInfo;
 
-        private async void OnPlayerListItemClick(EventContext context)
+        private void OnPlayerListItemClick(EventContext context)
         {
             if ((context.data as GComponent).dataSource is PlayerInfo playerInfo)
             {

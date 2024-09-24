@@ -11,6 +11,8 @@ public static class HttpHelper
     {
         DictionaryParams["Language"] = Application.systemLanguage.ToString();
         DictionaryParams["AppVersion"] = Application.version;
+        // 设备ID用于判断白名单和其他识别用途
+        DictionaryParams["DeviceUniqueIdentifier"] = SystemInfo.deviceUniqueIdentifier;
 #if UNITY_WEBGL
         DictionaryParams["PackageName"] = "com.smartdog.bbqgame";
 #if ENABLE_WECHAT_MINI_GAME

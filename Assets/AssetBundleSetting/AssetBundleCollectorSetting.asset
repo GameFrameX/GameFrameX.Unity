@@ -59,7 +59,7 @@ MonoBehaviour:
         CollectorGUID: 4010ac95965b3164e83fa268b290dbf4
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: FairyGUIPackage
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

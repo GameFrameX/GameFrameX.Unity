@@ -30,7 +30,11 @@ public static class HttpHelper
 #endif
 #else
         DictionaryParams["Platform"] = PathHelper.GetPlatformName;
+#if UNITY_STANDALONE_WIN
+        DictionaryParams["PackageName"] = Application.productName;
+#else
         DictionaryParams["PackageName"] = Application.identifier;
+#endif
         DictionaryParams["Channel"] = BlankGetChannel.GetChannelName();
         DictionaryParams["SubChannel"] = BlankGetChannel.GetChannelName();
 #endif

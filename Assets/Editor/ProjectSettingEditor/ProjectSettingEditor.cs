@@ -53,7 +53,7 @@ namespace Unity.Editor
             PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, 1);
 #endif
 
-            var folderList = new string[] { "Assets/StreamingAssets", "Assets/Bundles/AOTCode", "Assets/Bundles/Code", "Assets/Bundles/Config", "Assets/Bundles/Sound", "Assets/Bundles/UI" };
+            var folderList = new string[] { "Assets/StreamingAssets", "Assets/Bundles/AOTCode", "Assets/Bundles/Code", "Assets/Bundles/Shader", "Assets/Bundles/Textures", "Assets/Bundles/Sprites", "Assets/Bundles/Config", "Assets/Bundles/Sound", "Assets/Bundles/UI" };
             foreach (var folder in folderList)
             {
                 // 本地文件夹是否存在()

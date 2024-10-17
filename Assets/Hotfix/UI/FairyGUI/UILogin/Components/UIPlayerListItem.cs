@@ -4,8 +4,10 @@ using FairyGUI;
 using Cysharp.Threading.Tasks;
 using FairyGUI.Utils;
 using GameFrameX.Entity.Runtime;
+using GameFrameX.UI.Runtime;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using UnityEngine;
 
 namespace Hotfix.UI
 {
@@ -35,24 +37,27 @@ namespace Hotfix.UI
             UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
         }
 
-        public static UIPlayerListItem CreateInstance(object userData = null)
+        public static UIPlayerListItem CreateInstance()
         {
-            return new UIPlayerListItem(CreateGObject(), userData);
+            return Create(CreateGObject());
         }
 
-        public static UniTask<UIPlayerListItem> CreateInstanceAsync(Entity domain, object userData = null)
+        public static UniTask<UIPlayerListItem> CreateInstanceAsync(Entity domain)
         {
             UniTaskCompletionSource<UIPlayerListItem> tcs = new UniTaskCompletionSource<UIPlayerListItem>();
             CreateGObjectAsync((go) =>
             {
-                tcs.TrySetResult(new UIPlayerListItem(go, userData));
+                tcs.TrySetResult(Create(go));
             });
             return tcs.Task;
         }
 
-        public static UIPlayerListItem Create(GObject go, object userData = null)
+        public static UIPlayerListItem Create(GObject go)
         {
-            return new UIPlayerListItem(go, userData);
+            var fui = go.displayObject.gameObject.GetOrAddComponent<UIPlayerListItem>();
+            fui?.SetGObject(go);
+            fui?.InitView();
+            return fui;
         }
 
         /// <summary>
@@ -85,7 +90,7 @@ namespace Hotfix.UI
 				m_icon = (GLoader)com.GetChild("icon");
 				m_name_text = (GRichTextField)com.GetChild("name_text");
 				m_level_text = (GRichTextField)com.GetChild("level_text");
-				m_login_button = UIPlayerListItemLoginButton.Create(com.GetChild("login_button"), this);
+				m_login_button = UIPlayerListItemLoginButton.Create(com.GetChild("login_button"));
             }
         }
 
@@ -105,7 +110,7 @@ namespace Hotfix.UI
             self = null;            
         }
 
-        private UIPlayerListItem(GObject gObject, object userData) : base(gObject, userData)
+        private UIPlayerListItem(GObject gObject) : base(gObject)
         {
             // Awake(gObject);
         }

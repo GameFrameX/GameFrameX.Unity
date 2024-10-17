@@ -4,8 +4,10 @@ using FairyGUI;
 using Cysharp.Threading.Tasks;
 using FairyGUI.Utils;
 using GameFrameX.Entity.Runtime;
+using GameFrameX.UI.Runtime;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using UnityEngine;
 
 namespace Hotfix.UI
 {
@@ -34,24 +36,27 @@ namespace Hotfix.UI
             UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
         }
 
-        public static UIAnnouncement CreateInstance(object userData = null)
+        public static UIAnnouncement CreateInstance()
         {
-            return new UIAnnouncement(CreateGObject(), userData);
+            return Create(CreateGObject());
         }
 
-        public static UniTask<UIAnnouncement> CreateInstanceAsync(Entity domain, object userData = null)
+        public static UniTask<UIAnnouncement> CreateInstanceAsync(Entity domain)
         {
             UniTaskCompletionSource<UIAnnouncement> tcs = new UniTaskCompletionSource<UIAnnouncement>();
             CreateGObjectAsync((go) =>
             {
-                tcs.TrySetResult(new UIAnnouncement(go, userData));
+                tcs.TrySetResult(Create(go));
             });
             return tcs.Task;
         }
 
-        public static UIAnnouncement Create(GObject go, object userData = null)
+        public static UIAnnouncement Create(GObject go)
         {
-            return new UIAnnouncement(go, userData);
+            var fui = go.displayObject.gameObject.GetOrAddComponent<UIAnnouncement>();
+            fui?.SetGObject(go);
+            fui?.InitView();
+            return fui;
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace Hotfix.UI
             if(com != null)
             {
 				m_MaskLayer = (GGraph)com.GetChild("MaskLayer");
-				m_TextContent = UIAnnouncementContent.Create(com.GetChild("TextContent"), this);
+				m_TextContent = UIAnnouncementContent.Create(com.GetChild("TextContent"));
 				m_TextTitle = (GTextField)com.GetChild("TextTitle");
             }
         }
@@ -102,7 +107,7 @@ namespace Hotfix.UI
             self = null;            
         }
 
-        private UIAnnouncement(GObject gObject, object userData) : base(gObject, userData)
+        private UIAnnouncement(GObject gObject) : base(gObject)
         {
             // Awake(gObject);
         }

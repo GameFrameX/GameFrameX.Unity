@@ -4,8 +4,10 @@ using FairyGUI;
 using Cysharp.Threading.Tasks;
 using FairyGUI.Utils;
 using GameFrameX.Entity.Runtime;
+using GameFrameX.UI.Runtime;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using UnityEngine;
 
 namespace Unity.Startup
 {
@@ -25,9 +27,12 @@ namespace Unity.Startup
 		public GLabel m_TextContent { get; private set; }
 
 
-        public static UILauncherUpgrade Create(GObject go, object userData = null)
+        public static UILauncherUpgrade Create(GObject go)
         {
-            return new UILauncherUpgrade(go, userData);
+            var fui = go.displayObject.gameObject.GetOrAddComponent<UILauncherUpgrade>();
+            fui?.SetGObject(go);
+            fui?.InitView();
+            return fui;
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace Unity.Startup
             self = null;            
         }
 
-        private UILauncherUpgrade(GObject gObject, object userData) : base(gObject, userData)
+        private UILauncherUpgrade(GObject gObject) : base(gObject)
         {
             // Awake(gObject);
         }

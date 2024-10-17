@@ -4,8 +4,10 @@ using FairyGUI;
 using Cysharp.Threading.Tasks;
 using FairyGUI.Utils;
 using GameFrameX.Entity.Runtime;
+using GameFrameX.UI.Runtime;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
+using UnityEngine;
 
 namespace Hotfix.UI
 {
@@ -23,9 +25,12 @@ namespace Hotfix.UI
 		public GRichTextField m_title { get; private set; }
 
 
-        public static UIPlayerListItemLoginButton Create(GObject go, object userData = null)
+        public static UIPlayerListItemLoginButton Create(GObject go)
         {
-            return new UIPlayerListItemLoginButton(go, userData);
+            var fui = go.displayObject.gameObject.GetOrAddComponent<UIPlayerListItemLoginButton>();
+            fui?.SetGObject(go);
+            fui?.InitView();
+            return fui;
         }
 
         /// <summary>
@@ -72,7 +77,7 @@ namespace Hotfix.UI
             self = null;            
         }
 
-        private UIPlayerListItemLoginButton(GObject gObject, object userData) : base(gObject, userData)
+        private UIPlayerListItemLoginButton(GObject gObject) : base(gObject)
         {
             // Awake(gObject);
         }

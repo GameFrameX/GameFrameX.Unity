@@ -18,7 +18,7 @@ namespace Unity.Startup.Procedure
 
         public static void Dispose()
         {
-            GameApp.UI.CloseUIForm(_ui.UIForm);
+            GameApp.UI.CloseUIForm<UILauncher>();
             _ui = null;
         }
 

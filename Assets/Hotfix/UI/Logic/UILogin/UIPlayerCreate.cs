@@ -10,7 +10,7 @@ namespace Hotfix.UI
     {
         ReqPlayerCreate req;
 
-        protected override void OnOpen(object userData)
+        public override void OnOpen(object userData)
         {
             req = new ReqPlayerCreate();
             base.OnOpen(userData);
@@ -36,7 +36,7 @@ namespace Hotfix.UI
             }
 
             await GameApp.UI.OpenUIFormAsync<UIPlayerList>( Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin),UIGroupConstants.Floor.Name, UserData);
-            GameApp.UI.CloseUIForm(UIForm);
+            GameApp.UI.CloseUIForm(this);
         }
     }
 }

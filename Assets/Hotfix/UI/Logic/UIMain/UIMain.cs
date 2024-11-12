@@ -7,7 +7,7 @@ namespace Hotfix.UI
 {
     public partial class UIMain
     {
-        protected override void OnOpen(object userData)
+        public override void OnOpen(object userData)
         {
             base.OnOpen(userData);
 

@@ -18,7 +18,7 @@ namespace Hotfix.UI
         public static string serverIp = "127.0.0.1";
         public static int serverPort = 29100;
 
-        protected override void OnOpen(object userData)
+        public override void OnOpen(object userData)
         {
             m_enter.onClick.Add(OnLoginClick);
             base.OnOpen(userData);
@@ -84,7 +84,7 @@ namespace Hotfix.UI
             }
 
             await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
-            GameApp.UI.CloseUIForm(UIForm);
+            GameApp.UI.CloseUIForm(this);
         }
 
         private static void OnNetworkClosed(object sender, GameEventArgs e)

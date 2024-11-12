@@ -11,7 +11,7 @@ namespace Hotfix.UI
     {
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
-        protected override async void OnOpen(object userData)
+        public override async void OnOpen(object userData)
         {
             base.OnOpen(userData);
 
@@ -37,7 +37,7 @@ namespace Hotfix.UI
             var respPlayerLogin = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerLogin>(reqPlayerLogin);
             PlayerManager.Instance.PlayerInfo = respPlayerLogin.PlayerInfo;
             await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
-            GameApp.UI.CloseUIForm(UIForm);
+            GameApp.UI.CloseUIForm(this);
         }
 
         PlayerInfo m_SelectedPlayerInfo;

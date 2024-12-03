@@ -1,5 +1,5 @@
 ﻿/** This is an automatically generated class by UGUI. Please do not modify it. **/
-
+#if ENABLE_UI_UGUI
 using Cysharp.Threading.Tasks;
 using GameFrameX.Entity.Runtime;
 using GameFrameX.UI.Runtime;
@@ -59,3 +59,4 @@ namespace Unity.Startup
 
 	}
 }
+#endif

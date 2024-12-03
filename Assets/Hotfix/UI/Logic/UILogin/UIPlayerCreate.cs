@@ -2,6 +2,9 @@ using GameFrameX;
 using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
+#if ENABLE_UI_UGUI
+using GameFrameX.UI.UGUI.Runtime;
+#endif
 using Hotfix.Proto;
 
 namespace Hotfix.UI
@@ -35,7 +38,7 @@ namespace Hotfix.UI
                 Log.Info("创建角色成功");
             }
 
-            await GameApp.UI.OpenUIFormAsync<UIPlayerList>( Utility.Asset.Path.GetUIPackagePath(FUIPackage.UILogin),UIGroupConstants.Floor.Name, UserData);
+            await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPackagePath(nameof(UILogin)), UIGroupConstants.Floor.Name, UserData, true);
             GameApp.UI.CloseUIForm(this);
         }
     }

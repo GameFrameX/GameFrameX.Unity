@@ -1,5 +1,6 @@
 /** This is an automatically generated class by FairyGUI. Please do not modify it. **/
 
+#if ENABLE_UI_FAIRYGUI
 using FairyGUI;
 using FairyGUI.Utils;
 using Cysharp.Threading.Tasks;
@@ -12,3 +13,4 @@ namespace Hotfix.UI
 
     }
 }
+#endif

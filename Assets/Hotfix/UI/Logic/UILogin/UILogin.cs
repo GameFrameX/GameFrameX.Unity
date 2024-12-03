@@ -5,6 +5,9 @@ using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
+#if ENABLE_UI_UGUI
+using GameFrameX.UI.UGUI.Runtime;
+#endif
 using Hotfix.Config.item;
 using Hotfix.Network;
 using Hotfix.Proto;
@@ -20,7 +23,7 @@ namespace Hotfix.UI
 
         public override void OnOpen(object userData)
         {
-            m_enter.onClick.Add(OnLoginClick);
+            m_enter.onClick.Set(OnLoginClick);
             base.OnOpen(userData);
         }
 
@@ -76,14 +79,14 @@ namespace Hotfix.UI
             var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
             if (respPlayerList.PlayerList.Count > 0)
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
             }
             else
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name, respLogin);
+                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
             }
 
-            await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(FUIPackage.UIMain), UIGroupConstants.Floor.Name);
+            // await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor.Name);
             GameApp.UI.CloseUIForm(this);
         }
 

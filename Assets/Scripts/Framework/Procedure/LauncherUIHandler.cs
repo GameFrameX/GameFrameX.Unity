@@ -29,12 +29,16 @@ namespace Unity.Startup.Procedure
 
         public static void SetProgressUpdateFinish()
         {
+#if ENABLE_UI_FAIRYGUI
             _ui.m_IsDownload.SetSelectedIndex(0);
+#endif
         }
 
         public static void SetProgressUpdate(object sender, GameEventArgs gameEventArgs)
         {
+#if ENABLE_UI_FAIRYGUI
             _ui.m_IsDownload.SetSelectedIndex(1);
+#endif
             var message = (AssetDownloadProgressUpdateEventArgs)gameEventArgs;
             float progress = message.CurrentDownloadSizeBytes / (message.TotalDownloadSizeBytes * 1f);
             string currentSizeMb = Utility.File.GetBytesSize(message.CurrentDownloadSizeBytes);

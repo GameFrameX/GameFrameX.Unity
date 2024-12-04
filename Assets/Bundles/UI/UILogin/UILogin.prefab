@@ -401,17 +401,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717230910800151908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75cb7ee26b0e470f89486d78d2fbcf47, type: 3}
+  m_Script: {fileID: 11500000, guid: 17506338c6696f34fb32a857b7483118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mUserName: {fileID: 4555843164057052725}
   mUserName__Placeholder: {fileID: 5546185728079920783}
   mUserName__Text: {fileID: 2292713627810620296}
-  mPassword: {fileID: 8573712159762856585}
+  mUserName: {fileID: 4555843164057052725}
   mPassword__Placeholder: {fileID: 967379718805668231}
   mPassword__Text: {fileID: 9038635317787761321}
-  menter: {fileID: 8766712165321420368}
+  mPassword: {fileID: 8573712159762856585}
   menter__Text: {fileID: 1318175656029300258}
+  menter: {fileID: 8766712165321420368}
   mErrorText: {fileID: 7984387176934010493}
   mTitleText: {fileID: 1529636909}
 --- !u!1 &5484277854968332070

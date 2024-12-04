@@ -486,12 +486,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1184977374874224108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafa38f61d9d4d40abfbc25ba3ab6a46, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d7207ee58c654f439fd0477b79046d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mBgImage: {fileID: 7785376669766979963}
-  mbag_button: {fileID: 1678343360}
   mbag_button__Text: {fileID: 1214814195}
+  mbag_button: {fileID: 1678343360}
   mplayer_icon: {fileID: 346919067406639900}
   mplayer_name: {fileID: 1887894341}
   mplayer_level: {fileID: 2091764510}

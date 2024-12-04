@@ -13,6 +13,7 @@ namespace Hotfix.UI
 	/// <summary>
 	/// 代码生成的UI代码UIMain
 	/// </summary>
+	[DisallowMultipleComponent]
 	public sealed partial class UIMain : UGUI
 	{
 		public GameObject self { get; private set; }
@@ -21,11 +22,11 @@ namespace Hotfix.UI
 		[SerializeField] [UGUIElementProperty("BgImage")] private UnityEngine.UI.Image mBgImage;
 		public UnityEngine.UI.Image m_BgImage { get { return mBgImage;} }
 
-		[SerializeField] [UGUIElementProperty("bag_button")] private UnityEngine.UI.Button mbag_button;
-		public UnityEngine.UI.Button m_bag_button { get { return mbag_button;} }
-
 		[SerializeField] [UGUIElementProperty("bag_button/Text")] private UnityEngine.UI.Text mbag_button__Text;
 		public UnityEngine.UI.Text m_bag_button__Text { get { return mbag_button__Text;} }
+
+		[SerializeField] [UGUIElementProperty("bag_button")] private UnityEngine.UI.Button mbag_button;
+		public UnityEngine.UI.Button m_bag_button { get { return mbag_button;} }
 
 		[SerializeField] [UGUIElementProperty("player_icon")] private GameFrameX.UI.UGUI.Runtime.UIImage mplayer_icon;
 		public GameFrameX.UI.UGUI.Runtime.UIImage m_player_icon { get { return mplayer_icon;} }

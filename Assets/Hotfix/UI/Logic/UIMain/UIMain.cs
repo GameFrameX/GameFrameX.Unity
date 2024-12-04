@@ -1,9 +1,12 @@
-using FairyGUI;
 using GameFrameX.Runtime;
+#if ENABLE_UI_FAIRYGUI
+using FairyGUI;
+using GameFrameX.UI.FairyGUI.Runtime;
+#endif
 #if ENABLE_UI_UGUI
 using GameFrameX.UI.UGUI.Runtime;
-using UnityEngine;
 #endif
+using UnityEngine;
 using Hotfix.Manager;
 using Hotfix.Proto;
 

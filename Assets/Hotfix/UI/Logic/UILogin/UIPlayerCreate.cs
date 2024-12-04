@@ -1,5 +1,7 @@
 using GameFrameX;
+#if ENABLE_UI_FAIRYGUI
 using GameFrameX.UI.FairyGUI.Runtime;
+#endif
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 #if ENABLE_UI_UGUI

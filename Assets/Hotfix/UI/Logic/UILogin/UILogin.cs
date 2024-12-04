@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using GameFrameX;
 using GameFrameX.Event.Runtime;
+#if ENABLE_UI_FAIRYGUI
 using GameFrameX.UI.FairyGUI.Runtime;
+#endif
 using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;

@@ -2,6 +2,9 @@
 using FairyGUI;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
+#if ENABLE_UI_FAIRYGUI
+using GameFrameX.UI.FairyGUI.Runtime;
+#endif
 #if ENABLE_UI_UGUI
 using GameFrameX.UI.UGUI.Runtime;
 #endif

@@ -63,7 +63,7 @@ namespace Hotfix.UI
             reqPlayerLogin.Id = m_SelectedPlayerInfo.Id;
             var respPlayerLogin = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerLogin>(reqPlayerLogin);
             PlayerManager.Instance.PlayerInfo = respPlayerLogin.PlayerInfo;
-            await GameApp.UI.OpenFullScreenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor.Name);
+            await GameApp.UI.OpenFullScreenAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor);
             GameApp.UI.CloseUIForm(this);
         }
 

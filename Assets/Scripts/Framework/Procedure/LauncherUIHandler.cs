@@ -11,7 +11,7 @@ namespace Unity.Startup.Procedure
 
         public static async void Start()
         {
-            _ui = await GameApp.UI.OpenUIFormAsync<UILauncher>("UI/UILauncher", UIGroupConstants.Loading.Name);
+            _ui = await GameApp.UI.OpenFullScreenAsync<UILauncher>("UI/UILauncher", UIGroupConstants.Loading);
 
             GameApp.Event.Subscribe(AssetDownloadProgressUpdateEventArgs.EventId, SetProgressUpdate);
         }

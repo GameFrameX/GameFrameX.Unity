@@ -43,12 +43,8 @@ namespace Unity.Startup.Procedure
             var assetHotfixDllPath = Utility.Asset.Path.GetCodePath(HotfixName + Utility.Const.FileNameSuffix.DLL);
             var assetHotfixDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixDllPath);
             var assemblyDataHotfixDll = assetHotfixDllOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
-            Log.Info("开始加载Unity.Hotfix.pdb");
-            var assetHotfixPdbPath = Utility.Asset.Path.GetCodePath(HotfixName + Utility.Const.FileNameSuffix.PDB);
-            var assetHotfixPdbOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixPdbPath);
-            var assemblyDataHotfixPdb = assetHotfixPdbOperationHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
             Log.Info("开始加载程序集Hotfix");
-            var hotfixAssembly = Assembly.Load(assemblyDataHotfixDll, assemblyDataHotfixPdb);
+            var hotfixAssembly = Assembly.Load(assemblyDataHotfixDll, null);
             Run(hotfixAssembly);
         }
 

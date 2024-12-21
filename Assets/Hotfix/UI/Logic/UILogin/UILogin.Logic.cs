@@ -53,7 +53,7 @@ namespace Hotfix.UI
 
         private async void Login()
         {
-            var item = GameApp.Config.GetConfig<TbItem>().Get(1);
+            var item = GameApp.Config.GetConfig<TbSounds>().Get(1);
             Log.Info(item);
             if (m_UserName.text.IsNullOrWhiteSpace() || m_Password.text.IsNullOrWhiteSpace())
             {

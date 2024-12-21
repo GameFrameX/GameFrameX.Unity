@@ -11,9 +11,6 @@ using UnityEngine;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 using Hotfix.Config;
-using Hotfix.Config.item;
-using Hotfix.Config.test;
-using Hotfix.Network;
 using Hotfix.UI;
 
 namespace Hotfix

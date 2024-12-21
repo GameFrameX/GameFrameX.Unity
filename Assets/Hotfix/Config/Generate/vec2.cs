@@ -15,10 +15,20 @@ namespace Hotfix.Config
 {
     public partial struct vec2
     {
+        public vec2(float X, float Y) 
+        {
+            this.X = X;
+            this.Y = Y;
+            PostInit();
+        }
+
         public vec2(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsNumber) { throw new SerializationException(); }  Y = _buf["y"]; }
+
+            // Localization Key Begin
+            // Localization Key End
             PostInit();
         }
 
@@ -27,13 +37,17 @@ namespace Hotfix.Config
             return new vec2(_buf);
         }
 
-        public readonly float X;
-        public readonly float Y;
+        public float X { private set; get; }
+        public float Y { private set; get; }
 
         public  void ResolveRef(TablesComponent tables)
         {
             
             
+        }
+
+        public void TranslateText(System.Func<string, string, string> translator)
+        {
         }
 
         public override string ToString()

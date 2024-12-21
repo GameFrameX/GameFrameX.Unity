@@ -15,11 +15,22 @@ namespace Hotfix.Config
 {
     public partial struct vec3
     {
+        public vec3(float X, float Y, float Z) 
+        {
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
+            PostInit();
+        }
+
         public vec3(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsNumber) { throw new SerializationException(); }  Y = _buf["y"]; }
             { if(!_buf["z"].IsNumber) { throw new SerializationException(); }  Z = _buf["z"]; }
+
+            // Localization Key Begin
+            // Localization Key End
             PostInit();
         }
 
@@ -28,15 +39,19 @@ namespace Hotfix.Config
             return new vec3(_buf);
         }
 
-        public readonly float X;
-        public readonly float Y;
-        public readonly float Z;
+        public float X { private set; get; }
+        public float Y { private set; get; }
+        public float Z { private set; get; }
 
         public  void ResolveRef(TablesComponent tables)
         {
             
             
             
+        }
+
+        public void TranslateText(System.Func<string, string, string> translator)
+        {
         }
 
         public override string ToString()

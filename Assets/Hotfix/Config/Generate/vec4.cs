@@ -15,12 +15,24 @@ namespace Hotfix.Config
 {
     public partial struct vec4
     {
+        public vec4(float X, float Y, float Z, float W) 
+        {
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
+            this.W = W;
+            PostInit();
+        }
+
         public vec4(JSONNode _buf)
         {
             { if(!_buf["x"].IsNumber) { throw new SerializationException(); }  X = _buf["x"]; }
             { if(!_buf["y"].IsNumber) { throw new SerializationException(); }  Y = _buf["y"]; }
             { if(!_buf["z"].IsNumber) { throw new SerializationException(); }  Z = _buf["z"]; }
             { if(!_buf["w"].IsNumber) { throw new SerializationException(); }  W = _buf["w"]; }
+
+            // Localization Key Begin
+            // Localization Key End
             PostInit();
         }
 
@@ -29,10 +41,10 @@ namespace Hotfix.Config
             return new vec4(_buf);
         }
 
-        public readonly float X;
-        public readonly float Y;
-        public readonly float Z;
-        public readonly float W;
+        public float X { private set; get; }
+        public float Y { private set; get; }
+        public float Z { private set; get; }
+        public float W { private set; get; }
 
         public  void ResolveRef(TablesComponent tables)
         {
@@ -40,6 +52,10 @@ namespace Hotfix.Config
             
             
             
+        }
+
+        public void TranslateText(System.Func<string, string, string> translator)
+        {
         }
 
         public override string ToString()

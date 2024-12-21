@@ -11,7 +11,11 @@ using UnityEngine;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 using Hotfix.Config;
+using Hotfix.Config.item;
 using Hotfix.UI;
+#if ENABLE_BINARY_CONFIG
+using LuBan.Runtime;
+#endif
 
 namespace Hotfix
 {
@@ -33,20 +37,46 @@ namespace Hotfix
 #elif ENABLE_UI_UGUI
             await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name);
 #endif
+
+            var item = GameApp.Config.GetConfig<TbSounds>().FirstOrDefault;
+            Log.Info(item);
         }
 
         static async void LoadConfig()
         {
             var tablesComponent = new TablesComponent();
             tablesComponent.Init(GameApp.Config);
+#if ENABLE_BINARY_CONFIG
+            // 使用二进制配置表
+            await tablesComponent.LoadAsync(ConfigBufferLoader);
+#else
+            // 使用JSON配置表
             await tablesComponent.LoadAsync(ConfigLoader);
+#endif
         }
 
+#if ENABLE_BINARY_CONFIG
+        /// <summary>
+        /// 加载二进制配置表
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        private static async Task<ByteBuf> ConfigBufferLoader(string file)
+        {
+            var assetHandle = await GameApp.Asset.LoadAssetAsync<TextAsset>(Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Binary));
+            return ByteBuf.Wrap(assetHandle.GetAssetObject<TextAsset>().bytes);
+        }
+#else
+        /// <summary>
+        /// 加载json配置表
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         private static async Task<JSONNode> ConfigLoader(string file)
         {
             var assetHandle = await GameApp.Asset.LoadAssetAsync<TextAsset>(Utility.Asset.Path.GetConfigPath(file, Utility.Const.FileNameSuffix.Json));
-
             return JSON.Parse(assetHandle.GetAssetObject<TextAsset>().text);
         }
+#endif
     }
 }

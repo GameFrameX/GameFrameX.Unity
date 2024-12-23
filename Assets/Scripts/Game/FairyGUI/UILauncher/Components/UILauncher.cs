@@ -68,11 +68,12 @@ namespace Unity.Startup
         /// </summary>
         public static UILauncher GetFormPool(GObject go)
         {
-            var fui =  go.Get<UILauncher>();
-            if(fui == null)
+            var fui = go.Get<UILauncher>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -88,7 +89,7 @@ namespace Unity.Startup
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_IsUpgrade = com.GetController("IsUpgrade");
 				m_IsDownload = com.GetController("IsDownload");

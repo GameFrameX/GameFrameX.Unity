@@ -66,11 +66,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UIPlayerListItem GetFormPool(GObject go)
         {
-            var fui =  go.Get<UIPlayerListItem>();
-            if(fui == null)
+            var fui = go.Get<UIPlayerListItem>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -86,7 +87,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_icon = (GLoader)com.GetChild("icon");
 				m_name_text = (GRichTextField)com.GetChild("name_text");

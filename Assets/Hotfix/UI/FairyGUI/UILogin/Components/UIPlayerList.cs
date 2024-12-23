@@ -68,11 +68,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UIPlayerList GetFormPool(GObject go)
         {
-            var fui =  go.Get<UIPlayerList>();
-            if(fui == null)
+            var fui = go.Get<UIPlayerList>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -88,7 +89,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_IsSelected = com.GetController("IsSelected");
 				m_player_list = (GList)com.GetChild("player_list");

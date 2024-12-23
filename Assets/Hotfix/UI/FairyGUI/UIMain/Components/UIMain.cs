@@ -67,11 +67,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UIMain GetFormPool(GObject go)
         {
-            var fui =  go.Get<UIMain>();
-            if(fui == null)
+            var fui = go.Get<UIMain>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -87,7 +88,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_bg = (GLoader)com.GetChild("bg");
 				m_bag_button = (GButton)com.GetChild("bag_button");

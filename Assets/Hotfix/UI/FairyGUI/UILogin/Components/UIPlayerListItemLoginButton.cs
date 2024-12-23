@@ -39,11 +39,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UIPlayerListItemLoginButton GetFormPool(GObject go)
         {
-            var fui =  go.Get<UIPlayerListItemLoginButton>();
-            if(fui == null)
+            var fui = go.Get<UIPlayerListItemLoginButton>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -59,7 +60,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_title = (GRichTextField)com.GetChild("title");
             }

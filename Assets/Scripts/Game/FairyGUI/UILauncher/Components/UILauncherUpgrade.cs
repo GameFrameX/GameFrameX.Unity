@@ -41,11 +41,12 @@ namespace Unity.Startup
         /// </summary>
         public static UILauncherUpgrade GetFormPool(GObject go)
         {
-            var fui =  go.Get<UILauncherUpgrade>();
-            if(fui == null)
+            var fui = go.Get<UILauncherUpgrade>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -61,7 +62,7 @@ namespace Unity.Startup
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_bg = (GGraph)com.GetChild("bg");
 				m_EnterButton = (GButton)com.GetChild("EnterButton");

@@ -65,11 +65,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UIAnnouncement GetFormPool(GObject go)
         {
-            var fui =  go.Get<UIAnnouncement>();
-            if(fui == null)
+            var fui = go.Get<UIAnnouncement>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -85,7 +86,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_MaskLayer = (GGraph)com.GetChild("MaskLayer");
 				m_TextContent = UIAnnouncementContent.Create(com.GetChild("TextContent"));

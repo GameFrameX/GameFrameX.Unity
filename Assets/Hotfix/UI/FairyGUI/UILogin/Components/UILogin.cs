@@ -66,11 +66,12 @@ namespace Hotfix.UI
         /// </summary>
         public static UILogin GetFormPool(GObject go)
         {
-            var fui =  go.Get<UILogin>();
-            if(fui == null)
+            var fui = go.Get<UILogin>();
+            if (fui == null)
             {
                 fui = Create(go);
             }
+
             fui.IsFromPool = true;
             return fui;
         }
@@ -86,7 +87,7 @@ namespace Hotfix.UI
             self.Add(this);
             
             var com = GObject.asCom;
-            if(com != null)
+            if (com != null)
             {
 				m_ErrorText = (GTextField)com.GetChild("ErrorText");
 				m_enter = (GButton)com.GetChild("enter");

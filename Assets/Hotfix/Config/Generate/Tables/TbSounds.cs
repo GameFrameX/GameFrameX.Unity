@@ -12,12 +12,12 @@ using GameFrameX.Config.Runtime;
 using SimpleJSON;
 
 
-namespace Hotfix.Config.item
+namespace Hotfix.Config.Tables
 {
-    public partial class TbAchievement : BaseDataTable<item.Achievement>
+    public partial class TbSounds : BaseDataTable<Tables.Sounds>
     {
         private readonly System.Func<System.Threading.Tasks.Task<JSONNode>> _loadFunc;        
-        public TbAchievement(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
+        public TbSounds(System.Func<System.Threading.Tasks.Task<JSONNode>> loadFunc)
         {
             _loadFunc = loadFunc;
         }
@@ -28,8 +28,8 @@ namespace Hotfix.Config.item
             DataList.Clear();
             foreach(var _ele in jsonNode.Children)
             {
-                item.Achievement _v;
-                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = item.Achievement.DeserializeAchievement(_ele);  }
+                Tables.Sounds _v;
+                { if(!_ele.IsObject) { throw new SerializationException(); }  _v = Tables.Sounds.DeserializeSounds(_ele);  }
                 DataList.Add(_v);
                 LongDataMaps.Add(_v.Id, _v);
                 StringDataMaps.Add(_v.Id.ToString(), _v);

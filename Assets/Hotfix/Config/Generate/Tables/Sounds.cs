@@ -11,7 +11,7 @@ using LuBan.Runtime;
 using GameFrameX.Config;
 using SimpleJSON;
 
-namespace Hotfix.Config.item
+namespace Hotfix.Config.Tables
 {
     public sealed partial class Sounds : LuBan.Runtime.BeanBase
     {
@@ -42,7 +42,7 @@ namespace Hotfix.Config.item
 
         public static Sounds DeserializeSounds(JSONNode _buf)
         {
-            return new item.Sounds(_buf);
+            return new Tables.Sounds(_buf);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Hotfix.Config.item
         public readonly string Title_Localization_Key;
         public string CharacterName { private set; get; }
         public readonly string CharacterName_Localization_Key;
-        public const int __ID__ = -1840749409;
+        public const int __ID__ = 2052116717;
         public override int GetTypeId() => __ID__;
 
         public  void ResolveRef(TablesComponent tables)

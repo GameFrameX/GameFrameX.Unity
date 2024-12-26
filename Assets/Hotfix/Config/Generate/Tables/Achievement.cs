@@ -11,7 +11,7 @@ using LuBan.Runtime;
 using GameFrameX.Config;
 using SimpleJSON;
 
-namespace Hotfix.Config.item
+namespace Hotfix.Config.Tables
 {
     public sealed partial class Achievement : LuBan.Runtime.BeanBase
     {
@@ -45,7 +45,7 @@ namespace Hotfix.Config.item
 
         public static Achievement DeserializeAchievement(JSONNode _buf)
         {
-            return new item.Achievement(_buf);
+            return new Tables.Achievement(_buf);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Hotfix.Config.item
         /// 成就解锁条件
         /// </summary>
         public System.Collections.Generic.List<int> AchievementUnlockCondition { private set; get; }
-        public const int __ID__ = 336225460;
+        public const int __ID__ = -1048610522;
         public override int GetTypeId() => __ID__;
 
         public  void ResolveRef(TablesComponent tables)

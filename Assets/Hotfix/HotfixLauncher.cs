@@ -11,7 +11,7 @@ using UnityEngine;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 using Hotfix.Config;
-using Hotfix.Config.item;
+using Hotfix.Config.Tables;
 using Hotfix.UI;
 #if ENABLE_BINARY_CONFIG
 using LuBan.Runtime;

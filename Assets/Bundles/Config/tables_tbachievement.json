@@ -1,0 +1,22 @@
+[
+  {
+    "id": 90000001,
+    "image": 6230001,
+    "name": "text_achievement_name_01",
+    "achievement_content": "text_achievement_content_1",
+    "LockText": "text_achievement_cover",
+    "achievement_unlock_condition": [
+      10001
+    ]
+  },
+  {
+    "id": 90000002,
+    "image": 6230002,
+    "name": "text_achievement_name_02",
+    "achievement_content": "text_achievement_content_2",
+    "LockText": "text_achievement_cover",
+    "achievement_unlock_condition": [
+      10002
+    ]
+  }
+]

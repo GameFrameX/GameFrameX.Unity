@@ -17,9 +17,9 @@ namespace Hotfix.Config
     public partial class TablesComponent
     {
 
-        internal item.TbAchievement TbAchievement { private set; get; }
+        internal Tables.TbAchievement TbAchievement { private set; get; }
 
-        internal item.TbSounds TbSounds { private set; get; }
+        internal Tables.TbSounds TbSounds { private set; get; }
 
         private ConfigComponent m_ConfigComponent;
 
@@ -48,13 +48,13 @@ namespace Hotfix.Config
             m_ConfigComponent.RemoveAllConfigs();
             var loadTasks = new System.Collections.Generic.List<System.Threading.Tasks.Task>();
     
-            TbAchievement = new item.TbAchievement(() => loader("item_tbachievement"));
+            TbAchievement = new Tables.TbAchievement(() => loader("tables_tbachievement"));
             loadTasks.Add(TbAchievement.LoadAsync());
-            m_ConfigComponent.Add(nameof(item.TbAchievement), TbAchievement);
+            m_ConfigComponent.Add(nameof(Tables.TbAchievement), TbAchievement);
 
-            TbSounds = new item.TbSounds(() => loader("item_tbsounds"));
+            TbSounds = new Tables.TbSounds(() => loader("tables_tbsounds"));
             loadTasks.Add(TbSounds.LoadAsync());
-            m_ConfigComponent.Add(nameof(item.TbSounds), TbSounds);
+            m_ConfigComponent.Add(nameof(Tables.TbSounds), TbSounds);
 
     
             await System.Threading.Tasks.Task.WhenAll(loadTasks);

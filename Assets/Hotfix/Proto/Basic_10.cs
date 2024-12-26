@@ -33,12 +33,6 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
 
-		/// <summary>
-		/// 时间戳
-		/// </summary>
-		[ProtoMember(2)]
-		public Dictionary<long, long> items { get; set; }
-
 	}
 
 }

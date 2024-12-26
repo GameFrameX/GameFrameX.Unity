@@ -1,2 +1,0 @@
-# 强制使用 var 关键字
-csharp_style.prefer_var_for_builtin_types = true

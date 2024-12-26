@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using FairyGUI;
+using GameFrameX.Event.Runtime;
+using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 #if ENABLE_UI_FAIRYGUI
@@ -9,6 +12,7 @@ using GameFrameX.UI.FairyGUI.Runtime;
 using GameFrameX.UI.UGUI.Runtime;
 #endif
 using Hotfix.Manager;
+using Hotfix.Network;
 using Hotfix.Proto;
 using UnityEngine;
 
@@ -18,17 +22,13 @@ namespace Hotfix.UI
     {
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
+        private static INetworkChannel networkChannel;
+        public static string serverIp = "127.0.0.1";
+        public static int serverPort = 29100;
+
         public override async void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            
-            RespLogin respLogin = userData as RespLogin;
-            ReqPlayerList req = new ReqPlayerList();
-            if (respLogin != null)
-            {
-                req.Id = respLogin.Id;
-            }
-
 #if ENABLE_UI_FAIRYGUI
             this.m_login_button.onClick.Set(OnLoginButtonClick);
             this.m_player_list.itemRenderer = ItemRenderer;
@@ -37,8 +37,7 @@ namespace Hotfix.UI
             m_right_Panel.gameObject.SetActive(false);
             m_right_Panel__login_button.onClick.Set(OnLoginButtonClick);
 #endif
-            var resp = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerList>(req);
-            playerList = resp.PlayerList;
+            playerList = AccountManager.Instance.PlayerList;
 #if ENABLE_UI_UGUI
             var uiPlayerListItemAssetHandle = await GameApp.Asset.LoadAssetAsync<GameObject>(Utility.Asset.Path.GetUIPath($"{nameof(UILogin)}/{nameof(UIPlayerListItem)}"));
             foreach (var playerInfo in playerList)
@@ -57,7 +56,29 @@ namespace Hotfix.UI
 #endif
         }
 
-        private async void OnLoginButtonClick()
+        private void OnLoginButtonClick()
+        {
+            if (networkChannel != null && networkChannel.Connected)
+            {
+                Login();
+                return;
+            }
+
+            if (networkChannel != null && GameApp.Network.HasNetworkChannel("network") && !networkChannel.Connected)
+            {
+                GameApp.Network.DestroyNetworkChannel("network");
+            }
+
+            networkChannel = GameApp.Network.CreateNetworkChannel("network", new DefaultNetworkChannelHelper());
+            // 注册心跳消息
+            DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
+            networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
+            networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
+            GameApp.Event.CheckSubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            GameApp.Event.CheckSubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
+        }
+
+        private async void Login()
         {
             ReqPlayerLogin reqPlayerLogin = new ReqPlayerLogin();
             reqPlayerLogin.Id = m_SelectedPlayerInfo.Id;
@@ -105,6 +126,17 @@ namespace Hotfix.UI
 #endif
 
             item.dataSource = playerInfo;
+        }
+
+        private static void OnNetworkClosed(object sender, GameEventArgs e)
+        {
+            Log.Info(nameof(OnNetworkClosed));
+        }
+
+        private void OnNetworkConnected(object sender, GameEventArgs e)
+        {
+            Login();
+            Log.Info(nameof(OnNetworkConnected));
         }
     }
 }

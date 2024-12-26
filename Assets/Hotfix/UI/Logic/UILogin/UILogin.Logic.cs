@@ -1,6 +1,8 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using GameFrameX;
 using GameFrameX.Event.Runtime;
+using GameFrameX.GlobalConfig.Runtime;
 #if ENABLE_UI_FAIRYGUI
 using GameFrameX.UI.FairyGUI.Runtime;
 #endif
@@ -11,6 +13,7 @@ using GameFrameX.UI.Runtime;
 using GameFrameX.UI.UGUI.Runtime;
 #endif
 using Hotfix.Config.item;
+using Hotfix.Manager;
 using Hotfix.Network;
 using Hotfix.Proto;
 using UnityEngine;
@@ -19,9 +22,7 @@ namespace Hotfix.UI
 {
     public partial class UILogin
     {
-        private static INetworkChannel networkChannel;
-        public static string serverIp = "127.0.0.1";
-        public static int serverPort = 29100;
+
 
         public override void OnOpen(object userData)
         {
@@ -31,24 +32,9 @@ namespace Hotfix.UI
 
         private void OnLoginClick()
         {
-            if (networkChannel != null && networkChannel.Connected)
-            {
-                Login();
-                return;
-            }
+            Login();
+            return;
 
-            if (networkChannel != null && GameApp.Network.HasNetworkChannel("network") && !networkChannel.Connected)
-            {
-                GameApp.Network.DestroyNetworkChannel("network");
-            }
-
-            networkChannel = GameApp.Network.CreateNetworkChannel("network", new DefaultNetworkChannelHelper());
-            // 注册心跳消息
-            DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
-            networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
-            networkChannel.Connect(IPAddress.Parse(serverIp), serverPort);
-            GameApp.Event.CheckSubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            GameApp.Event.CheckSubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
         }
 
         private async void Login()
@@ -60,6 +46,8 @@ namespace Hotfix.UI
             }
 
 
+            #region 账号登录
+
             var req = new ReqLogin
             {
                 SdkType = 0,
@@ -70,13 +58,41 @@ namespace Hotfix.UI
             };
             req.Platform = PathHelper.GetPlatformName;
 
-            RespLogin respLogin = await networkChannel.Call<RespLogin>(req);
-            Log.Info(respLogin);
+            var respLoginWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqLogin)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(req)));
+            HttpJsonResult respLoginHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respLoginWebResult.Result);
+            if (respLoginHttpJsonResult.Code > 0)
+            {
+                Log.Error("登录失败，错误信息:" + respLoginHttpJsonResult.Message);
+                return;
+            }
+
+            Log.Info(respLoginWebResult.Result);
+            Log.Info(respLoginHttpJsonResult.Data);
+            var respLogin = Utility.Json.ToObject<RespLogin>(respLoginHttpJsonResult.Data);
+
+            #endregion
+
+            #region 获取角色列表
+
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = respLogin.Id;
+            var respPlayerListWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(reqPlayerList)));
+            HttpJsonResult respPlayerListHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respPlayerListWebResult.Result);
+            if (respPlayerListHttpJsonResult.Code > 0)
+            {
+                Log.Error("登录失败，错误信息:" + respPlayerListHttpJsonResult.Message);
+                return;
+            }
 
-            var respPlayerList = await networkChannel.Call<RespPlayerList>(reqPlayerList);
+            Log.Info(respPlayerListWebResult.Result);
+            Log.Info(respPlayerListHttpJsonResult.Data);
+
+            var respPlayerList = Utility.Json.ToObject<RespPlayerList>(respPlayerListHttpJsonResult.Data);
+            AccountManager.Instance.PlayerList = respPlayerList.PlayerList;
+
+            #endregion
+
             if (respPlayerList.PlayerList.Count > 0)
             {
                 await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
@@ -86,19 +102,7 @@ namespace Hotfix.UI
                 await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
             }
 
-            // await GameApp.UI.OpenUIFormAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor.Name);
             GameApp.UI.CloseUIForm(this);
-        }
-
-        private static void OnNetworkClosed(object sender, GameEventArgs e)
-        {
-            Log.Info(nameof(OnNetworkClosed));
-        }
-
-        private void OnNetworkConnected(object sender, GameEventArgs e)
-        {
-            Login();
-            Log.Info(nameof(OnNetworkConnected));
         }
     }
 }

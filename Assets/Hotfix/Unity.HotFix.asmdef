@@ -23,6 +23,8 @@
         "GameFrameX.UI.Runtime",
         "GameFrameX.UI.FairyGUI.Runtime",
         "GameFrameX.FairyGUI.Runtime",
+        "GameFrameX.Web.Runtime",
+        "GameFrameX.GlobalConfig.Runtime",
         "GameFrameX.Event.Runtime",
         "GameFrameX.Config.Runtime",
         "GameFrameX.Asset.Runtime",

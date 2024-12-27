@@ -22,8 +22,6 @@ namespace Hotfix.UI
 {
     public partial class UILogin
     {
-
-
         public override void OnOpen(object userData)
         {
             m_enter.onClick.Set(OnLoginClick);
@@ -33,8 +31,6 @@ namespace Hotfix.UI
         private void OnLoginClick()
         {
             Login();
-            return;
-
         }
 
         private async void Login()
@@ -58,17 +54,12 @@ namespace Hotfix.UI
             };
             req.Platform = PathHelper.GetPlatformName;
 
-            var respLoginWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqLogin)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(req)));
-            HttpJsonResult respLoginHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respLoginWebResult.Result);
-            if (respLoginHttpJsonResult.Code > 0)
+            var respLogin = await GameApp.Web.Post<RespLogin>($"http://127.0.0.1:28080/game/api/{nameof(ReqLogin)}", req);
+            if (respLogin.ErrorCode > 0)
             {
-                Log.Error("登录失败，错误信息:" + respLoginHttpJsonResult.Message);
+                Log.Error("登录失败，错误信息:" + respLogin.ErrorCode);
                 return;
             }
-
-            Log.Info(respLoginWebResult.Result);
-            Log.Info(respLoginHttpJsonResult.Data);
-            var respLogin = Utility.Json.ToObject<RespLogin>(respLoginHttpJsonResult.Data);
 
             #endregion
 
@@ -77,18 +68,13 @@ namespace Hotfix.UI
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = respLogin.Id;
-            var respPlayerListWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(reqPlayerList)));
-            HttpJsonResult respPlayerListHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respPlayerListWebResult.Result);
-            if (respPlayerListHttpJsonResult.Code > 0)
+            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", reqPlayerList);
+            if (respPlayerList.ErrorCode > 0)
             {
-                Log.Error("登录失败，错误信息:" + respPlayerListHttpJsonResult.Message);
+                Log.Error("登录失败，错误信息:" + respPlayerList.ErrorCode);
                 return;
             }
 
-            Log.Info(respPlayerListWebResult.Result);
-            Log.Info(respPlayerListHttpJsonResult.Data);
-
-            var respPlayerList = Utility.Json.ToObject<RespPlayerList>(respPlayerListHttpJsonResult.Data);
             AccountManager.Instance.PlayerList = respPlayerList.PlayerList;
 
             #endregion

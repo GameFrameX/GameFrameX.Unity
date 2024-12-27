@@ -40,18 +40,14 @@ namespace Hotfix.UI
 
             #region 创建角色
 
-            var respPlayerCreateWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerCreate)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(req)));
-            HttpJsonResult respPlayerCreateHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respPlayerCreateWebResult.Result);
-            if (respPlayerCreateHttpJsonResult.Code > 0)
+            var respPlayerCreate = await GameApp.Web.Post<RespPlayerCreate>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerCreate)}", req);
+
+            if (respPlayerCreate.ErrorCode > 0)
             {
-                Log.Error("登录失败，错误信息:" + respPlayerCreateHttpJsonResult.Message);
+                Log.Error("登录失败，错误信息:" + respPlayerCreate.ErrorCode);
                 return;
             }
 
-            Log.Info(respPlayerCreateWebResult.Result);
-            Log.Info(respPlayerCreateHttpJsonResult.Data);
-
-            var respPlayerCreate = Utility.Json.ToObject<RespPlayerCreate>(respPlayerCreateHttpJsonResult.Data);
             if (respPlayerCreate.PlayerInfo != null)
             {
                 Log.Info("创建角色成功");
@@ -64,23 +60,19 @@ namespace Hotfix.UI
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = req.Id;
-            var respPlayerListWebResult = await GameApp.Web.PostToString($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", Utility.Json.ToObject<Dictionary<string, object>>(Utility.Json.ToJson(reqPlayerList)));
-            HttpJsonResult respPlayerListHttpJsonResult = Utility.Json.ToObject<HttpJsonResult>(respPlayerListWebResult.Result);
-            if (respPlayerListHttpJsonResult.Code > 0)
+            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", reqPlayerList);
+
+            if (respPlayerList.ErrorCode > 0)
             {
-                Log.Error("登录失败，错误信息:" + respPlayerListHttpJsonResult.Message);
+                Log.Error("登录失败，错误信息:" + respPlayerList.ErrorCode);
                 return;
             }
 
-            Log.Info(respPlayerListWebResult.Result);
-            Log.Info(respPlayerListHttpJsonResult.Data);
-
-            var respPlayerList = Utility.Json.ToObject<RespPlayerList>(respPlayerListHttpJsonResult.Data);
             AccountManager.Instance.PlayerList = respPlayerList.PlayerList;
 
             #endregion
 
-            await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPackagePath(nameof(UILogin)), UIGroupConstants.Floor.Name, UserData, true);
+            await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, UserData, true);
             GameApp.UI.CloseUIForm(this);
         }
     }

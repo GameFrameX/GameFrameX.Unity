@@ -15,7 +15,7 @@ namespace Hotfix.Network
 
         public override MessageObject Handler()
         {
-            _reqHeartBeat.Timestamp = GameTimeHelper.UnixTimeMilliseconds();
+            _reqHeartBeat.Timestamp = TimerHelper.UnixTimeMilliseconds();
             _reqHeartBeat.UpdateUniqueId();
             return _reqHeartBeat;
         }

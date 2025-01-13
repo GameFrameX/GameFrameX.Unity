@@ -125,7 +125,7 @@ namespace Hotfix.UI
             uiPlayerListItem.m_icon.icon = UIPackage.GetItemURL(FUIPackage.UICommonAvatar, playerInfo.Avatar.ToString());
 #endif
 
-            item.dataSource = playerInfo;
+            item.data = playerInfo;
         }
 
         private static void OnNetworkClosed(object sender, GameEventArgs e)

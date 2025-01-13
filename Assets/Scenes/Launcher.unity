@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163294452}
-  - component: {fileID: 163294453}
   m_Layer: 0
   m_Name: XLUA
   m_TagString: Untagged
@@ -152,19 +151,6 @@ Transform:
   m_Father: {fileID: 7148938655606090472}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &163294453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163294451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2852071a528544c580edc950788bd5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentType: GameFrameX.XLua.Runtime.XLuaManager
 --- !u!114 &295159297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,18 +161,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86fe866ea05248349bea870a0bb0d7b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &295159302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787015721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0caae132c1499ca7bd6a473502ce57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &295159303
@@ -291,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1ef15380caaed42b55022cadc93649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentType: GameFrameX.UI.FairyGUI.Runtime.UIManager
+  componentType: GameFrameX.UI.UGUI.Runtime.UIManager
   m_EnableOpenUIFormSuccessEvent: 1
   m_EnableOpenUIFormFailureEvent: 1
   m_EnableCloseUIFormCompleteEvent: 1
@@ -299,9 +273,9 @@ MonoBehaviour:
   m_InstanceCapacity: 16
   m_InstanceExpireTime: 60
   m_InstanceRoot: {fileID: 1258282169}
-  m_UIFormHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper
+  m_UIFormHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIFormHelper
   m_CustomUIFormHelper: {fileID: 0}
-  m_UIGroupHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper
+  m_UIGroupHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIUIGroupHelper
   m_CustomUIGroupHelper: {fileID: 0}
   m_UIGroups:
   - m_Name: Hidden
@@ -352,13 +326,11 @@ GameObject:
   m_Component:
   - component: {fileID: 787015720}
   - component: {fileID: 295159303}
-  - component: {fileID: 295159302}
   - component: {fileID: 295159297}
   - component: {fileID: 1681186170}
   - component: {fileID: 1681186171}
   - component: {fileID: 1681186172}
   - component: {fileID: 1681186173}
-  - component: {fileID: 1681186174}
   - component: {fileID: 1681186175}
   - component: {fileID: 1681186176}
   - component: {fileID: 1681186177}
@@ -484,10 +456,10 @@ RectTransform:
   m_Father: {fileID: 1258282169}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &1099472801
 Camera:
@@ -550,7 +522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1258282169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -777,10 +749,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentType: GameFrameX.Localization.Runtime.LocalizationManager
   m_EditorLanguage: 0
+  m_DefaultLanguage: 0
   m_EnableLoadDictionaryUpdateEvent: 0
+  m_IsEnableEditorMode: 0
   m_LocalizationHelperTypeName: GameFrameX.Localization.Runtime.DefaultLocalizationHelper
   m_CustomLocalizationHelper: {fileID: 0}
-  m_CachedBytesSize: 0
 --- !u!114 &1681186165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,18 +875,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2db490c9c69c13649b1fdf14e08cc17b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1681186174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787015721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f503aa55993eb040a64c82d1eef499b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1681186175

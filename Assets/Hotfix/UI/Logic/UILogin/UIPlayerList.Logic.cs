@@ -52,6 +52,7 @@ namespace Hotfix.UI
             }
 #endif
 #if ENABLE_UI_FAIRYGUI
+            this.m_player_list.DataList = new List<object>(playerList);
             this.m_player_list.numItems = playerList.Count;
 #endif
         }

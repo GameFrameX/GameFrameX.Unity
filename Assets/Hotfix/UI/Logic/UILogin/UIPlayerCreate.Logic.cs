@@ -40,7 +40,7 @@ namespace Hotfix.UI
 
             #region 创建角色
 
-            var respPlayerCreate = await GameApp.Web.Post<RespPlayerCreate>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerCreate)}", req);
+            var respPlayerCreate = await GameApp.Web.Post<RespPlayerCreate>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerCreate).ConvertToSnakeCase()}", req);
 
             if (respPlayerCreate.ErrorCode > 0)
             {
@@ -60,7 +60,7 @@ namespace Hotfix.UI
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = req.Id;
-            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList)}", reqPlayerList);
+            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://127.0.0.1:28080/game/api/{nameof(ReqPlayerList).ConvertToSnakeCase()}", reqPlayerList);
 
             if (respPlayerList.ErrorCode > 0)
             {

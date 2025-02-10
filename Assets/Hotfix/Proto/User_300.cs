@@ -163,7 +163,7 @@ namespace Hotfix.Proto
 		/// 角色列表
 		/// </summary>
 		[ProtoMember(1)]
-		public List<PlayerInfo> PlayerList = new List<PlayerInfo>();
+		public List<PlayerInfo> PlayerList { get; set; } = new List<PlayerInfo>();
 
 		/// <summary>
 		/// 返回的错误码

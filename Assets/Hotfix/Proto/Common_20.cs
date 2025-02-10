@@ -28,15 +28,15 @@ namespace Hotfix.Proto
 		/// <summary>
 		/// 手机
 		/// </summary>
-		MOBILE = 0, 
+		Mobile = 0, 
 		/// <summary>
 		/// 
 		/// </summary>
-		HOME = 1, 
+		Home = 1, 
 		/// <summary>
 		/// 工作号码
 		/// </summary>
-		WORK = 2, 
+		Work = 2, 
 	}
 
 	/// <summary>
@@ -49,13 +49,13 @@ namespace Hotfix.Proto
 		/// 
 		/// </summary>
 		[ProtoMember(1)]
-		public string number { get; set; }
+		public string Number { get; set; }
 
 		/// <summary>
 		/// 
 		/// </summary>
 		[ProtoMember(2)]
-		public PhoneType type { get; set; }
+		public PhoneType Type { get; set; }
 
 	}
 
@@ -69,25 +69,25 @@ namespace Hotfix.Proto
 		/// 
 		/// </summary>
 		[ProtoMember(1)]
-		public string name { get; set; }
+		public string Name { get; set; }
 
 		/// <summary>
 		/// Unique ID number for this person.
 		/// </summary>
 		[ProtoMember(2)]
-		public int id { get; set; }
+		public int Id { get; set; }
 
 		/// <summary>
 		/// 
 		/// </summary>
 		[ProtoMember(3)]
-		public string email { get; set; }
+		public string Email { get; set; }
 
 		/// <summary>
 		/// 
 		/// </summary>
 		[ProtoMember(4)]
-		public List<PhoneNumber> phones = new List<PhoneNumber>();
+		public List<PhoneNumber> Phones { get; set; } = new List<PhoneNumber>();
 
 	}
 
@@ -101,7 +101,7 @@ namespace Hotfix.Proto
 		/// 
 		/// </summary>
 		[ProtoMember(1)]
-		public List<Person> people = new List<Person>();
+		public List<Person> People { get; set; } = new List<Person>();
 
 	}
 

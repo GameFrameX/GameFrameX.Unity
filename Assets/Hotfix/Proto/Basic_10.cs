@@ -35,4 +35,13 @@ namespace Hotfix.Proto
 
 	}
 
+	/// <summary>
+	/// 通知客户端服务器人数已达上限
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(655372)]
+	public sealed class NotifyServerFullyLoaded : MessageObject, INotifyMessage
+	{
+	}
+
 }

@@ -38,7 +38,7 @@ namespace Hotfix
             await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name);
 #endif
 
-            var item = GameApp.Config.GetConfig<TbSounds>().FirstOrDefault;
+            var item = GameApp.Config.GetConfig<TbSoundsConfig>().FirstOrDefault;
             Log.Info(item);
         }
 

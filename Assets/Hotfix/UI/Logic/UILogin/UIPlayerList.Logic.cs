@@ -87,6 +87,7 @@ namespace Hotfix.UI
             PlayerManager.Instance.PlayerInfo = respPlayerLogin.PlayerInfo;
             await GameApp.UI.OpenFullScreenAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor);
             GameApp.UI.CloseUIForm(this);
+            await BagManager.Instance.RequestGetBagInfo();
         }
 
         PlayerInfo m_SelectedPlayerInfo;
@@ -101,7 +102,6 @@ namespace Hotfix.UI
                 this.m_selected_name.text = playerInfo.Name;
                 this.m_selected_level.text = "当前等级:" + playerInfo.Level;
                 this.m_IsSelected.SetSelectedIndex(1);
-
             }
         }
 #elif ENABLE_UI_UGUI

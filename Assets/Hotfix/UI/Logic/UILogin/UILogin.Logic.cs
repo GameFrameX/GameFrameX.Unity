@@ -12,7 +12,6 @@ using GameFrameX.UI.Runtime;
 #if ENABLE_UI_UGUI
 using GameFrameX.UI.UGUI.Runtime;
 #endif
-using Hotfix.Config.item;
 using Hotfix.Manager;
 using Hotfix.Network;
 using Hotfix.Proto;

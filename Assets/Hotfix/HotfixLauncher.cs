@@ -32,6 +32,7 @@ namespace Hotfix
         private static async void LoadUI()
         {
 #if ENABLE_UI_FAIRYGUI
+            GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommon));
             GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
             await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name);
 #elif ENABLE_UI_UGUI

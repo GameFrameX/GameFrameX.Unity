@@ -1,4 +1,5 @@
 using GameFrameX.Runtime;
+using GameFrameX.UI.Runtime;
 #if ENABLE_UI_FAIRYGUI
 using FairyGUI;
 using GameFrameX.UI.FairyGUI.Runtime;
@@ -30,9 +31,13 @@ namespace Hotfix.UI
 
         private async void OnBagBtnClick()
         {
+#if ENABLE_UI_UGUI
             ReqBagInfo reqBagInfo = new ReqBagInfo();
             var respBagInfo = await GameApp.Network.GetNetworkChannel("network").Call<RespBagInfo>(reqBagInfo);
             Log.Debug(respBagInfo);
+#elif ENABLE_UI_FAIRYGUI
+            await GameApp.UI.OpenAsync<UIBag>(UIGroupConstants.Window);
+#endif
         }
     }
 }

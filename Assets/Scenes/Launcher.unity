@@ -273,9 +273,9 @@ MonoBehaviour:
   m_InstanceCapacity: 16
   m_InstanceExpireTime: 60
   m_InstanceRoot: {fileID: 1258282169}
-  m_UIFormHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIFormHelper
+  m_UIFormHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper
   m_CustomUIFormHelper: {fileID: 0}
-  m_UIGroupHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIUIGroupHelper
+  m_UIGroupHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper
   m_CustomUIGroupHelper: {fileID: 0}
   m_UIGroups:
   - m_Name: Hidden

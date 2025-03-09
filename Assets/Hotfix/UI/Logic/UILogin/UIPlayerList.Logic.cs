@@ -75,7 +75,7 @@ namespace Hotfix.UI
             // 注册心跳消息
             DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
             networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
-            networkChannel.Connect(new Uri("tcp://" + serverIp), serverPort);
+            networkChannel.Connect(new Uri($"tcp://{serverIp}:{serverPort}"));
             GameApp.Event.CheckSubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
             GameApp.Event.CheckSubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
         }

@@ -272,7 +272,8 @@ MonoBehaviour:
   m_InstanceAutoReleaseInterval: 60
   m_InstanceCapacity: 16
   m_InstanceExpireTime: 60
-  m_InstanceRoot: {fileID: 1258282169}
+  m_InstanceUGUIRoot: {fileID: 1258282169}
+  m_InstanceFairyGUIRoot: {fileID: 1565570508885128524}
   m_UIFormHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper
   m_CustomUIFormHelper: {fileID: 0}
   m_UIGroupHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper
@@ -735,6 +736,7 @@ MonoBehaviour:
   componentType: GameFrameX.Network.Runtime.NetworkManager
   m_IgnoredSendNetworkIds: 
   m_IgnoredReceiveNetworkIds: 
+  m_rpcTimeout: 5000
 --- !u!114 &1681186164
 MonoBehaviour:
   m_ObjectHideFlags: 0

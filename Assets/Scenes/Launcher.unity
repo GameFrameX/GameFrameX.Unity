@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1ef15380caaed42b55022cadc93649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentType: GameFrameX.UI.UGUI.Runtime.UIManager
+  componentType: GameFrameX.UI.FairyGUI.Runtime.UIManager
   m_EnableOpenUIFormSuccessEvent: 1
   m_EnableOpenUIFormFailureEvent: 1
   m_EnableCloseUIFormCompleteEvent: 1

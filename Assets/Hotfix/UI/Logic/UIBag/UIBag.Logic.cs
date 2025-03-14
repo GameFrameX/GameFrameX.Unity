@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using FairyGUI;
 using GameFrameX.Event.Runtime;
+using GameFrameX.UI.Runtime;
 using Hotfix.Config;
 using Hotfix.Config.Tables;
 using Hotfix.Events;
@@ -35,6 +36,12 @@ namespace Hotfix.UI
                 Type = type;
                 Name = name;
             }
+        }
+
+        public override void OnAwake()
+        {
+            UIGroup = GameApp.UI.GetUIGroup(UIGroupConstants.Window.Name);
+            base.OnAwake();
         }
 
         private List<ItemTypeData> Tabs = new List<ItemTypeData>();

@@ -21,6 +21,12 @@ namespace Hotfix.UI
 {
     public partial class UILogin
     {
+        public override void OnAwake()
+        {
+            UIGroup = GameApp.UI.GetUIGroup(UIGroupConstants.Normal.Name);
+            base.OnAwake();
+        }
+
         public override void OnOpen(object userData)
         {
             m_enter.onClick.Set(OnLoginClick);
@@ -80,11 +86,11 @@ namespace Hotfix.UI
 
             if (respPlayerList.PlayerList.Count > 0)
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
+                await GameApp.UI.OpenFullScreenAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), respLogin);
             }
             else
             {
-                await GameApp.UI.OpenUIFormAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, respLogin, true);
+                await GameApp.UI.OpenFullScreenAsync<UIPlayerCreate>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), respLogin);
             }
 
             GameApp.UI.CloseUIForm(this);

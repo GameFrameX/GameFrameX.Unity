@@ -21,6 +21,12 @@ namespace Hotfix.UI
 {
     public partial class UIPlayerList
     {
+        public override void OnAwake()
+        {
+            UIGroup = GameApp.UI.GetUIGroup(UIGroupConstants.Normal.Name);
+            base.OnAwake();
+        }
+
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
         private static INetworkChannel networkChannel;

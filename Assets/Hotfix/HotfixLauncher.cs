@@ -34,11 +34,8 @@ namespace Hotfix
 #if ENABLE_UI_FAIRYGUI
             GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommon));
             GameApp.FUIPackage.AddPackageAsync(Utility.Asset.Path.GetUIPackagePath(FUIPackage.UICommonAvatar));
-            await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(FUIPackage.UILogin), UIGroupConstants.Floor.Name);
-#elif ENABLE_UI_UGUI
-            await GameApp.UI.OpenUIFormAsync<UILogin>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name);
 #endif
-
+            await GameApp.UI.OpenAsync<UILogin>();
             var item = GameApp.Config.GetConfig<TbSoundsConfig>().FirstOrDefault;
             Log.Info(item);
         }

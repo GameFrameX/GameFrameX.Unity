@@ -16,6 +16,12 @@ namespace Hotfix.UI
 {
     public partial class UIPlayerCreate
     {
+        public override void OnAwake()
+        {
+            UIGroup = GameApp.UI.GetUIGroup(UIGroupConstants.Normal.Name);
+            base.OnAwake();
+        }
+
         ReqPlayerCreate req;
 
         public override void OnOpen(object userData)
@@ -72,7 +78,7 @@ namespace Hotfix.UI
 
             #endregion
 
-            await GameApp.UI.OpenUIFormAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UIGroupConstants.Floor.Name, UserData, true);
+            await GameApp.UI.OpenFullScreenAsync<UIPlayerList>(Utility.Asset.Path.GetUIPath(nameof(UILogin)), UserData);
             GameApp.UI.CloseUIForm(this);
         }
     }

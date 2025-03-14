@@ -15,6 +15,12 @@ namespace Hotfix.UI
 {
     public partial class UIMain
     {
+        public override void OnAwake()
+        {
+            UIGroup = GameApp.UI.GetUIGroup(UIGroupConstants.Normal.Name);
+            base.OnAwake();
+        }
+
         public override async void OnOpen(object userData)
         {
             base.OnOpen(userData);

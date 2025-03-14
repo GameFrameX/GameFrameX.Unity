@@ -11,7 +11,9 @@ namespace Unity.Startup.Procedure
     {
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
+#if ENABLE_UI_FAIRYGUI
             FairyGUI.UIObjectFactory.SetLoaderExtension(typeof(FairyGuiExtensionLoader));
+#endif
             base.OnEnter(procedureOwner);
             LauncherUIHandler.Start();
             Start(procedureOwner);

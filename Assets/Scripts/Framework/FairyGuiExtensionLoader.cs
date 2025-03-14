@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if ENABLE_UI_FAIRYGUI
+using System.IO;
 using FairyGUI;
 using GameFrameX.Runtime;
 using UnityEngine;
@@ -222,3 +223,4 @@ namespace Unity.Startup
         }
     }
 }
+#endif

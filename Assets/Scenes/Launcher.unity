@@ -1298,28 +1298,6 @@ Transform:
   m_Father: {fileID: 7148938655606090472}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2880892573112127046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212013545076678542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98acd7d3bd2bf54dadf9644f60e5cb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentType: 
-  m_TextHelperTypeName: GameFrameX.Runtime.DefaultTextHelper
-  m_VersionHelperTypeName: GameFrameX.Runtime.DefaultVersionHelper
-  m_LogHelperTypeName: GameFrameX.Runtime.DefaultLogHelper
-  m_CompressionHelperTypeName: GameFrameX.Runtime.DefaultCompressionHelper
-  m_JsonHelperTypeName: GameFrameX.Runtime.NewtonsoftJsonHelper
-  m_FrameRate: 30
-  m_GameSpeed: 1
-  m_RunInBackground: 1
-  m_NeverSleep: 1
 --- !u!4 &2885466766715029128
 Transform:
   m_ObjectHideFlags: 0
@@ -1394,7 +1372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 175056986957474636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae4d40d7e878bc498492dc9c410d071, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c7866cd995b7d498a2a4f6b7c4515d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: 
@@ -1513,7 +1491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7148938655606090472}
-  - component: {fileID: 2880892573112127046}
+  - component: {fileID: 6212013545076678543}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -1521,6 +1499,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6212013545076678543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212013545076678542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f23b0027da6c6458866730fe041c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentType: 
+  m_TextHelperTypeName: GameFrameX.Runtime.DefaultTextHelper
+  m_VersionHelperTypeName: GameFrameX.Runtime.DefaultVersionHelper
+  m_LogHelperTypeName: GameFrameX.Runtime.DefaultLogHelper
+  m_CompressionHelperTypeName: GameFrameX.Runtime.DefaultCompressionHelper
+  m_JsonHelperTypeName: GameFrameX.Runtime.NewtonsoftJsonHelper
+  m_FrameRate: 30
+  m_GameSpeed: 1
+  m_RunInBackground: 1
+  m_NeverSleep: 1
 --- !u!4 &6394611483762413553
 Transform:
   m_ObjectHideFlags: 0
@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 782382619552075271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e28a727443c86c40aeb42ff20e0a343, type: 3}
+  m_Script: {fileID: 11500000, guid: c88cccdfb293c3d4c9cbdb49a281b79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: GameFrameX.ObjectPool.ObjectPoolManager

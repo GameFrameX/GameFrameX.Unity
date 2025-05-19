@@ -730,7 +730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546777811772524135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060b0b82892f483b9d32a453c6c93c4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8673a3a1cf7629845804ef3a1ff25200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: GameFrameX.Network.Runtime.NetworkManager
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4262046537744197277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b9b7388f11475cac9945f61e99d78d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8db4d7a93a0744d940b1e34e16027e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: GameFrameX.Event.Runtime.EventManager

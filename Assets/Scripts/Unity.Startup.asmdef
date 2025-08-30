@@ -30,6 +30,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.code-philosophy.hybridclr",
+            "expression": "",
+            "define": "ENABLE_GAME_FRAME_X_HYBRID_CLR"
+        }
+    ],
     "noEngineReferences": false
 }

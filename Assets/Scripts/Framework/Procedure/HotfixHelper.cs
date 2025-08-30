@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using GameFrameX.Runtime;
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
+using System.Linq;
 using HybridCLR;
+#endif
 
 namespace Unity.Startup.Procedure
 {
@@ -27,8 +29,8 @@ namespace Unity.Startup.Procedure
                 return;
             }
 
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
             Log.Info("开始加载AOT DLL");
-
             var aotDlls = AOTGenericReferences.PatchedAOTAssemblyList.ToArray();
             foreach (var aotDll in aotDlls)
             {
@@ -37,8 +39,8 @@ namespace Unity.Startup.Procedure
                 var aotBytes = assetHandle.GetAssetObject<UnityEngine.TextAsset>().bytes;
                 RuntimeApi.LoadMetadataForAOTAssembly(aotBytes, HomologousImageMode.SuperSet);
             }
-
             Log.Info("结束加载AOT DLL");
+#endif
             Log.Info("开始加载Unity.Hotfix.dll");
             var assetHotfixDllPath = Utility.Asset.Path.GetCodePath(HotfixName + Utility.Const.FileNameSuffix.DLL);
             var assetHotfixDllOperationHandle = await GameApp.Asset.LoadAssetAsync<UnityEngine.Object>(assetHotfixDllPath);

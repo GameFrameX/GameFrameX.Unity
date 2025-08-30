@@ -10,6 +10,7 @@ public static class HttpHelper
     public static Dictionary<string, object> GetBaseParams()
     {
         DictionaryParams["Language"] = Application.systemLanguage.ToString();
+        DictionaryParams["UserLanguage"] = GameApp.Localization.Language;
         DictionaryParams["AppVersion"] = Application.version;
         // 设备ID用于判断白名单和其他识别用途
         DictionaryParams["DeviceUniqueIdentifier"] = SystemInfo.deviceUniqueIdentifier;

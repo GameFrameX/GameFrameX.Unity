@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using GameFrameX;
 using GameFrameX.Event.Runtime;
+#if ENABLE_UI_FAIRYGUI
 using GameFrameX.UI.FairyGUI.Runtime;
+#endif
 using GameFrameX.Network.Runtime;
 using Hotfix.Proto;
 using SimpleJSON;

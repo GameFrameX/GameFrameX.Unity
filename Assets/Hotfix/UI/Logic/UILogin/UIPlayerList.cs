@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using FairyGUI;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Network.Runtime;
 using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 #if ENABLE_UI_FAIRYGUI
+using FairyGUI;
 using GameFrameX.UI.FairyGUI.Runtime;
 #endif
 #if ENABLE_UI_UGUI
@@ -123,19 +123,17 @@ namespace Hotfix.UI
             m_right_Panel.gameObject.SetActive(true);
         }
 #endif
+#if ENABLE_UI_FAIRYGUI
         private void ItemRenderer(int index, GObject item)
         {
             var playerInfo = playerList[index];
-#if ENABLE_UI_FAIRYGUI
             var uiPlayerListItem = UIPlayerListItem.GetFormPool(item);
             uiPlayerListItem.m_level_text.text = "当前等级:" + playerInfo.Level.ToString();
             uiPlayerListItem.m_name_text.text = playerInfo.Name;
             uiPlayerListItem.m_icon.icon = UIPackage.GetItemURL(FUIPackage.UICommonAvatar, playerInfo.Avatar.ToString());
-#endif
-
             item.data = playerInfo;
         }
-
+#endif
         private static void OnNetworkClosed(object sender, GameEventArgs e)
         {
             Log.Info(nameof(OnNetworkClosed));

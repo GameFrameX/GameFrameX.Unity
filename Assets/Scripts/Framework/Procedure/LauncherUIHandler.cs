@@ -13,7 +13,7 @@ namespace Unity.Startup.Procedure
         {
             _ui = await GameApp.UI.OpenFullScreenAsync<UILauncher>("UI/UILauncher", UIGroupConstants.Loading);
 
-            GameApp.Event.Subscribe(AssetDownloadProgressUpdateEventArgs.EventId, SetProgressUpdate);
+            GameApp.Event.CheckSubscribe(AssetDownloadProgressUpdateEventArgs.EventId, SetProgressUpdate);
         }
 
         public static void Dispose()

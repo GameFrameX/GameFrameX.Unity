@@ -31,6 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1678343359}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -110,6 +111,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098140740192217616}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -187,6 +189,7 @@ RectTransform:
   m_Children:
   - {fileID: 1214814194}
   m_Father: {fileID: 2098140740192217616}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -306,6 +309,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098140740192217616}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -385,6 +389,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098140740192217616}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -469,6 +474,7 @@ RectTransform:
   - {fileID: 1887894340}
   - {fileID: 2091764509}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -495,12 +501,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafa38f61d9d4d40abfbc25ba3ab6a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mBgImage: {fileID: 7785376669766979963}
-  mbag_button__Text: {fileID: 1214814195}
-  mbag_button: {fileID: 1678343360}
-  mplayer_icon: {fileID: 346919067406639900}
-  mplayer_name: {fileID: 1887894341}
-  mplayer_level: {fileID: 2091764510}
+  m_Available: 0
+  m_Visible: 0
+  m_IsInit: 0
+  m_IsDisableRecycling: 0
+  m_IsDisableClosing: 0
+  m_SerialId: 0
+  m_OriginalLayer: 0
+  m_UIFormAssetName: 
+  m_AssetPath: 
+  m_DepthInUIGroup: 0
+  m_PauseCoveredUIForm: 0
+  m_FullName: 
+  _mBgImage: {fileID: 7785376669766979963}
+  _mbag_button__Text: {fileID: 1214814195}
+  _mbag_button: {fileID: 1678343360}
+  _mplayer_icon: {fileID: 346919067406639900}
+  _mplayer_name: {fileID: 1887894341}
+  _mplayer_level: {fileID: 2091764510}
 --- !u!1 &2294713198081798847
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +550,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2098140740192217616}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

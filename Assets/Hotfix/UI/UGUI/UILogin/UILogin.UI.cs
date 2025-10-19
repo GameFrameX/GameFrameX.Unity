@@ -14,48 +14,109 @@ namespace Hotfix.UI
 	/// 代码生成的UI代码UILogin
 	/// </summary>
 	[DisallowMultipleComponent]
+	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin/UILogin.prefab")]
 	public sealed partial class UILogin : UGUI
 	{
 		public GameObject self { get; private set; }
 
 		#region Properties
-		[SerializeField] [UGUIElementProperty("UserName/Placeholder")] private UnityEngine.UI.Text mUserName__Placeholder;
-		public UnityEngine.UI.Text m_UserName__Placeholder { get { return mUserName__Placeholder;} }
 
-		[SerializeField] [UGUIElementProperty("UserName/Text")] private UnityEngine.UI.Text mUserName__Text;
-		public UnityEngine.UI.Text m_UserName__Text { get { return mUserName__Text;} }
+		[SerializeField] [UGUIElementProperty("UserName/Placeholder")]
+		private UnityEngine.UI.Text UserName_Placeholder;
 
-		[SerializeField] [UGUIElementProperty("UserName")] private UnityEngine.UI.InputField mUserName;
-		public UnityEngine.UI.InputField m_UserName { get { return mUserName;} }
+		public UnityEngine.UI.Text m_UserName_Placeholder
+		{
+			get { return UserName_Placeholder;}
+		}
 
-		[SerializeField] [UGUIElementProperty("Password/Placeholder")] private UnityEngine.UI.Text mPassword__Placeholder;
-		public UnityEngine.UI.Text m_Password__Placeholder { get { return mPassword__Placeholder;} }
+		[SerializeField] [UGUIElementProperty("UserName/Text")]
+		private UnityEngine.UI.Text UserName_Text;
 
-		[SerializeField] [UGUIElementProperty("Password/Text")] private UnityEngine.UI.Text mPassword__Text;
-		public UnityEngine.UI.Text m_Password__Text { get { return mPassword__Text;} }
+		public UnityEngine.UI.Text m_UserName_Text
+		{
+			get { return UserName_Text;}
+		}
 
-		[SerializeField] [UGUIElementProperty("Password")] private UnityEngine.UI.InputField mPassword;
-		public UnityEngine.UI.InputField m_Password { get { return mPassword;} }
+		[SerializeField] [UGUIElementProperty("UserName")]
+		private UnityEngine.UI.InputField UserName;
 
-		[SerializeField] [UGUIElementProperty("enter/Text")] private UnityEngine.UI.Text menter__Text;
-		public UnityEngine.UI.Text m_enter__Text { get { return menter__Text;} }
+		public UnityEngine.UI.InputField m_UserName
+		{
+			get { return UserName;}
+		}
 
-		[SerializeField] [UGUIElementProperty("enter")] private UnityEngine.UI.Button menter;
-		public UnityEngine.UI.Button m_enter { get { return menter;} }
+		[SerializeField] [UGUIElementProperty("Password/Placeholder")]
+		private UnityEngine.UI.Text Password_Placeholder;
 
-		[SerializeField] [UGUIElementProperty("ErrorText")] private UnityEngine.UI.Text mErrorText;
-		public UnityEngine.UI.Text m_ErrorText { get { return mErrorText;} }
+		public UnityEngine.UI.Text m_Password_Placeholder
+		{
+			get { return Password_Placeholder;}
+		}
 
-		[SerializeField] [UGUIElementProperty("TitleText")] private UnityEngine.UI.Text mTitleText;
-		public UnityEngine.UI.Text m_TitleText { get { return mTitleText;} }
+		[SerializeField] [UGUIElementProperty("Password/Text")]
+		private UnityEngine.UI.Text Password_Text;
+
+		public UnityEngine.UI.Text m_Password_Text
+		{
+			get { return Password_Text;}
+		}
+
+		[SerializeField] [UGUIElementProperty("Password")]
+		private UnityEngine.UI.InputField Password;
+
+		public UnityEngine.UI.InputField m_Password
+		{
+			get { return Password;}
+		}
+
+		[SerializeField] [UGUIElementProperty("enter/Text")]
+		private UnityEngine.UI.Text enter_Text;
+
+		public UnityEngine.UI.Text m_enter_Text
+		{
+			get { return enter_Text;}
+		}
+
+		[SerializeField] [UGUIElementProperty("enter")]
+		private UnityEngine.UI.Button enter;
+
+		public UnityEngine.UI.Button m_enter
+		{
+			get { return enter;}
+		}
+
+		[SerializeField] [UGUIElementProperty("ErrorText")]
+		private UnityEngine.UI.Text ErrorText;
+
+		public UnityEngine.UI.Text m_ErrorText
+		{
+			get { return ErrorText;}
+		}
+
+		[SerializeField] [UGUIElementProperty("TitleText")]
+		private UnityEngine.UI.Text TitleText;
+
+		public UnityEngine.UI.Text m_TitleText
+		{
+			get { return TitleText;}
+		}
 
 		#endregion
 
 		protected override void InitView()
 		{
 			this.self = this.gameObject;
+			UserName_Placeholder = gameObject.transform.FindChildName("UserName/Placeholder").GetComponent<UnityEngine.UI.Text>();
+			UserName_Text = gameObject.transform.FindChildName("UserName/Text").GetComponent<UnityEngine.UI.Text>();
+			UserName = gameObject.transform.FindChildName("UserName").GetComponent<UnityEngine.UI.InputField>();
+			Password_Placeholder = gameObject.transform.FindChildName("Password/Placeholder").GetComponent<UnityEngine.UI.Text>();
+			Password_Text = gameObject.transform.FindChildName("Password/Text").GetComponent<UnityEngine.UI.Text>();
+			Password = gameObject.transform.FindChildName("Password").GetComponent<UnityEngine.UI.InputField>();
+			enter_Text = gameObject.transform.FindChildName("enter/Text").GetComponent<UnityEngine.UI.Text>();
+			enter = gameObject.transform.FindChildName("enter").GetComponent<UnityEngine.UI.Button>();
+			ErrorText = gameObject.transform.FindChildName("ErrorText").GetComponent<UnityEngine.UI.Text>();
+			TitleText = gameObject.transform.FindChildName("TitleText").GetComponent<UnityEngine.UI.Text>();
 		}
-
 	}
 }
 #endif

@@ -42,14 +42,14 @@ namespace Hotfix.UI
             this.m_player_list.onClickItem.Set(OnPlayerListItemClick);
 #elif ENABLE_UI_UGUI
             m_right_Panel.gameObject.SetActive(false);
-            m_right_Panel__login_button.onClick.Set(OnLoginButtonClick);
+            m_right_Panel_login_button.onClick.Set(OnLoginButtonClick);
 #endif
             playerList = AccountManager.Instance.PlayerList;
 #if ENABLE_UI_UGUI
             var uiPlayerListItemAssetHandle = await GameApp.Asset.LoadAssetAsync<GameObject>(Utility.Asset.Path.GetUIPath($"{nameof(UILogin)}/{nameof(UIPlayerListItem)}"));
             foreach (var playerInfo in playerList)
             {
-                var item = uiPlayerListItemAssetHandle.InstantiateSync(m_left_Panel__ScrollView__Viewport__Content);
+                var item = uiPlayerListItemAssetHandle.InstantiateSync(m_left_Panel_ScrollView_Viewport_Content);
                 var uiPlayerListItem = item.GetComponent<UIPlayerListItem>();
                 uiPlayerListItem.m_level_text.text = "当前等级:" + playerInfo.Level.ToString();
                 uiPlayerListItem.m_name_text.text = playerInfo.Name;
@@ -117,9 +117,9 @@ namespace Hotfix.UI
             m_SelectedPlayerInfo = (PlayerInfo)userData;
             var assetHandle = await GameApp.Asset.LoadAssetAsync<Sprite>(Utility.Asset.Path.GetCategoryFilePath("Sprites", $"avatar/{PlayerManager.Instance.PlayerInfo.Avatar}"));
 
-            m_right_Panel__selected_icon.sprite = assetHandle.GetAssetObject<Sprite>();
-            m_right_Panel__selected_name.text = m_SelectedPlayerInfo.Name;
-            m_right_Panel__selected_level.text = "当前等级:" + m_SelectedPlayerInfo.Level;
+            m_right_Panel_selected_icon.sprite = assetHandle.GetAssetObject<Sprite>();
+            m_right_Panel_selected_name.text = m_SelectedPlayerInfo.Name;
+            m_right_Panel_selected_level.text = "当前等级:" + m_SelectedPlayerInfo.Level;
             m_right_Panel.gameObject.SetActive(true);
         }
 #endif

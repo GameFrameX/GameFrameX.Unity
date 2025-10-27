@@ -25,14 +25,14 @@ namespace Unity.Startup.Procedure
 
 
             // 注册下载回调
-            void DownloaderOnDownloadErrorCallback(string packageName, string name, string error)
+            void DownloaderOnDownloadErrorCallback(DownloadErrorData data)
             {
-                GameApp.Event.Fire(this, AssetWebFileDownloadFailedEventArgs.Create(packageName, name, error));
+                GameApp.Event.Fire(this, AssetWebFileDownloadFailedEventArgs.Create(data.PackageName, data.FileName, data.ErrorInfo));
                 ChangeState<ProcedureCreateDownloader>(procedureOwner);
             }
 
-            downloader.OnDownloadErrorCallback    = DownloaderOnDownloadErrorCallback;
-            downloader.OnDownloadProgressCallback = OnDownloadProgressCallback;
+            downloader.DownloadErrorCallback = DownloaderOnDownloadErrorCallback;
+            downloader.DownloadUpdateCallback = OnDownloadProgressCallback;
             downloader.BeginDownload();
             yield return downloader;
 
@@ -45,9 +45,9 @@ namespace Unity.Startup.Procedure
             ChangeState<ProcedurePatchDone>(procedureOwner);
         }
 
-        private void OnDownloadProgressCallback(string packageName, int totalDownloadCount, int currentDownloadCount, long totalDownloadBytes, long currentDownloadBytes)
+        private void OnDownloadProgressCallback(DownloadUpdateData data)
         {
-            GameApp.Event.Fire(this, AssetDownloadProgressUpdateEventArgs.Create(packageName, totalDownloadCount, currentDownloadCount, totalDownloadBytes, currentDownloadBytes));
+            GameApp.Event.Fire(this, AssetDownloadProgressUpdateEventArgs.Create(data.PackageName, data.TotalDownloadCount, data.CurrentDownloadCount, data.TotalDownloadBytes, data.CurrentDownloadBytes));
         }
     }
 }

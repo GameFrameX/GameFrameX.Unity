@@ -39,7 +39,7 @@ namespace Unity.Startup.Procedure
                 // 发现新更新文件后，挂起流程系统
                 int totalDownloadCount = downloader.TotalDownloadCount;
                 long totalDownloadBytes = downloader.TotalDownloadBytes;
-                GameApp.Event.Fire(this, AssetFoundUpdateFilesEventArgs.Create(downloader.GetPackageName(), totalDownloadCount, totalDownloadBytes));
+                GameApp.Event.Fire(this, AssetFoundUpdateFilesEventArgs.Create(downloader.PackageName, totalDownloadCount, totalDownloadBytes));
                 ChangeState<ProcedureDownloadWebFiles>(procedureOwner);
             }
         }

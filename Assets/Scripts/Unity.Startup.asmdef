@@ -6,6 +6,7 @@
         "GameFrameX.Web.Runtime",
         "GameFrameX.GlobalConfig.Runtime",
         "YooAsset.Runtime",
+        "YooAsset",
         "UniTask.Runtime",
         "FairyGUI.Runtime",
         "BlankGetChannel.Runtime",

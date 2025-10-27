@@ -12,6 +12,7 @@
         "DOTween.Runtime.Modules",
         "UniTask.Runtime",
         "YooAsset.Runtime",
+        "YooAsset",
         "GameAnalytics.Runtime",
         "ProtoBuffer.Runtime",
         "MessagePack.Annotations",

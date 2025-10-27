@@ -30,7 +30,7 @@ public static class HttpHelper
         DictionaryParams["Platform"] = PathHelper.GetPlatformName;
 #endif
 #else
-        DictionaryParams["Platform"] = PathHelper.GetPlatformName;
+        DictionaryParams["Platform"] = ApplicationHelper.PlatformName;
 #if UNITY_STANDALONE_WIN
         DictionaryParams["PackageName"] = Application.productName;
 #else

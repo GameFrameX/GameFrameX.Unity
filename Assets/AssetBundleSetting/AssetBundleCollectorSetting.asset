@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
+  m_Script: {fileID: 11500000, guid: 22402f6ac53f0e54aa34077f1c423f72, type: 3}
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 1
@@ -19,6 +19,7 @@ MonoBehaviour:
   - PackageName: DefaultPackage
     PackageDesc: 
     EnableAddressable: 0
+    SupportExtensionless: 1
     LocationToLower: 0
     IncludeAssetGUID: 0
     AutoCollectShaders: 1
@@ -59,7 +60,7 @@ MonoBehaviour:
         CollectorGUID: 4010ac95965b3164e83fa268b290dbf4
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: FairyGUIPackage
+        PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
@@ -70,6 +71,19 @@ MonoBehaviour:
       Collectors:
       - CollectPath: Assets/Bundles/Config
         CollectorGUID: 60dcdcc847843ba45a0aec7d153dd540
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Image
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Bundles/Image
+        CollectorGUID: 0c999cdf5f723964d8958b634da5c0f5
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

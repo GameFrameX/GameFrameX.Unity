@@ -57,7 +57,7 @@ namespace Hotfix.UI
                 Password = m_Password.text,
                 Device = SystemInfo.deviceUniqueIdentifier
             };
-            req.Platform = PathHelper.GetPlatformName;
+            req.Platform = ApplicationHelper.PlatformName;
 
             var respLogin = await GameApp.Web.Post<RespLogin>($"http://127.0.0.1:28080/game/api/{nameof(ReqLogin).ConvertToSnakeCase()}", req);
             if (respLogin.ErrorCode > 0)

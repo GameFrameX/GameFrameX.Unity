@@ -14,7 +14,7 @@ namespace Hotfix.UI
 	/// 代码生成的UI代码UIPlayerCreate
 	/// </summary>
 	[DisallowMultipleComponent]
-	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin/UIPlayerCreate.prefab")]
+	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
 	public sealed partial class UIPlayerCreate : UGUI
 	{
 		public GameObject self { get; private set; }

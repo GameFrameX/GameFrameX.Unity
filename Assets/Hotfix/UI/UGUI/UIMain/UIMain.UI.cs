@@ -14,7 +14,7 @@ namespace Hotfix.UI
 	/// 代码生成的UI代码UIMain
 	/// </summary>
 	[DisallowMultipleComponent]
-	[OptionUIConfig(null, "Assets/Bundles/UI/UIMain/UIMain.prefab")]
+	[OptionUIConfig(null, "Assets/Bundles/UI/UIMain")]
 	public sealed partial class UIMain : UGUI
 	{
 		public GameObject self { get; private set; }

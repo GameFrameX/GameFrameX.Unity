@@ -14,7 +14,7 @@ namespace Hotfix.UI
 	/// 代码生成的UI代码UILogin
 	/// </summary>
 	[DisallowMultipleComponent]
-	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin/UILogin.prefab")]
+	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
 	public sealed partial class UILogin : UGUI
 	{
 		public GameObject self { get; private set; }

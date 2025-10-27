@@ -14,7 +14,7 @@ namespace Hotfix.UI
 	/// 代码生成的UI代码UIPlayerList
 	/// </summary>
 	[DisallowMultipleComponent]
-	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin/UIPlayerList.prefab")]
+	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
 	public sealed partial class UIPlayerList : UGUI
 	{
 		public GameObject self { get; private set; }

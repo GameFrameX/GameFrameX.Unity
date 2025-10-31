@@ -110,8 +110,16 @@ namespace Unity.Startup
 
 		#endregion
 
+		private bool _isInitView = false;
+
 		protected override void InitView()
 		{
+			if (_isInitView)
+			{
+				return;
+			}
+
+			_isInitView = true;
 			this.self = this.gameObject;
 			BgImage = gameObject.transform.FindChildName("BgImage").GetComponent<UnityEngine.UI.Image>();
 			TipText = gameObject.transform.FindChildName("TipText").GetComponent<UnityEngine.UI.Text>();

@@ -127,8 +127,16 @@ namespace Hotfix.UI
 
 		#endregion
 
+		private bool _isInitView = false;
+
 		protected override void InitView()
 		{
+			if (_isInitView)
+			{
+				return;
+			}
+
+			_isInitView = true;
 			this.self = this.gameObject;
 			left_Panel_ScrollView_Viewport_Content = gameObject.transform.FindChildName("left_Panel/Scroll View/Viewport/Content").GetComponent<UnityEngine.Transform>();
 			left_Panel_ScrollView_Viewport = gameObject.transform.FindChildName("left_Panel/Scroll View/Viewport").GetComponent<UnityEngine.UI.Image>();

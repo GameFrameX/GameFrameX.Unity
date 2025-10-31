@@ -79,8 +79,16 @@ namespace Hotfix.UI
 
 		#endregion
 
+		private bool _isInitView = false;
+
 		protected override void InitView()
 		{
+			if (_isInitView)
+			{
+				return;
+			}
+
+			_isInitView = true;
 			this.self = this.gameObject;
 			UserName_Placeholder = gameObject.transform.FindChildName("UserName/Placeholder").GetComponent<UnityEngine.UI.Text>();
 			UserName_Text = gameObject.transform.FindChildName("UserName/Text").GetComponent<UnityEngine.UI.Text>();

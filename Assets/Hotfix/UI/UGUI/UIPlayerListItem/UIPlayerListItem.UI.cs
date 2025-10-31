@@ -55,8 +55,16 @@ namespace Hotfix.UI
 
 		#endregion
 
+		private bool _isInitView = false;
+
 		protected override void InitView()
 		{
+			if (_isInitView)
+			{
+				return;
+			}
+
+			_isInitView = true;
 			this.self = this.gameObject;
 			click_Button = gameObject.transform.FindChildName("click_Button").GetComponent<UnityEngine.UI.Button>();
 			icon = gameObject.transform.FindChildName("icon").GetComponent<GameFrameX.UI.UGUI.Runtime.UIImage>();

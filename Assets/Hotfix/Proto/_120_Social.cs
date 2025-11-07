@@ -37,170 +37,190 @@ using GameFrameX.Network.Runtime;
 namespace Hotfix.Proto
 {
 	/// <summary>
-	/// 返回码
-	/// </summary>
-	public enum ResultCode
-	{
-		/// <summary>
-		/// 成功
-		/// </summary>
-		Success = 0, 
-		/// <summary>
-		/// 失败
-		/// </summary>
-		Failed = 1, 
-	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	public enum PhoneType
-	{
-		/// <summary>
-		/// 手机
-		/// </summary>
-		Mobile = 0, 
-		/// <summary>
-		/// 
-		/// </summary>
-		Home = 1, 
-		/// <summary>
-		/// 工作号码
-		/// </summary>
-		Work = 2, 
-	}
-
-	/// <summary>
-	/// 操作错误代码
-	/// </summary>
-	public enum OperationStatusCode
-	{
-		/// <summary>
-		/// 成功
-		/// </summary>
-		Ok = 0, 
-		/// <summary>
-		/// 配置表错误
-		/// </summary>
-		ConfigErr = 1, 
-		/// <summary>
-		/// 客户端传递参数错误
-		/// </summary>
-		ParamErr = 2, 
-		/// <summary>
-		/// 消耗不足
-		/// </summary>
-		CostNotEnough = 3, 
-		/// <summary>
-		/// 未开通服务
-		/// </summary>
-		Forbidden = 4, 
-		/// <summary>
-		/// 不存在
-		/// </summary>
-		NotFound = 5, 
-		/// <summary>
-		/// 已经存在
-		/// </summary>
-		HasExist = 6, 
-		/// <summary>
-		/// 账号不存在或为空
-		/// </summary>
-		AccountCannotBeNull = 7, 
-		/// <summary>
-		/// 无法执行数据库修改
-		/// </summary>
-		Unprocessable = 8, 
-		/// <summary>
-		/// 未知平台
-		/// </summary>
-		UnknownPlatform = 9, 
-		/// <summary>
-		/// 正常通知
-		/// </summary>
-		Notice = 10, 
-		/// <summary>
-		/// 功能未开启，主消息屏蔽
-		/// </summary>
-		FuncNotOpen = 11, 
-		/// <summary>
-		/// 其他
-		/// </summary>
-		Other = 12, 
-		/// <summary>
-		/// 内部服务错误
-		/// </summary>
-		InternalServerError = 13, 
-		/// <summary>
-		/// 通知客户端服务器人数已达上限
-		/// </summary>
-		ServerFullyLoaded = 14, 
-	}
-
-	/// <summary>
 	/// 
 	/// </summary>
 	[ProtoContract]
-	public sealed class PhoneNumber
+	public sealed class FriendInfo
 	{
 		/// <summary>
-		/// 
+		/// 玩家ID
 		/// </summary>
 		[ProtoMember(1)]
-		public string Number { get; set; }
+		public long PlayerId { get; set; }
 
 		/// <summary>
-		/// 
+		/// 玩家名称
 		/// </summary>
 		[ProtoMember(2)]
-		public PhoneType Type { get; set; }
+		public string PlayerName { get; set; }
 
 	}
 
 	/// <summary>
-	/// 
+	/// 请求社交信息
 	/// </summary>
 	[ProtoContract]
-	public sealed class Person
+	[MessageTypeHandler(((120) << 16) + 10)]
+	public sealed class ReqSocialInfo : MessageObject, IRequestMessage
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		[ProtoMember(1)]
-		public string Name { get; set; }
 
-		/// <summary>
-		/// Unique ID number for this person.
-		/// </summary>
-		[ProtoMember(2)]
-		public int Id { get; set; }
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[ProtoMember(3)]
-		public string Email { get; set; }
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[ProtoMember(4)]
-		public List<PhoneNumber> Phones { get; set; } = new List<PhoneNumber>();
-
+		public override void Clear()
+		{
+		}
 	}
 
 	/// <summary>
-	/// Our address book file is just one of these.
+	/// 响应社交信息
 	/// </summary>
 	[ProtoContract]
-	public sealed class AddressBook
+	[MessageTypeHandler(((120) << 16) + 11)]
+	public sealed class RespSocialInfo : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(2047)]
+		public int ErrorCode { get; set; }
+
+
+		public override void Clear()
+		{
+			ErrorCode = default;
+		}
+	}
+
+	/// <summary>
+	/// 请求删除好友
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 12)]
+	public sealed class ReqDeleteFriend : MessageObject, IRequestMessage
+	{
+		/// <summary>
+		/// 玩家ID
 		/// </summary>
 		[ProtoMember(1)]
-		public List<Person> People { get; set; } = new List<Person>();
+		public long PlayerId { get; set; }
 
+
+		public override void Clear()
+		{
+			PlayerId = default;
+		}
+	}
+
+	/// <summary>
+	/// 响应删除好友
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 13)]
+	public sealed class RespDeleteFriend : MessageObject, IResponseMessage
+	{
+		/// <summary>
+		/// 是否成功
+		/// </summary>
+		[ProtoMember(1)]
+		public bool Success { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(2047)]
+		public int ErrorCode { get; set; }
+
+
+		public override void Clear()
+		{
+			Success = default;
+			ErrorCode = default;
+		}
+	}
+
+	/// <summary>
+	/// 请求好友列表
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 14)]
+	public sealed class ReqFriendList : MessageObject, IRequestMessage
+	{
+
+		public override void Clear()
+		{
+		}
+	}
+
+	/// <summary>
+	/// 响应好友列表
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 15)]
+	public sealed class RespFriendList : MessageObject, IResponseMessage
+	{
+		/// <summary>
+		/// 好友列表
+		/// </summary>
+		[ProtoMember(1)]
+		public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(2047)]
+		public int ErrorCode { get; set; }
+
+
+		public override void Clear()
+		{
+			Friends.Clear();
+			ErrorCode = default;
+		}
+	}
+
+	/// <summary>
+	/// 请求添加好友
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 16)]
+	public sealed class ReqFriendByAdd : MessageObject, IRequestMessage
+	{
+		/// <summary>
+		/// 玩家ID
+		/// </summary>
+		[ProtoMember(1)]
+		public long PlayerId { get; set; }
+
+
+		public override void Clear()
+		{
+			PlayerId = default;
+		}
+	}
+
+	/// <summary>
+	/// 响应添加好友
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((120) << 16) + 17)]
+	public sealed class RespFriendByAdd : MessageObject, IResponseMessage
+	{
+		/// <summary>
+		/// 是否成功
+		/// </summary>
+		[ProtoMember(1)]
+		public bool Success { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(2047)]
+		public int ErrorCode { get; set; }
+
+
+		public override void Clear()
+		{
+			Success = default;
+			ErrorCode = default;
+		}
 	}
 
 }

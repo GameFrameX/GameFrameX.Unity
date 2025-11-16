@@ -17,6 +17,7 @@
         "GameFrameX.FairyGUI.Runtime",
         "GameFrameX.Entity.Runtime",
         "GameFrameX.Event.Runtime",
+        "GameFrameX.Download.Runtime",
         "GameFrameX.Asset.Runtime",
         "GameFrameX.Localization.Runtime",
         "HybridCLRData",

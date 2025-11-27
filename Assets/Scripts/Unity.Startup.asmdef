@@ -4,6 +4,7 @@
         "GameFrameX.Runtime",
         "GameFrameX.Entry.Runtime",
         "GameFrameX.Web.Runtime",
+        "GameFrameX.Web.ProtoBuff.Runtime",
         "GameFrameX.GlobalConfig.Runtime",
         "YooAsset.Runtime",
         "YooAsset",

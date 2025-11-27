@@ -138,6 +138,64 @@ MonoBehaviour:
   componentType: GameFrameX.Scene.Runtime.GameSceneManager
   m_EnableLoadSceneUpdateEvent: 1
   m_EnableLoadSceneDependencyAssetEvent: 1
+--- !u!1 &586111732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586111733}
+  - component: {fileID: 586111735}
+  - component: {fileID: 586111734}
+  m_Layer: 0
+  m_Name: WebProtoBuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586111733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586111732}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7148938655606090472}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &586111734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586111732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39af8a2058da0a146b3cad5684e9e13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &586111735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586111732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2df76581fe1af94a8e206c4b7407cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentType: GameFrameX.Web.ProtoBuff.Runtime.WebProtoBuffManager
+  m_Timeout: 5
 --- !u!1 &755918133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,6 +1873,7 @@ Transform:
   - {fileID: 6524165465694967693}
   - {fileID: 755918134}
   - {fileID: 2506581721167664985}
+  - {fileID: 586111733}
   - {fileID: 8613711354764159178}
   - {fileID: 2120699936}
   - {fileID: 8347106624226656712}

@@ -35,6 +35,7 @@
     "com.gameframex.unity.ui.fairygui": "https://gitee.com/GameFrameX/com.gameframex.unity.ui.fairygui.git",
     "com.gameframex.unity.ui.ugui": "https://gitee.com/gameframex/com.gameframex.unity.ui.ugui.git",
     "com.gameframex.unity.web": "https://gitee.com/gameframex/com.gameframex.unity.web.git",
+    "com.gameframex.unity.web.protobuff": "https://gitee.com/gameframex/com.gameframex.unity.web.protobuff.git",
     "com.gameframex.unity.xincger.litjson": "https://gitee.com/gameframex/com.gameframex.unity.xincger.litjson.git",
     "com.gameframex.unity.yasirkula.debugconsole": "https://gitee.com/gameframex/com.gameframex.unity.yasirkula.debugconsole.git",
     "com.unity.ide.rider": "3.0.28",

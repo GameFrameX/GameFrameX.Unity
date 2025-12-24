@@ -27,7 +27,7 @@ public static class HttpHelper
 #else
         DictionaryParams["Channel"] = "WebGL";
         DictionaryParams["SubChannel"] = "WebGL";
-        DictionaryParams["Platform"] = PathHelper.GetPlatformName;
+        DictionaryParams["Platform"] = ApplicationHelper.PlatformName;
 #endif
 #else
         DictionaryParams["Platform"] = ApplicationHelper.PlatformName;

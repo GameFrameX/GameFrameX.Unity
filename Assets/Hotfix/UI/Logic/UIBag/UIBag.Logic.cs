@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 using FairyGUI;
 using GameFrameX.Event.Runtime;
+using GameFrameX.Runtime;
 using GameFrameX.UI.Runtime;
 using Hotfix.Config;
 using Hotfix.Config.Tables;

@@ -1,112 +1,272 @@
-# 介绍：
+<div align="center">
 
-GameFrameX for Unity是GameFrameX综合解决方案的重要组成部分，专为Unity客户端设计。它融合了众多实用的功能组件，形成了一个强大的模块库，旨在为游戏的前端开发、后端服务及管理界面提供一个一体化平台。这个解决方案促进了不同系统间的无缝协作，实现了高效的游戏开发和运维流程。
+![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
 
-# 客户端
+# GameFrameX Unity
 
-## `Unity` 集成功能
+[![Version](https://img.shields.io/github/v/release/GameFrameX/GameFrameX.Unity?label=version&color=green)](https://github.com/GameFrameX/GameFrameX.Unity/releases)
+[![License](https://img.shields.io/badge/license-Apache%202.0-orange.svg)](LICENSE.md)
+[![Documentation](https://img.shields.io/badge/docs-gameframex-brightgreen.svg)](https://gameframex.doc.alianblank.com)
 
-|        组件名称        |                介绍                |   来源   | 链接地址                                                                       |
-|:------------------:|:--------------------------------:|:------:|:---------------------------------------------------------------------------|
-|   GameFramework    |             客户端框架基础              | GitHub | https://github.com/gameframex/com.gameframex.unity                         |
-|      YooAsset      |             定制的资源包管理             | GitHub | https://github.com/gameframex/com.gameframex.unity.tuyoogame.yooasset      |
-|      UniTask       |         异步Await/Async的实现         | GitHub | https://github.com/gameframex/com.gameframex.unity.cysharp.unitask         |
-|    FairyGUI UI     | FairyGUI编辑器。SDK已支持微信和抖音小游戏和WEBGL | GitHub | https://github.com/gameframex/com.gameframex.unity.fairygui.unity          |
-|      ProtoBuf      |            数据序列化和通讯协议            | GitHub | https://github.com/gameframex/com.gameframex.unity.google.protobuf         |
-|     HybridCLR      |               热更新                | GitHub | https://github.com/focus-creative-games/hybridclr                          |
-|       Sentry       |            错误追踪和性能监控             | GitHub | https://github.com/gameframex/com.gameframex.unity.sentry.unity            |
-|      LitJson       |        JSON序列化工具（马三修改版本）         | GitHub | https://github.com/gameframex/com.gameframex.unity.xincger.litjson         |
-|     logViewer      |              日志查看器               | GitHub | https://github.com/gameframex/com.gameframex.unity.sharelib.logviewer      |
-|      DoTween       |             强大的动画插件              | GitHub | https://github.com/gameframex/com.gameframex.unity.demigiant.dotween       |
-|   Advertisement    |           广告播放组件（激励广告）           | GitHub | https://github.com/gameframex/com.gameframex.unity.advertisement           |
-|   ObjectStorage    |          对象存储上传(打包后上传)           | GitHub | https://github.com/gameframex/com.gameframex.unity.objectstorage           |
-| OperationClipBoard |          实现剪贴板数据的设置与获取           | GitHub | https://github.com/gameframex/com.gameframex.unity.blankoperationclipboard |
-|     GetChannel     |         渠道获取及集成基础的渠道获取方式         | GitHub | https://github.com/gameframex/com.gameframex.unity.getchannel              |
-|     ReadAssets     |       直接读取Android只读目录下的文件        | GitHub | https://github.com/gameframex/com.gameframex.unity.readassets              |
-|     WebSocket      |         WebSocket 网络支持库          | GitHub | https://github.com/gameframex/com.gameframex.unity.psygames.unitywebsocket |
-|   FindReference2   |           强大的资源引用查找插件            | GitHub | https://github.com/gameframex/com.vietlabs.fr2                             |
-|   GameAnalytics    |            游戏数据分析和统计             | GitHub | https://github.com/gameframex/com.gameframex.unity.gameanalytics.git       |
-|     Animancer      |           高度灵活的动画状态机插件           | GitHub | 还没上传                                                                       |
+**All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams**
 
-# 子库列表（按需获取）默认已全部带上。可以删除自己不需要的。由于默认大部分用户是`中国大陆`用户。故项目中`默认`为`镜像地址`
+[📖 Documentation](https://gameframex.doc.alianblank.com) · [🚀 Quick Start](#quick-start) · [💬 QQ Group: 467608841](https://qm.qq.com/q/467608841)
 
-如果Github 下载有问题。可以更换`github.com` 为 `www.gitlink.org.cn` 镜像地址。注意镜像地址同步可能滞后几天。取决于镜像站的同步策略
+---
 
-例如："com.gameframex.unity.mono": "https://`github.com`/AlianBlank/com.gameframex.unity.mono.git"
+🌐 **Language**: [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **English** | [日本語](README.ja.md) | [한국어](README.ko.md)
 
-更换为 "com.gameframex.unity.mono": "https://`www.gitlink.org.cn`/AlianBlank/com.gameframex.unity.mono.git"
+---
+
+</div>
+
+## Project Overview
+
+GameFrameX Unity is the Unity client implementation of the GameFrameX comprehensive solution, providing 90+ modular components covering the entire game development pipeline: from core framework, asset management, UI systems, and network communication to advertising, payment, login, data analytics, and more. Compatible with Unity 2019.4 and above.
+
+## Features
+
+- **Modular Design** — Each component is an independent package, import on demand
+- **Hot Update Support** — Integrated HybridCLR for C# hot updates
+- **Multi-UI Solutions** — Supports both FairyGUI and UGUI
+- **Async-First** — UniTask-based async/await programming model
+- **Cross-Platform** — iOS, Android, WebGL, WeChat/Douyin/Alipay mini games, and more
+- **Rich Operations Components** — Advertising (CSJ, TopOn), Payment (Alipay, Apple, Google), Login (QQ, WeChat, Apple, Facebook, Google), Data Analytics, Object Storage, and more
+
+## Quick Start
+
+### 1. Configure Scoped Registry
+
+Add the GameFrameX scoped registry to your project's `Packages/manifest.json`:
 
 ```json
 {
-  "com.gameframex.unity": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.git",
-  "com.gameframex.unity.asset": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.asset.git",
-  "com.gameframex.unity.blankoperationclipboard": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.blankoperationclipboard.git",
-  "com.gameframex.unity.config": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.config.git",
-  "com.gameframex.unity.coroutine": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.coroutine.git",
-  "com.gameframex.unity.cysharp.unitask": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.cysharp.unitask.git",
-  "com.gameframex.unity.demigiant.dotween": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.demigiant.dotween.git",
-  "com.gameframex.unity.download": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.download.git",
-  "com.gameframex.unity.entity": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.entity.git",
-  "com.gameframex.unity.entry": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.entry.git",
-  "com.gameframex.unity.event": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.event.git",
-  "com.gameframex.unity.fairygui": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.fairygui.git",
-  "com.gameframex.unity.fairygui.unity": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.fairygui.unity.git",
-  "com.gameframex.unity.focus-creative-games.luban": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.focus-creative-games.luban.git",
-  "com.gameframex.unity.fsm": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.fsm.git",
-  "com.gameframex.unity.getchannel": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.getchannel.git",
-  "com.gameframex.unity.globalconfig": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.globalconfig.git",
-  "com.gameframex.unity.google.protobuf": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.google.protobuf.git",
-  "com.gameframex.unity.gwiazdorrr.betterstreamingassets": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.gwiazdorrr.betterstreamingassets.git",
-  "com.gameframex.unity.json.simplejson": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.json.simplejson.git",
-  "com.gameframex.unity.localization": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.localization.git",
-  "com.gameframex.unity.mono": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.mono.git",
-  "com.gameframex.unity.network": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.network.git",
-  "com.gameframex.unity.procedure": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.procedure.git",
-  "com.gameframex.unity.protobuff2cs": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.protobuff2cs.git",
-  "com.gameframex.unity.psygames.unitywebsocket": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.psygames.unitywebsocket.git",
-  "com.gameframex.unity.readassets": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.readassets.git",
-  "com.gameframex.unity.scene": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.scene.git",
-  "com.gameframex.unity.setting": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.setting.git",
-  "com.gameframex.unity.sound": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.sound.git",
-  "com.gameframex.unity.timer": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.timer.git",
-  "com.gameframex.unity.web": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.web.git",
-  "com.gameframex.unity.tuyoogame.yooasset": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.tuyoogame.yooasset.git",
-  "com.gameframex.unity.xincger.litjson": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.xincger.litjson.git",
-  "com.gameframex.unity.yasirkula.debugconsole": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.yasirkula.debugconsole.git",
-  "com.gameframex.unity.weixin.minigame": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.weixin.minigame.git",
-  "com.gameframex.unity.advertisement": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.advertisement.git",
-  "com.gameframex.unity.advertisement.wechatminigame": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.advertisement.wechatminigame.git",
-  "com.gameframex.unity.objectstorage": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.git",
-  "com.gameframex.unity.objectstorage.qiniu": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.qiniu.git",
-  "com.gameframex.unity.objectstorage.aliyun": "https://www.gitlink.org.cn/AlianBlank/com.gameframex.unity.objectstorage.aliyun.git",
-  "com.gameframex.unity.gameanalytics": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.git",
-  "com.gameframex.unity.gameanalytics.gameanalytics": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gameanalytics.git",
-  "com.gameanalytics.sdk": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gameanalytics.sdk.git",
-  "com.gameframex.unity.gameanalytics.gravity-engine": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.gravity-engine.git",
-  "com.gameframex.unity.gravityinfinite.gravity-engine": "https://github.com/AlianBlank/com.gameframex.unity.gravityinfinite.gravity-engine.git"
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.11.0"
+  }
 }
 ```
 
-# 交流方式(建议。需求。BUG)
+### 2. Add Components
 
-QQ群：467608841
+Add the packages you need under `dependencies`. Check the [Releases](https://github.com/GameFrameX/GameFrameX.Unity/releases) page for available versions.
 
-# Doc (已经在写了,别催了!-_-!)
+<details>
+<summary>Example: Adding common components</summary>
 
-`所有站点内容一致，不存在内容不一致的情况`
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity": "1.11.0",
+    "com.gameframex.unity.asset": "2.0.0",
+    "com.gameframex.unity.ui": "2.1.1",
+    "com.gameframex.unity.ui.fairygui": "3.0.0",
+    "com.gameframex.unity.procedure": "1.0.4",
+    "com.gameframex.unity.event": "1.0.2",
+    "com.gameframex.unity.fsm": "1.0.3",
+    "com.gameframex.unity.network": "2.5.1",
+    "com.gameframex.unity.sound": "1.0.6",
+    "com.gameframex.unity.localization": "2.0.0"
+  }
+}
+```
 
-文档地址 : https://gameframex.doc.alianblank.com
+</details>
 
-备用文档地址 : https://gameframex-docs.pages.dev
+## Component List
 
-备用文档地址 : https://gameframex.doc.cloudflare.alianblank.com
+Version numbers are fetched automatically from the [GameFrameX UPM Registry](https://gameframex.upm.alianblank.uk). Packages marked with `-` are third-party components installed via Git URL.
 
-备用文档地址 : https://gameframex.doc.vercel.alianblank.com
+### Core Framework
 
-# 免责声明
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity | Core runtime and editor base (event pool, reference pool, task pool, object pool, variable system, etc.) | ![version](https://img.shields.io/npm/v/com.gameframex.unity?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.entry | Framework entry component | ![version](https://img.shields.io/npm/v/com.gameframex.unity.entry?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.event | Event system | ![version](https://img.shields.io/npm/v/com.gameframex.unity.event?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.fsm | Finite state machine | ![version](https://img.shields.io/npm/v/com.gameframex.unity.fsm?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.procedure | Procedure management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.procedure?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.mono | MonoBehaviour wrapper | ![version](https://img.shields.io/npm/v/com.gameframex.unity.mono?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.coroutine | Coroutine component | ![version](https://img.shields.io/npm/v/com.gameframex.unity.coroutine?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.timer | Timer | ![version](https://img.shields.io/npm/v/com.gameframex.unity.timer?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.entity | Entity component system | ![version](https://img.shields.io/npm/v/com.gameframex.unity.entity?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.globalconfig | Global configuration management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.globalconfig?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.debugger | Debugger | ![version](https://img.shields.io/npm/v/com.gameframex.unity.debugger?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
 
-所有插件均来自互联网.请各位使用时自行付费.如果以上插件涉及侵权.请发email或提交issue.本人将移除.谢谢
+### Asset Management
 
-# LICENSE
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.asset | Asset loading and management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.asset?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.download | File download component | ![version](https://img.shields.io/npm/v/com.gameframex.unity.download?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.tuyoogame.yooasset | YooAsset asset management (customized) | ![version](https://img.shields.io/npm/v/com.gameframex.unity.tuyoogame.yooasset?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gwiazdorrr.betterstreamingassets | StreamingAssets direct access | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gwiazdorrr.betterstreamingassets?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.builder | Build pipeline tools | ![version](https://img.shields.io/npm/v/com.gameframex.unity.builder?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
 
-Apache License 2
+### UI Framework
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.ui | UI base framework | ![version](https://img.shields.io/npm/v/com.gameframex.unity.ui?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.ui.fairygui | FairyGUI adapter | ![version](https://img.shields.io/npm/v/com.gameframex.unity.ui.fairygui?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.ui.ugui | UGUI adapter | ![version](https://img.shields.io/npm/v/com.gameframex.unity.ui.ugui?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Networking
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.web | HTTP network requests (with async/await) | ![version](https://img.shields.io/npm/v/com.gameframex.unity.web?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.web.protobuff | ProtoBuf network communication | ![version](https://img.shields.io/npm/v/com.gameframex.unity.web.protobuff?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.psygames.unitywebsocket | WebSocket networking library | ![version](https://img.shields.io/npm/v/com.gameframex.unity.psygames.unitywebsocket?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.webview | WebView embedded browser | ![version](https://img.shields.io/npm/v/com.gameframex.unity.webview?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Data & Configuration
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.config | Configuration management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.config?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.localization | Localization / i18n | ![version](https://img.shields.io/npm/v/com.gameframex.unity.localization?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.focus-creative-games.luban | Luban config data generation | ![version](https://img.shields.io/npm/v/com.gameframex.unity.focus-creative-games.luban?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.google.protobuf | Protocol Buffers serialization | ![version](https://img.shields.io/npm/v/com.gameframex.unity.google.protobuf?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.google.flatbuffers | FlatBuffers serialization | ![version](https://img.shields.io/npm/v/com.gameframex.unity.google.flatbuffers?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.json.simplejson | SimpleJSON library | ![version](https://img.shields.io/npm/v/com.gameframex.unity.json.simplejson?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.xincger.litjson | LitJSON library | ![version](https://img.shields.io/npm/v/com.gameframex.unity.xincger.litjson?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Audio & Animation
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.sound | Audio playback and management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.sound?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.demigiant.dotween | DoTween animation plugin | ![version](https://img.shields.io/npm/v/com.gameframex.unity.demigiant.dotween?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.esotericsoftware.spine.spine-unity | Spine animation runtime | ![version](https://img.shields.io/npm/v/com.gameframex.unity.esotericsoftware.spine.spine-unity?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Scene & Settings
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.scene | Scene management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.scene?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.setting | Settings management | ![version](https://img.shields.io/npm/v/com.gameframex.unity.setting?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Hot Update
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.tencent.xlua | XLua (Tencent version) | ![version](https://img.shields.io/npm/v/com.gameframex.unity.tencent.xlua?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.xlua | XLua adapter | ![version](https://img.shields.io/npm/v/com.gameframex.unity.xlua?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Advertising
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.advertisement | Advertising base component | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.csj | CSJ (穿山甲) Advertising | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.csj?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.topon | TopOn aggregated advertising | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.topon?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.wechatminigame | WeChat Mini Game ads | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.wechatminigame?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.douyinminigame | Douyin Mini Game ads | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.douyinminigame?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.alipayminigame | Alipay Mini Game ads | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.alipayminigame?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.advertisement.kuaishouminigame | Kuaishou Mini Game ads | ![version](https://img.shields.io/npm/v/com.gameframex.unity.advertisement.kuaishouminigame?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Payment
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.payment | Payment base component | ![version](https://img.shields.io/npm/v/com.gameframex.unity.payment?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.payment.alipay | Alipay payment | ![version](https://img.shields.io/npm/v/com.gameframex.unity.payment.alipay?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.payment.apple | Apple in-app purchase | ![version](https://img.shields.io/npm/v/com.gameframex.unity.payment.apple?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.payment.google | Google Play in-app purchase | ![version](https://img.shields.io/npm/v/com.gameframex.unity.payment.google?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Login
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.login.apple | Apple Sign-In | ![version](https://img.shields.io/npm/v/com.gameframex.unity.login.apple?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.login.facebook | Facebook Login | ![version](https://img.shields.io/npm/v/com.gameframex.unity.login.facebook?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.login.google | Google Sign-In | ![version](https://img.shields.io/npm/v/com.gameframex.unity.login.google?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.login.qq | QQ Login | ![version](https://img.shields.io/npm/v/com.gameframex.unity.login.qq?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.login.wechat | WeChat Login | ![version](https://img.shields.io/npm/v/com.gameframex.unity.login.wechat?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Analytics
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.gameanalytics | Analytics base | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gameanalytics.gameanalytics | GameAnalytics SDK | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics.gameanalytics?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gameanalytics.gravity-engine | Gravity Engine | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics.gravity-engine?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gameanalytics.talkingdata | TalkingData | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics.talkingdata?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gameanalytics.talkingdata.sdk | TalkingData SDK | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics.talkingdata.sdk?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gameanalytics.grafanaloki | Grafana Loki logging | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gameanalytics.grafanaloki?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.gravityinfinite.gravity-engine | Gravity Engine adapter | ![version](https://img.shields.io/npm/v/com.gameframex.unity.gravityinfinite.gravity-engine?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.sentry | Sentry error tracking | ![version](https://img.shields.io/npm/v/com.gameframex.unity.sentry?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.adjust | Adjust attribution analytics | ![version](https://img.shields.io/npm/v/com.gameframex.unity.adjust?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Object Storage
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.objectstorage | Object storage base | ![version](https://img.shields.io/npm/v/com.gameframex.unity.objectstorage?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.objectstorage.aliyun | Alibaba Cloud OSS | ![version](https://img.shields.io/npm/v/com.gameframex.unity.objectstorage.aliyun?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.objectstorage.qiniu | Qiniu Cloud Kodo | ![version](https://img.shields.io/npm/v/com.gameframex.unity.objectstorage.qiniu?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.objectstorage.tencent | Tencent Cloud COS | ![version](https://img.shields.io/npm/v/com.gameframex.unity.objectstorage.tencent?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Mini Games
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.minigame.wechat | WeChat Mini Game adapter | - |
+| com.gameframex.unity.tuyoogame.yooasset.minigame.alipay | YooAsset Alipay Mini Game | ![version](https://img.shields.io/npm/v/com.gameframex.unity.tuyoogame.yooasset.minigame.alipay?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.tuyoogame.yooasset.minigame.taptap | YooAsset TapTap Mini Game | ![version](https://img.shields.io/npm/v/com.gameframex.unity.tuyoogame.yooasset.minigame.taptap?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.tuyoogame.yooasset.minigame.tiktok | YooAsset Douyin Mini Game | ![version](https://img.shields.io/npm/v/com.gameframex.unity.tuyoogame.yooasset.minigame.tiktok?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Platform Tools
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.getchannel | Channel information retrieval | ![version](https://img.shields.io/npm/v/com.gameframex.unity.getchannel?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.operationclipboard | Clipboard operations | ![version](https://img.shields.io/npm/v/com.gameframex.unity.operationclipboard?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.readassets | StreamingAssets file reading | ![version](https://img.shields.io/npm/v/com.gameframex.unity.readassets?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.xcode | Xcode post-build auto configuration | ![version](https://img.shields.io/npm/v/com.gameframex.unity.xcode?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.systeminfo | Device unique identifier (OAID/IDFA) | ![version](https://img.shields.io/npm/v/com.gameframex.unity.systeminfo?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.sharesdk | ShareSDK social sharing | ![version](https://img.shields.io/npm/v/com.gameframex.unity.sharesdk?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+| com.gameframex.unity.android | Android native tools | ![version](https://img.shields.io/npm/v/com.gameframex.unity.android?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Development Tools
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.yasirkula.debugconsole | Runtime debug console | ![version](https://img.shields.io/npm/v/com.gameframex.unity.yasirkula.debugconsole?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+### Third-party Libraries
+
+| Package | Description | Version |
+|:--------|:------------|:-------:|
+| com.gameframex.unity.cysharp.unitask | UniTask async/await | ![version](https://img.shields.io/npm/v/com.gameframex.unity.cysharp.unitask?registry_uri=https://gameframex.upm.alianblank.uk&style=flat-square&color=green) |
+
+## Documentation & Resources
+
+- **Documentation**: https://gameframex.doc.alianblank.com
+- **Mirror**: https://gameframex-docs.pages.dev
+- **Mirror**: https://gameframex.doc.cloudflare.alianblank.com
+- **Mirror**: https://gameframex.doc.vercel.alianblank.com
+
+> All mirror sites have identical content.
+
+## Community & Support
+
+- **QQ Group**: 467608841
+
+## License
+
+[Apache License 2.0](LICENSE.md)
+
+---
+
+**Disclaimer**: Some components are derived from open-source projects on the internet and are intended for learning and communication purposes only. If any infringement is involved, please submit an Issue or contact us via Email, and we will remove it promptly.

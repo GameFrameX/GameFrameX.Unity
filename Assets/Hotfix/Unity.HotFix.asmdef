@@ -32,7 +32,8 @@
         "GameFrameX.Asset.Runtime",
         "GameFrameX.Sound.Runtime",
         "GameFrameX.Entity.Runtime",
-        "GameFrameX.UI.UGUI.Runtime"
+        "GameFrameX.UI.UGUI.Runtime",
+        "GameFrameX.Localization.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

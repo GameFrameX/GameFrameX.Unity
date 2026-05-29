@@ -24,7 +24,8 @@
         "HybridCLRData",
         "GameFrameX.UI.Runtime",
         "GameFrameX.UI.FairyGUI.Runtime",
-        "GameFrameX.UI.UGUI.Runtime"
+        "GameFrameX.UI.UGUI.Runtime",
+        "GameFrameX.ImageCache.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,6 +1,6 @@
 ﻿#if ENABLE_UI_FAIRYGUI
-using System.IO;
 using FairyGUI;
+using GameFrameX.ImageCache.Runtime;
 using GameFrameX.Runtime;
 using YooAsset;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Unity.Startup.Procedure
 {
     public sealed class FairyGuiExtensionLoader : GLoader
     {
-        private static string _cachePath;
+        private static ImageCacheComponent _imageCacheComponent;
 
         private sealed class LoaderItem
         {
@@ -27,15 +27,6 @@ namespace Unity.Startup.Procedure
         }
 
         private readonly Dictionary<string, LoaderItem> _cache = new Dictionary<string, LoaderItem>();
-
-        public FairyGuiExtensionLoader()
-        {
-            _cachePath = PathHelper.AppHotfixResPath + "/cache/images/";
-            if (!Directory.Exists(_cachePath))
-            {
-                Directory.CreateDirectory(_cachePath);
-            }
-        }
 
         protected override void FreeExternal(NTexture nTexture)
         {
@@ -61,37 +52,20 @@ namespace Unity.Startup.Procedure
                 return;
             }
 
+            if (_imageCacheComponent == null)
+            {
+                _imageCacheComponent = GameEntry.GetComponent<ImageCacheComponent>();
+            }
+
             NTexture tempTexture = null;
             if (url.StartsWithFast("http://") || url.StartsWithFast("https://"))
             {
-                var hash = Utility.Hash.MD5.Hash(url);
-
-                var path = $"{_cachePath}{hash}{Utility.Const.FileNameSuffix.PNG}";
-                var isExists = FileHelper.IsExists(path);
-                var texture2D = new Texture2D(1, 1, TextureFormat.RGBA32, false, false);
-                if (isExists)
+                var texture2D = await _imageCacheComponent.LoadImageAsync(url);
+                if (texture2D != null)
                 {
-                    var buffer = FileHelper.ReadAllBytes(path);
-                    if (texture2D.LoadImage(buffer))
-                    {
-                        Log.Debug("加载成功" + url + "\n " + path);
-                    }
+                    tempTexture = new NTexture(texture2D);
+                    _cache[url] = new LoaderItem(url, tempTexture);
                 }
-                else
-                {
-                    var webBufferResult = await GameApp.Download.Download(path, url);
-                    if (webBufferResult)
-                    {
-                        var buffer = FileHelper.ReadAllBytes(path);
-                        if (texture2D.LoadImage(buffer))
-                        {
-                            // Log.Debug("加载成功" + url + "\n " + path);
-                        }
-                    }
-                }
-
-                tempTexture = new NTexture(texture2D);
-                _cache[url] = new LoaderItem(url, tempTexture);
             }
             else
             {

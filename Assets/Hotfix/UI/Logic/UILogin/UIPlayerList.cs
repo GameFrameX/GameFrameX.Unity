@@ -50,7 +50,7 @@ namespace Hotfix.UI
             foreach (var playerInfo in playerList)
             {
                 var item = uiPlayerListItemAssetHandle.InstantiateSync(m_left_Panel_ScrollView_Viewport_Content);
-                var uiPlayerListItem = item.GetComponent<UIPlayerListItem>();
+                var uiPlayerListItem = UIPlayerListItem.Create(item);
                 uiPlayerListItem.m_level_text.text = "当前等级:" + playerInfo.Level.ToString();
                 uiPlayerListItem.m_name_text.text = playerInfo.Name;
                 uiPlayerListItem.m_click_Button.onClick.Set(OnPlayerListItemClick, playerInfo);

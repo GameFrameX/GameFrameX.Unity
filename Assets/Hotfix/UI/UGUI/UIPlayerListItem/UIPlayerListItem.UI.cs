@@ -21,7 +21,7 @@ namespace Hotfix.UI
 
 		#region Properties
 
-		[SerializeField] [UGUIElementProperty("click_Button")]
+		[UGUIElementProperty("click_Button")]
 		private UnityEngine.UI.Button click_Button;
 
 		public UnityEngine.UI.Button m_click_Button
@@ -29,7 +29,7 @@ namespace Hotfix.UI
 			get { return click_Button;}
 		}
 
-		[SerializeField] [UGUIElementProperty("icon")]
+		[UGUIElementProperty("icon")]
 		private GameFrameX.UI.UGUI.Runtime.UIImage icon;
 
 		public GameFrameX.UI.UGUI.Runtime.UIImage m_icon
@@ -37,7 +37,7 @@ namespace Hotfix.UI
 			get { return icon;}
 		}
 
-		[SerializeField] [UGUIElementProperty("level_text")]
+		[UGUIElementProperty("level_text")]
 		private UnityEngine.UI.Text level_text;
 
 		public UnityEngine.UI.Text m_level_text
@@ -45,7 +45,7 @@ namespace Hotfix.UI
 			get { return level_text;}
 		}
 
-		[SerializeField] [UGUIElementProperty("name_text")]
+		[UGUIElementProperty("name_text")]
 		private UnityEngine.UI.Text name_text;
 
 		public UnityEngine.UI.Text m_name_text
@@ -54,6 +54,28 @@ namespace Hotfix.UI
 		}
 
 		#endregion
+
+		public static UIPlayerListItem Create(GameObject go)
+		{
+			var ui = go.GetOrAddComponent<UIPlayerListItem>();
+			ui?.InitView();
+			return ui;
+		}
+
+		/// <summary>
+		/// 通过此方法获取的UGUI，在Dispose时不会释放GameObject，需要自行管理（一般在配合对象池机制时使用）。
+		/// </summary>
+		public static UIPlayerListItem GetFromPool(GameObject go)
+		{
+			var ui = go.GetComponent<UIPlayerListItem>();
+			if (ui == null)
+			{
+				ui = Create(go);
+			}
+
+			ui.IsFromPool = true;
+			return ui;
+		}
 
 		private bool _isInitView = false;
 

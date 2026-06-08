@@ -15,6 +15,9 @@ namespace Unity.Startup.Procedure
     /// </summary>
     public sealed class ProcedureGetGlobalInfoState : ProcedureBase
     {
+        private const int MaxRetryCount = 3;
+        private const int RetryDelayMilliseconds = 3000;
+
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
@@ -39,24 +42,25 @@ namespace Unity.Startup.Procedure
         {
             string rootUrl = "http://127.0.0.1:20808/api/GameGlobalInfo/GetInfo";
             var jsonParams = HttpHelper.GetBaseParams();
-            try
+            for (int retryIndex = 1; retryIndex <= MaxRetryCount; retryIndex++)
             {
-                var json = await GameApp.Web.PostToString(rootUrl, jsonParams);
-                Debug.Log(json);
-                
-                HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);
-                if (httpJsonResult.Code > 0)
+                try
                 {
-                    // GameApp.EventSystem.Run(EventIdType.UILoadingMainSetText, "Server error, retrying...");
-                    LauncherUIHandler.SetTipText("Server error, retrying...");
-                    Log.Error($"获取全局信息返回异常=> Req:{jsonParams} Resp:{json}");
+                    var json = await GameApp.Web.PostToString(rootUrl, jsonParams);
+                    Debug.Log(json);
 
-                    await UniTask.Delay(3000);
-                    // GAHelper.DesignEvent("GetGlobalInfoServerError");
-                    GetGlobalInfo(procedureOwner);
-                }
-                else
-                {
+                    HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);
+                    if (httpJsonResult.Code > 0)
+                    {
+                        Log.Error($"获取全局信息返回异常=> Retry:{retryIndex}/{MaxRetryCount} Req:{jsonParams} Resp:{json}");
+                        if (!await WaitForRetry(retryIndex, "Server error, retrying..."))
+                        {
+                            return;
+                        }
+
+                        continue;
+                    }
+
                     ResponseGlobalInfo responseGlobalInfo = Utility.Json.ToObject<ResponseGlobalInfo>(httpJsonResult.Data);
                     GlobalConfigComponent globalConfigComponent = GameApp.GlobalConfig;
                     globalConfigComponent.CheckAppVersionUrl = responseGlobalInfo.CheckAppVersionUrl;
@@ -64,20 +68,33 @@ namespace Unity.Startup.Procedure
                     globalConfigComponent.Content = responseGlobalInfo.Content;
                     // TODO  这里要自己从Content中解析。因为可能有多个
                     // globalConfigComponent.HostServerUrl = responseGlobalInfo.CheckResourceVersionUrl;
-                    // Game.EventSystem.Run(EventIdType.UILoadingMainSetText, "Loading...");
                     LauncherUIHandler.SetTipText("Loading...");
                     ChangeState<ProcedureGetAppVersionInfoState>(procedureOwner);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                    Log.Error($"获取全局信息异常=> Retry:{retryIndex}/{MaxRetryCount} Error:{e.Message} Req:{jsonParams}");
+                    if (!await WaitForRetry(retryIndex, "Network error, retrying..."))
+                    {
+                        return;
+                    }
                 }
             }
-            catch (Exception e)
+        }
+
+        private static async UniTask<bool> WaitForRetry(int retryIndex, string retryTipText)
+        {
+            if (retryIndex >= MaxRetryCount)
             {
-                Log.Error(e);
-                //     // GameApp.EventSystem.Run(EventIdType.UILoadingMainSetText, "Network error, retrying...");
-                LauncherUIHandler.SetTipText("Network error, retrying...");
-                Log.Error($"获取全局信息异常=>Error:{e.Message}   Req:{jsonParams}");
-                await UniTask.Delay(3000);
-                GetGlobalInfo(procedureOwner);
+                LauncherUIHandler.SetTipText("网络请求失败，请检查本地服务配置后重新启动。");
+                return false;
             }
+
+            LauncherUIHandler.SetTipText($"{retryTipText} ({retryIndex}/{MaxRetryCount})");
+            await UniTask.Delay(RetryDelayMilliseconds);
+            return true;
         }
     }
 }

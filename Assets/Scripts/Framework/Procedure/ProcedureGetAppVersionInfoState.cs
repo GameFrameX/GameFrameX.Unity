@@ -15,6 +15,9 @@ namespace Unity.Startup.Procedure
     /// </summary>
     public sealed class ProcedureGetAppVersionInfoState : ProcedureBase
     {
+        private const int MaxRetryCount = 3;
+        private const int RetryDelayMilliseconds = 3000;
+
         protected override void OnEnter(IFsm<IProcedureManager> procedureOwner)
         {
             base.OnEnter(procedureOwner);
@@ -33,21 +36,26 @@ namespace Unity.Startup.Procedure
         private async void GetAppVersionInfo(IFsm<IProcedureManager> procedureOwner)
         {
             var jsonParams = HttpHelper.GetBaseParams();
-            try
+            for (int retryIndex = 1; retryIndex <= MaxRetryCount; retryIndex++)
             {
-                var json = await GameApp.Web.PostToString(GameApp.GlobalConfig.CheckAppVersionUrl, jsonParams);
-                Debug.Log(json);
+                try
+                {
+                    var json = await GameApp.Web.PostToString(GameApp.GlobalConfig.CheckAppVersionUrl, jsonParams);
+                    Debug.Log(json);
 
-                HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);
-                if (httpJsonResult.Code > 0)
-                {
-                    LauncherUIHandler.SetTipText("Server error, retrying...");
-                    Debug.LogError($"获取全局信息返回异常=> Req:{jsonParams} Resp:{json}");
-                    await UniTask.Delay(3000);
-                    GetAppVersionInfo(procedureOwner);
-                }
-                else
-                {
+                    HttpJsonResult httpJsonResult = Utility.Json.ToObject<HttpJsonResult>(json.Result);
+                    if (httpJsonResult.Code > 0)
+                    {
+                        LauncherUIHandler.SetTipText($"Server error, retrying... ({retryIndex}/{MaxRetryCount})");
+                        Debug.LogError($"获取版本信息返回异常=> Retry:{retryIndex}/{MaxRetryCount} Req:{jsonParams} Resp:{json}");
+                        if (!await WaitForRetry(retryIndex, "服务器版本信息异常，请检查服务配置后重新启动。"))
+                        {
+                            return;
+                        }
+
+                        continue;
+                    }
+
                     var gameAppVersion = Utility.Json.ToObject<ResponseGameAppVersion>(httpJsonResult.Data);
 
                     /*if (gameAppVersion.IsUpgrade)
@@ -77,17 +85,32 @@ namespace Unity.Startup.Procedure
                     else*/
                     {
                         ChangeState<ProcedureGetGameAssetPackageVersionInfoByDefaultPackageState>(procedureOwner);
+                        return;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                    LauncherUIHandler.SetTipText($"Network error, retrying... ({retryIndex}/{MaxRetryCount})");
+                    Debug.LogError($"获取版本信息异常=> Retry:{retryIndex}/{MaxRetryCount} Error:{e.Message} Req:{jsonParams}");
+                    if (!await WaitForRetry(retryIndex, "网络请求失败，请检查版本服务配置后重新启动。"))
+                    {
+                        return;
                     }
                 }
             }
-            catch (Exception e)
+        }
+
+        private static async UniTask<bool> WaitForRetry(int retryIndex, string failedTipText)
+        {
+            if (retryIndex >= MaxRetryCount)
             {
-                Log.Error(e);
-                LauncherUIHandler.SetTipText("Network error, retrying...");
-                Debug.LogError($"获取版本信息异常=>Error:{e.Message}   Req:{jsonParams}");
-                await UniTask.Delay(3000);
-                GetAppVersionInfo(procedureOwner);
+                LauncherUIHandler.SetTipText(failedTipText);
+                return false;
             }
+
+            await UniTask.Delay(RetryDelayMilliseconds);
+            return true;
         }
     }
 }

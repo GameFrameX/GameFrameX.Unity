@@ -7,7 +7,6 @@ Sandbox
 Temp
 Assets/Bundles/Code
 .cache.meta
-Packages/packages-lock.json
 Unity.sln.DotSettings.user
 Unity.sln
 Builds
@@ -18,3 +17,9 @@ Assets/StreamingAssets/build_info.meta
 HybridCLRData/
 .DS_Store
 Assets/Bundles/AOTCode/*
+
+# gfx-project
+backlog.md
+log.md
+roadmap.md
+gfx-doc/.sync-cursor

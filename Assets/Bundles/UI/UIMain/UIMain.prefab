@@ -489,36 +489,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184977374874224108}
   m_CullTransparentMesh: 0
---- !u!114 &6618558978755973230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184977374874224108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cafa38f61d9d4d40abfbc25ba3ab6a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Available: 0
-  m_Visible: 0
-  m_IsInit: 0
-  m_IsDisableRecycling: 0
-  m_IsDisableClosing: 0
-  m_SerialId: 0
-  m_OriginalLayer: 0
-  m_UIFormAssetName: 
-  m_AssetPath: 
-  m_DepthInUIGroup: 0
-  m_PauseCoveredUIForm: 0
-  m_FullName: 
-  _mBgImage: {fileID: 7785376669766979963}
-  _mbag_button__Text: {fileID: 1214814195}
-  _mbag_button: {fileID: 1678343360}
-  _mplayer_icon: {fileID: 346919067406639900}
-  _mplayer_name: {fileID: 1887894341}
-  _mplayer_level: {fileID: 2091764510}
 --- !u!1 &2294713198081798847
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,14 @@ using YooAsset;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.Startup.Procedure
+namespace GameFrameX.Startup.Application
 {
+    /// <summary>
+    /// FairyGUI 扩展加载器，用于加载网络图片、包内资源或本地文件的图片纹理。
+    /// </summary>
+    /// <remarks>
+    /// FairyGUI extension loader used to load texture from network URL, package asset, or local file.
+    /// </remarks>
     public sealed class FairyGuiExtensionLoader : GLoader
     {
         private static ImageCacheComponent _imageCacheComponent;
@@ -28,6 +34,13 @@ namespace Unity.Startup.Procedure
 
         private readonly Dictionary<string, LoaderItem> _cache = new Dictionary<string, LoaderItem>();
 
+        /// <summary>
+        /// 释放外部加载的纹理资源。
+        /// </summary>
+        /// <remarks>
+        /// Release the externally loaded texture resource.
+        /// </remarks>
+        /// <param name="nTexture">要释放的纹理对象 / The texture object to release</param>
         protected override void FreeExternal(NTexture nTexture)
         {
             foreach (var loaderItem in _cache)
@@ -44,6 +57,12 @@ namespace Unity.Startup.Procedure
             base.FreeExternal(nTexture);
         }
 
+        /// <summary>
+        /// 异步加载外部纹理资源。
+        /// </summary>
+        /// <remarks>
+        /// Asynchronously load an external texture resource.
+        /// </remarks>
         protected override async void LoadExternal()
         {
             if (url.IsNullOrWhiteSpace())

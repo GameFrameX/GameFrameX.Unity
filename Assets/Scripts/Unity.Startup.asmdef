@@ -20,6 +20,7 @@
         "GameFrameX.UI.FairyGUI.Runtime",
         "GameFrameX.UI.UGUI.Runtime",
         "GameFrameX.ImageCache.Runtime",
+        "GameFrameX.Localization.Runtime",
         "GameFrameX.Startup.Runtime"
     ],
     "includePlatforms": [],

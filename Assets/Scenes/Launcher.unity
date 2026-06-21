@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1ef15380caaed42b55022cadc93649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentType: GameFrameX.UI.UGUI.Runtime.UIManager
+  componentType: GameFrameX.UI.FairyGUI.Runtime.UIManager
   m_EnableOpenUIFormSuccessEvent: 1
   m_EnableOpenUIFormFailureEvent: 1
   m_EnableAutoReleaseUIForm: 1
@@ -257,9 +257,9 @@ MonoBehaviour:
   m_RecycleInterval: 60
   m_InstanceUGUIRoot: {fileID: 1258282169}
   m_InstanceFairyGUIRoot: {fileID: 1565570508885128524}
-  m_UIFormHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIFormHelper
+  m_UIFormHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIFormHelper
   m_CustomUIFormHelper: {fileID: 0}
-  m_UIGroupHelperTypeName: GameFrameX.UI.UGUI.Runtime.UGUIUIGroupHelper
+  m_UIGroupHelperTypeName: GameFrameX.UI.FairyGUI.Runtime.FairyGUIUIGroupHelper
   m_CustomUIGroupHelper: {fileID: 0}
   m_UIGroups:
   - m_Name: Hidden

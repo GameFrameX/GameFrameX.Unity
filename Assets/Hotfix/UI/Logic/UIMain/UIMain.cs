@@ -33,6 +33,12 @@ namespace Hotfix.UI
             m_player_name.text = PlayerManager.Instance.PlayerInfo.Name;
             m_player_level.text = "当前等级:" + PlayerManager.Instance.PlayerInfo.Level;
             m_bag_button.onClick.Set(OnBagBtnClick);
+#if ENABLE_UI_FAIRYGUI
+            if (m_room_button != null)
+            {
+                m_room_button.onClick.Set(OnRoomBtnClick);
+            }
+#endif
         }
 
         private async void OnBagBtnClick()
@@ -43,6 +49,13 @@ namespace Hotfix.UI
             Log.Debug(respBagInfo);
 #elif ENABLE_UI_FAIRYGUI
             await GameApp.UI.OpenAsync<UIBag>(UIGroupConstants.Window);
+#endif
+        }
+
+        private async void OnRoomBtnClick()
+        {
+#if ENABLE_UI_FAIRYGUI
+            await GameApp.UI.OpenAsync<UIRoomListPanel>(UIGroupConstants.Window);
 #endif
         }
     }

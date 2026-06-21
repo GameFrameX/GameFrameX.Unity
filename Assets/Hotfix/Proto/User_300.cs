@@ -79,7 +79,6 @@ namespace Hotfix.Proto
 		[ProtoMember(6)]
 		public string Password { get; set; }
 
-
 		public override void Clear()
 		{
 			UserName = default;
@@ -134,7 +133,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			Code = default;
@@ -165,7 +163,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2)]
 		public string Name { get; set; }
 
-
 		public override void Clear()
 		{
 			Id = default;
@@ -192,7 +189,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			PlayerInfo = default;
@@ -212,7 +208,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public long Id { get; set; }
-
 
 		public override void Clear()
 		{
@@ -238,7 +233,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
-
 
 		public override void Clear()
 		{
@@ -288,7 +282,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(6)]
 		public ulong CurrentExp { get; set; }
-
 	}
 
 	/// <summary>
@@ -303,7 +296,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public long Id { get; set; }
-
 
 		public override void Clear()
 		{
@@ -342,7 +334,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			Code = default;
@@ -377,7 +368,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ErrCode = default;
@@ -410,7 +400,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
-
 
 		public override void Clear()
 		{

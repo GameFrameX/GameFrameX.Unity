@@ -53,7 +53,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2)]
 		public long Count { get; set; }
-
 	}
 
 	/// <summary>
@@ -89,7 +88,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemDic.Clear();
@@ -122,7 +120,6 @@ namespace Hotfix.Proto
 		[ProtoMember(3)]
 		public long Value { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemId = default;
@@ -145,7 +142,6 @@ namespace Hotfix.Proto
 		[ProtoMap(DisableMap = true)]
 		public Dictionary<int, NotifyBagItem> ItemDic { get; set; } = new Dictionary<int, NotifyBagItem>();
 
-
 		public override void Clear()
 		{
 			ItemDic.Clear();
@@ -164,7 +160,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public int FragmentId { get; set; }
-
 
 		public override void Clear()
 		{
@@ -191,7 +186,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			PetId = default;
@@ -217,7 +211,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2)]
 		public long Count { get; set; }
-
 
 		public override void Clear()
 		{
@@ -251,7 +244,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemId = default;
@@ -278,7 +270,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2)]
 		public long Count { get; set; }
-
 
 		public override void Clear()
 		{
@@ -312,7 +303,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemId = default;
@@ -333,7 +323,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
-
 
 		public override void Clear()
 		{
@@ -361,7 +350,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemDic.Clear();
@@ -382,7 +370,6 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
 		public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
-
 
 		public override void Clear()
 		{
@@ -410,7 +397,6 @@ namespace Hotfix.Proto
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
 
-
 		public override void Clear()
 		{
 			ItemDic.Clear();
@@ -431,7 +417,6 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
 		public Dictionary<int, long> ItemDic { get; set; } = new Dictionary<int, long>();
-
 
 		public override void Clear()
 		{
@@ -458,7 +443,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2047)]
 		public int ErrorCode { get; set; }
-
 
 		public override void Clear()
 		{

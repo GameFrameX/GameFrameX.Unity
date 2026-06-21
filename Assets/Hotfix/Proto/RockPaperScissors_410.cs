@@ -37,126 +37,118 @@ using GameFrameX.Network.Runtime;
 namespace Hotfix.Proto
 {
 	/// <summary>
-	/// 
+	/// 石头剪刀布出拳
+	/// </summary>
+	public enum RockPaperScissorsGesture
+	{
+		/// <summary>
+		/// 未出拳
+		/// </summary>
+		None = 0,
+
+		/// <summary>
+		/// 石头
+		/// </summary>
+		Rock = 1,
+
+		/// <summary>
+		/// 剪刀
+		/// </summary>
+		Scissors = 2,
+
+		/// <summary>
+		/// 布
+		/// </summary>
+		Paper = 3,
+	}
+
+	/// <summary>
+	/// 石头剪刀布玩家信息
 	/// </summary>
 	[ProtoContract]
-	public sealed class FriendInfo
+	public sealed class RockPaperScissorsPlayerInfo
 	{
 		/// <summary>
 		/// 玩家ID
 		/// </summary>
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
+		public long RoleId { get; set; }
 
 		/// <summary>
-		/// 玩家名称
+		/// 是否已出拳
 		/// </summary>
 		[ProtoMember(2)]
-		public string PlayerName { get; set; }
-	}
+		public bool HasGesture { get; set; }
 
-	/// <summary>
-	/// 请求社交信息
-	/// </summary>
-	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 10)]
-	public sealed class ReqSocialInfo : MessageObject, IRequestMessage
-	{
-
-		public override void Clear()
-		{
-		}
-	}
-
-	/// <summary>
-	/// 响应社交信息
-	/// </summary>
-	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 11)]
-	public sealed class RespSocialInfo : MessageObject, IResponseMessage
-	{
 		/// <summary>
-		/// 返回的错误码
+		/// 出拳。未结算前对外为None，结算后显示真实出拳。
 		/// </summary>
-		[ProtoMember(2047)]
-		public int ErrorCode { get; set; }
-
-		public override void Clear()
-		{
-			ErrorCode = default;
-		}
+		[ProtoMember(3)]
+		public RockPaperScissorsGesture Gesture { get; set; }
 	}
 
 	/// <summary>
-	/// 请求删除好友
+	/// 石头剪刀布游戏信息
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 12)]
-	public sealed class ReqDeleteFriend : MessageObject, IRequestMessage
+	public sealed class RockPaperScissorsGameInfo
 	{
 		/// <summary>
-		/// 玩家ID
+		/// 房间ID
 		/// </summary>
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
+		public long RoomId { get; set; }
 
-		public override void Clear()
-		{
-			PlayerId = default;
-		}
+		/// <summary>
+		/// 当前局数
+		/// </summary>
+		[ProtoMember(2)]
+		public int Round { get; set; }
+
+		/// <summary>
+		/// 胜利玩家ID。平局为0。
+		/// </summary>
+		[ProtoMember(3)]
+		public long WinnerRoleId { get; set; }
+
+		/// <summary>
+		/// 玩家列表
+		/// </summary>
+		[ProtoMember(4)]
+		public List<RockPaperScissorsPlayerInfo> Players { get; set; } = new List<RockPaperScissorsPlayerInfo>();
 	}
 
 	/// <summary>
-	/// 响应删除好友
+	/// 请求石头剪刀布游戏信息
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 13)]
-	public sealed class RespDeleteFriend : MessageObject, IResponseMessage
+	[MessageTypeHandler(((410) << 16) + 10)]
+	public sealed class ReqRockPaperScissorsGameInfo : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 是否成功
+		/// 房间ID
 		/// </summary>
 		[ProtoMember(1)]
-		public bool Success { get; set; }
-
-		/// <summary>
-		/// 返回的错误码
-		/// </summary>
-		[ProtoMember(2047)]
-		public int ErrorCode { get; set; }
+		public long RoomId { get; set; }
 
 		public override void Clear()
 		{
-			Success = default;
-			ErrorCode = default;
+			RoomId = default;
 		}
 	}
 
 	/// <summary>
-	/// 请求好友列表
+	/// 返回石头剪刀布游戏信息
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 14)]
-	public sealed class ReqFriendList : MessageObject, IRequestMessage
-	{
-
-		public override void Clear()
-		{
-		}
-	}
-
-	/// <summary>
-	/// 响应好友列表
-	/// </summary>
-	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 15)]
-	public sealed class RespFriendList : MessageObject, IResponseMessage
+	[MessageTypeHandler(((410) << 16) + 11)]
+	public sealed class RespRockPaperScissorsGameInfo : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 好友列表
+		/// 游戏信息
 		/// </summary>
 		[ProtoMember(1)]
-		public List<FriendInfo> Friends { get; set; } = new List<FriendInfo>();
+		public RockPaperScissorsGameInfo GameInfo { get; set; }
 
 		/// <summary>
 		/// 返回的错误码
@@ -166,42 +158,49 @@ namespace Hotfix.Proto
 
 		public override void Clear()
 		{
-			Friends.Clear();
+			GameInfo = default;
 			ErrorCode = default;
 		}
 	}
 
 	/// <summary>
-	/// 请求添加好友
+	/// 请求石头剪刀布出拳
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 16)]
-	public sealed class ReqFriendByAdd : MessageObject, IRequestMessage
+	[MessageTypeHandler(((410) << 16) + 12)]
+	public sealed class ReqSubmitRockPaperScissorsGesture : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 玩家ID
+		/// 房间ID
 		/// </summary>
 		[ProtoMember(1)]
-		public long PlayerId { get; set; }
+		public long RoomId { get; set; }
+
+		/// <summary>
+		/// 出拳
+		/// </summary>
+		[ProtoMember(2)]
+		public RockPaperScissorsGesture Gesture { get; set; }
 
 		public override void Clear()
 		{
-			PlayerId = default;
+			RoomId = default;
+			Gesture = default;
 		}
 	}
 
 	/// <summary>
-	/// 响应添加好友
+	/// 返回石头剪刀布出拳
 	/// </summary>
 	[ProtoContract]
-	[MessageTypeHandler(((120) << 16) + 17)]
-	public sealed class RespFriendByAdd : MessageObject, IResponseMessage
+	[MessageTypeHandler(((410) << 16) + 13)]
+	public sealed class RespSubmitRockPaperScissorsGesture : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 是否成功
+		/// 游戏信息
 		/// </summary>
 		[ProtoMember(1)]
-		public bool Success { get; set; }
+		public RockPaperScissorsGameInfo GameInfo { get; set; }
 
 		/// <summary>
 		/// 返回的错误码
@@ -211,8 +210,72 @@ namespace Hotfix.Proto
 
 		public override void Clear()
 		{
-			Success = default;
+			GameInfo = default;
 			ErrorCode = default;
+		}
+	}
+
+	/// <summary>
+	/// 请求石头剪刀布再来一局
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((410) << 16) + 14)]
+	public sealed class ReqRestartRockPaperScissorsGame : MessageObject, IRequestMessage
+	{
+		/// <summary>
+		/// 房间ID
+		/// </summary>
+		[ProtoMember(1)]
+		public long RoomId { get; set; }
+
+		public override void Clear()
+		{
+			RoomId = default;
+		}
+	}
+
+	/// <summary>
+	/// 返回石头剪刀布再来一局
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((410) << 16) + 15)]
+	public sealed class RespRestartRockPaperScissorsGame : MessageObject, IResponseMessage
+	{
+		/// <summary>
+		/// 游戏信息
+		/// </summary>
+		[ProtoMember(1)]
+		public RockPaperScissorsGameInfo GameInfo { get; set; }
+
+		/// <summary>
+		/// 返回的错误码
+		/// </summary>
+		[ProtoMember(2047)]
+		public int ErrorCode { get; set; }
+
+		public override void Clear()
+		{
+			GameInfo = default;
+			ErrorCode = default;
+		}
+	}
+
+	/// <summary>
+	/// 通知石头剪刀布游戏变化
+	/// </summary>
+	[ProtoContract]
+	[MessageTypeHandler(((410) << 16) + 16)]
+	public sealed class NotifyRockPaperScissorsGameChanged : MessageObject, INotifyMessage
+	{
+		/// <summary>
+		/// 游戏信息
+		/// </summary>
+		[ProtoMember(1)]
+		public RockPaperScissorsGameInfo GameInfo { get; set; }
+
+		public override void Clear()
+		{
+			GameInfo = default;
 		}
 	}
 

@@ -44,11 +44,12 @@ namespace Hotfix.Proto
 		/// <summary>
 		/// 成功
 		/// </summary>
-		Success = 0, 
+		Success = 0,
+
 		/// <summary>
 		/// 失败
 		/// </summary>
-		Failed = 1, 
+		Failed = 1,
 	}
 
 	/// <summary>
@@ -59,15 +60,17 @@ namespace Hotfix.Proto
 		/// <summary>
 		/// 手机
 		/// </summary>
-		Mobile = 0, 
+		Mobile = 0,
+
 		/// <summary>
 		/// 
 		/// </summary>
-		Home = 1, 
+		Home = 1,
+
 		/// <summary>
 		/// 工作号码
 		/// </summary>
-		Work = 2, 
+		Work = 2,
 	}
 
 	/// <summary>
@@ -78,63 +81,77 @@ namespace Hotfix.Proto
 		/// <summary>
 		/// 成功
 		/// </summary>
-		Ok = 0, 
+		Ok = 0,
+
 		/// <summary>
 		/// 配置表错误
 		/// </summary>
-		ConfigErr = 1, 
+		ConfigErr = 1,
+
 		/// <summary>
 		/// 客户端传递参数错误
 		/// </summary>
-		ParamErr = 2, 
+		ParamErr = 2,
+
 		/// <summary>
 		/// 消耗不足
 		/// </summary>
-		CostNotEnough = 3, 
+		CostNotEnough = 3,
+
 		/// <summary>
 		/// 未开通服务
 		/// </summary>
-		Forbidden = 4, 
+		Forbidden = 4,
+
 		/// <summary>
 		/// 不存在
 		/// </summary>
-		NotFound = 5, 
+		NotFound = 5,
+
 		/// <summary>
 		/// 已经存在
 		/// </summary>
-		HasExist = 6, 
+		HasExist = 6,
+
 		/// <summary>
 		/// 账号不存在或为空
 		/// </summary>
-		AccountCannotBeNull = 7, 
+		AccountCannotBeNull = 7,
+
 		/// <summary>
 		/// 无法执行数据库修改
 		/// </summary>
-		Unprocessable = 8, 
+		Unprocessable = 8,
+
 		/// <summary>
 		/// 未知平台
 		/// </summary>
-		UnknownPlatform = 9, 
+		UnknownPlatform = 9,
+
 		/// <summary>
 		/// 正常通知
 		/// </summary>
-		Notice = 10, 
+		Notice = 10,
+
 		/// <summary>
 		/// 功能未开启，主消息屏蔽
 		/// </summary>
-		FuncNotOpen = 11, 
+		FuncNotOpen = 11,
+
 		/// <summary>
 		/// 其他
 		/// </summary>
-		Other = 12, 
+		Other = 12,
+
 		/// <summary>
 		/// 内部服务错误
 		/// </summary>
-		InternalServerError = 13, 
+		InternalServerError = 13,
+
 		/// <summary>
 		/// 通知客户端服务器人数已达上限
 		/// </summary>
-		ServerFullyLoaded = 14, 
+		ServerFullyLoaded = 14,
 	}
 
 	/// <summary>
@@ -154,7 +171,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(2)]
 		public PhoneType Type { get; set; }
-
 	}
 
 	/// <summary>
@@ -186,7 +202,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(4)]
 		public List<PhoneNumber> Phones { get; set; } = new List<PhoneNumber>();
-
 	}
 
 	/// <summary>
@@ -200,7 +215,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public List<Person> People { get; set; } = new List<Person>();
-
 	}
 
 }

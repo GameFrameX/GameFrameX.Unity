@@ -49,7 +49,6 @@ namespace Hotfix.Proto
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
 
-
 		public override void Clear()
 		{
 			Timestamp = default;
@@ -68,7 +67,6 @@ namespace Hotfix.Proto
 		/// </summary>
 		[ProtoMember(1)]
 		public long Timestamp { get; set; }
-
 
 		public override void Clear()
 		{

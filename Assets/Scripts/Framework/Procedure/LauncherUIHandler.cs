@@ -33,7 +33,11 @@ namespace GameFrameX.Startup.Application
 #if ENABLE_UI_FAIRYGUI
             FairyGUI.UIObjectFactory.SetLoaderExtension(typeof(FairyGuiExtensionLoader));
 #endif
+#if ENABLE_UI_UGUI
+            await StartAsync("UI/UILauncher/UGUI");
+#else
             await StartAsync("UI/UILauncher");
+#endif
         }
 
         /// <summary>

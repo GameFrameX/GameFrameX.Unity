@@ -33,6 +33,10 @@ namespace GameFrameX.Startup.Application
                 startupOptions.Channel = BlankGetChannel.GetChannelName();
                 startupOptions.SubChannel = BlankGetChannel.GetChannelName("sub_channel", "default");
                 startupOptions.PackageName = UnityEngine.Application.identifier;
+#if ENABLE_UI_UGUI
+                startupOptions.LauncherUIResName = "UI/UILauncher/UGUI/UILauncher";
+#endif
+
                 await UniTask.DelayFrame(10);
                 var result = await StartupRunner.Run(startupOptions, new ApplicationStartupUIHandler(), new ApplicationHotfixLauncher());
 

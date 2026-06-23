@@ -45,6 +45,22 @@ namespace Hotfix.UI
 			get { return bag_button;}
 		}
 
+		[SerializeField] [UGUIElementProperty("room_button/Text")]
+		private UnityEngine.UI.Text room_button_Text;
+
+		public UnityEngine.UI.Text m_room_button_Text
+		{
+			get { return room_button_Text;}
+		}
+
+		[SerializeField] [UGUIElementProperty("room_button")]
+		private UnityEngine.UI.Button room_button;
+
+		public UnityEngine.UI.Button m_room_button
+		{
+			get { return room_button;}
+		}
+
 		[SerializeField] [UGUIElementProperty("player_icon")]
 		private GameFrameX.UI.UGUI.Runtime.UIImage player_icon;
 
@@ -85,6 +101,8 @@ namespace Hotfix.UI
 			BgImage = gameObject.transform.FindChildName("BgImage").GetComponent<UnityEngine.UI.Image>();
 			bag_button_Text = gameObject.transform.FindChildName("bag_button/Text").GetComponent<UnityEngine.UI.Text>();
 			bag_button = gameObject.transform.FindChildName("bag_button").GetComponent<UnityEngine.UI.Button>();
+			room_button_Text = gameObject.transform.FindChildName("room_button/Text").GetComponent<UnityEngine.UI.Text>();
+			room_button = gameObject.transform.FindChildName("room_button").GetComponent<UnityEngine.UI.Button>();
 			player_icon = gameObject.transform.FindChildName("player_icon").GetComponent<GameFrameX.UI.UGUI.Runtime.UIImage>();
 			player_name = gameObject.transform.FindChildName("player_name").GetComponent<UnityEngine.UI.Text>();
 			player_level = gameObject.transform.FindChildName("player_level").GetComponent<UnityEngine.UI.Text>();

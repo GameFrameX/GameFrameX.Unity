@@ -38,6 +38,8 @@ namespace Hotfix.UI
             {
                 m_room_button.onClick.Set(OnRoomBtnClick);
             }
+#elif ENABLE_UI_UGUI
+            m_room_button.onClick.Set(OnRoomBtnClick);
 #endif
         }
 
@@ -54,9 +56,7 @@ namespace Hotfix.UI
 
         private async void OnRoomBtnClick()
         {
-#if ENABLE_UI_FAIRYGUI
             await GameApp.UI.OpenAsync<UIRoomListPanel>(UIGroupConstants.Window);
-#endif
         }
     }
 }

@@ -1,4 +1,4 @@
-#if ENABLE_UI_FAIRYGUI
+#if ENABLE_UI_UGUI
 using GameFrameX.UI.Runtime;
 
 namespace Hotfix.UI

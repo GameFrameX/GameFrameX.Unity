@@ -1,11 +1,12 @@
-#if ENABLE_UI_FAIRYGUI
+#if ENABLE_UI_UGUI
+using Cysharp.Threading.Tasks;
 using GameFrameX.UI.Runtime;
 
 namespace Hotfix.UI
 {
-    public sealed partial class UIRoomResultPopup
+    public sealed partial class UIRoomListPanel
     {
-        private UIRoomResultPopupController _controller;
+        private UIRoomListPanelController _controller;
 
         public override void OnAwake()
         {
@@ -13,10 +14,11 @@ namespace Hotfix.UI
             base.OnAwake();
         }
 
-        public override void OnOpen(object userData)
+        public override async void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            _controller = new UIRoomResultPopupController(this);
+            await EnsureItemPrefabLoaded();
+            _controller = new UIRoomListPanelController(this, () => IsDisposed);
             _controller.OnOpen();
         }
 

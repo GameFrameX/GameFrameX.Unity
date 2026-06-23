@@ -1,11 +1,11 @@
-#if ENABLE_UI_FAIRYGUI
+#if ENABLE_UI_UGUI
 using GameFrameX.UI.Runtime;
 
 namespace Hotfix.UI
 {
-    public sealed partial class UIRoomResultPopup
+    public sealed partial class UIRoomBattlePanel
     {
-        private UIRoomResultPopupController _controller;
+        private UIRoomBattlePanelController _controller;
 
         public override void OnAwake()
         {
@@ -16,7 +16,7 @@ namespace Hotfix.UI
         public override void OnOpen(object userData)
         {
             base.OnOpen(userData);
-            _controller = new UIRoomResultPopupController(this);
+            _controller = new UIRoomBattlePanelController(this, () => IsDisposed);
             _controller.OnOpen();
         }
 

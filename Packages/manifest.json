@@ -5,7 +5,7 @@
     "com.gameframex.unity.asset": "3.1.0",
     "com.gameframex.unity.config": "1.2.0",
     "com.gameframex.unity.coroutine": "1.1.0",
-    "com.gameframex.unity.cysharp.unitask": "https://cnb.cool/gameframex/com.gameframex.unity.cysharp.unitask.git",
+    "com.gameframex.unity.cysharp.unitask": "2.6.1",
     "com.gameframex.unity.demigiant.dotween": "1.1.2",
     "com.gameframex.unity.download": "1.2.0",
     "com.gameframex.unity.entity": "2.4.5",
@@ -41,6 +41,7 @@
     "com.unity.ide.rider": "3.0.40",
     "com.unity.ide.visualstudio": "2.0.27",
     "com.unity.test-framework": "1.1.33",
+    "com.unity.textmeshpro": "3.0.9",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -61,15 +62,19 @@
     "com.unity.modules.unitywebrequestwww": "1.0.0",
     "com.unity.modules.video": "1.0.0"
   },
-  "testables": [
-    "com.gameframex.unity.startup"
-  ],
   "scopedRegistries": [
     {
       "name": "GameFrameX",
       "url": "https://gameframex.upm.alianblank.uk",
       "scopes": [
         "com.gameframex"
+      ]
+    },
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "io.sentry"
       ]
     }
   ]

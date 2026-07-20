@@ -95,6 +95,9 @@ namespace Hotfix.UI
             await GameApp.UI.OpenFullScreenAsync<UIMain>(Utility.Asset.Path.GetUIPath(nameof(UIMain)), UIGroupConstants.Floor);
             GameApp.UI.CloseUIForm(this);
             await BagManager.Instance.RequestGetBagInfo();
+            // 拉取玩家属性快照并启用最小调试展示入口（Server -> Unity 端到端验证）
+            await PlayerAttributeManager.Instance.RequestGetPlayerAttribute();
+            PlayerAttributeDebugOverlay.EnsureExists();
         }
 
         PlayerInfo m_SelectedPlayerInfo;

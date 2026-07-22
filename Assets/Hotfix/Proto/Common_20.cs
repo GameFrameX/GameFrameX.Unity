@@ -74,7 +74,7 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 操作错误代码
+	/// 操作错误代码（客户端与服务器之间的业务错误码）
 	/// </summary>
 	public enum OperationStatusCode
 	{
@@ -152,6 +152,21 @@ namespace Hotfix.Proto
 		/// 通知客户端服务器人数已达上限
 		/// </summary>
 		ServerFullyLoaded = 14,
+
+		/// <summary>
+		/// 不支持的操作（如未实现的奖励类型路由）
+		/// </summary>
+		Unsupported = 15,
+
+		/// <summary>
+		/// 奖励参数非法
+		/// </summary>
+		InvalidReward = 16,
+
+		/// <summary>
+		/// 部分成功（多项发放中仅部分成功）
+		/// </summary>
+		PartialSuccess = 17,
 	}
 
 	/// <summary>

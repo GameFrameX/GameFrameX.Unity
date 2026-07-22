@@ -14,6 +14,22 @@ using Hotfix.Proto;
 namespace Hotfix.Manager
 {
     /// <summary>
+    /// 客户端玩家属性编号映射。数值必须与服务端 GameFrameX.Server 的 AttributeType 最终值槽保持一致。
+    /// </summary>
+    public enum PlayerAttributeType
+    {
+        Hp = 1,
+        PhysAtk = 2,
+        MagicAtk = 3,
+        PhysDef = 4,
+        MagicDef = 5,
+        Crit = 6,
+        CritDamage = 7,
+        Accuracy = 8,
+        Block = 9,
+    }
+
+    /// <summary>
     /// 玩家属性管理器。消费服务端属性快照与增量变化，维护客户端缓存并派发变化事件。
     /// 权威在服务端（GameFrameX.Server#88），客户端不拥有权威属性计算、不写服务端属性。
     /// </summary>
@@ -57,6 +73,27 @@ namespace Hotfix.Manager
         }
 
         /// <summary>
+        /// 监听服务端属性完整快照通知。登录后或重连时用快照覆盖本地旧缓存。
+        /// </summary>
+        /// <param name="msg">属性快照通知</param>
+        [MessageHandler(typeof(NotifyPlayerAttributeSync), nameof(NotifyPlayerAttributeSync))]
+        private void NotifyPlayerAttributeSync(NotifyPlayerAttributeSync msg)
+        {
+            var snapshot = new Dictionary<int, long>();
+            if (msg != null && msg.Attributes != null)
+            {
+                foreach (var attribute in msg.Attributes)
+                {
+                    snapshot[attribute.Type] = attribute.Value;
+                }
+            }
+
+            var oldSnapshot = _cache.GetSnapshot();
+            var changed = _cache.ReplaceAll(snapshot, oldSnapshot);
+            GameApp.Event.Fire(this, PlayerAttributeChangedEventArgs.Create(changed));
+        }
+
+        /// <summary>
         /// 将当前缓存快照写入目标集合
         /// </summary>
         /// <param name="target">目标集合</param>
@@ -72,7 +109,12 @@ namespace Hotfix.Manager
         [MessageHandler(typeof(NotifyPlayerAttributeChanged), nameof(NotifyPlayerAttributeChanged))]
         private void NotifyPlayerAttributeChanged(NotifyPlayerAttributeChanged msg)
         {
-            var changed = _cache.ApplyChanges(msg.AttributeDic);
+            if (msg == null)
+            {
+                return;
+            }
+
+            var changed = _cache.ApplyChanges(new Dictionary<int, long> { { msg.Type, msg.Value } });
             if (changed.Count <= 0)
             {
                 // 无实际变化，不重复派发
@@ -85,19 +127,10 @@ namespace Hotfix.Manager
         /// <summary>
         /// 请求玩家属性快照。服务端返回后清空旧缓存再填充（重连/重新登录快照覆盖）。
         /// </summary>
-        public async UniTask RequestGetPlayerAttribute()
+        public UniTask RequestGetPlayerAttribute()
         {
-            var resp = await GameApp.Network.GetNetworkChannel("network").Call<RespPlayerAttribute>(new ReqPlayerAttribute());
-            if (resp.ErrorCode != default)
-            {
-                Log.Warning("请求玩家属性失败，错误码:" + resp.ErrorCode);
-                return;
-            }
-
-            var oldSnapshot = _cache.GetSnapshot();
-            var changed = _cache.ReplaceAll(resp.AttributeDic, oldSnapshot);
-            // 快照整体替换：即便集合为空也派发一次，通知 UI 整体刷新（重连覆盖语义）
-            GameApp.Event.Fire(this, PlayerAttributeChangedEventArgs.Create(changed));
+            // 服务端在登录成功后主动推送 NotifyPlayerAttributeSync；这里保留 awaitable 入口兼容登录流程。
+            return UniTask.CompletedTask;
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
 using Hotfix.Events;
+using Hotfix.Manager;
 using Hotfix.Proto;
 using UnityEngine;
 

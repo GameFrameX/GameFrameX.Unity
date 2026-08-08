@@ -37,13 +37,13 @@ using GameFrameX.Network.Runtime;
 namespace Hotfix.Proto
 {
 	/// <summary>
-	/// 
+	/// 背包道具
 	/// </summary>
 	[ProtoContract]
 	public sealed class BagItem
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -76,7 +76,7 @@ namespace Hotfix.Proto
 	public sealed class RespBagInfo : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 
+		/// 道具字典，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -96,14 +96,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 
+	/// 通知背包道具变化
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 12)]
 	public sealed class NotifyBagItem : MessageObject, INotifyMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -136,7 +136,7 @@ namespace Hotfix.Proto
 	public sealed class NotifyBagInfoChanged : MessageObject, INotifyMessage
 	{
 		/// <summary>
-		/// 变化的道具，key:道具id，value:数量
+		/// 变化的道具，key:道具ID，value:变化信息
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -156,7 +156,7 @@ namespace Hotfix.Proto
 	public sealed class ReqComposePet : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 碎片id
+		/// 碎片ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int FragmentId { get; set; }
@@ -175,7 +175,7 @@ namespace Hotfix.Proto
 	public sealed class RespComposePet : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 合成宠物的Id
+		/// 合成宠物的ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int PetId { get; set; }
@@ -201,7 +201,7 @@ namespace Hotfix.Proto
 	public sealed class ReqUseItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -220,14 +220,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 请求使用道具
+	/// 返回使用道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 17)]
 	public sealed class RespUseItem : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -253,14 +253,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 丢弃物品请求
+	/// 请求丢弃道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 18)]
 	public sealed class ReqDiscardItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -279,14 +279,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 丢弃物品返回
+	/// 返回丢弃道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 19)]
 	public sealed class RespDiscardItem : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -312,14 +312,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 出售道具
+	/// 请求出售道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 20)]
 	public sealed class ReqSellItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 道具id
+		/// 道具ID
 		/// </summary>
 		[ProtoMember(1)]
 		public int ItemId { get; set; }
@@ -331,14 +331,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 出售道具
+	/// 返回出售道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 21)]
-	public sealed class RespItemChange : MessageObject, IResponseMessage
+	public sealed class RespSellItem : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 变化的道具
+		/// 变化的道具，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -358,14 +358,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 增加道具
+	/// 请求增加道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 22)]
 	public sealed class ReqAddItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 
+		/// 增加的道具，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -378,14 +378,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 增加道具返回
+	/// 返回增加道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 23)]
 	public sealed class RespAddItem : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 变化的道具
+		/// 变化的道具，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -405,14 +405,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 减少道具
+	/// 请求减少道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 24)]
 	public sealed class ReqRemoveItem : MessageObject, IRequestMessage
 	{
 		/// <summary>
-		/// 
+		/// 减少的道具，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]
@@ -425,14 +425,14 @@ namespace Hotfix.Proto
 	}
 
 	/// <summary>
-	/// 减少道具返回
+	/// 返回减少道具
 	/// </summary>
 	[ProtoContract]
 	[MessageTypeHandler(((100) << 16) + 25)]
 	public sealed class RespRemoveItem : MessageObject, IResponseMessage
 	{
 		/// <summary>
-		/// 变化的道具
+		/// 变化的道具，key:道具ID，value:数量
 		/// </summary>
 		[ProtoMember(1)]
 		[ProtoMap(DisableMap = true)]

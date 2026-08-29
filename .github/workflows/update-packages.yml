@@ -1,0 +1,42 @@
+name: Update Packages
+
+# 上游 gameframex 包发版（public-github-actions publish-release.yml 末尾 dispatch 触发）
+# 或每周一兜底 + 手动触发：查 registry 最新版，bump Packages/manifest.json 并直推 main
+on:
+  repository_dispatch:
+    types: [package-released]
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+
+      - name: Bump manifest versions
+        id: bump
+        run: |
+          node scripts/update-gameframex-packages.mjs | tee /tmp/changes.txt
+          if grep -q '^NO_CHANGES$' /tmp/changes.txt; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.bump.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Packages/manifest.json
+          printf 'chore(deps): bump gameframex packages\n\n%s\n' "$(cat /tmp/changes.txt)" | git commit -F -
+          git push

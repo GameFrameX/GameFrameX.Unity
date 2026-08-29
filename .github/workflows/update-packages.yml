@@ -1,42 +1,19 @@
 name: Update Packages
 
 # 上游 gameframex 包发版（public-github-actions publish-release.yml 末尾 dispatch 触发）
-# 或每周一兜底 + 手动触发：查 registry 最新版，bump Packages/manifest.json 并直推 main
+# 或每天北京时间凌晨 3 点（UTC 19:00）定时 + 手动触发：
+# 由公共可重用工作流查 registry 最新版，bump Packages/manifest.json 并直推 main
 on:
   repository_dispatch:
     types: [package-released]
   schedule:
-    - cron: "0 2 * * 1"
+    - cron: "0 19 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  bump-manifest:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "lts/*"
-
-      - name: Bump manifest versions
-        id: bump
-        run: |
-          node scripts/update-gameframex-packages.mjs | tee /tmp/changes.txt
-          if grep -q '^NO_CHANGES$' /tmp/changes.txt; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Commit and push
-        if: steps.bump.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Packages/manifest.json
-          printf 'chore(deps): bump gameframex packages\n\n%s\n' "$(cat /tmp/changes.txt)" | git commit -F -
-          git push
+  update-packages:
+    # 引用外部仓库的可重用工作流
+    # 权限由外部工作流统一配置，无需在调用方声明
+    uses: GameFrameX/public-github-actions/.github/workflows/update-packages.yml@main
+    # 组织级别已配置密钥，可以使用 inherit 继承所有密钥
+    secrets: inherit

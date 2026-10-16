@@ -26,6 +26,8 @@ namespace Hotfix.UI
             _binder = binder;
             _isDisposedGetter = isDisposedGetter;
         }
+        private bool _moveInFlight;
+
 
         public void OnOpen()
         {
@@ -37,7 +39,7 @@ namespace Hotfix.UI
                 CloseSelf,
                 () => RoomDataManager.Instance.StartGame().Forget(),
                 () => ConnectFourDataManager.Instance.RestartGame().Forget(),
-                column => ConnectFourDataManager.Instance.SubmitMove(column).Forget());
+                column => SubmitMove(column));
 
             if (RoomDataManager.Instance.CurrentRoom == null)
             {
@@ -58,14 +60,31 @@ namespace Hotfix.UI
 
         private void OnRoomChanged(object sender, GameEventArgs e)
         {
+            _moveInFlight = false;
             Refresh();
             TryOpenResultPopup().Forget();
         }
 
         private void OnGameChanged(object sender, GameEventArgs e)
         {
+            _moveInFlight = false;
             Refresh();
             TryOpenResultPopup().Forget();
+        }
+
+        /// <summary>
+        /// 提交落子并悲观锁定列按钮：请求往返窗口内禁止重复提交，收到任一玩法数据变化后解锁。
+        /// </summary>
+        private void SubmitMove(int column)
+        {
+            if (!ConnectFourDataManager.Instance.CanSubmitMove() || _moveInFlight)
+            {
+                return;
+            }
+
+            _moveInFlight = true;
+            _binder.SetColumnButtonsEnabled(false);
+            ConnectFourDataManager.Instance.SubmitMove(column).Forget();
         }
 
         private void Refresh()

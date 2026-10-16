@@ -212,7 +212,8 @@ namespace Hotfix.Manager
             var room = RoomDataManager.Instance.CurrentRoom;
             return room != null
                 && RoomDataManager.Instance.IsCurrentPlayerOwner()
-                && room.Status == RoomStatus.Settled;
+                && room.Status == RoomStatus.Settled
+                && HasRevealedResult();
         }
 
         public bool HasRevealedResult()

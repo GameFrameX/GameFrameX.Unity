@@ -38,7 +38,7 @@ namespace Hotfix.UI
         void IConnectFourBattlePanelBinder.SetCell(int displayIndex, ConnectFourCell cell)
         {
             EnsureCellCache();
-            if (displayIndex < 0 || displayIndex >= _cells.Length || _cells[displayIndex] == null)
+            if (_cells == null || displayIndex < 0 || displayIndex >= _cells.Length || _cells[displayIndex] == null)
             {
                 return;
             }
@@ -49,6 +49,11 @@ namespace Hotfix.UI
         void IConnectFourBattlePanelBinder.SetColumnButtonsEnabled(bool enabled)
         {
             EnsureColumnButtonCache();
+            if (_columnButtons == null)
+            {
+                return;
+            }
+
             foreach (var button in _columnButtons)
             {
                 SetButtonEnabled(button, enabled);
@@ -77,10 +82,21 @@ namespace Hotfix.UI
             m_close_button.self.onClick.Set(() => onClose());
             m_start_button.self.onClick.Set(() => onStart());
             m_restart_button.self.onClick.Set(() => onRestart());
+            if (_columnButtons == null)
+            {
+                return;
+            }
+
             for (var column = 0; column < _columnButtons.Length; column++)
             {
+                var button = _columnButtons[column];
+                if (button == null)
+                {
+                    continue;
+                }
+
                 var capturedColumn = column;
-                _columnButtons[column].onClick.Set(() => onColumn(capturedColumn));
+                button.onClick.Set(() => onColumn(capturedColumn));
             }
         }
 
@@ -91,9 +107,17 @@ namespace Hotfix.UI
             m_close_button.self.onClick.Clear();
             m_start_button.self.onClick.Clear();
             m_restart_button.self.onClick.Clear();
+            if (_columnButtons == null)
+            {
+                return;
+            }
+
             foreach (var button in _columnButtons)
             {
-                button.onClick.Clear();
+                if (button != null)
+                {
+                    button.onClick.Clear();
+                }
             }
         }
 
@@ -104,10 +128,21 @@ namespace Hotfix.UI
                 return;
             }
 
-            _cells = new GGraph[42];
-            for (var displayIndex = 0; displayIndex < _cells.Length; displayIndex++)
+            var cells = new GGraph[42];
+            var complete = true;
+            for (var displayIndex = 0; displayIndex < cells.Length; displayIndex++)
             {
-                _cells[displayIndex] = (GGraph)GetChild("cell_" + displayIndex);
+                cells[displayIndex] = (GGraph)GetChild("cell_" + displayIndex);
+                if (cells[displayIndex] == null)
+                {
+                    complete = false;
+                }
+            }
+
+            // 存在缺失节点时不缓存，下次刷新重试——避免 FUI 包异步预加载时序下缓存出幽灵空棋盘
+            if (complete)
+            {
+                _cells = cells;
             }
         }
 
@@ -118,10 +153,20 @@ namespace Hotfix.UI
                 return;
             }
 
-            _columnButtons = new GButton[7];
-            for (var column = 0; column < _columnButtons.Length; column++)
+            var buttons = new GButton[7];
+            var complete = true;
+            for (var column = 0; column < buttons.Length; column++)
             {
-                _columnButtons[column] = (GButton)GetChild("column_button_" + column);
+                buttons[column] = (GButton)GetChild("column_button_" + column);
+                if (buttons[column] == null)
+                {
+                    complete = false;
+                }
+            }
+
+            if (complete)
+            {
+                _columnButtons = buttons;
             }
         }
 

@@ -15,7 +15,7 @@ namespace Hotfix.UI
     {
         public const string UIPackageName = "UIConnectFour";
         public const string UIResName = "UIConnectFourBattlePanel";
-        public const string URL = "ui://cfour1battl1";
+        public const string URL = "ui://cfour001battl1";
 
         /// <summary>
         /// {uiResName}的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。

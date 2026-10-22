@@ -10,15 +10,15 @@
 └─ title (GTextField, 160x54) [无绑定] "按钮"
 ```
 
-## UIConnectFourBattlePanel (UIConnectFourBattlePanel·GComponent, 1920x1080) [exported]
+## UIConnectFourBattlePanel (UIConnectFourBattlePanel·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1920x1080) → m_mask
-├─ window_bg (GGraph, 1668x936) → m_window_bg
-├─ top_bg (GGraph, 1588x110) → m_top_bg
+├─ mask (GGraph, 1080x2160) → m_mask
+├─ window_bg (GGraph, 960x1060) → m_window_bg
+├─ top_bg (GGraph, 880x110) → m_top_bg
 ├─ room_title_text (GTextField, 560x42) → m_room_title_text "房间 #0"
 ├─ room_state_text (GTextField, 620x30) → m_room_state_text "等待中 0/2  局数:1 …"
-├─ turn_text (GTextField, 570x38) → m_turn_text "等待开始"
+├─ turn_text (GTextField, 816x38) → m_turn_text "等待开始"
 ├─ leave_button (GButton, 96x52) → m_leave_button
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
@@ -96,5 +96,5 @@
 ├─ restart_button (GButton, 160x56) → m_restart_button
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-└─ tips_text (GTextField, 1588x34) → m_tips_text "点击列号落子，四…"
+└─ tips_text (GTextField, 880x34) → m_tips_text "点击列号落子，…"
 ```

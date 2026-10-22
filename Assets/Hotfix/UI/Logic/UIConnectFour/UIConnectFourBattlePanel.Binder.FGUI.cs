@@ -132,7 +132,7 @@ namespace Hotfix.UI
             var complete = true;
             for (var displayIndex = 0; displayIndex < cells.Length; displayIndex++)
             {
-                cells[displayIndex] = (GGraph)GetChild("cell_" + displayIndex);
+                cells[displayIndex] = (GGraph)GObject.asCom.GetChild("cell_" + displayIndex);
                 if (cells[displayIndex] == null)
                 {
                     complete = false;
@@ -157,7 +157,7 @@ namespace Hotfix.UI
             var complete = true;
             for (var column = 0; column < buttons.Length; column++)
             {
-                buttons[column] = (GButton)GetChild("column_button_" + column);
+                buttons[column] = (GButton)GObject.asCom.GetChild("column_button_" + column);
                 if (buttons[column] == null)
                 {
                     complete = false;

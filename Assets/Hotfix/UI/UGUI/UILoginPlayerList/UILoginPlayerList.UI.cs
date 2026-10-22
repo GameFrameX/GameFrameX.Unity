@@ -11,11 +11,11 @@ using UnityEngine;
 namespace Hotfix.UI
 {
 	/// <summary>
-	/// 代码生成的UI代码UIPlayerList
+	/// 代码生成的UI代码UILoginPlayerList
 	/// </summary>
 	[DisallowMultipleComponent]
 	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
-	public sealed partial class UIPlayerList : UGUI
+	public sealed partial class UILoginPlayerList : UGUI
 	{
 		public GameObject self { get; private set; }
 

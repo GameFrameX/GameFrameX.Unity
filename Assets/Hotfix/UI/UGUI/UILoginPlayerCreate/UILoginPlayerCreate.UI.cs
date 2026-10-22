@@ -11,38 +11,38 @@ using UnityEngine;
 namespace Hotfix.UI
 {
 	/// <summary>
-	/// 代码生成的UI代码UIPlayerCreate
+	/// 代码生成的UI代码UILoginPlayerCreate
 	/// </summary>
 	[DisallowMultipleComponent]
 	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
-	public sealed partial class UIPlayerCreate : UGUI
+	public sealed partial class UILoginPlayerCreate : UGUI
 	{
 		public GameObject self { get; private set; }
 
 		#region Properties
 
-		[SerializeField] [UGUIElementProperty("UserName/Placeholder")]
-		private UnityEngine.UI.Text UserName_Placeholder;
+		[SerializeField] [UGUIElementProperty("user_name/Placeholder")]
+		private UnityEngine.UI.Text user_name_Placeholder;
 
-		public UnityEngine.UI.Text m_UserName_Placeholder
+		public UnityEngine.UI.Text m_user_name_Placeholder
 		{
-			get { return UserName_Placeholder;}
+			get { return user_name_Placeholder;}
 		}
 
-		[SerializeField] [UGUIElementProperty("UserName/Text")]
-		private UnityEngine.UI.Text UserName_Text;
+		[SerializeField] [UGUIElementProperty("user_name/Text")]
+		private UnityEngine.UI.Text user_name_Text;
 
-		public UnityEngine.UI.Text m_UserName_Text
+		public UnityEngine.UI.Text m_user_name_Text
 		{
-			get { return UserName_Text;}
+			get { return user_name_Text;}
 		}
 
-		[SerializeField] [UGUIElementProperty("UserName")]
-		private UnityEngine.UI.InputField UserName;
+		[SerializeField] [UGUIElementProperty("user_name")]
+		private UnityEngine.UI.InputField user_name;
 
-		public UnityEngine.UI.InputField m_UserName
+		public UnityEngine.UI.InputField m_user_name
 		{
-			get { return UserName;}
+			get { return user_name;}
 		}
 
 		[SerializeField] [UGUIElementProperty("enter/Text")]
@@ -61,12 +61,12 @@ namespace Hotfix.UI
 			get { return enter;}
 		}
 
-		[SerializeField] [UGUIElementProperty("ErrorText")]
-		private UnityEngine.UI.Text ErrorText;
+		[SerializeField] [UGUIElementProperty("error_text")]
+		private UnityEngine.UI.Text error_text;
 
-		public UnityEngine.UI.Text m_ErrorText
+		public UnityEngine.UI.Text m_error_text
 		{
-			get { return ErrorText;}
+			get { return error_text;}
 		}
 
 		[SerializeField] [UGUIElementProperty("UserNameText")]
@@ -90,12 +90,12 @@ namespace Hotfix.UI
 
 			_isInitView = true;
 			this.self = this.gameObject;
-			UserName_Placeholder = gameObject.transform.FindChildName("UserName/Placeholder").GetComponent<UnityEngine.UI.Text>();
-			UserName_Text = gameObject.transform.FindChildName("UserName/Text").GetComponent<UnityEngine.UI.Text>();
-			UserName = gameObject.transform.FindChildName("UserName").GetComponent<UnityEngine.UI.InputField>();
+			user_name_Placeholder = gameObject.transform.FindChildName("user_name/Placeholder").GetComponent<UnityEngine.UI.Text>();
+			user_name_Text = gameObject.transform.FindChildName("user_name/Text").GetComponent<UnityEngine.UI.Text>();
+			user_name = gameObject.transform.FindChildName("user_name").GetComponent<UnityEngine.UI.InputField>();
 			enter_Text = gameObject.transform.FindChildName("enter/Text").GetComponent<UnityEngine.UI.Text>();
 			enter = gameObject.transform.FindChildName("enter").GetComponent<UnityEngine.UI.Button>();
-			ErrorText = gameObject.transform.FindChildName("ErrorText").GetComponent<UnityEngine.UI.Text>();
+			error_text = gameObject.transform.FindChildName("error_text").GetComponent<UnityEngine.UI.Text>();
 			UserNameText = gameObject.transform.FindChildName("UserNameText").GetComponent<UnityEngine.UI.Text>();
 		}
 	}

@@ -11,11 +11,11 @@ using UnityEngine;
 namespace Hotfix.UI
 {
 	/// <summary>
-	/// 代码生成的UI代码UIPlayerListItem
+	/// 代码生成的UI代码UILoginPlayerListItem
 	/// </summary>
 	[DisallowMultipleComponent]
 	[OptionUIConfig(null, "Assets/Bundles/UI/UILogin")]
-	public sealed partial class UIPlayerListItem : UGUI
+	public sealed partial class UILoginPlayerListItem : UGUI
 	{
 		public GameObject self { get; private set; }
 
@@ -55,9 +55,9 @@ namespace Hotfix.UI
 
 		#endregion
 
-		public static UIPlayerListItem Create(GameObject go)
+		public static UILoginPlayerListItem Create(GameObject go)
 		{
-			var ui = go.GetOrAddComponent<UIPlayerListItem>();
+			var ui = go.GetOrAddComponent<UILoginPlayerListItem>();
 			ui?.InitView();
 			return ui;
 		}
@@ -65,9 +65,9 @@ namespace Hotfix.UI
 		/// <summary>
 		/// 通过此方法获取的UGUI，在Dispose时不会释放GameObject，需要自行管理（一般在配合对象池机制时使用）。
 		/// </summary>
-		public static UIPlayerListItem GetFromPool(GameObject go)
+		public static UILoginPlayerListItem GetFromPool(GameObject go)
 		{
-			var ui = go.GetComponent<UIPlayerListItem>();
+			var ui = go.GetComponent<UILoginPlayerListItem>();
 			if (ui == null)
 			{
 				ui = Create(go);

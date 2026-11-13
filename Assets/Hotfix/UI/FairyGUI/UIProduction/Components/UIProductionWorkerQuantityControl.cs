@@ -22,12 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public UIProductionDecreaseButton m_decrease_button { get; private set; }
-		public UIProductionIncreaseButton m_increase_button { get; private set; }
-		public GImage m_quantity_background { get; private set; }
-		public GTextField m_value { get; private set; }
-		public UIProductionMaximumWorkersButton m_maximum_button { get; private set; }
-		public UIProductionMinimumWorkersButton m_minimum_button { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -75,12 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_decrease_button = UIProductionDecreaseButton.Create(com.GetChild("decrease_button"));
-				m_increase_button = UIProductionIncreaseButton.Create(com.GetChild("increase_button"));
-				m_quantity_background = (GImage)com.GetChild("quantity_background");
-				m_value = (GTextField)com.GetChild("value");
-				m_maximum_button = UIProductionMaximumWorkersButton.Create(com.GetChild("maximum_button"));
-				m_minimum_button = UIProductionMinimumWorkersButton.Create(com.GetChild("minimum_button"));
+
             }
         }
 
@@ -93,12 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_decrease_button = null;
-			m_increase_button = null;
-			m_quantity_background = null;
-			m_value = null;
-			m_maximum_button = null;
-			m_minimum_button = null;
+
             self = null;
         }
 

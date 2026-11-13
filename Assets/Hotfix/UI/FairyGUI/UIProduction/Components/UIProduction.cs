@@ -22,15 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public Controller m_tab { get; private set; }
-		public Controller m_window { get; private set; }
-		public GGraph m_screen_base_image { get; private set; }
-		public UIProductionScreenChrome m_screen_chrome { get; private set; }
-		public UIProductionBuildingsPanel m_buildings_panel { get; private set; }
-		public UIProductionProductionLinesPanel m_production_lines_panel { get; private set; }
-		public GGraph m_modal_dim_overlay { get; private set; }
-		public UIProductionCreateLineWindowFrame m_create_line_window_frame { get; private set; }
-		public UIProductionCreateLineContent m_create_line_content { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -78,15 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_tab = com.GetController("tab");
-				m_window = com.GetController("window");
-				m_screen_base_image = (GGraph)com.GetChild("screen_base_image");
-				m_screen_chrome = UIProductionScreenChrome.Create(com.GetChild("screen_chrome"));
-				m_buildings_panel = UIProductionBuildingsPanel.Create(com.GetChild("buildings_panel"));
-				m_production_lines_panel = UIProductionProductionLinesPanel.Create(com.GetChild("production_lines_panel"));
-				m_modal_dim_overlay = (GGraph)com.GetChild("modal_dim_overlay");
-				m_create_line_window_frame = UIProductionCreateLineWindowFrame.Create(com.GetChild("create_line_window_frame"));
-				m_create_line_content = UIProductionCreateLineContent.Create(com.GetChild("create_line_content"));
+
             }
         }
 
@@ -99,15 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_tab = null;
-			m_window = null;
-			m_screen_base_image = null;
-			m_screen_chrome = null;
-			m_buildings_panel = null;
-			m_production_lines_panel = null;
-			m_modal_dim_overlay = null;
-			m_create_line_window_frame = null;
-			m_create_line_content = null;
+
             self = null;
         }
 

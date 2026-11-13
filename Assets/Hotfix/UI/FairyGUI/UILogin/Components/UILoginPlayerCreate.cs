@@ -22,9 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GTextInput m_user_name { get; private set; }
-		public GButton m_enter { get; private set; }
-		public GTextField m_error_text { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -72,9 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_user_name = (GTextInput)com.GetChild("user_name");
-				m_enter = (GButton)com.GetChild("enter");
-				m_error_text = (GTextField)com.GetChild("error_text");
+
             }
         }
 
@@ -87,9 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_user_name = null;
-			m_enter = null;
-			m_error_text = null;
+
             self = null;
         }
 

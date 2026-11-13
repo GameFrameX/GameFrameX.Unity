@@ -22,9 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GButton m_enter_button { get; private set; }
-		public GButton m_cancel_button { get; private set; }
-		public GRichTextField m_content { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -72,9 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_enter_button = (GButton)com.GetChild("enter_button");
-				m_cancel_button = (GButton)com.GetChild("cancel_button");
-				m_content = (GRichTextField)com.GetChild("content");
+
             }
         }
 
@@ -87,9 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_enter_button = null;
-			m_cancel_button = null;
-			m_content = null;
+
             self = null;
         }
 

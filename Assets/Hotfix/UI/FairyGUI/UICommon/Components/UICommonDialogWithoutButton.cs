@@ -22,7 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GButton m_close_icon { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -70,7 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_close_icon = (GButton)com.GetChild("close_icon");
+
             }
         }
 
@@ -83,7 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_close_icon = null;
+
             self = null;
         }
 

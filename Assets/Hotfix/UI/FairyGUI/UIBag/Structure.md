@@ -9,9 +9,9 @@
 Controllers: IsSelectedItem(No, Yes)
 ├─ n22 (GImage, 1000x1024) [pkg=UICommon] [无绑定] ← 图层1_636
 ├─ n26 (GGraph, 1000x985) [无绑定]
-├─ list (GList, 988x628) → m_list
+├─ list (GList, 988x628) [无绑定]
 │     └─ defaultItem: UIBagItem (UIBagItem·GComponent)
-├─ info (GComponent, 940x200) → m_info
+├─ info (GComponent, 940x200) [无绑定]
 │  Controllers: IsCanUse(No, Yes)
 │  ├─ n28 (GGraph, 940x200)
 │  ├─ name_text (GTextField, 450x72) "夏日沙滩碎片"
@@ -31,7 +31,7 @@ Controllers: IsSelectedItem(No, Yes)
 │     ├─ n0 (GImage, 132x72) [pkg=UICommon] ← 图层1_697
 │     ├─ title (GTextField, 120x76)
 │     └─ icon (GLoader, 120x76)
-└─ type_list (GList, 960x124) → m_type_list
+└─ type_list (GList, 960x124) [无绑定]
       └─ defaultItem: UIBagTypeItem (GComponent)
 ```
 
@@ -40,19 +40,19 @@ Controllers: IsSelectedItem(No, Yes)
 ```text
 Controllers: IsCanUse(No, Yes)
 ├─ n28 (GGraph, 940x200) [无绑定]
-├─ name_text (GTextField, 450x72) → m_name_text "夏日沙滩碎片"
-├─ desc_text (GRichTextField, 446x141) → m_desc_text "消耗该随便可合…"
-├─ good_item (UICommonGoodItem·GButton, 160x160) [pkg=UICommon] → m_good_item
+├─ name_text (GTextField, 450x72) [无绑定] "夏日沙滩碎片"
+├─ desc_text (GRichTextField, 446x141) [无绑定] "消耗该随便可合…"
+├─ good_item (UICommonGoodItem·GButton, 160x160) [pkg=UICommon] [无绑定]
 │  Controllers: button(up, down)
 │  ├─ bg (GLoader, 160x160)
 │  ├─ gift (GLoader, 123x99)
 │  └─ number (GTextField, 120x42) "100"
-├─ use_button (UICommonYellowNormalButton·GButton, 242x100) [pkg=UICommon] → m_use_button
+├─ use_button (UICommonYellowNormalButton·GButton, 242x100) [pkg=UICommon] [无绑定]
 │  Controllers: button(up, down, over, selectedOver)
 │  ├─ n0 (GImage, 120x76) [pkg=UICommon] ← 图层1_698
 │  ├─ title (GTextField, 120x76)
 │  └─ icon (GLoader, 120x76)
-└─ get_source_button (UICommonBlueNormalButton·GButton, 242x100) [pkg=UICommon] → m_get_source_button
+└─ get_source_button (UICommonBlueNormalButton·GButton, 242x100) [pkg=UICommon] [无绑定]
    Controllers: button(up, down, over, selectedOver)
    ├─ n0 (GImage, 132x72) [pkg=UICommon] ← 图层1_697
    ├─ title (GTextField, 120x76)
@@ -72,9 +72,9 @@ Controllers: button(up, down)
 ## UIBag (UIBag·GComponent, 1080x2160) [exported]
 
 ```text
-├─ bg (GGraph, 1080x2160) → m_bg
+├─ bg (GGraph, 1080x2160) [无绑定]
 ├─ n39 (GTextField, 612x97) [无绑定] "点击空白处关闭"
-└─ content (GComponent, 1000x1024) → m_content
+└─ content (GComponent, 1000x1024) [无绑定]
    Controllers: IsSelectedItem(No, Yes)
    ├─ n22 (GImage, 1000x1024) [pkg=UICommon] ← 图层1_636
    ├─ n26 (GGraph, 1000x985)

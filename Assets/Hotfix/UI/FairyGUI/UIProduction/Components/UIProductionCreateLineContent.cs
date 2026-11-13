@@ -22,9 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public UIProductionProductCatalog m_product_catalog { get; private set; }
-		public GTextField m_production_line_instructions { get; private set; }
-		public GTextField m_production_recipe_instructions { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -72,9 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_product_catalog = UIProductionProductCatalog.Create(com.GetChild("product_catalog"));
-				m_production_line_instructions = (GTextField)com.GetChild("production_line_instructions");
-				m_production_recipe_instructions = (GTextField)com.GetChild("production_recipe_instructions");
+
             }
         }
 
@@ -87,9 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_product_catalog = null;
-			m_production_line_instructions = null;
-			m_production_recipe_instructions = null;
+
             self = null;
         }
 

@@ -22,15 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public Controller m_state { get; private set; }
-		public GImage m_product_card_shadow { get; private set; }
-		public GImage m_product_card_background { get; private set; }
-		public GImage m_product_card_highlight { get; private set; }
-		public GImage m_product_upper_gradient { get; private set; }
-		public GImage m_product_lower_gradient { get; private set; }
-		public GImage m_product_caption_background { get; private set; }
-		public GTextField m_title { get; private set; }
-		public GLoader m_product_image { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -78,15 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_state = com.GetController("state");
-				m_product_card_shadow = (GImage)com.GetChild("product_card_shadow");
-				m_product_card_background = (GImage)com.GetChild("product_card_background");
-				m_product_card_highlight = (GImage)com.GetChild("product_card_highlight");
-				m_product_upper_gradient = (GImage)com.GetChild("product_upper_gradient");
-				m_product_lower_gradient = (GImage)com.GetChild("product_lower_gradient");
-				m_product_caption_background = (GImage)com.GetChild("product_caption_background");
-				m_title = (GTextField)com.GetChild("title");
-				m_product_image = (GLoader)com.GetChild("product_image");
+
             }
         }
 
@@ -99,15 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_state = null;
-			m_product_card_shadow = null;
-			m_product_card_background = null;
-			m_product_card_highlight = null;
-			m_product_upper_gradient = null;
-			m_product_lower_gradient = null;
-			m_product_caption_background = null;
-			m_title = null;
-			m_product_image = null;
+
             self = null;
         }
 

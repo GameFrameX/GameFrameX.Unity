@@ -13,17 +13,17 @@
 ## UIMain (UIMain·GComponent, 1080x2160) [exported]
 
 ```text
-├─ bg (GLoader, 1080x2160) → m_bg
-├─ production_button (GButton, 119x100) → m_production_button
+├─ bg (GLoader, 1080x2160) [无绑定]
+├─ production_button (GButton, 119x100) [无绑定]
 │  ├─ n0 (GGraph, 325x100)
 │  └─ title (GTextField, 184x42) "获取背包信息"
-├─ bag_button (GButton, 119x100) → m_bag_button
+├─ bag_button (GButton, 119x100) [无绑定]
 │  ├─ n0 (GGraph, 325x100)
 │  └─ title (GTextField, 184x42) "获取背包信息"
-├─ room_button (GButton, 119x100) → m_room_button
+├─ room_button (GButton, 119x100) [无绑定]
 │  ├─ n0 (GGraph, 325x100)
 │  └─ title (GTextField, 184x42) "获取背包信息"
-├─ player_icon (GLoader, 164x164) → m_player_icon
-├─ player_name (GTextField, 376x61) → m_player_name
-└─ player_level (GTextField, 376x61) → m_player_level
+├─ player_icon (GLoader, 164x164) [无绑定]
+├─ player_name (GTextField, 376x61) [无绑定]
+└─ player_level (GTextField, 376x61) [无绑定]
 ```

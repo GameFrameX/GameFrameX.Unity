@@ -22,13 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_card_panel { get; private set; }
-		public GImage m_card_top_left_decoration { get; private set; }
-		public GImage m_card_top_divider { get; private set; }
-		public GImage m_card_bottom_divider { get; private set; }
-		public GTextField m_title { get; private set; }
-		public UIProductionWorkerQuantityControl m_quantity { get; private set; }
-		public GLoader m_building_image { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -76,13 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_card_panel = (GImage)com.GetChild("card_panel");
-				m_card_top_left_decoration = (GImage)com.GetChild("card_top_left_decoration");
-				m_card_top_divider = (GImage)com.GetChild("card_top_divider");
-				m_card_bottom_divider = (GImage)com.GetChild("card_bottom_divider");
-				m_title = (GTextField)com.GetChild("title");
-				m_quantity = UIProductionWorkerQuantityControl.Create(com.GetChild("quantity"));
-				m_building_image = (GLoader)com.GetChild("building_image");
+
             }
         }
 
@@ -95,13 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_card_panel = null;
-			m_card_top_left_decoration = null;
-			m_card_top_divider = null;
-			m_card_bottom_divider = null;
-			m_title = null;
-			m_quantity = null;
-			m_building_image = null;
+
             self = null;
         }
 

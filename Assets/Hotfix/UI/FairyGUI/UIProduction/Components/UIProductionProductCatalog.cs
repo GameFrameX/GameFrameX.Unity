@@ -22,19 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_catalog_outer_panel { get; private set; }
-		public GImage m_catalog_header_background { get; private set; }
-		public GImage m_catalog_body_background { get; private set; }
-		public GImage m_catalog_right_corner_decoration { get; private set; }
-		public GImage m_catalog_left_corner_decoration { get; private set; }
-		public GImage m_era_selected_background { get; private set; }
-		public GButton m_era_button_0 { get; private set; }
-		public GButton m_era_button_1 { get; private set; }
-		public GButton m_era_button_2 { get; private set; }
-		public GButton m_era_button_3 { get; private set; }
-		public GButton m_era_button_4 { get; private set; }
-		public GButton m_era_button_5 { get; private set; }
-		public GList m_product_list { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -82,19 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_catalog_outer_panel = (GImage)com.GetChild("catalog_outer_panel");
-				m_catalog_header_background = (GImage)com.GetChild("catalog_header_background");
-				m_catalog_body_background = (GImage)com.GetChild("catalog_body_background");
-				m_catalog_right_corner_decoration = (GImage)com.GetChild("catalog_right_corner_decoration");
-				m_catalog_left_corner_decoration = (GImage)com.GetChild("catalog_left_corner_decoration");
-				m_era_selected_background = (GImage)com.GetChild("era_selected_background");
-				m_era_button_0 = (GButton)com.GetChild("era_button_0");
-				m_era_button_1 = (GButton)com.GetChild("era_button_1");
-				m_era_button_2 = (GButton)com.GetChild("era_button_2");
-				m_era_button_3 = (GButton)com.GetChild("era_button_3");
-				m_era_button_4 = (GButton)com.GetChild("era_button_4");
-				m_era_button_5 = (GButton)com.GetChild("era_button_5");
-				m_product_list = (GList)com.GetChild("product_list");
+
             }
         }
 
@@ -107,19 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_catalog_outer_panel = null;
-			m_catalog_header_background = null;
-			m_catalog_body_background = null;
-			m_catalog_right_corner_decoration = null;
-			m_catalog_left_corner_decoration = null;
-			m_era_selected_background = null;
-			m_era_button_0 = null;
-			m_era_button_1 = null;
-			m_era_button_2 = null;
-			m_era_button_3 = null;
-			m_era_button_4 = null;
-			m_era_button_5 = null;
-			m_product_list = null;
+
             self = null;
         }
 

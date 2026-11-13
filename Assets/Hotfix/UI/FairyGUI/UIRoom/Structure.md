@@ -13,35 +13,35 @@
 ## UIRoomBattlePanel (UIRoomBattlePanel·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1080x2160) → m_mask
-├─ window_bg (GGraph, 960x1580) → m_window_bg
-├─ top_bg (GGraph, 880x110) → m_top_bg
-├─ room_title_text (GTextField, 560x42) → m_room_title_text "房间 #0"
-├─ room_state_text (GTextField, 816x30) → m_room_state_text "等待中 0/2  局数:1 …"
-├─ invite_text (GTextField, 816x38) → m_invite_text
-├─ invite_button (GButton, 96x52) → m_invite_button
+├─ mask (GGraph, 1080x2160) [无绑定]
+├─ window_bg (GGraph, 960x1580) [无绑定]
+├─ top_bg (GGraph, 880x110) [无绑定]
+├─ room_title_text (GTextField, 560x42) [无绑定] "房间 #0"
+├─ room_state_text (GTextField, 816x30) [无绑定] "等待中 0/2  局数:1 …"
+├─ invite_text (GTextField, 816x38) [无绑定]
+├─ invite_button (GButton, 96x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ leave_button (GButton, 96x52) → m_leave_button
+├─ leave_button (GButton, 96x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ close_button (GButton, 96x52) → m_close_button
+├─ close_button (GButton, 96x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ left_player_bg (GGraph, 400x480) → m_left_player_bg
-├─ right_player_bg (GGraph, 400x480) → m_right_player_bg
-├─ self_avatar (GLoader, 142x142) → m_self_avatar
-├─ opponent_avatar (GLoader, 142x142) → m_opponent_avatar
-├─ self_name_text (GTextField, 310x36) → m_self_name_text "等待玩家"
-├─ opponent_name_text (GTextField, 310x36) → m_opponent_name_text "等待玩家"
-├─ self_state_text (GTextField, 310x34) → m_self_state_text "等待中"
-├─ opponent_state_text (GTextField, 310x34) → m_opponent_state_text "等待中"
-├─ self_gesture_text (GTextField, 310x50) → m_self_gesture_text "-"
-├─ opponent_gesture_text (GTextField, 310x50) → m_opponent_gesture_text "-"
-├─ arena_bg (GGraph, 880x700) → m_arena_bg
-├─ result_text (GTextField, 804x64) → m_result_text "等待开始"
-├─ arena_tips_text (GTextField, 764x42) → m_arena_tips_text "房主开始后，双…"
-├─ rock_button (UIRoomGestureButton·GButton, 132x112) → m_rock_button
+├─ left_player_bg (GGraph, 400x480) [无绑定]
+├─ right_player_bg (GGraph, 400x480) [无绑定]
+├─ self_avatar (GLoader, 142x142) [无绑定]
+├─ opponent_avatar (GLoader, 142x142) [无绑定]
+├─ self_name_text (GTextField, 310x36) [无绑定] "等待玩家"
+├─ opponent_name_text (GTextField, 310x36) [无绑定] "等待玩家"
+├─ self_state_text (GTextField, 310x34) [无绑定] "等待中"
+├─ opponent_state_text (GTextField, 310x34) [无绑定] "等待中"
+├─ self_gesture_text (GTextField, 310x50) [无绑定] "-"
+├─ opponent_gesture_text (GTextField, 310x50) [无绑定] "-"
+├─ arena_bg (GGraph, 880x700) [无绑定]
+├─ result_text (GTextField, 804x64) [无绑定] "等待开始"
+├─ arena_tips_text (GTextField, 764x42) [无绑定] "房主开始后，双…"
+├─ rock_button (UIRoomGestureButton·GButton, 132x112) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -50,7 +50,7 @@
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-├─ scissors_button (UIRoomGestureButton·GButton, 132x112) → m_scissors_button
+├─ scissors_button (UIRoomGestureButton·GButton, 132x112) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -59,7 +59,7 @@
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-├─ paper_button (UIRoomGestureButton·GButton, 132x112) → m_paper_button
+├─ paper_button (UIRoomGestureButton·GButton, 132x112) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -68,13 +68,13 @@
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-├─ start_button (GButton, 160x56) → m_start_button
+├─ start_button (GButton, 160x56) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ sync_button (GButton, 160x56) → m_sync_button
+├─ sync_button (GButton, 160x56) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-└─ tips_text (GTextField, 880x38) → m_tips_text
+└─ tips_text (GTextField, 880x38) [无绑定]
 ```
 
 ## UIRoomGestureButton (UIRoomGestureButton·GButton, 84x72) [exported]
@@ -93,75 +93,75 @@ Controllers: Gesture(Rock, Scissors, Paper)
 ## UIRoomListPanel (UIRoomListPanel·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1080x2160) → m_mask
-├─ window_bg (GGraph, 960x1360) → m_window_bg
-├─ title_text (GTextField, 420x48) → m_title_text "石头剪刀布大厅"
-├─ summary_text (GTextField, 520x32) → m_summary_text "当前玩家:0  房间…"
-├─ refresh_button (GButton, 112x52) → m_refresh_button
+├─ mask (GGraph, 1080x2160) [无绑定]
+├─ window_bg (GGraph, 960x1360) [无绑定]
+├─ title_text (GTextField, 420x48) [无绑定] "石头剪刀布大厅"
+├─ summary_text (GTextField, 520x32) [无绑定] "当前玩家:0  房间…"
+├─ refresh_button (GButton, 112x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ create_button (GButton, 112x52) → m_create_button
+├─ create_button (GButton, 112x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ close_button (GButton, 86x52) → m_close_button
+├─ close_button (GButton, 86x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ list_bg (GGraph, 880x1100) → m_list_bg
-├─ list_title (GTextField, 240x34) → m_list_title "可加入房间"
-├─ room_list (GList, 816x990) → m_room_list
+├─ list_bg (GGraph, 880x1100) [无绑定]
+├─ list_title (GTextField, 240x34) [无绑定] "可加入房间"
+├─ room_list (GList, 816x990) [无绑定]
 │     └─ defaultItem: UIRoomListItem (UIRoomListItem·GComponent)
-└─ tips_text (GTextField, 816x30) → m_tips_text "加入或创建房间…"
+└─ tips_text (GTextField, 816x30) [无绑定] "加入或创建房间…"
 ```
 
 ## UIRoomPanel (UIRoomPanel·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1080x2160) → m_mask
-├─ window_bg (GGraph, 960x1620) → m_window_bg
-├─ title_text (GTextField, 600x54) → m_title_text "石头剪刀布房间"
-├─ summary_text (GTextField, 820x34) → m_summary_text "当前玩家:0  房间…"
-├─ refresh_button (GButton, 112x54) → m_refresh_button
+├─ mask (GGraph, 1080x2160) [无绑定]
+├─ window_bg (GGraph, 960x1620) [无绑定]
+├─ title_text (GTextField, 600x54) [无绑定] "石头剪刀布房间"
+├─ summary_text (GTextField, 820x34) [无绑定] "当前玩家:0  房间…"
+├─ refresh_button (GButton, 112x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ create_button (GButton, 112x54) → m_create_button
+├─ create_button (GButton, 112x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ close_button (GButton, 92x54) → m_close_button
+├─ close_button (GButton, 92x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ room_list_bg (GGraph, 460x880) → m_room_list_bg
-├─ room_list_title (GTextField, 220x34) → m_room_list_title "房间列表"
-├─ room_list (GList, 416x780) → m_room_list
+├─ room_list_bg (GGraph, 460x880) [无绑定]
+├─ room_list_title (GTextField, 220x34) [无绑定] "房间列表"
+├─ room_list (GList, 416x780) [无绑定]
 │     └─ defaultItem: UIRoomListItem (UIRoomListItem·GComponent)
-├─ room_detail_bg (GGraph, 410x880) → m_room_detail_bg
-├─ room_detail_title (GTextField, 220x34) → m_room_detail_title "当前房间"
-├─ room_detail_text (GTextField, 352x300) → m_room_detail_text "尚未进入房间"
-├─ start_button (GButton, 112x54) → m_start_button
+├─ room_detail_bg (GGraph, 410x880) [无绑定]
+├─ room_detail_title (GTextField, 220x34) [无绑定] "当前房间"
+├─ room_detail_text (GTextField, 352x300) [无绑定] "尚未进入房间"
+├─ start_button (GButton, 112x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ leave_button (GButton, 112x54) → m_leave_button
+├─ leave_button (GButton, 112x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ invite_button (GButton, 104x54) → m_invite_button
+├─ invite_button (GButton, 104x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ sync_button (GButton, 156x54) → m_sync_button
+├─ sync_button (GButton, 156x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ restart_button (GButton, 156x54) → m_restart_button
+├─ restart_button (GButton, 156x54) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ invite_text (GTextField, 352x72) → m_invite_text
-├─ players_bg (GGraph, 880x180) → m_players_bg
-├─ players_title (GTextField, 220x34) → m_players_title "玩家状态"
-├─ player_list (GList, 832x100) → m_player_list
+├─ invite_text (GTextField, 352x72) [无绑定]
+├─ players_bg (GGraph, 880x180) [无绑定]
+├─ players_title (GTextField, 220x34) [无绑定] "玩家状态"
+├─ player_list (GList, 832x100) [无绑定]
 │     └─ defaultItem: UIRoomPlayerItem (UIRoomPlayerItem·GComponent)
-├─ game_bg (GGraph, 880x280) → m_game_bg
-├─ game_title (GTextField, 220x34) → m_game_title "出拳与结算"
-├─ result_text (GTextField, 832x40) → m_result_text "未进入房间"
-├─ self_gesture_text (GTextField, 400x32) → m_self_gesture_text "你: 未出拳"
-├─ opponent_gesture_text (GTextField, 400x32) → m_opponent_gesture_text "对手: 未出拳"
-├─ rock_button (UIRoomGestureButton·GButton, 84x72) → m_rock_button
+├─ game_bg (GGraph, 880x280) [无绑定]
+├─ game_title (GTextField, 220x34) [无绑定] "出拳与结算"
+├─ result_text (GTextField, 832x40) [无绑定] "未进入房间"
+├─ self_gesture_text (GTextField, 400x32) [无绑定] "你: 未出拳"
+├─ opponent_gesture_text (GTextField, 400x32) [无绑定] "对手: 未出拳"
+├─ rock_button (UIRoomGestureButton·GButton, 84x72) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -170,7 +170,7 @@ Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-├─ scissors_button (UIRoomGestureButton·GButton, 84x72) → m_scissors_button
+├─ scissors_button (UIRoomGestureButton·GButton, 84x72) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -179,7 +179,7 @@ Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-├─ paper_button (UIRoomGestureButton·GButton, 84x72) → m_paper_button
+├─ paper_button (UIRoomGestureButton·GButton, 84x72) [无绑定]
 │  Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ bg (GGraph, 84x72)
 │  ├─ rock_icon (GGraph, 24x24)
@@ -188,37 +188,37 @@ Controllers: Gesture(Rock, Scissors, Paper)
 │  ├─ paper_back (GGraph, 24x30)
 │  ├─ paper_front (GGraph, 24x30)
 │  └─ title (GTextField, 84x22) "石头"
-└─ tips_text (GTextField, 880x34) → m_tips_text "房间流程: 创建或…"
+└─ tips_text (GTextField, 880x34) [无绑定] "房间流程: 创建或…"
 ```
 
 ## UIRoomPlayerItem (UIRoomPlayerItem·GComponent, 360x76) [exported]
 
 ```text
-├─ bg (GGraph, 360x76) → m_bg
-├─ avatar (GLoader, 52x52) → m_avatar
-├─ role_text (GTextField, 150x28) → m_role_text "玩家: 0"
-├─ seat_text (GTextField, 150x22) → m_seat_text "座位 1"
-└─ state_text (GTextField, 104x28) → m_state_text "已出拳"
+├─ bg (GGraph, 360x76) [无绑定]
+├─ avatar (GLoader, 52x52) [无绑定]
+├─ role_text (GTextField, 150x28) [无绑定] "玩家: 0"
+├─ seat_text (GTextField, 150x22) [无绑定] "座位 1"
+└─ state_text (GTextField, 104x28) [无绑定] "已出拳"
 ```
 
 ## UIRoomResultPopup (UIRoomResultPopup·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1080x2160) → m_mask
-├─ window_bg (GGraph, 800x720) → m_window_bg
-├─ title_text (GTextField, 700x54) → m_title_text "本局结算"
-├─ result_text (GTextField, 700x72) → m_result_text "平局"
-├─ round_text (GTextField, 700x34) → m_round_text "第 1 局"
-├─ self_bg (GGraph, 300x128) → m_self_bg
-├─ opponent_bg (GGraph, 300x128) → m_opponent_bg
-├─ self_name_text (GTextField, 206x30) → m_self_name_text "我"
-├─ opponent_name_text (GTextField, 206x30) → m_opponent_name_text "对手"
-├─ self_gesture_text (GTextField, 206x42) → m_self_gesture_text "石头"
-├─ opponent_gesture_text (GTextField, 206x42) → m_opponent_gesture_text "剪刀"
-├─ restart_button (GButton, 160x56) → m_restart_button
+├─ mask (GGraph, 1080x2160) [无绑定]
+├─ window_bg (GGraph, 800x720) [无绑定]
+├─ title_text (GTextField, 700x54) [无绑定] "本局结算"
+├─ result_text (GTextField, 700x72) [无绑定] "平局"
+├─ round_text (GTextField, 700x34) [无绑定] "第 1 局"
+├─ self_bg (GGraph, 300x128) [无绑定]
+├─ opponent_bg (GGraph, 300x128) [无绑定]
+├─ self_name_text (GTextField, 206x30) [无绑定] "我"
+├─ opponent_name_text (GTextField, 206x30) [无绑定] "对手"
+├─ self_gesture_text (GTextField, 206x42) [无绑定] "石头"
+├─ opponent_gesture_text (GTextField, 206x42) [无绑定] "剪刀"
+├─ restart_button (GButton, 160x56) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-└─ close_button (GButton, 160x56) → m_close_button
+└─ close_button (GButton, 160x56) [无绑定]
    ├─ bg (GGraph, 160x54)
    └─ title (GTextField, 160x54) "按钮"
 ```

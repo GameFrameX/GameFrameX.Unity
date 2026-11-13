@@ -51,18 +51,18 @@ Controllers: button(up, down)
 ```text
 ├─ n8 (GGraph, 1080x2340) [无绑定]
 ├─ n3 (GImage, 842x532) [无绑定] ← dialog_bg
-├─ enter_button (UICommonYellowCheckButton·GButton·Check, 196x76) → m_enter_button
+├─ enter_button (UICommonYellowCheckButton·GButton·Check, 196x76) [无绑定]
 │  Controllers: button(up, down, over, selectedOver)
 │  ├─ n0 (GImage, 120x76) ← 图层1_698
 │  ├─ title (GTextField, 120x76)
 │  └─ icon (GLoader, 120x76)
-├─ cancel_button (UICommonWhiteCheckButton·GButton·Check, 196x76) → m_cancel_button
+├─ cancel_button (UICommonWhiteCheckButton·GButton·Check, 196x76) [无绑定]
 │  Controllers: button(up, down, over, selectedOver)
 │  ├─ n0 (GImage, 124x77) ← 图层1_636
 │  ├─ title (GTextField, 120x76)
 │  └─ icon (GLoader, 120x76)
 ├─ n5 (GGroup, 599x76) [无绑定]
-├─ content (GRichTextField, 657x239) → m_content "较高冷淡开召开C…"
+├─ content (GRichTextField, 657x239) [无绑定] "较高冷淡开召开C…"
 └─ n7 (GGroup, 842x532) [无绑定]
 ```
 
@@ -150,7 +150,7 @@ Controllers: button(up, down, over, selectedOver)
 
 ```text
 ├─ n2 (GLoader, 1080x1920) [无绑定]
-└─ close_icon (UICommonCloseButton·GButton·Check, 80x80) → m_close_icon
+└─ close_icon (UICommonCloseButton·GButton·Check, 80x80) [无绑定]
    Controllers: button(up, down, over, selectedOver)
    └─ n0 (GImage, 80x80) ← 图层1_409
 ```

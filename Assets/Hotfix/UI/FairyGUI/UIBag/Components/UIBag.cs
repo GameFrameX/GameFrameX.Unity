@@ -22,8 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GGraph m_bg { get; private set; }
-		public UIBagContent m_content { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -71,8 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_bg = (GGraph)com.GetChild("bg");
-				m_content = UIBagContent.Create(com.GetChild("content"));
+
             }
         }
 
@@ -85,8 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_bg = null;
-			m_content = null;
+
             self = null;
         }
 

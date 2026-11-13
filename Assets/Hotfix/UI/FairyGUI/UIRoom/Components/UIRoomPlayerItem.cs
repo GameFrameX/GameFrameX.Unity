@@ -22,11 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GGraph m_bg { get; private set; }
-		public GLoader m_avatar { get; private set; }
-		public GTextField m_role_text { get; private set; }
-		public GTextField m_seat_text { get; private set; }
-		public GTextField m_state_text { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -74,11 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_bg = (GGraph)com.GetChild("bg");
-				m_avatar = (GLoader)com.GetChild("avatar");
-				m_role_text = (GTextField)com.GetChild("role_text");
-				m_seat_text = (GTextField)com.GetChild("seat_text");
-				m_state_text = (GTextField)com.GetChild("state_text");
+
             }
         }
 
@@ -91,11 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_bg = null;
-			m_avatar = null;
-			m_role_text = null;
-			m_seat_text = null;
-			m_state_text = null;
+
             self = null;
         }
 

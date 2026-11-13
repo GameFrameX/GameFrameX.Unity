@@ -22,13 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GLoader m_bg { get; private set; }
-		public GButton m_production_button { get; private set; }
-		public GButton m_bag_button { get; private set; }
-		public GButton m_room_button { get; private set; }
-		public GLoader m_player_icon { get; private set; }
-		public GTextField m_player_name { get; private set; }
-		public GTextField m_player_level { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -76,13 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_bg = (GLoader)com.GetChild("bg");
-				m_production_button = (GButton)com.GetChild("production_button");
-				m_bag_button = (GButton)com.GetChild("bag_button");
-				m_room_button = (GButton)com.GetChild("room_button");
-				m_player_icon = (GLoader)com.GetChild("player_icon");
-				m_player_name = (GTextField)com.GetChild("player_name");
-				m_player_level = (GTextField)com.GetChild("player_level");
+
             }
         }
 
@@ -95,13 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_bg = null;
-			m_production_button = null;
-			m_bag_button = null;
-			m_room_button = null;
-			m_player_icon = null;
-			m_player_name = null;
-			m_player_level = null;
+
             self = null;
         }
 

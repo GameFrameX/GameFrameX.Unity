@@ -13,12 +13,12 @@
 ## UILauncherUpgrade (GComponent, 1080x2160)
 
 ```text
-├─ bg (GGraph, 1080x2160) → m_bg
+├─ bg (GGraph, 1080x2160) [无绑定]
 ├─ n29 (GImage, 972x572) [无绑定] ← Background
-├─ enter_button (GButton, 480x128) → m_enter_button
+├─ enter_button (GButton, 480x128) [无绑定]
 │  ├─ icon (GImage, 480x128) ← UI_icon_btn_green
 │  └─ title (GTextField, 104x66) "确定"
-└─ text_content (GLabel, 972x640) → m_text_content
+└─ text_content (GLabel, 972x640) [无绑定]
    └─ title (GRichTextField, 972x638) "更新文本更新文…"
 ```
 
@@ -39,12 +39,12 @@
 
 ```text
 Controllers: IsUpgrade(No, Yes), IsDownload(No, Yes)
-├─ bg (GLoader, 1080x2160) → m_bg
-├─ tip_text (GTextField, 972x50) → m_tip_text "正在下载游戏资…"
-├─ progress_bar (GProgressBar, 1080x40) → m_progress_bar
+├─ bg (GLoader, 1080x2160) [无绑定]
+├─ tip_text (GTextField, 972x50) [无绑定] "正在下载游戏资…"
+├─ progress_bar (GProgressBar, 1080x40) [无绑定]
 │  ├─ n0 (GGraph, 1080x40)
 │  └─ bar (GGraph, 1080x40)
-└─ upgrade (GComponent, 1080x2160) → m_upgrade
+└─ upgrade (GComponent, 1080x2160) [无绑定]
    ├─ bg (GGraph, 1080x2160)
    ├─ n29 (GImage, 972x572) ← Background
    ├─ enter_button (GButton, 480x128)

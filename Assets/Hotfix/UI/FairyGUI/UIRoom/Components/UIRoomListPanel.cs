@@ -22,17 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GGraph m_mask { get; private set; }
-		public GGraph m_window_bg { get; private set; }
-		public GTextField m_title_text { get; private set; }
-		public GTextField m_summary_text { get; private set; }
-		public UIRoomButton m_refresh_button { get; private set; }
-		public UIRoomButton m_create_button { get; private set; }
-		public UIRoomButton m_close_button { get; private set; }
-		public GGraph m_list_bg { get; private set; }
-		public GTextField m_list_title { get; private set; }
-		public GList m_room_list { get; private set; }
-		public GTextField m_tips_text { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -80,17 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_mask = (GGraph)com.GetChild("mask");
-				m_window_bg = (GGraph)com.GetChild("window_bg");
-				m_title_text = (GTextField)com.GetChild("title_text");
-				m_summary_text = (GTextField)com.GetChild("summary_text");
-				m_refresh_button = UIRoomButton.Create(com.GetChild("refresh_button"));
-				m_create_button = UIRoomButton.Create(com.GetChild("create_button"));
-				m_close_button = UIRoomButton.Create(com.GetChild("close_button"));
-				m_list_bg = (GGraph)com.GetChild("list_bg");
-				m_list_title = (GTextField)com.GetChild("list_title");
-				m_room_list = (GList)com.GetChild("room_list");
-				m_tips_text = (GTextField)com.GetChild("tips_text");
+
             }
         }
 
@@ -103,17 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_mask = null;
-			m_window_bg = null;
-			m_title_text = null;
-			m_summary_text = null;
-			m_refresh_button = null;
-			m_create_button = null;
-			m_close_button = null;
-			m_list_bg = null;
-			m_list_title = null;
-			m_room_list = null;
-			m_tips_text = null;
+
             self = null;
         }
 

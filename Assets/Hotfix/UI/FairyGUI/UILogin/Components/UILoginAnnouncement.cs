@@ -22,9 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GGraph m_mask_layer { get; private set; }
-		public UILoginAnnouncementContent m_text_content { get; private set; }
-		public GTextField m_text_title { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -72,9 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_mask_layer = (GGraph)com.GetChild("mask_layer");
-				m_text_content = UILoginAnnouncementContent.Create(com.GetChild("text_content"));
-				m_text_title = (GTextField)com.GetChild("text_title");
+
             }
         }
 
@@ -87,9 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_mask_layer = null;
-			m_text_content = null;
-			m_text_title = null;
+
             self = null;
         }
 

@@ -22,14 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_deco_cardpanel2 { get; private set; }
-		public GImage m_deco_cardcornerdecoration2 { get; private set; }
-		public GTextField m_production_line_name { get; private set; }
-		public GImage m_deco_editlinebutton3 { get; private set; }
-		public GImage m_deco_deletelinebutton3 { get; private set; }
-		public GTextField m_create_line_hint { get; private set; }
-		public UIProductionCreateLineButton m_create_line_button { get; private set; }
-		public GTextField m_create_line_hint_2 { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -77,14 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_deco_cardpanel2 = (GImage)com.GetChild("deco_cardpanel2");
-				m_deco_cardcornerdecoration2 = (GImage)com.GetChild("deco_cardcornerdecoration2");
-				m_production_line_name = (GTextField)com.GetChild("production_line_name");
-				m_deco_editlinebutton3 = (GImage)com.GetChild("deco_editlinebutton3");
-				m_deco_deletelinebutton3 = (GImage)com.GetChild("deco_deletelinebutton3");
-				m_create_line_hint = (GTextField)com.GetChild("create_line_hint");
-				m_create_line_button = UIProductionCreateLineButton.Create(com.GetChild("create_line_button"));
-				m_create_line_hint_2 = (GTextField)com.GetChild("create_line_hint");
+
             }
         }
 
@@ -97,14 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_deco_cardpanel2 = null;
-			m_deco_cardcornerdecoration2 = null;
-			m_production_line_name = null;
-			m_deco_editlinebutton3 = null;
-			m_deco_deletelinebutton3 = null;
-			m_create_line_hint = null;
-			m_create_line_button = null;
-			m_create_line_hint_2 = null;
+
             self = null;
         }
 

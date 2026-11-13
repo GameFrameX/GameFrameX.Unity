@@ -22,12 +22,7 @@ namespace Unity.Startup
         /// </summary>
         public GComponent self { get; private set; }
 
-		public Controller m_IsUpgrade { get; private set; }
-		public Controller m_IsDownload { get; private set; }
-		public GLoader m_bg { get; private set; }
-		public GTextField m_tip_text { get; private set; }
-		public GProgressBar m_progress_bar { get; private set; }
-		public UILauncherUpgrade m_upgrade { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -75,12 +70,7 @@ namespace Unity.Startup
             var com = GObject.asCom;
             if (com != null)
             {
-				m_IsUpgrade = com.GetController("IsUpgrade");
-				m_IsDownload = com.GetController("IsDownload");
-				m_bg = (GLoader)com.GetChild("bg");
-				m_tip_text = (GTextField)com.GetChild("tip_text");
-				m_progress_bar = (GProgressBar)com.GetChild("progress_bar");
-				m_upgrade = UILauncherUpgrade.Create(com.GetChild("upgrade"));
+
             }
         }
 
@@ -93,12 +83,7 @@ namespace Unity.Startup
 
             base.Dispose();
             self.Remove();
-			m_IsUpgrade = null;
-			m_IsDownload = null;
-			m_bg = null;
-			m_tip_text = null;
-			m_progress_bar = null;
-			m_upgrade = null;
+
             self = null;
         }
 

@@ -22,17 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_deco_descriptionouterpanel { get; private set; }
-		public GImage m_deco_descriptionheaderbackground { get; private set; }
-		public GImage m_deco_descriptionbodybackground { get; private set; }
-		public GImage m_deco_descriptionrightcornerdecoration { get; private set; }
-		public GImage m_deco_descriptionleftcornerdecoration { get; private set; }
-		public GTextField m_description_heading { get; private set; }
-		public GTextField m_description_body { get; private set; }
-		public GImage m_deco_availableworkersbackground { get; private set; }
-		public GTextField m_available_workers { get; private set; }
-		public GList m_line_list { get; private set; }
-		public UIProductionEmptyProductionLineCard m_empty_line_card { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -80,17 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_deco_descriptionouterpanel = (GImage)com.GetChild("deco_descriptionouterpanel");
-				m_deco_descriptionheaderbackground = (GImage)com.GetChild("deco_descriptionheaderbackground");
-				m_deco_descriptionbodybackground = (GImage)com.GetChild("deco_descriptionbodybackground");
-				m_deco_descriptionrightcornerdecoration = (GImage)com.GetChild("deco_descriptionrightcornerdecoration");
-				m_deco_descriptionleftcornerdecoration = (GImage)com.GetChild("deco_descriptionleftcornerdecoration");
-				m_description_heading = (GTextField)com.GetChild("description_heading");
-				m_description_body = (GTextField)com.GetChild("description_body");
-				m_deco_availableworkersbackground = (GImage)com.GetChild("deco_availableworkersbackground");
-				m_available_workers = (GTextField)com.GetChild("available_workers");
-				m_line_list = (GList)com.GetChild("line_list");
-				m_empty_line_card = UIProductionEmptyProductionLineCard.Create(com.GetChild("empty_line_card"));
+
             }
         }
 
@@ -103,17 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_deco_descriptionouterpanel = null;
-			m_deco_descriptionheaderbackground = null;
-			m_deco_descriptionbodybackground = null;
-			m_deco_descriptionrightcornerdecoration = null;
-			m_deco_descriptionleftcornerdecoration = null;
-			m_description_heading = null;
-			m_description_body = null;
-			m_deco_availableworkersbackground = null;
-			m_available_workers = null;
-			m_line_list = null;
-			m_empty_line_card = null;
+
             self = null;
         }
 

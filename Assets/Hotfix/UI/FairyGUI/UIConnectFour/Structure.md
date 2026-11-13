@@ -13,88 +13,88 @@
 ## UIConnectFourBattlePanel (UIConnectFourBattlePanel·GComponent, 1080x2160) [exported]
 
 ```text
-├─ mask (GGraph, 1080x2160) → m_mask
-├─ window_bg (GGraph, 960x1060) → m_window_bg
-├─ top_bg (GGraph, 880x110) → m_top_bg
-├─ room_title_text (GTextField, 560x42) → m_room_title_text "房间 #0"
-├─ room_state_text (GTextField, 620x30) → m_room_state_text "等待中 0/2  局数:1 …"
-├─ turn_text (GTextField, 816x38) → m_turn_text "等待开始"
-├─ leave_button (GButton, 96x52) → m_leave_button
+├─ mask (GGraph, 1080x2160) [无绑定]
+├─ window_bg (GGraph, 960x1060) [无绑定]
+├─ top_bg (GGraph, 880x110) [无绑定]
+├─ room_title_text (GTextField, 560x42) [无绑定] "房间 #0"
+├─ room_state_text (GTextField, 620x30) [无绑定] "等待中 0/2  局数:1 …"
+├─ turn_text (GTextField, 816x38) [无绑定] "等待开始"
+├─ leave_button (GButton, 96x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ close_button (GButton, 96x52) → m_close_button
+├─ close_button (GButton, 96x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ result_text (GTextField, 620x48) → m_result_text "等待开始"
-├─ board_bg (GGraph, 620x548) → m_board_bg
-├─ cell_0 (GGraph, 76x76) → m_cell_0
-├─ cell_1 (GGraph, 76x76) → m_cell_1
-├─ cell_2 (GGraph, 76x76) → m_cell_2
-├─ cell_3 (GGraph, 76x76) → m_cell_3
-├─ cell_4 (GGraph, 76x76) → m_cell_4
-├─ cell_5 (GGraph, 76x76) → m_cell_5
-├─ cell_6 (GGraph, 76x76) → m_cell_6
-├─ cell_7 (GGraph, 76x76) → m_cell_7
-├─ cell_8 (GGraph, 76x76) → m_cell_8
-├─ cell_9 (GGraph, 76x76) → m_cell_9
-├─ cell_10 (GGraph, 76x76) → m_cell_10
-├─ cell_11 (GGraph, 76x76) → m_cell_11
-├─ cell_12 (GGraph, 76x76) → m_cell_12
-├─ cell_13 (GGraph, 76x76) → m_cell_13
-├─ cell_14 (GGraph, 76x76) → m_cell_14
-├─ cell_15 (GGraph, 76x76) → m_cell_15
-├─ cell_16 (GGraph, 76x76) → m_cell_16
-├─ cell_17 (GGraph, 76x76) → m_cell_17
-├─ cell_18 (GGraph, 76x76) → m_cell_18
-├─ cell_19 (GGraph, 76x76) → m_cell_19
-├─ cell_20 (GGraph, 76x76) → m_cell_20
-├─ cell_21 (GGraph, 76x76) → m_cell_21
-├─ cell_22 (GGraph, 76x76) → m_cell_22
-├─ cell_23 (GGraph, 76x76) → m_cell_23
-├─ cell_24 (GGraph, 76x76) → m_cell_24
-├─ cell_25 (GGraph, 76x76) → m_cell_25
-├─ cell_26 (GGraph, 76x76) → m_cell_26
-├─ cell_27 (GGraph, 76x76) → m_cell_27
-├─ cell_28 (GGraph, 76x76) → m_cell_28
-├─ cell_29 (GGraph, 76x76) → m_cell_29
-├─ cell_30 (GGraph, 76x76) → m_cell_30
-├─ cell_31 (GGraph, 76x76) → m_cell_31
-├─ cell_32 (GGraph, 76x76) → m_cell_32
-├─ cell_33 (GGraph, 76x76) → m_cell_33
-├─ cell_34 (GGraph, 76x76) → m_cell_34
-├─ cell_35 (GGraph, 76x76) → m_cell_35
-├─ cell_36 (GGraph, 76x76) → m_cell_36
-├─ cell_37 (GGraph, 76x76) → m_cell_37
-├─ cell_38 (GGraph, 76x76) → m_cell_38
-├─ cell_39 (GGraph, 76x76) → m_cell_39
-├─ cell_40 (GGraph, 76x76) → m_cell_40
-├─ cell_41 (GGraph, 76x76) → m_cell_41
-├─ column_button_0 (GButton, 80x52) → m_column_button_0
+├─ result_text (GTextField, 620x48) [无绑定] "等待开始"
+├─ board_bg (GGraph, 620x548) [无绑定]
+├─ cell_0 (GGraph, 76x76) [无绑定]
+├─ cell_1 (GGraph, 76x76) [无绑定]
+├─ cell_2 (GGraph, 76x76) [无绑定]
+├─ cell_3 (GGraph, 76x76) [无绑定]
+├─ cell_4 (GGraph, 76x76) [无绑定]
+├─ cell_5 (GGraph, 76x76) [无绑定]
+├─ cell_6 (GGraph, 76x76) [无绑定]
+├─ cell_7 (GGraph, 76x76) [无绑定]
+├─ cell_8 (GGraph, 76x76) [无绑定]
+├─ cell_9 (GGraph, 76x76) [无绑定]
+├─ cell_10 (GGraph, 76x76) [无绑定]
+├─ cell_11 (GGraph, 76x76) [无绑定]
+├─ cell_12 (GGraph, 76x76) [无绑定]
+├─ cell_13 (GGraph, 76x76) [无绑定]
+├─ cell_14 (GGraph, 76x76) [无绑定]
+├─ cell_15 (GGraph, 76x76) [无绑定]
+├─ cell_16 (GGraph, 76x76) [无绑定]
+├─ cell_17 (GGraph, 76x76) [无绑定]
+├─ cell_18 (GGraph, 76x76) [无绑定]
+├─ cell_19 (GGraph, 76x76) [无绑定]
+├─ cell_20 (GGraph, 76x76) [无绑定]
+├─ cell_21 (GGraph, 76x76) [无绑定]
+├─ cell_22 (GGraph, 76x76) [无绑定]
+├─ cell_23 (GGraph, 76x76) [无绑定]
+├─ cell_24 (GGraph, 76x76) [无绑定]
+├─ cell_25 (GGraph, 76x76) [无绑定]
+├─ cell_26 (GGraph, 76x76) [无绑定]
+├─ cell_27 (GGraph, 76x76) [无绑定]
+├─ cell_28 (GGraph, 76x76) [无绑定]
+├─ cell_29 (GGraph, 76x76) [无绑定]
+├─ cell_30 (GGraph, 76x76) [无绑定]
+├─ cell_31 (GGraph, 76x76) [无绑定]
+├─ cell_32 (GGraph, 76x76) [无绑定]
+├─ cell_33 (GGraph, 76x76) [无绑定]
+├─ cell_34 (GGraph, 76x76) [无绑定]
+├─ cell_35 (GGraph, 76x76) [无绑定]
+├─ cell_36 (GGraph, 76x76) [无绑定]
+├─ cell_37 (GGraph, 76x76) [无绑定]
+├─ cell_38 (GGraph, 76x76) [无绑定]
+├─ cell_39 (GGraph, 76x76) [无绑定]
+├─ cell_40 (GGraph, 76x76) [无绑定]
+├─ cell_41 (GGraph, 76x76) [无绑定]
+├─ column_button_0 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_1 (GButton, 80x52) → m_column_button_1
+├─ column_button_1 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_2 (GButton, 80x52) → m_column_button_2
+├─ column_button_2 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_3 (GButton, 80x52) → m_column_button_3
+├─ column_button_3 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_4 (GButton, 80x52) → m_column_button_4
+├─ column_button_4 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_5 (GButton, 80x52) → m_column_button_5
+├─ column_button_5 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ column_button_6 (GButton, 80x52) → m_column_button_6
+├─ column_button_6 (GButton, 80x52) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ start_button (GButton, 160x56) → m_start_button
+├─ start_button (GButton, 160x56) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-├─ restart_button (GButton, 160x56) → m_restart_button
+├─ restart_button (GButton, 160x56) [无绑定]
 │  ├─ bg (GGraph, 160x54)
 │  └─ title (GTextField, 160x54) "按钮"
-└─ tips_text (GTextField, 880x34) → m_tips_text "点击列号落子，…"
+└─ tips_text (GTextField, 880x34) [无绑定] "点击列号落子，…"
 ```

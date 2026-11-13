@@ -22,8 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_deco_outputproductbackground { get; private set; }
-		public GTextField m_title { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -71,8 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_deco_outputproductbackground = (GImage)com.GetChild("deco_outputproductbackground");
-				m_title = (GTextField)com.GetChild("title");
+
             }
         }
 
@@ -85,8 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_deco_outputproductbackground = null;
-			m_title = null;
+
             self = null;
         }
 

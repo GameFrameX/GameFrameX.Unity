@@ -22,19 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GGraph m_mask { get; private set; }
-		public GGraph m_window_bg { get; private set; }
-		public GTextField m_title_text { get; private set; }
-		public GTextField m_result_text { get; private set; }
-		public GTextField m_round_text { get; private set; }
-		public GGraph m_self_bg { get; private set; }
-		public GGraph m_opponent_bg { get; private set; }
-		public GTextField m_self_name_text { get; private set; }
-		public GTextField m_opponent_name_text { get; private set; }
-		public GTextField m_self_gesture_text { get; private set; }
-		public GTextField m_opponent_gesture_text { get; private set; }
-		public UIRoomButton m_restart_button { get; private set; }
-		public UIRoomButton m_close_button { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -82,19 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_mask = (GGraph)com.GetChild("mask");
-				m_window_bg = (GGraph)com.GetChild("window_bg");
-				m_title_text = (GTextField)com.GetChild("title_text");
-				m_result_text = (GTextField)com.GetChild("result_text");
-				m_round_text = (GTextField)com.GetChild("round_text");
-				m_self_bg = (GGraph)com.GetChild("self_bg");
-				m_opponent_bg = (GGraph)com.GetChild("opponent_bg");
-				m_self_name_text = (GTextField)com.GetChild("self_name_text");
-				m_opponent_name_text = (GTextField)com.GetChild("opponent_name_text");
-				m_self_gesture_text = (GTextField)com.GetChild("self_gesture_text");
-				m_opponent_gesture_text = (GTextField)com.GetChild("opponent_gesture_text");
-				m_restart_button = UIRoomButton.Create(com.GetChild("restart_button"));
-				m_close_button = UIRoomButton.Create(com.GetChild("close_button"));
+
             }
         }
 
@@ -107,19 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_mask = null;
-			m_window_bg = null;
-			m_title_text = null;
-			m_result_text = null;
-			m_round_text = null;
-			m_self_bg = null;
-			m_opponent_bg = null;
-			m_self_name_text = null;
-			m_opponent_name_text = null;
-			m_self_gesture_text = null;
-			m_opponent_gesture_text = null;
-			m_restart_button = null;
-			m_close_button = null;
+
             self = null;
         }
 

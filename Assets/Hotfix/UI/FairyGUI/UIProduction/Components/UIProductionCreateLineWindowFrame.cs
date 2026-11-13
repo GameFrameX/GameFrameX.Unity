@@ -22,21 +22,7 @@ namespace Hotfix.UI
         /// </summary>
         public GComponent self { get; private set; }
 
-		public GImage m_window_center_decoration { get; private set; }
-		public GImage m_window_outer_panel { get; private set; }
-		public GImage m_window_inner_panel { get; private set; }
-		public GImage m_window_top_highlight { get; private set; }
-		public GImage m_window_top_highlight_dot { get; private set; }
-		public GImage m_window_bottom_highlight { get; private set; }
-		public GImage m_window_bottom_highlight_dot { get; private set; }
-		public GImage m_title_small_star { get; private set; }
-		public GImage m_title_left_star { get; private set; }
-		public GImage m_title_right_star { get; private set; }
-		public GImage m_title_top_star { get; private set; }
-		public GImage m_title_bottom_star { get; private set; }
-		public UIProductionCloseLineWindowButton m_close_button { get; private set; }
-		public UIProductionCreateLineWindowTitle m_title { get; private set; }
-		public GImage m_window_content_divider { get; private set; }
+
 
         private static GObject CreateGObject()
         {
@@ -84,21 +70,7 @@ namespace Hotfix.UI
             var com = GObject.asCom;
             if (com != null)
             {
-				m_window_center_decoration = (GImage)com.GetChild("window_center_decoration");
-				m_window_outer_panel = (GImage)com.GetChild("window_outer_panel");
-				m_window_inner_panel = (GImage)com.GetChild("window_inner_panel");
-				m_window_top_highlight = (GImage)com.GetChild("window_top_highlight");
-				m_window_top_highlight_dot = (GImage)com.GetChild("window_top_highlight_dot");
-				m_window_bottom_highlight = (GImage)com.GetChild("window_bottom_highlight");
-				m_window_bottom_highlight_dot = (GImage)com.GetChild("window_bottom_highlight_dot");
-				m_title_small_star = (GImage)com.GetChild("title_small_star");
-				m_title_left_star = (GImage)com.GetChild("title_left_star");
-				m_title_right_star = (GImage)com.GetChild("title_right_star");
-				m_title_top_star = (GImage)com.GetChild("title_top_star");
-				m_title_bottom_star = (GImage)com.GetChild("title_bottom_star");
-				m_close_button = UIProductionCloseLineWindowButton.Create(com.GetChild("close_button"));
-				m_title = UIProductionCreateLineWindowTitle.Create(com.GetChild("title"));
-				m_window_content_divider = (GImage)com.GetChild("window_content_divider");
+
             }
         }
 
@@ -111,21 +83,7 @@ namespace Hotfix.UI
 
             base.Dispose();
             self.Remove();
-			m_window_center_decoration = null;
-			m_window_outer_panel = null;
-			m_window_inner_panel = null;
-			m_window_top_highlight = null;
-			m_window_top_highlight_dot = null;
-			m_window_bottom_highlight = null;
-			m_window_bottom_highlight_dot = null;
-			m_title_small_star = null;
-			m_title_left_star = null;
-			m_title_right_star = null;
-			m_title_top_star = null;
-			m_title_bottom_star = null;
-			m_close_button = null;
-			m_title = null;
-			m_window_content_divider = null;
+
             self = null;
         }
 

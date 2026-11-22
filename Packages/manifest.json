@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.code-philosophy.hybridclr": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
-    "com.gameframex.unity": "3.0.2",
+    "com.gameframex.unity": "3.0.3",
     "com.gameframex.unity.asset": "5.0.1",
     "com.gameframex.unity.config": "2.0.2",
     "com.gameframex.unity.coroutine": "1.2.2",
@@ -35,7 +35,7 @@
     "com.gameframex.unity.tuyoogame.yooasset": "3.3.0",
     "com.gameframex.unity.ui": "3.0.2",
     "com.gameframex.unity.ui.fairygui": "3.5.3",
-    "com.gameframex.unity.ui.ugui": "2.7.3",
+    "com.gameframex.unity.ui.ugui": "2.7.4",
     "com.gameframex.unity.web": "2.0.2",
     "com.gameframex.unity.web.protobuff": "2.0.1",
     "com.unity.ai.navigation": "1.1.6",
